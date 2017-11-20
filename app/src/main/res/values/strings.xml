@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">DawsonLPx3</string>
+    <string name="menu_about">About</string>
+    <string name="menu_dawson">Dawson website</string>
+    <string name="menu_settings">Settings</string>
 </resources>

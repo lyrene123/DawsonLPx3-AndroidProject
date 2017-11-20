@@ -6,23 +6,38 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+/**
+ * Launches the Main Activity that will display the the app's main interaction with
+ * the user.
+ *
+ *  TODO : more detailed javadocs, better to implement this class level javadocs when class is more or less done
+ *
+ */
 public class MainActivity extends MenuActivity {
 
     private final String TAG = "LPx3-Main";
     private String FNAME, LNAME, PASSWORD, EMAIL;
 
+    /**
+     * Sets the Content View of the main activity.
+     * Verifies the SharedPreferences and retrieves any user credentials if existing.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         Log.d(TAG, "onCreate launched");
-        checkForUserAuthentication();
-
-
-
+        checkForUserAuthentication(); //retrieve user credentials from SharedPref
     }
 
+    /**
+     * Check the Shared Preferences and verify if the user's credential exist. If
+     * yes, then store them as constants and if none existing, then launch the Register
+     * Activity in order to retrieve the user credentials from the user which will be stored
+     * in Shared Preferences.
+     */
     private void checkForUserAuthentication(){
         Log.d(TAG, "checkForUserAuthentication launched");
 

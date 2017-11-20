@@ -16,6 +16,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".CanceledActivity" />
+        <activity android:name=".ShowCancelActivity" />
+        <activity android:name=".FindTeacherActivity" />
+        <activity android:name=".ChooseTeacherActivity" />
+        <activity android:name=".TeacherContactActivity" />
+        <activity android:name=".NotesActivity" />
+        <activity android:name=".ItemNoteActivity" />
+        <activity android:name=".WeatherActivity"></activity>
     </application>
 
 </manifest>

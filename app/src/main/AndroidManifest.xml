@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="dawsonlpx3.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +24,9 @@
         <activity android:name="dawsonlpx3.TeacherContactActivity" />
         <activity android:name="dawsonlpx3.NotesActivity" />
         <activity android:name="dawsonlpx3.ItemNoteActivity" />
-        <activity android:name="dawsonlpx3.WeatherActivity"></activity>
+        <activity android:name="dawsonlpx3.WeatherActivity" />
+        <activity android:name="dawsonlpx3.AboutActivity" />
+        <activity android:name="dawsonlpx3.SettingsActivity" />
     </application>
 
 </manifest>

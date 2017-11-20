@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">DawsonLPx3</string>
-    <string name="settings"> Settings</string>
+    <string name="menu_settings"> Settings</string>
+    <string name="save_settings">Save</string>
+    <string name="first_name_label">First Name:</string>
+    <string name="last_name_label">Last Name:</string>
+    <string name="email_label">Email address:</string>
+    <string name="password_label">Password:</string>
+    <string name="last_modified_label">Last Modified:</string>
 </resources>

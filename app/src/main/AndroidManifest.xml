@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.kimhyonh.dawsonlpx3">
+    package="dawsonlpx3">
 
     <application
         android:allowBackup="true"
@@ -16,17 +16,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".CanceledActivity" />
-        <activity android:name=".ShowCancelActivity" />
-        <activity android:name=".FindTeacherActivity" />
-        <activity android:name=".ChooseTeacherActivity" />
-        <activity android:name=".TeacherContactActivity" />
-        <activity android:name=".NotesActivity" />
-        <activity android:name=".ItemNoteActivity" />
-        <activity android:name=".WeatherActivity"></activity>
-        <activity android:name=".SettingsActivity"></activity>
-        <activity android:name=".MenuActivity"></activity>
+        <activity android:name="dawsonlpx3.RegisterActivity" />
+        <activity android:name="dawsonlpx3.CanceledActivity" />
+        <activity android:name="dawsonlpx3.ShowCancelActivity" />
+        <activity android:name="dawsonlpx3.FindTeacherActivity" />
+        <activity android:name="dawsonlpx3.ChooseTeacherActivity" />
+        <activity android:name="dawsonlpx3.TeacherContactActivity" />
+        <activity android:name="dawsonlpx3.NotesActivity" />
+        <activity android:name="dawsonlpx3.ItemNoteActivity" />
+        <activity android:name="dawsonlpx3.WeatherActivity" />
+        <activity android:name="dawsonlpx3.AboutActivity" />
+        <activity android:name="dawsonlpx3.SettingsActivity" />
     </application>
 
 </manifest>

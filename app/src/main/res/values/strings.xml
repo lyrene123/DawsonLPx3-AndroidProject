@@ -7,4 +7,11 @@
     <string name="email_label">Email address:</string>
     <string name="password_label">Password:</string>
     <string name="last_modified_label">Last Modified:</string>
+    <string name="menu_about">About</string>
+    <string name="menu_dawson">Dawson website</string>
+    <string name="firstname">First Name</string>
+    <string name="lastname">Last Name</string>
+    <string name="email">Email</string>
+    <string name="course">Course</string>
+    <string name="password">Password</string>
 </resources>

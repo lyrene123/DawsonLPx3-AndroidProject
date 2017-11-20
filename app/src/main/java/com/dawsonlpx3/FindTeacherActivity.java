@@ -1,13 +1,15 @@
-package dawsonlpx3;
+package com.dawsonlpx3;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class NotesActivity extends AppCompatActivity {
+import dawsonlpx3.R;
+
+public class FindTeacherActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notes);
+        setContentView(R.layout.activity_find_teacher);
     }
 }

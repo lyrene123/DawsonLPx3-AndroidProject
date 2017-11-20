@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">DawsonLPx3</string>
+    <string name="firstname">First Name</string>
+    <string name="lastname">Last Name</string>
+    <string name="email">Email</string>
+    <string name="course">Course</string>
+    <string name="password">Password</string>
 </resources>

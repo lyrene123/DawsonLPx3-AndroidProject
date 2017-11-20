@@ -1,4 +1,4 @@
-package dawsonlpx3;
+package com.dawsonlpx3;
 
 import android.content.Intent;
 import android.content.SharedPreferences;

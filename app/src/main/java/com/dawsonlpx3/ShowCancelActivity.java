@@ -1,14 +1,13 @@
-package dawsonlpx3;
+package com.dawsonlpx3;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-
-public class CanceledActivity extends AppCompatActivity {
+public class ShowCancelActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_canceled);
+        setContentView(R.layout.activity_show_cancel);
     }
 }

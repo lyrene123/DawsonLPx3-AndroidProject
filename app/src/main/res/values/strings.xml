@@ -23,4 +23,9 @@
     <string name="year">year</string>
     <string name="fall">Fall</string>
     <string name="winter">Winter</string>
+    <string name="classCancel">Class Cancellation</string>
+    <string name="time">Time</string>
+    <string name="courseSection">Course / Section</string>
+    <string name="title">Title</string>
+    <string name="teacher">Teacher</string>
 </resources>

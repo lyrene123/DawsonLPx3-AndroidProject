@@ -1,9 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.dawsonlpx3.TeacherContactActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        style="@style/AppTheme.Title"
+        android:id="@+id/teacherInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/teacherInfo"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/teacherInfo">
+
+        <RelativeLayout
+            android:layout_weight="1"
+            android:id="@+id/infoRL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/firstnameLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/firstname"
+                    android:textAlignment="textEnd" />
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:id="@+id/firstnameTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/sampleName"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/lastnameLL"
+                android:layout_below="@id/firstnameLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/lastname"
+                    android:textAlignment="textEnd" />
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:id="@+id/lastnameTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/sampleName"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/emailLL"
+                android:layout_below="@id/lastnameLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/email"
+                    android:textAlignment="textEnd" />
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:id="@+id/emailTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/sampleName"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/localLL"
+                android:layout_below="@id/emailLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/local"
+                    android:textAlignment="textEnd" />
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:id="@+id/localTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/sampleName"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <LinearLayout
+                android:id="@+id/positionLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/position"
+                    android:textAlignment="textEnd" />
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:id="@+id/positionTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/sampleName"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/departmentLL"
+                android:layout_below="@id/positionLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/department"
+                    android:textAlignment="textEnd" />
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:id="@+id/departmentTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/sampleName"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/sectorLL"
+                android:layout_below="@id/departmentLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/sector"
+                    android:textAlignment="textEnd" />
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:id="@+id/sectorTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/sampleName"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -9,4 +9,11 @@
     <string name="search">Search</string>
     <string name="like">Like</string>
     <string name="exact">Exact</string>
+    <string name="teachers">Teachers</string>
+    <string name="teacherInfo">Teacher Information</string>
+    <string name="sampleName">Sample Name</string>
+    <string name="local">Local</string>
+    <string name="position">Position</string>
+    <string name="department">Department</string>
+    <string name="sector">Sector</string>
 </resources>

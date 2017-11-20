@@ -6,6 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
+
 /**
  * Launches the Main Activity that will display the the app's main interaction with
  * the user.
@@ -16,7 +21,7 @@ import android.util.Log;
 public class MainActivity extends MenuActivity {
 
     private final String TAG = "LPx3-Main";
-    private String FNAME, LNAME, PASSWORD, EMAIL;
+    private String FNAME, LNAME, PASSWORD, EMAIL, TIMESTAMP;
 
     /**
      * Sets the Content View of the main activity.
@@ -48,6 +53,7 @@ public class MainActivity extends MenuActivity {
         this.LNAME = prefs.getString("lname", null);
         this.PASSWORD = prefs.getString("password", null);
         this.EMAIL = prefs.getString("email", null);
+        this.TIMESTAMP = prefs.getString("timestamp", null);
 
         //if no or some credentials missing, then launch the register activity
         if(this.FNAME == null || this.LNAME == null || this.PASSWORD == null ||
@@ -57,4 +63,6 @@ public class MainActivity extends MenuActivity {
             startActivity(intent);
         }
     }
+
+
 }

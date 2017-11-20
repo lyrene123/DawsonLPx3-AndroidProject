@@ -1,11 +1,8 @@
 package com.dawsonlpx3;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import dawsonlpx3.R;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends MenuActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

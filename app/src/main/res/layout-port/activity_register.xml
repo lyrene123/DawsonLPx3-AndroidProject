@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:layout_centerHorizontal="true">
         <TextView
             style="@style/AppTheme.Title"
             android:id="@+id/title"
@@ -88,6 +88,7 @@
                 android:layout_weight="2" />
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/passwordLL"
             android:layout_below="@id/emailLL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -109,6 +110,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2" />
         </LinearLayout>
+
+
+        <Button
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/passwordLL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register"/>
     </RelativeLayout>
 
 </RelativeLayout>

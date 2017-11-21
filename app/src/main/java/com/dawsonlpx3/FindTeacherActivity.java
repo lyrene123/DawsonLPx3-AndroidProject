@@ -1,13 +1,26 @@
 package com.dawsonlpx3;
 
+import android.app.Fragment;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class FindTeacherActivity extends AppCompatActivity {
+public class FindTeacherActivity extends Fragment {
 
+    View view;
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_find_teacher);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.activity_find_teacher, container, false);
+        return view;
     }
+
+    //    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_find_teacher);
+//    }
 }

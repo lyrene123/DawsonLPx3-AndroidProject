@@ -22,7 +22,7 @@ import java.util.List;
 
 /**
  * Helper utility class that handles database access operations and authentication
- * for the firebase. This DAO class only handles read operations against the database and user
+ * for the firebase database. This DAO class only handles read operations against the database and user
  * authentication before any data retrieval from database. Handles the retrieval of list of teacher
  * records that exactly or approximately matches a full name input string depending on a boolean
  * isExactSearch.
@@ -79,7 +79,7 @@ public class FirebaseManagerUtil {
                             //only if authentication is successfull, retrieve teachers records
                             retrieveTeachersList(activity, fullname, isExactSearch);
                         } else {
-                            Log.w(TAG, "Authentication problem!");
+                            Log.w(TAG, "Authentication problem!: " + task.getException().getMessage());
                             //display en error dialog box if authentication failed
                             displayErrorAuthentication(task, activity);
                         }

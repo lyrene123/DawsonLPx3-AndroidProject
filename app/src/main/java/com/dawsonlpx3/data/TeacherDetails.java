@@ -4,7 +4,7 @@ package com.dawsonlpx3.data;
 import java.util.HashMap;
 import java.util.Map;
 
-//https://www.firebase.com/docs/android/guide/saving-data.html
+
 
 /**
  * Encapsulates the properties and characteristics to represent a Teacher
@@ -38,6 +38,8 @@ public class TeacherDetails {
 
     /**
      * Constructor to initialize the properties with the input values
+     * The idea of using maps came from
+     * //https://www.firebase.com/docs/android/guide/saving-data.html
      *
      * @param email Teacher's email
      * @param first_name Teacher's first name

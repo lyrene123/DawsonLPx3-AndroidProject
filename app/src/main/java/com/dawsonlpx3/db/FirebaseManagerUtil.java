@@ -1,4 +1,4 @@
-package com.dawsonlpx3.util;
+package com.dawsonlpx3.db;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;

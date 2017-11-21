@@ -8,14 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class AcedemicCalendarActivity extends Fragment {
+public class CalendarActivity extends Fragment {
 
     View view;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.activity_acedemic_calendar, container, false);
+        view = inflater.inflate(R.layout.activity_calendar, container, false);
         return view;
     }
 }

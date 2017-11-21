@@ -9,7 +9,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 /**
- * TODO
+ * Helper utility class that handles database access and operations for the SQLite database.
+ * Handles basic CRUD operations to create a new notes record, to retrieve and read notes from
+ * the database, to update notes records, and to delete notes records.
+ *
+ * @author Lyrene Labor
+ * @author Pengkim Sy
+ * @author Peter Bellefleur
+ * @author Phil Langlois.
  */
 public class SQLiteManagerUtil extends SQLiteOpenHelper {
 
@@ -18,10 +25,27 @@ public class SQLiteManagerUtil extends SQLiteOpenHelper {
 
     private final String TAG = "DawsonLPx3-SQLiteMan";
 
+    /**
+     * Constructor to create an instance of a SQLiteManager database helper class
+     * in order to perform basic read, write, update and delete operations on the notes
+     * record from the SQLite database. Constructor is private to avoid multiple instance
+     * of the SQLiteManager class to be created and to limit to only one instance for the
+     * duration of the application lifetime.
+     *
+     * @param context Application context
+     */
     private SQLiteManagerUtil(Context context) {
         super(context, NotesContract.DB_NAME, null, NotesContract.DB_VERSION);
     }
 
+    /**
+     * Factory method that will create an instance of the SQLiteManagerUtil class only if
+     * an instance hasn't been previously created. If an instance is already created, then
+     * return that existing instance.
+     *
+     * @param context Application Context
+     * @return A SQLiteManagerUtil instance
+     */
     public static SQLiteManagerUtil getDbManager(Context context) {
         if (dbmanager == null) {
             dbmanager = new SQLiteManagerUtil(context.getApplicationContext());
@@ -30,6 +54,11 @@ public class SQLiteManagerUtil extends SQLiteOpenHelper {
     }
 
 
+    /**
+     * Callback method that will create an empty database notes table
+     *
+     * @param sqLiteDatabase SQLiteDatabase instance
+     */
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         try {
@@ -43,6 +72,17 @@ public class SQLiteManagerUtil extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * Callback method that will be called when the database is updated into a new
+     * version. In this case, the database will be dropped and recreated again which
+     * will delete all old data.
+     *
+     * NOTE : STILL NEED TO VALIDATE WITH TRICIA IF DROPPING TABLE IS OKAY
+     *
+     * @param sqLiteDatabase SQLiteDatabase instance
+     * @param i previous version number
+     * @param i1 new previous version number
+     */
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         Log.w(TAG, "Upgrading database from version "
@@ -56,6 +96,12 @@ public class SQLiteManagerUtil extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * Inserts a new note record into the database
+     *
+     * @param note A string note
+     * @return the id of the new record
+     */
     public long insertNewNote(String note){
         ContentValues cv = new ContentValues();
         cv.put(NotesContract.NotesEntry.COL_TASK_NOTES, note);
@@ -64,17 +110,35 @@ public class SQLiteManagerUtil extends SQLiteOpenHelper {
         return code;
     }
 
+    /**
+     * Deletes a notes record from the database matching the input id
+     *
+     * @param id the id of the record to delete
+     * @return number records affected
+     */
     public int deleteNote(int id){
         return getWritableDatabase().delete(NotesContract.NotesEntry.TABLE,
                 NotesContract.NotesEntry._ID + "=?",
                 new String[] { String.valueOf(id) });
     }
 
+    /**
+     * Returns all notes records from the database.
+     *
+     * @return A Cursor containing all records from the database.
+     */
     public Cursor getNotes(){
         return getReadableDatabase().query(NotesContract.NotesEntry.TABLE, null, null, null,
                 null, null, null);
     }
 
+    /**
+     * Updates a notes record with the matching input id.
+     *
+     * @param id the id of the record to update
+     * @param newNote The new string note
+     * @return the number of records affected
+     */
     public int updateNote(int id, String newNote){
         ContentValues cv = new ContentValues();
         cv.put(NotesContract.NotesEntry.COL_TASK_NOTES, newNote);

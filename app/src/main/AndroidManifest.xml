@@ -25,7 +25,12 @@
         <activity android:name=".NotesActivity" />
         <activity android:name=".ItemNoteActivity" />
         <activity android:name=".WeatherActivity" />
-        <activity android:name=".AcedemicCalendarActivity"></activity>
+        <activity android:name=".AcedemicCalendarActivity" />
+        <activity
+            android:name=".DrawerActivity"
+            android:label="@string/title_activity_drawer"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CalendarActivity"></activity>
     </application>
 
 </manifest>

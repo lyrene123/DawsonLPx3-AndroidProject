@@ -43,6 +43,15 @@ public class SettingsActivity extends Fragment {
         passwordEdit = view.findViewById(R.id.email_input);
         lastUpdatedText = view.findViewById(R.id.last_modified_input);
 
+        // Check to see if we need to restore state
+        if(savedInstanceState != null){
+            firstNameEdit.setText(savedInstanceState.getString("fname", ""));
+            lastNameEdit.setText(savedInstanceState.getString("lname", ""));
+            emailEdit.setText(savedInstanceState.getString("email", ""));
+            passwordEdit.setText(savedInstanceState.getString("password", ""));
+            lastUpdatedText.setText(savedInstanceState.getString("timestamp", ""));
+        }
+
         return view;
     }
 
@@ -70,5 +79,19 @@ public class SettingsActivity extends Fragment {
         editor.commit(); // Save changes
         // Update last updated text
         lastUpdatedText.setText(prefs.getString("timestamp", null));
+    }
+
+    /**
+     * Save user input in the fields to maintain app state.
+     *
+     * @param savedInstanceState
+     */
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState){
+        savedInstanceState.putString("tempFName", firstNameEdit.getText().toString());
+        savedInstanceState.putString("tempLName", lastNameEdit.getText().toString());
+        savedInstanceState.putString("tempEmail", emailEdit.getText().toString());
+        savedInstanceState.putString("tempPassword", passwordEdit.getText().toString());
+        super.onSaveInstanceState(savedInstanceState);
     }
 }

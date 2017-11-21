@@ -25,7 +25,7 @@
         <activity android:name=".NotesActivity" />
         <activity android:name=".ItemNoteActivity" />
         <activity android:name=".WeatherActivity" />
-
+        <activity android:name=".AcedemicCalendarActivity"></activity>
     </application>
 
 </manifest>

@@ -9,7 +9,7 @@
     </style>
 
     <style name="AppTheme.Title">
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">26sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:padding">10dp</item>
     </style>

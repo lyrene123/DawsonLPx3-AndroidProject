@@ -18,4 +18,20 @@
     <string name="search">Search</string>
     <string name="like">Like</string>
     <string name="exact">Exact</string>
+    <string name="teachers">Teachers</string>
+    <string name="teacherInfo">Teacher Information</string>
+    <string name="sampleName">Sample Name</string>
+    <string name="local">Local</string>
+    <string name="position">Position</string>
+    <string name="department">Department</string>
+    <string name="sector">Sector</string>
+    <string name="acedemicCalendar">Acedemic Calendar</string>
+    <string name="year">year</string>
+    <string name="fall">Fall</string>
+    <string name="winter">Winter</string>
+    <string name="classCancel">Class Cancellation</string>
+    <string name="time">Time</string>
+    <string name="courseSection">Course / Section</string>
+    <string name="title">Title</string>
+    <string name="teacher">Teacher</string>
 </resources>

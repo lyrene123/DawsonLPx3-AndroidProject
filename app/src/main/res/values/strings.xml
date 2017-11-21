@@ -34,4 +34,5 @@
     <string name="courseSection">Course / Section</string>
     <string name="title">Title</string>
     <string name="teacher">Teacher</string>
+    <string name="login_error_title">Something went wrong with the database. Cannot retrieve information.</string>
 </resources>

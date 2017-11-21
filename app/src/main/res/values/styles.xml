@@ -19,7 +19,9 @@
         <item name="android:textSize">16sp</item>
         <item name="android:padding">8dp</item>
     </style>
-
+    <style name="AppTheme.Settings">
+        <item name="android:textSize">25sp</item>
+    </style>
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

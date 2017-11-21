@@ -62,6 +62,7 @@ public class SQLiteManagerUtil extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         try {
+            Log.d(TAG, "onCreate started");
             String createTable = "CREATE TABLE " + NotesContract.NotesEntry.TABLE + " ( " +
                     NotesContract.NotesEntry.COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     NotesContract.NotesEntry.COL_TASK_NOTES + " TEXT NOT NULL);";
@@ -103,6 +104,7 @@ public class SQLiteManagerUtil extends SQLiteOpenHelper {
      * @return the id of the new record
      */
     public long insertNewNote(String note){
+        Log.d(TAG, "insertNewNote started");
         ContentValues cv = new ContentValues();
         cv.put(NotesContract.NotesEntry.COL_TASK_NOTES, note);
 
@@ -117,6 +119,7 @@ public class SQLiteManagerUtil extends SQLiteOpenHelper {
      * @return number records affected
      */
     public int deleteNote(int id){
+        Log.d(TAG, "deleteNote started");
         return getWritableDatabase().delete(NotesContract.NotesEntry.TABLE,
                 NotesContract.NotesEntry._ID + "=?",
                 new String[] { String.valueOf(id) });
@@ -128,6 +131,8 @@ public class SQLiteManagerUtil extends SQLiteOpenHelper {
      * @return A Cursor containing all records from the database.
      */
     public Cursor getNotes(){
+        Log.d(TAG, "getNotes started");
+
         return getReadableDatabase().query(NotesContract.NotesEntry.TABLE, null, null, null,
                 null, null, null);
     }
@@ -140,6 +145,7 @@ public class SQLiteManagerUtil extends SQLiteOpenHelper {
      * @return the number of records affected
      */
     public int updateNote(int id, String newNote){
+        Log.d(TAG, "updateNote started");
         ContentValues cv = new ContentValues();
         cv.put(NotesContract.NotesEntry.COL_TASK_NOTES, newNote);
 

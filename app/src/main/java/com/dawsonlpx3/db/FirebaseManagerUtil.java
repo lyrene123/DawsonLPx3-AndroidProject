@@ -75,9 +75,11 @@ public class FirebaseManagerUtil {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            Log.d(TAG, "Authentication successful, retrieving records...");
                             //only if authentication is successfull, retrieve teachers records
                             retrieveTeachersList(activity, fullname, isExactSearch);
                         } else {
+                            Log.w(TAG, "Authentication problem!");
                             //display en error dialog box if authentication failed
                             displayErrorAuthentication(task, activity);
                         }
@@ -115,6 +117,7 @@ public class FirebaseManagerUtil {
      * @param isExactSearch
      */
     private void retrieveTeachersList(Activity activity, final String fullname, final boolean isExactSearch){
+        Log.w(TAG, "retrieveTeachersList started");
 
         //initialize the list of teacher fullnames
         teacherList = new ArrayList<>();
@@ -139,12 +142,14 @@ public class FirebaseManagerUtil {
                     //if user wants an exact search, then only add the fullnames that exactly match the input
                     if(isExactSearch){
                         if(name.equals(fullname)){
+                            Log.w(TAG, "Adding a teacher to the list");
                             //add the retrieved teacher into the list
                             addTeacherToList(item.getValue(TeacherDetails.class));
                         }
                     } else {
                         //if the user wants a approx. search, do the following
                         if(name.equalsIgnoreCase(fullname) || name.toLowerCase().contains(fullname.toLowerCase())){
+                            Log.w(TAG, "Adding a teacher to the list");
                             //add the retrieved teacher names into the list
                             addTeacherToList(item.getValue(TeacherDetails.class));
                         }

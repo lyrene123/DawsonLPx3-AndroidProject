@@ -126,6 +126,17 @@ public class SQLiteManagerUtil extends SQLiteOpenHelper {
     }
 
     /**
+     * Delete all records;
+     *
+     * @return
+     */
+    public int deleteAll() {
+        Log.i(TAG, "delete all notes");
+        return getWritableDatabase().delete(NotesContract.NotesEntry.TABLE,
+                null, null);
+    }
+
+    /**
      * Returns all notes records from the database.
      *
      * @return A Cursor containing all records from the database.
@@ -135,6 +146,21 @@ public class SQLiteManagerUtil extends SQLiteOpenHelper {
 
         return getReadableDatabase().query(NotesContract.NotesEntry.TABLE, null, null, null,
                 null, null, null);
+    }
+
+    /**
+     * Get a note detail by a specific id.
+     *
+     * @param id
+     * @return a cursor containing its record.
+     */
+    public Cursor getNoteById(int id) {
+        Log.i(TAG, "getNoteByID");
+
+        return getReadableDatabase().query(NotesContract.NotesEntry.TABLE
+                , null
+                , NotesContract.NotesEntry.COL_ID + " = ?"
+                , new String[]{id + ""}, null, null, null);
     }
 
     /**

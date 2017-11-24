@@ -3,6 +3,7 @@ package com.dawsonlpx3;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -26,7 +27,8 @@ import java.util.TimeZone;
  *
  */
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        NotesActivity.OnNoteSelectedListener {
 
     private final String TAG = "LPx3-Main";
     private String FNAME, LNAME, PASSWORD, EMAIL, TIMESTAMP;
@@ -151,5 +153,28 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onNoteSelected(int id) {
+        ItemNoteActivity item = new ItemNoteActivity();
+
+        Bundle args = new Bundle();
+        args.putInt("id", id);
+        item.setArguments(args);          // (1) Communicate with Fragment using Bundle
+
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.content_frame, item) // replace content_frame for now
+                    //.addToBackStack(null)
+                    .commit();
+        }else{
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.content_frame, item) // replace flContainer
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 }

@@ -62,8 +62,11 @@ public class FirebaseManagerUtil {
     }
 
     /**
+     * Factory method that will instantiate a FirebaseManagerUtil instance if does not exists yet
+     * and returns it. This method assures that only one instance of FirebaseManagerUtil exists
+     * for the duration of the activity lifetime.
      *
-     * @return
+     * @return FirebaseManagerUtil instance
      */
     public static FirebaseManagerUtil getFirebaseManager(){
         if(fbManager == null){

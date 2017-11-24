@@ -1,6 +1,7 @@
 package com.dawsonlpx3.db;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -86,9 +87,10 @@ public class FirebaseManagerUtil {
      * @param fullname Full name of the teacher we want to retrieve from firebase
      * @param isExactSearch True or false whether to search for exact full name or approximate
      */
-    public void retrieveRecordsFromDb(final Activity activity, final String fullname,
+    public void retrieveRecordsFromDb(final Activity activity, final Fragment fragment, final String fullname,
                                       final String fname, final String lname,
                                       final boolean isExactSearch){
+
         //sign in into firebase to retrieve records from database
         mFirebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(activity, new OnCompleteListener<AuthResult>() {
@@ -97,7 +99,7 @@ public class FirebaseManagerUtil {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "Authentication successful, retrieving records...");
                             //only if authentication is successfull, retrieve teachers records
-                            retrieveTeachersList(fullname, fname, lname, isExactSearch);
+                            retrieveTeachersList(fragment, fullname, fname, lname, isExactSearch);
                         } else {
                             Log.w(TAG, "Authentication problem!: " + task.getException().getMessage());
                             //display en error dialog box if authentication failed
@@ -135,7 +137,7 @@ public class FirebaseManagerUtil {
      * @param fullname
      * @param isExactSearch
      */
-    private void retrieveTeachersList(final String fullname, final String fname,
+    private void retrieveTeachersList(final Fragment fragment, final String fullname, final String fname,
                                       final String lname, final boolean isExactSearch){
 
         //initialize the list of teacher fullnames
@@ -203,7 +205,7 @@ public class FirebaseManagerUtil {
                     }
                 }
                 if(teacherList != null && teacherList.size() > 0){
-                    FindTeacherFragment.setTeachersList(teacherList);
+                    ((FindTeacherFragment) fragment).setTeachersList(teacherList);
                 }
 
             }

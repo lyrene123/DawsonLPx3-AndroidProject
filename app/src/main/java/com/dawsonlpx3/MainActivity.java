@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
 
+import com.dawsonlpx3.teacher_activity.ChooseTeacherFragment;
 import com.dawsonlpx3.teacher_activity.FindTeacherFragment;
 
 /**
@@ -23,7 +24,8 @@ import com.dawsonlpx3.teacher_activity.FindTeacherFragment;
  *
  */
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        ChooseTeacherFragment.OnTeacherSelectedListener {
 
     private final String TAG = "LPx3-Main";
     private String FNAME, LNAME, PASSWORD, EMAIL, TIMESTAMP;
@@ -150,5 +152,10 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onTeacherSelected(int position) {
+
     }
 }

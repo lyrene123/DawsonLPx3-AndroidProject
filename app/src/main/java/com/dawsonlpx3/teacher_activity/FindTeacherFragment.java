@@ -1,8 +1,9 @@
 package com.dawsonlpx3.teacher_activity;
 
 import android.app.Fragment;
+import android.app.FragmentTransaction;
+import android.app.FragmentManager;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,9 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.dawsonlpx3.R;
@@ -30,11 +29,10 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
     private Button searchButton;
 
     private FirebaseManagerUtil fbManager;
-    private static boolean isSearched;
-    private static List<TeacherDetails> teachers;
+    private  boolean isSearched;
+    private  List<TeacherDetails> teachers;
 
     private final String TAG = "DawsonLPx3-FindTeacher";
-    private final static String STATIC_TAG = "DawsonLPx3-FindTeacher";
 
 
     @Override
@@ -79,14 +77,29 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
                 lname = lnameET.getText().toString().trim();
                 Log.d(TAG, "isExact: " + isExact + " lname: " + lname);
             }
-            this.fbManager.retrieveRecordsFromDb(getActivity(), fullname, fname, lname, isExact);
+            this.fbManager.retrieveRecordsFromDb(getActivity(), this, fullname, fname, lname, isExact);
         }
     }
 
-    public static void setTeachersList(List<TeacherDetails> teachersList){
+    public void setTeachersList(List<TeacherDetails> teachersList){
         teachers = teachersList;
         isSearched = false;
-        Log.d(STATIC_TAG, "num of teacher records: " + teachers.size());
+        Log.d(TAG, "num of teacher records: " + teachers.size());
+
+        //display ChooseTeacher fragment
+        if(teachers.size() > 1){
+            displayChooseTeacher();
+        }
+    }
+
+    private void displayChooseTeacher(){
+        Log.d(TAG, "displayChooseTeacher started");
+        ChooseTeacherFragment chooseTeacherFragment = new ChooseTeacherFragment();
+        chooseTeacherFragment.setTeachersList(teachers);
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_frame, chooseTeacherFragment)
+                .commit();
 
     }
 
@@ -111,6 +124,4 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
         }
         return true;
     }
-
-
 }

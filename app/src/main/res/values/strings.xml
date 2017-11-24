@@ -36,10 +36,8 @@
     <string name="teacher">Teacher</string>
     <string name="login_error_title">Something went wrong with the database. Cannot retrieve information.</string>
     <string name="title_activity_drawer">DrawerActivity</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
     <string name="nav_classCancel">Class Cancellation</string>
     <string name="nav_findTeacher">Find Teacher</string>
@@ -55,4 +53,5 @@
     <string name="startTime">Start Time</string>
     <string name="endTime">End Time</string>
     <string name="submit">Submit</string>
+    <string name="tempDisabled">The temperature cannot be shown at this time.</string>
 </resources>

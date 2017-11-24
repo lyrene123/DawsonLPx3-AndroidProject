@@ -39,8 +39,7 @@
                 android:id="@+id/firstnameTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/sampleName"/>
+                android:layout_weight="2"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/lastnameLL"
@@ -63,8 +62,7 @@
                 android:id="@+id/lastnameTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/sampleName"/>
+                android:layout_weight="2"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/emailLL"
@@ -87,8 +85,7 @@
                 android:id="@+id/emailTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/sampleName"/>
+                android:layout_weight="2"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/localLL"
@@ -111,8 +108,7 @@
                 android:id="@+id/localTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/sampleName"/>
+                android:layout_weight="2"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/officeLL"
@@ -158,8 +154,7 @@
                 android:id="@+id/positionTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/sampleName"/>
+                android:layout_weight="2"/>
         </LinearLayout>
 
         <LinearLayout
@@ -183,8 +178,7 @@
                 android:id="@+id/departmentTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/sampleName"/>
+                android:layout_weight="2"/>
         </LinearLayout>
 
         <LinearLayout
@@ -208,8 +202,7 @@
                 android:id="@+id/sectorTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/sampleName"/>
+                android:layout_weight="2"/>
         </LinearLayout>
     </RelativeLayout>
 

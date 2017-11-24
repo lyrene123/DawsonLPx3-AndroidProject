@@ -89,7 +89,23 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
         //display ChooseTeacher fragment
         if(teachers.size() > 1){
             displayChooseTeacher();
+        } else {
+            displayTeacherDetail();
         }
+    }
+
+    private void displayTeacherDetail(){
+        Log.d(TAG, "displayTeacherDetail started");
+        TeacherContactFragment teacherContactFragment = new TeacherContactFragment();
+        Bundle args = new Bundle();
+        args.putSerializable("teacher", teachers.get(0));
+        teacherContactFragment.setArguments(args);
+
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_frame, teacherContactFragment)
+                .addToBackStack(null)
+                .commit();
     }
 
     private void displayChooseTeacher(){

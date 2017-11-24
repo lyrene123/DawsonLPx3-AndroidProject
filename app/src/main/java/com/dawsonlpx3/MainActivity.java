@@ -18,7 +18,6 @@ import com.dawsonlpx3.teacher_activity.ChooseTeacherFragment;
 import com.dawsonlpx3.teacher_activity.FindTeacherFragment;
 import com.dawsonlpx3.teacher_activity.TeacherContactFragment;
 
-import java.util.List;
 
 /**
  * Launches the Main Activity that will display the the app's main interaction with

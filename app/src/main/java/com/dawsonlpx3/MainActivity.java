@@ -13,8 +13,12 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
 
+import com.dawsonlpx3.data.TeacherDetails;
 import com.dawsonlpx3.teacher_activity.ChooseTeacherFragment;
 import com.dawsonlpx3.teacher_activity.FindTeacherFragment;
+import com.dawsonlpx3.teacher_activity.TeacherContactFragment;
+
+import java.util.List;
 
 /**
  * Launches the Main Activity that will display the the app's main interaction with
@@ -155,7 +159,17 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onTeacherSelected(int position) {
+    public void onTeacherSelected(TeacherDetails teacher) {
+        TeacherContactFragment teacherContactFragment = new TeacherContactFragment();
 
+        Bundle args = new Bundle();
+        args.putSerializable("teacher", teacher);
+        teacherContactFragment.setArguments(args);
+
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_frame, teacherContactFragment)
+                .addToBackStack(null)
+                .commit();
     }
 }

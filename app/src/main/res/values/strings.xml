@@ -11,6 +11,7 @@
     <string name="menu_dawson">Dawson website</string>
     <string name="firstname">First Name</string>
     <string name="lastname">Last Name</string>
+    <string name="office">Office</string>
     <string name="email">Email</string>
     <string name="course">Course</string>
     <string name="password">Password</string>

@@ -29,7 +29,7 @@ public class ChooseTeacherFragment extends Fragment {
     private String[] namesArr;
 
     public interface OnTeacherSelectedListener {
-        void onTeacherSelected(int position);
+        void onTeacherSelected(TeacherDetails teacher);
     }
 
     public void setTeachersList(List<TeacherDetails> teachers){
@@ -78,7 +78,7 @@ public class ChooseTeacherFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                listener.onTeacherSelected(position);
+                listener.onTeacherSelected(teachers.get(position));
             }
         });
     }

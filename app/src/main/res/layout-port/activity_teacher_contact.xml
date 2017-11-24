@@ -115,8 +115,31 @@
                 android:text="@string/sampleName"/>
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/positionLL"
+            android:id="@+id/officeLL"
             android:layout_below="@id/localLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="5">
+
+            <TextView
+                style="@style/AppTheme.Text_M"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/office"
+                android:textAlignment="textEnd" />
+
+            <TextView
+                style="@style/AppTheme.Text_M"
+                android:id="@+id/officeTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/positionLL"
+            android:layout_below="@id/officeLL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"

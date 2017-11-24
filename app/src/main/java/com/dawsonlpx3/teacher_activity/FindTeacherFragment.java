@@ -99,6 +99,7 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.content_frame, chooseTeacherFragment)
+                .addToBackStack(null)
                 .commit();
 
     }

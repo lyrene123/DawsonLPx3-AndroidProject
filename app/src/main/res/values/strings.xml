@@ -55,4 +55,6 @@
     <string name="startTime">Start Time</string>
     <string name="endTime">End Time</string>
     <string name="submit">Submit</string>
+
+    <string name="invalidTeacherSearch">Please enter at least a first name or a last name</string>
 </resources>

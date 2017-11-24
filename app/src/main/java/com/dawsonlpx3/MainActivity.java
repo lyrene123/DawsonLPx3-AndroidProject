@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
+import android.view.View;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

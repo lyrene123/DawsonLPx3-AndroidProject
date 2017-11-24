@@ -3,6 +3,7 @@ package com.dawsonlpx3;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -12,6 +13,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 /**
  * Activity Fragment to display the weather and location.
@@ -52,6 +60,7 @@ public class WeatherActivity extends Fragment {
                 String latitude = Double.toString(gps.getLatitude());
                 String longitude = Double.toString(gps.getLongitude());
                 temperatureView.setText("Latitude: " +latitude.toString() +"Longitude: " +longitude.toString());
+                getTemperature(latitude, longitude);
             }else{
                 Log.d(TAG, "GPS NOT ENABLED");
                 gps.showSettingsAlert();
@@ -122,5 +131,69 @@ public class WeatherActivity extends Fragment {
             }
         } // end of switch(requestCode)
     } // onRequestPermissionResult
+
+    /**
+     *
+     * @param
+     */
+    private void getTemperature(String lat, String lon) {
+        TemperatureTask tempTask = new TemperatureTask(lat, lon);
+    }
+
+    /**
+     *
+     */
+    private class TemperatureTask extends AsyncTask<Void, Void, Void>{
+
+        private String lat;
+        private String lon;
+
+        public TemperatureTask(String lat, String lon){
+            this.lat = lat;
+            this.lon = lon;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Log.d(TAG, "TemperatureTask: onPreExecute");
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                // Get url
+                URL url = new URL("http://api.openweathermap.org/data/2.5/weather?q=");
+
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+                BufferedReader reader =
+                        new BufferedReader(new InputStreamReader(connection.getInputStream()));
+
+                StringBuffer json = new StringBuffer(1024);
+                String tmp = "";
+
+                while((tmp = reader.readLine()) != null)
+                    json.append(tmp).append("\n");
+                reader.close();
+
+                JSONObject jObj = new JSONObject(json.toString());
+
+                if(jObj.getInt("cod") != 200) {
+                    System.out.println("Cancelled");
+                    return null;
+                }
+
+
+            } catch (Exception e) {
+
+                System.out.println("Exception "+ e.getMessage());
+                return null;
+            }
+
+            return null;
+        }
+    }
+
 } // WeatherActivity
 

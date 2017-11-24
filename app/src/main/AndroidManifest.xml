@@ -22,8 +22,8 @@
         <activity android:name=".FindTeacherActivity" />
         <activity android:name=".ChooseTeacherActivity" />
         <activity android:name=".TeacherContactActivity" />
-        <activity android:name=".NotesActivity" />
-        <activity android:name=".ItemNoteActivity" />
+        <activity android:name=".NotesFragment" />
+        <activity android:name=".ItemNoteFragment" />
         <activity android:name=".WeatherActivity" />
         <activity android:name=".AcedemicCalendarActivity"></activity>
     </application>

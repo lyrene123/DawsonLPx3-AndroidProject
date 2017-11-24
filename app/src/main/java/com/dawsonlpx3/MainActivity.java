@@ -14,11 +14,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
-
 /**
  * Launches the Main Activity that will display the the app's main interaction with
  * the user.
@@ -28,7 +23,7 @@ import java.util.TimeZone;
  */
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-        NotesActivity.OnNoteSelectedListener {
+        NotesFragment.OnNoteSelectedListener {
 
     private final String TAG = "LPx3-Main";
     private String FNAME, LNAME, PASSWORD, EMAIL, TIMESTAMP;
@@ -132,7 +127,7 @@ public class MainActivity extends AppCompatActivity
                     .commit();
         } else if (id == R.id.nav_note) {
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new NotesActivity())
+                    .replace(R.id.content_frame, new NotesFragment())
                     .commit();
         } else if (id == R.id.nav_acedemicCalendar) {
             fragmentManager.beginTransaction()
@@ -157,7 +152,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onNoteSelected(int id) {
-        ItemNoteActivity item = new ItemNoteActivity();
+        ItemNoteFragment item = new ItemNoteFragment();
 
         Bundle args = new Bundle();
         args.putInt("id", id);
@@ -166,8 +161,8 @@ public class MainActivity extends AppCompatActivity
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
             getFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.content_frame, item) // replace content_frame for now
-                    //.addToBackStack(null)
+                    .replace(R.id.side_frame, item) // replace content_frame for now
+                    .addToBackStack(null)
                     .commit();
         }else{
             getFragmentManager()

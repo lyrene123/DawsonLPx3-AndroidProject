@@ -15,9 +15,9 @@ import android.widget.TextView;
 import com.dawsonlpx3.db.NotesContract;
 import com.dawsonlpx3.db.SQLiteManagerUtil;
 
-public class ItemNoteActivity extends Fragment {
+public class ItemNoteFragment extends Fragment {
 
-    private final String TAG = "ItemNoteActivity";
+    private final String TAG = "ItemNoteFragment";
     private int id = 0;
     private TextView noteTextView;
 

@@ -21,7 +21,7 @@ import android.widget.SimpleCursorAdapter;
 import com.dawsonlpx3.db.NotesContract;
 import com.dawsonlpx3.db.SQLiteManagerUtil;
 
-public class NotesActivity extends Fragment {
+public class NotesFragment extends Fragment {
 
     private final String TAG = "NoteActivity";
 

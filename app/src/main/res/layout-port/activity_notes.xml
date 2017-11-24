@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context="com.dawsonlpx3.NotesActivity">
+    tools:context="com.dawsonlpx3.NotesFragment">
 
     <ListView
         android:id="@+id/noteListView"

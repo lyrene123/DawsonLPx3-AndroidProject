@@ -1,6 +1,7 @@
 package com.dawsonlpx3.data;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.Map;
  * @author Phil Langlois
  * @author Pengkim Sy
  */
-public class TeacherDetails {
+public class TeacherDetails implements Serializable{
 
     private String email;
     private String first_name;

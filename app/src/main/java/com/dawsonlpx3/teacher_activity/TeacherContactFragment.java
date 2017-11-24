@@ -1,9 +1,11 @@
-package com.dawsonlpx3;
+package com.dawsonlpx3.teacher_activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class TeacherContactActivity extends AppCompatActivity {
+import com.dawsonlpx3.R;
+
+public class TeacherContactFragment extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

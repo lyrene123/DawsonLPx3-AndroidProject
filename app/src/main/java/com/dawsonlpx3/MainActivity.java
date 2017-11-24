@@ -12,12 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
-import android.view.View;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
+import com.dawsonlpx3.teacher_activity.FindTeacherFragment;
 
 /**
  * Launches the Main Activity that will display the the app's main interaction with
@@ -123,7 +119,7 @@ public class MainActivity extends AppCompatActivity
                     .commit();
         } else if (id == R.id.nav_findTeacher) {
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new FindTeacherActivity())
+                    .replace(R.id.content_frame, new FindTeacherFragment())
                     .commit();
         } else if (id == R.id.nav_addToCalendar) {
             fragmentManager.beginTransaction()

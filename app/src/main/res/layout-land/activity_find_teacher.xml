@@ -70,11 +70,14 @@
             android:layout_below="@id/findTeacher"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:weightSum="4">
-            <RelativeLayout
-                android:layout_width="0dp"
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2">
+                android:orientation="horizontal"
+                android:gravity="center">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -86,12 +89,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:gravity="center_vertical"/>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+                    android:gravity="center_vertical"
+                    android:checked="true"/>
+
                 <TextView
                     android:layout_toLeftOf="@id/exactRadioBtn"
                     android:layout_width="wrap_content"
@@ -100,18 +100,27 @@
                     android:text="@string/exact"/>
                 <RadioButton
                     android:id="@+id/exactRadioBtn"
-                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"/>
-            </RelativeLayout>
+
+            </RadioGroup>
         </LinearLayout>
         <Button
+            android:id="@+id/search_button"
             android:layout_below="@id/lastnameLL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="@string/search"/>
+        <TextView
+            android:id="@+id/errorMsgTV"
+            android:layout_below="@id/search_button"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent" />
     </RelativeLayout>
 
 </RelativeLayout>

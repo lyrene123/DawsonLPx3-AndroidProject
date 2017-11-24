@@ -15,6 +15,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.dawsonlpx3.db.FirebaseManagerUtil;
+
 public class FindTeacherActivity extends Fragment implements View.OnClickListener {
 
     private View view; //view containing the fragment
@@ -23,8 +25,17 @@ public class FindTeacherActivity extends Fragment implements View.OnClickListene
     private TextView errorMsgTV;
     private Button searchButton;
 
+    private FirebaseManagerUtil fbManager;
+
     private final String TAG = "DawsonLPx3-FindTeacher";
 
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        fbManager = FirebaseManagerUtil.getFirebaseManager();
+
+    }
 
     @Nullable
     @Override
@@ -50,7 +61,8 @@ public class FindTeacherActivity extends Fragment implements View.OnClickListene
         if(isValidInput()){
             boolean isExact = exactRB.isChecked();
             String fullname = (fnameET.getText().toString() + " " + lnameET.getText().toString()).trim();
-            Log.d(TAG, "isEaxt: " + isExact + "  fullname: " + fullname);
+            Log.d(TAG, "isExact: " + isExact + "  fullname: " + fullname);
+            this.fbManager.retrieveRecordsFromDb(getActivity(), fullname, isExact);
         }
     }
 

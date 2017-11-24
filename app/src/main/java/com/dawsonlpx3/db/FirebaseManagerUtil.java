@@ -11,10 +11,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -45,6 +47,8 @@ public class FirebaseManagerUtil {
     private DatabaseReference mDatabase;
     private FirebaseAuth mFirebaseAuth;
 
+    private static FirebaseManagerUtil fbManager;
+
 
     private static String TAG = "DawsonLPx3-FireBaseManager";
 
@@ -52,9 +56,20 @@ public class FirebaseManagerUtil {
      * Initializes the DatabaseReference object for retrieval of data
      * and the FirebaseAuth for database authentication
      */
-    public FirebaseManagerUtil(){
+    private FirebaseManagerUtil(){
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mFirebaseAuth = FirebaseAuth.getInstance();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static FirebaseManagerUtil getFirebaseManager(){
+        if(fbManager == null){
+            fbManager = new FirebaseManagerUtil();
+        }
+        return fbManager;
     }
 
     /**
@@ -117,13 +132,20 @@ public class FirebaseManagerUtil {
      * @param isExactSearch
      */
     private void retrieveTeachersList(Activity activity, final String fullname, final boolean isExactSearch){
-        Log.w(TAG, "retrieveTeachersList started");
+        Log.d(TAG, "retrieveTeachersList started");
 
         //initialize the list of teacher fullnames
         teacherList = new ArrayList<>();
 
+        Query queryRef;
+        if(isExactSearch){
+            queryRef = mDatabase.orderByChild("full_name").equalTo(fullname);
+        } else {
+            queryRef = mDatabase.orderByChild("full_name").startAt(fullname).endAt(fullname+"\uf8ff");
+        }
+
         //create the ValueEventListener listener object
-        ValueEventListener listener = new ValueEventListener() {
+        ChildEventListener listener = new ChildEventListener() {
             /**
              * Retrieves any changes made to the database. In our case
              * this method will be called once at the beginning when
@@ -131,36 +153,52 @@ public class FirebaseManagerUtil {
              * and notifies the change to the adapter that matches the input fullname
              * depending if the user wants an exact search or not.
              *
-             * @param dataSnapshot DataSnapshot object data from db
              */
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot item : dataSnapshot.getChildren()){
+            public void onChildAdded(DataSnapshot snapshot, String previousChild) {
+               /* for(DataSnapshot item : snapshot.getChildren()){
 
                     String name = (String)item.child("full_name").getValue();
 
                     //if user wants an exact search, then only add the fullnames that exactly match the input
                     if(isExactSearch){
                         if(name.equals(fullname)){
-                            Log.w(TAG, "Adding a teacher to the list");
+                            Log.d(TAG, "Adding a teacher to the list");
                             //add the retrieved teacher into the list
                             addTeacherToList(item.getValue(TeacherDetails.class));
                         }
                     } else {
                         //if the user wants a approx. search, do the following
                         if(name.equalsIgnoreCase(fullname) || name.toLowerCase().contains(fullname.toLowerCase())){
-                            Log.w(TAG, "Adding a teacher to the list");
+                            Log.d(TAG, "Adding a teacher to the list");
                             //add the retrieved teacher names into the list
                             addTeacherToList(item.getValue(TeacherDetails.class));
                         }
                     }
-                }
+                }*/
+                Log.d(TAG, "Adding a teacher to the list");
+                addTeacherToList(snapshot.getValue(TeacherDetails.class));
                 //NOTE: AFTER THIS FOR LOOP IMPLEMENT THE LINE THAT WOULD SEND BACK THE LIST OF TEACHERS OBJECT BACK TO CALLING ACTIVITY
                 /* ex: if(teacherList != null){
                         ((FindTeacherActivity) activity).displayTeacherSearchResult(teacherList);
                         //where displayTeacherSearchResult is a method in FindTeacherActivity
                        }
                 */
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
             }
 
             /**
@@ -175,7 +213,7 @@ public class FirebaseManagerUtil {
         };
 
         //set the listener
-        mDatabase.addValueEventListener(listener);
+        queryRef.addChildEventListener(listener);
     }
 
     /**
@@ -184,6 +222,7 @@ public class FirebaseManagerUtil {
      * @param teacher TeacherDetails object to add into the list
      */
     private void addTeacherToList(TeacherDetails teacher){
+        Log.d(TAG, "Added teacher: " + teacher.getFull_name());
         this.teacherList.add(teacher);
     }
 }

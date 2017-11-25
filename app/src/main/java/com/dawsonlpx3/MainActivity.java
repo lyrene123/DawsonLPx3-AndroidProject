@@ -99,6 +99,10 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    /**
+     * Change the color of the item in the drawer to blue
+     * @param navigationView
+     */
     private void styleNavigationItem(NavigationView navigationView) {
         int[][] state = new int[][] {
                 new int[] {-android.R.attr.state_enabled}, // disabled
@@ -118,7 +122,6 @@ public class MainActivity extends AppCompatActivity
         ColorStateList csl = new ColorStateList(state, color);
 
         navigationView.setItemTextColor(csl);
-        navigationView.setItemIconTintList(csl);
     }
 
 

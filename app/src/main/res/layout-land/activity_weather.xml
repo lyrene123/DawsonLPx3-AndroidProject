@@ -22,6 +22,7 @@
             android:hint="@string/city"
             android:textAlignment="textEnd" />
         <Spinner
+            android:id="@+id/countries_spinner"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import org.json.JSONObject;
 import java.io.BufferedReader;
@@ -19,48 +21,51 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Locale;
 
 /**
- * Activity Fragment to display the weather and location.
+ * Activity Fragment to display teh current local temperature in Celsius and to dispaly a 5
+ * day forecast for a selected city and country. Both are accessed through OpenWeatherMap
+ * Source: https://openweathermap.org
  *
  * @author Philippe Langlois-Pedroso, 1542705
  */
 public class WeatherActivity extends Fragment {
 
     View view;
-    private Context context;
-    private GPSTracker gps;
+    private Context context; // Current Activity Context
+    private GPSTracker gps; // Custom class for GPS functionality
     private TextView temperatureView;
     private final String TAG = "WeatherActivity";
     private final int MY_PERMISSIONS_ACCESS_FINE_LOCATION = 1;
     private final int MY_PERMISSIONS_INTERNET = 2;
-    private Boolean userPermissions = true;
+    private Boolean userPermissions = true; // Flag for user permissions
 
+    /**
+     * Create the fragment and any initialization code that is required within the.
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_weather, container, false);
-
         Log.d(TAG, "Weather Activity onCreateView");
 
         // Get handles to required classes and information.
         context = this.getActivity();
-        temperatureView = (TextView) view.findViewById(R.id.temperature_view);
         gps = new GPSTracker(context);
+        temperatureView = (TextView) view.findViewById(R.id.temperature_view);
 
         // Check is the application has the required permissions.
         checkPermissions();
-
-        // Check if user allowed required permissions for temperature.
         if(userPermissions){
-            // check if GPS is enabled.
+            // Check if GPS is enabled
             if(gps.canGetLocation()){
-                Log.d(TAG, "GPS ENABLED");
-                String latitude = Double.toString(gps.getLatitude());
-                String longitude = Double.toString(gps.getLongitude());
-                temperatureView.setText("Latitude: " +latitude.toString() +"Longitude: " +longitude.toString());
-                getTemperature(latitude, longitude);
-                new TemperatureTask(latitude, longitude).execute();
+                displayTemperature();
             }else{
                 Log.d(TAG, "GPS NOT ENABLED");
                 gps.showSettingsAlert();
@@ -69,17 +74,48 @@ public class WeatherActivity extends Fragment {
             temperatureView.setText(R.string.tempDisabled);
         }
 
+        setupWeather(); // Setup the views for the weather functionality
+
         return view;
     } // onCreateView()
+
+    /**
+     *  Setup the EditText and Spinner for use in displaying the 5-day weather forecast.
+     */
+    private void setupWeather(){
+        Log.d(TAG, "setupWeather");
+        // Handle to the spinner
+        Spinner countriesSpinner = (Spinner) view.findViewById(R.id.countries_spinner);
+        // Get a String array of all countries with an ISO 3166-1 alpha-2 codes
+        String[] isoCountryCodes = Locale.getISOCountries();
+        // ArrayAdapter to add items to the spinner
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
+                context, android.R.layout.simple_spinner_item, isoCountryCodes);
+        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        countriesSpinner.setAdapter(spinnerArrayAdapter);
+        countriesSpinner.setSelection(37); // set default value to CA
+    } // setupWeather()
+
+    /**
+     *  Display the local temperature in degrees Celsius.
+     */
+    private void displayTemperature(){
+        Log.d(TAG, "displayTemperature");
+        // Get the Latitude and Longitude
+        String latitude = Double.toString(gps.getLatitude());
+        String longitude = Double.toString(gps.getLongitude());
+        // Obtain the values for the user's current latitude and longitude
+        new TemperatureTask(latitude, longitude).execute();
+    } // displayTemperature()
 
     /**
      * Check the device's current permissions for the required permissions for the temperature.
      */
     private void checkPermissions(){
+        Log.d(TAG, "checkPermissions");
         // Check the permissions for ACCESS_FINE_LOCATION
         if (ContextCompat.checkSelfPermission(context, android.Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
-
             // Ask user for permission to use Access_FINE_LOCATION
             ActivityCompat.requestPermissions(this.getActivity(),
                     new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
@@ -89,7 +125,6 @@ public class WeatherActivity extends Fragment {
         // Check the permissions for INTERNET permission
         if (ContextCompat.checkSelfPermission(context, android.Manifest.permission.INTERNET)
                 != PackageManager.PERMISSION_GRANTED) {
-
             // Ask user for permission to use Access_FINE_LOCATION
             ActivityCompat.requestPermissions(this.getActivity(),
                     new String[]{android.Manifest.permission.INTERNET},
@@ -133,15 +168,11 @@ public class WeatherActivity extends Fragment {
     } // onRequestPermissionResult
 
     /**
+     *  An AsyncTask that creates an Asynchronous thread to communicate with openweathermap.org
+     *  in order to get the current temperature by using a latitude and longitude passed to the
+     *  class.
      *
-     * @param
-     */
-    private void getTemperature(String lat, String lon) {
-        TemperatureTask tempTask = new TemperatureTask(lat, lon);
-    }
-
-    /**
-     *
+     *  @author Philippe Langlois-Pedroso, 1542705
      */
     private class TemperatureTask extends AsyncTask<String, Void, String>{
 
@@ -150,23 +181,44 @@ public class WeatherActivity extends Fragment {
         private static final String OPEN_WEATHER = "http://api.openweathermap.org/data/2.5/weather?";
         private static final String API_KEY = "&appid=1845a7224a9c4164a4007cae1129a582";
 
+        /**
+         * Constructor that is passed a latitude and longitude String.
+         *
+         * @param lat
+         * @param lon
+         */
         public TemperatureTask(String lat, String lon){
             this.lat = lat;
             this.lon = lon;
         } // TemperatureTask()
 
+        /**
+         * Overidden AyncTask method that deals with any setup to be made before the Task starts.
+         */
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             Log.d(TAG, "TemperatureTask: onPreExecute");
         } // onPreExecute()
 
+        /**
+         * Upon the conclusion of the Task, methos will set the text value for the temperature
+         * Text View.
+         *
+         * @param result
+         */
         @Override
         protected void onPostExecute(String result){
             Log.d(TAG, "onPostExecute");
             temperatureView.setText(result);
         } // onPostExecute()
 
+        /**
+         *  Perform the request and parsing of data in teh background of the fragment.
+         *
+         * @param params
+         * @return
+         */
         @Override
         protected String doInBackground(String... params) {
             Log.d(TAG, "doInBackground Temperature Async");
@@ -208,9 +260,12 @@ public class WeatherActivity extends Fragment {
                 JSONObject jObj = new JSONObject(json.toString());
                 JSONObject main = jObj.getJSONObject("main");
                 Log.d(TAG, main.toString());
+                // Temperature is given in Kelvin
                 double tempKelvin = main.getDouble("temp");
                 Log.d(TAG, "temperature in K: " +Double.toString(tempKelvin));
+                // Convert Kelvin to Celsius
                 double tempCelsius = tempKelvin -273.15;
+                // Round the temperature to a single decimal place
                 tempCelsius = (double)Math.round(tempCelsius * 10) / 10;
                 Log.d(TAG, "temperature in C: " +Double.toString(tempCelsius));
                 temperature = Double.toString(tempCelsius) +"\u00b0" +"C";
@@ -218,6 +273,7 @@ public class WeatherActivity extends Fragment {
             }catch(Exception e){
                 Log.d(TAG, e.getMessage());
             }finally{
+                // Clean-up any Objects that need to be closed.
                 if (reader != null) {
                     try {
                         Log.d(TAG, "Closing reader");

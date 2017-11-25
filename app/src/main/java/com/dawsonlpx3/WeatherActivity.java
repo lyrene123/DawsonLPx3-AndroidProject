@@ -26,6 +26,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Locale;
 
 /**
@@ -40,8 +41,7 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
     View view;
     private Context context; // Current Activity Context
     private GPSTracker gps; // Custom class for GPS functionality
-    private TextView temperatureView;
-    private TextView forecastDay1;
+    private TextView temperatureView, forecastDay1, forecastDay2, forecastDay3, forecastDay4, forecastDay5;
     private EditText cityView;
     private Spinner countriesSpinner;
     private Button forecastButton;
@@ -70,6 +70,10 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
         cityView = (EditText) view.findViewById(R.id.weather_city);
         temperatureView = (TextView) view.findViewById(R.id.temperature_view);
         forecastDay1 = (TextView) view.findViewById(R.id.forecast_day1);
+        forecastDay2 = (TextView) view.findViewById(R.id.forecast_day2);
+        forecastDay3 = (TextView) view.findViewById(R.id.forecast_day3);
+        forecastDay4 = (TextView) view.findViewById(R.id.forecast_day4);
+        forecastDay5 = (TextView) view.findViewById(R.id.forecast_day5);
 
         // Check is the application has the required permissions.
         checkPermissions();
@@ -136,9 +140,7 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
         String latitude = Double.toString(gps.getLatitude());
         String longitude = Double.toString(gps.getLongitude());
         // Obtain the values for the user's current latitude and longitude
-
-
-       // new TemperatureTask(latitude, longitude).execute();
+        new TemperatureTask(latitude, longitude).execute();
     } // displayTemperature()
 
     /**
@@ -337,7 +339,7 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
      *
      *  @author Philippe Langlois-Pedroso, 1542705
      */
-    private class ForecastTask extends AsyncTask<String, Void, String> {
+    private class ForecastTask extends AsyncTask<String, Void, JSONObject[]> {
 
         private String FORECAST = "http://api.openweathermap.org/data/2.5/forecast?q=";
         private static final String API_KEY = "&appid=1845a7224a9c4164a4007cae1129a582";
@@ -370,9 +372,13 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
          * @param result
          */
         @Override
-        protected void onPostExecute(String result){
+        protected void onPostExecute(JSONObject[] result){
             Log.d(TAG, "ForecastTask: onPostExecute");
-            forecastDay1.setText(result);
+            forecastDay1.setText(result[0].toString());
+            forecastDay2.setText(result[1].toString());
+            forecastDay3.setText(result[2].toString());
+            forecastDay4.setText(result[3].toString());
+            forecastDay5.setText(result[4].toString());
         } // onPostExecute()
 
         /**
@@ -382,8 +388,8 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
          * @return
          */
         @Override
-        protected String doInBackground(String... params) {
-            String forecastDay = "";
+        protected JSONObject[] doInBackground(String... params) {
+            JSONObject[] forecast = null;
             HttpURLConnection conn = null;
             BufferedReader reader = null;
             try {
@@ -405,7 +411,7 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
                 Log.d(TAG, "Response Code: " +Integer.toString(response));
                 if(response != HttpURLConnection.HTTP_OK){
                     Log.d(TAG, "Aborting read. Response was not 200");
-                    return "Server Returned: " +Integer.toString(response);
+                    return null;
                 }
 
                 // Read data from the response.
@@ -429,9 +435,80 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
                 JSONObject day1part1 = jArr.getJSONObject(0);
                 Log.d(TAG, Double.toString(day1part1.getJSONObject("main").getDouble("temp")));
 
+                // Start of day value
+                Calendar cal = Calendar.getInstance(); // today
+                long currentEpochValue = cal.getTimeInMillis()/1000; // epoch value in seconds
+                Log.d(TAG, "Current time in epoch seconds: " +Long.toString(currentEpochValue));
+                cal.set(Calendar.HOUR_OF_DAY, 0); //set hours to zero
+                cal.set(Calendar.MINUTE, 0); // set minutes to zero
+                cal.set(Calendar.SECOND, 0); //set seconds to zero
+                long startTodayEpochValue = cal.getTimeInMillis()/1000; // epoch value in seconds
+                Log.d(TAG, "Start of day in epoch seconds: " +Long.toString(startTodayEpochValue));
+                long threeHourEpochJump = 60*60*3;
+                int arrayOffset = 0;
 
+                if(currentEpochValue < startTodayEpochValue+threeHourEpochJump){
+                    // section1
+                    Log.d(TAG, "Time Section 1");
+                    Log.d(TAG, Long.toString(startTodayEpochValue+threeHourEpochJump));
+                    Log.d(TAG, jArr.get(0).toString());
+                }
+                else if(currentEpochValue < (startTodayEpochValue+(threeHourEpochJump*2))){
+                    // section2
+                    Log.d(TAG, "Time Section 2");
+                    Log.d(TAG, jArr.get(1).toString());
+                    arrayOffset = 1;
+                }
+                else if(currentEpochValue < (startTodayEpochValue+(threeHourEpochJump*3))){
+                    // section3
+                    Log.d(TAG, "Time Section 3");
+                    Log.d(TAG, jArr.get(2).toString());
+                    arrayOffset = 2;
+                }
+                else if(currentEpochValue < (startTodayEpochValue+(threeHourEpochJump*4))){
+                    // section4
+                    Log.d(TAG, "Time Section 4");
+                    Log.d(TAG, jArr.get(3).toString());
+                    arrayOffset = 3;
+                }
+                else if(currentEpochValue < (startTodayEpochValue+(threeHourEpochJump*5))){
+                    // section5
+                    Log.d(TAG, "Time Section 5");
+                    Log.d(TAG, jArr.get(4).toString());
+                    arrayOffset = 4;
+                }
+                else if(currentEpochValue < (startTodayEpochValue+(threeHourEpochJump*6))){
+                    // section6
+                    Log.d(TAG, "Time Section 6");
+                    Log.d(TAG, jArr.get(5).toString());
+                    arrayOffset = 5;
+                }
+                else if(currentEpochValue < (startTodayEpochValue+(threeHourEpochJump*7))){
+                    // section7
+                    Log.d(TAG, "Time Section 7");
+                    Log.d(TAG, jArr.get(6).toString());
+                    arrayOffset = 6;
+                }
+                else{
+                    // section8
+                    Log.d(TAG, "Time Section 8");
+                    Log.d(TAG, jArr.get(7).toString());
+                    arrayOffset = 7;
+                }
 
-                Log.d(TAG, "HEWWWOOOOOOOOOOOOO");
+                Log.d(TAG, "THE DAY OBJECTS FOR FORECAST");
+                JSONObject day1 = jArr.getJSONObject(0 +arrayOffset);
+                JSONObject day2 = jArr.getJSONObject(8 +arrayOffset);
+                JSONObject day3 = jArr.getJSONObject(16 +arrayOffset);
+                JSONObject day4 = jArr.getJSONObject(24 +arrayOffset);
+                JSONObject day5 = jArr.getJSONObject(32 +arrayOffset);
+                Log.d(TAG, day1.toString());
+                Log.d(TAG, day2.toString());
+                Log.d(TAG, day3.toString());
+                Log.d(TAG, day4.toString());
+                Log.d(TAG, day5.toString());
+
+                forecast = new JSONObject[]{day1, day2, day3, day4, day5};
 
             }catch(Exception e){
                 Log.d(TAG, e.getMessage());
@@ -454,8 +531,8 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
                     }
                 }
             }
-            return forecastDay;
+            return forecast;
         } // doInBackground()
-    }
+    } // ForecastTask
 } // WeatherActivity
 

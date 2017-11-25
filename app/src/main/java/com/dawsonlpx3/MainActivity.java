@@ -187,7 +187,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_about) {
 
         } else if (id == R.id.nav_setting) {
-
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new SettingsActivity())
+                    .commit();
         } else if (id == R.id.nav_dawson) {
 
         }

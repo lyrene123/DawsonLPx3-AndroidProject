@@ -148,9 +148,8 @@ public class FirebaseManagerUtil {
             /**
              * Retrieves any changes made to the database. In our case
              * this method will be called once at the beginning when
-             * retrieving the initial data. Retrieves all the teacher fullnames
-             * and notifies the change to the adapter that matches the input fullname
-             * depending if the user wants an exact search or not.
+             * retrieving the initial data. Retrieves all the teacher fullnames,
+             * first and last names.
              *
              * @param dataSnapshot DataSnapshot object data from db
              */
@@ -162,21 +161,19 @@ public class FirebaseManagerUtil {
                     String firstname = (String)item.child("first_name").getValue();
                     String lastname = (String)item.child("last_name").getValue();
 
-                    //if user wants an exact search, then only add the fullnames that exactly match the input
+                    //if user wants an exact search, then only add the fullnames, first name or last name that exactly match the input
                     if(isExactSearch){
+                        //find matches depending if the user inputed a fullname, a first name only, or a last name only
                         if(fullname != null){
                             if(full.equals(fullname)){
-                                //add the retrieved teacher into the list
                                 addTeacherToList(item.getValue(TeacherDetails.class));
                             }
                         } else if (fname != null && lname == null){
                             if(firstname.equals(fname)){
-                                //add the retrieved teacher into the list
                                 addTeacherToList(item.getValue(TeacherDetails.class));
                             }
                         } else {
                             if(lastname.equals(lname)){
-                                //add the retrieved teacher into the list
                                 addTeacherToList(item.getValue(TeacherDetails.class));
                             }
                         }
@@ -184,6 +181,8 @@ public class FirebaseManagerUtil {
                         String pattern = "";
                         Pattern r = null;
                         Matcher m = null;
+
+                        //with the user of regex, find records beginning with the input fullname, firstname or lastname
                         if(fullname != null){
                             pattern = "^"+fullname;
                             r = Pattern.compile(pattern);
@@ -199,7 +198,6 @@ public class FirebaseManagerUtil {
                         }
 
                         if(m.find()){
-                            //add the retrieved teacher into the list
                             addTeacherToList(item.getValue(TeacherDetails.class));
                         }
                     }
@@ -224,6 +222,7 @@ public class FirebaseManagerUtil {
         //set the listener
         mDatabase.addValueEventListener(listener);
     }
+
 
     /**
      * Helper method to add a TeacherDetails object into the teachers list.

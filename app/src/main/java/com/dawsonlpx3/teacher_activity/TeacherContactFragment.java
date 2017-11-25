@@ -30,6 +30,8 @@ public class TeacherContactFragment extends Fragment {
             if(getArguments() != null) {
                 teacher = (TeacherDetails) getArguments().getSerializable("teacher");
             }
+        } else {
+            this.teacher = (TeacherDetails) savedInstanceState.getSerializable("teacher");
         }
     }
 
@@ -74,5 +76,11 @@ public class TeacherContactFragment extends Fragment {
         for(int i = 0; i < sectors.size(); i++){
             this.sectorTV.setText(this.sectorTV.getText() + "\n" + sectors.get(i));
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("teacher", this.teacher);
     }
 }

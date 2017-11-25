@@ -1,7 +1,6 @@
 package com.dawsonlpx3.teacher_activity;
 
 import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.app.FragmentManager;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
@@ -32,15 +31,27 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
     private  boolean isSearched;
     private  List<TeacherDetails> teachers;
 
+    private String restoredFname, restoredLname, restoredErrorMsg;
+
     private final String TAG = "DawsonLPx3-FindTeacher";
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate started");
         fbManager = FirebaseManagerUtil.getFirebaseManager();
         isSearched = false;
-
+        if(savedInstanceState != null){
+            Log.d(TAG, "restoring state from bundle");
+            this.restoredFname = savedInstanceState.getString("fname");
+            this.restoredLname = savedInstanceState.getString("lname");
+            this.restoredErrorMsg = savedInstanceState.getString("error");
+        } else {
+            this.restoredFname = "";
+            this.restoredLname = "";
+            this.restoredErrorMsg = "";
+        }
     }
 
     @Nullable
@@ -61,6 +72,10 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
         errorMsgTV = (TextView) view.findViewById(R.id.errorMsgTV);
         searchButton = (Button) view.findViewById(R.id.search_button);
         searchButton.setOnClickListener(this);
+
+        fnameET.setText(this.restoredFname);
+        lnameET.setText(this.restoredLname);
+        errorMsgTV.setText(this.restoredErrorMsg);
     }
 
     public void searchTeacher(View view) {
@@ -140,5 +155,19 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
             return false;
         }
         return true;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (this.fnameET != null && !this.fnameET.getText().toString().isEmpty()){
+            outState.putString("fname", this.fnameET.getText().toString());
+        }
+        if(lnameET != null && !this.lnameET.getText().toString().isEmpty()){
+            outState.putString("lname", this.lnameET.getText().toString());
+        }
+        if(errorMsgTV != null && !this.errorMsgTV.getText().toString().isEmpty()){
+            outState.putString("error", this.errorMsgTV.getText().toString());
+        }
     }
 }

@@ -14,6 +14,8 @@
         android:text="@string/teachers"/>
 
     <ListView
+        android:id="@+id/teachersLV"
+        android:layout_below="@id/teacherTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true">

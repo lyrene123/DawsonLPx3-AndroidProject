@@ -33,6 +33,7 @@ public class ChooseTeacherFragment extends Fragment {
     }
 
     public void setTeachersList(List<TeacherDetails> teachers){
+        Log.d(TAG, "setting teachers list into an array");
         this.teachers = teachers;
         buildTeacherNamesArr();
     }
@@ -40,15 +41,31 @@ public class ChooseTeacherFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            Log.d(TAG, "Restoring state from bundle");
+            int size = savedInstanceState.getInt("size");
+            List<TeacherDetails> teachersCopy = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
+                TeacherDetails td = ( TeacherDetails) savedInstanceState.getSerializable("teachers_" + i);
+                teachersCopy.add(td);
+            }
+            setTeachersList(teachersCopy);
+        }
         this.itemsAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, namesArr);
     }
 
     private void buildTeacherNamesArr(){
+        Log.d(TAG, "buildTeacherNamesArr started");
         this.namesList = new ArrayList<>();
         for(int i = 0; i < this.teachers.size(); i++){
+            Log.d(TAG, "Name restored: " + this.teachers.get(i).getFull_name());
             namesList.add(this.teachers.get(i).getFull_name());
         }
+
         this.namesArr = namesList.toArray(new String[0]);
+        Log.d(TAG, "list count: " + namesList.size());
+        Log.d(TAG, "array count: " + namesArr.length);
     }
 
     @Override
@@ -65,6 +82,7 @@ public class ChooseTeacherFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        Log.i(TAG, "onCreateView started");
         return inflater.inflate(R.layout.activity_choose_teacher, container, false);
     }
 
@@ -84,14 +102,15 @@ public class ChooseTeacherFragment extends Fragment {
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-    }
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.d(TAG, "onSaveInstanceState started");
+        //loop through teachers list, save each teacher and their order
+        for (int i = 0; i < this.teachers.size(); i++) {
+            outState.putSerializable("teachers_" + i, this.teachers.get(i));
+        }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-       // refreshView();
-    }
+        outState.putInt("size", teachers.size());
 
+    }
 }

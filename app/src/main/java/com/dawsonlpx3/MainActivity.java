@@ -3,6 +3,7 @@ package com.dawsonlpx3;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity
 
     private final String TAG = "LPx3-Main";
     private String FNAME, LNAME, PASSWORD, EMAIL, TIMESTAMP;
+    private TeacherContactFragment teacherContactFragment;
 
     /**
      * Check the Shared Preferences and verify if the user's credential exist. If
@@ -159,7 +161,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onTeacherSelected(TeacherDetails teacher) {
-        TeacherContactFragment teacherContactFragment = new TeacherContactFragment();
+        this.teacherContactFragment = new TeacherContactFragment();
 
         Bundle args = new Bundle();
         args.putSerializable("teacher", teacher);
@@ -170,5 +172,12 @@ public class MainActivity extends AppCompatActivity
                 .replace(R.id.content_frame, teacherContactFragment)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+      //  getSupportFragmentManager().putFragment(outState, "teacherContactFragment", (Fragment) this.teacherContactFragment);
+
     }
 }

@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -18,6 +19,7 @@ import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import java.util.List;
 
@@ -33,34 +35,7 @@ public class MainActivity extends AppCompatActivity
         NotesFragment.OnNoteSelectedListener {
 
     private final String TAG = "LPx3-Main";
-    private String FNAME, LNAME, PASSWORD, EMAIL, TIMESTAMP;
-
-    /**
-     * Check the Shared Preferences and verify if the user's credential exist. If
-     * yes, then store them as constants and if none existing, then launch the Register
-     * Activity in order to retrieve the user credentials from the user which will be stored
-     * in Shared Preferences.
-     */
-    private void checkForUserAuthentication(){
-        Log.d(TAG, "checkForUserAuthentication launched");
-
-        //retrieve from shared prefs any existing user credentials.
-        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        this.FNAME = prefs.getString("fname", null);
-        this.LNAME = prefs.getString("lname", null);
-        this.PASSWORD = prefs.getString("password", null);
-        this.EMAIL = prefs.getString("email", null);
-        this.TIMESTAMP = prefs.getString("timestamp", null);
-
-        //if no or some credentials missing, then launch the register activity
-        if(this.FNAME == null || this.LNAME == null || this.PASSWORD == null ||
-                this.EMAIL == null){
-            Log.d(TAG,"Launching register activity");
-            Intent intent = new Intent(this, RegisterActivity.class);
-            startActivity(intent);
-        }
-    }
+    private String FNAME, LNAME, EMAIL;
 
     /**
      * Create a toolbar and make it toggle to show the drawer, and add click
@@ -74,10 +49,12 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
 
-        getFragmentManager().beginTransaction()
-                .replace(R.id.side_frame, new HomeFragment())
-                .addToBackStack(null)
-                .commit();
+        if(savedInstanceState == null) {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.side_frame, new HomeFragment())
+                    .addToBackStack(null)
+                    .commit();
+        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -95,8 +72,42 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         Log.d(TAG, "onCreate launched");
-//        checkForUserAuthentication(); //retrieve user credentials from SharedPref
+        checkForUserAuthentication(); //retrieve user credentials from SharedPref
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("fragment", R.id.side_frame);
+    }
+
+
+    /**
+     * Check the Shared Preferences and verify if the user's credential exist. If
+     * yes, then store them as constants and if none existing, then launch the Register
+     * Activity in order to retrieve the user credentials from the user which will be stored
+     * in Shared Preferences.
+     */
+    private void checkForUserAuthentication(){
+        Log.d(TAG, "checkForUserAuthentication launched");
+
+        //retrieve from shared prefs any existing user credentials.
+        SharedPreferences prefs = getSharedPreferences("userInfo", MODE_PRIVATE);
+        this.FNAME = prefs.getString("fname", null);
+        this.LNAME = prefs.getString("lname", null);
+        this.EMAIL = prefs.getString("email", null);
+//        this.TIMESTAMP = prefs.getString("timestamp", null);
+
+        Log.d(TAG, "firstname: " + prefs.getAll());
+        Log.d(TAG, "lastname: " + this.LNAME);
+        Log.d(TAG, "email: " + this.EMAIL);
+        //if no or some credentials missing, then launch the register activity
+        if(this.FNAME == null || this.LNAME == null  || this.EMAIL == null){
+            Log.d(TAG,"Launching register activity");
+            Intent intent = new Intent(this, RegisterActivity.class);
+            startActivity(intent);
+        }
     }
 
     /**
@@ -154,7 +165,12 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         FragmentManager fragmentManager = getFragmentManager();
 
-        if (id == R.id.nav_classCancel) {
+        if (id == R.id.nav_home) {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.side_frame, new HomeFragment())
+                    .addToBackStack(null)
+                    .commit();
+        } else if (id == R.id.nav_classCancel) {
             fragmentManager.beginTransaction()
                     .replace(R.id.side_frame, new CanceledActivity())
                     .addToBackStack(null)
@@ -188,7 +204,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_setting) {
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new SettingsActivity())
+                    .replace(R.id.side_frame, new SettingsActivity())
                     .commit();
         } else if (id == R.id.nav_dawson) {
 

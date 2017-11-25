@@ -74,7 +74,7 @@ public class NotesFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dbh = SQLiteManagerUtil.getDbManager(this.getActivity());
-        dbh.deleteAll(); // Must delete this line
+//        dbh.deleteAll(); // Must delete this line
     }
 
     /**

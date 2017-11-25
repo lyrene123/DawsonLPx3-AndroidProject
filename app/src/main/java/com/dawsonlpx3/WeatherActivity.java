@@ -17,12 +17,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Locale;
 
 /**
@@ -38,6 +41,7 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
     private Context context; // Current Activity Context
     private GPSTracker gps; // Custom class for GPS functionality
     private TextView temperatureView;
+    private TextView forecastDay1;
     private EditText cityView;
     private Spinner countriesSpinner;
     private Button forecastButton;
@@ -65,6 +69,7 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
         gps = new GPSTracker(context);
         cityView = (EditText) view.findViewById(R.id.weather_city);
         temperatureView = (TextView) view.findViewById(R.id.temperature_view);
+        forecastDay1 = (TextView) view.findViewById(R.id.forecast_day1);
 
         // Check is the application has the required permissions.
         checkPermissions();
@@ -99,6 +104,7 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
         String countryCode = countriesSpinner.getSelectedItem().toString();
         Log.d(TAG, city);
         Log.d(TAG, countryCode);
+        new ForecastTask(city, countryCode).execute();
     }
 
     /**
@@ -130,7 +136,9 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
         String latitude = Double.toString(gps.getLatitude());
         String longitude = Double.toString(gps.getLongitude());
         // Obtain the values for the user's current latitude and longitude
-        new TemperatureTask(latitude, longitude).execute();
+
+
+       // new TemperatureTask(latitude, longitude).execute();
     } // displayTemperature()
 
     /**
@@ -213,12 +221,13 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
          * @param lon
          */
         public TemperatureTask(String lat, String lon){
+            Log.d(TAG, "TemperatureTask: Constructor");
             this.lat = lat;
             this.lon = lon;
         } // TemperatureTask()
 
         /**
-         * Overidden AyncTask method that deals with any setup to be made before the Task starts.
+         * Overridden AsyncTask method that deals with any setup to be made before the Task starts.
          */
         @Override
         protected void onPreExecute() {
@@ -227,14 +236,15 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
         } // onPreExecute()
 
         /**
-         * Upon the conclusion of the Task, methos will set the text value for the temperature
+         * Upon the conclusion of the Task, method will set the text value for the temperature
+         * Upon the conclusion of the Task, method will set the text value for the temperature
          * Text View.
          *
          * @param result
          */
         @Override
         protected void onPostExecute(String result){
-            Log.d(TAG, "onPostExecute");
+            Log.d(TAG, "TemperatureTask: onPostExecute");
             temperatureView.setText(result);
         } // onPostExecute()
 
@@ -246,7 +256,7 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
          */
         @Override
         protected String doInBackground(String... params) {
-            Log.d(TAG, "doInBackground Temperature Async");
+            Log.d(TAG, "TemperatureTask: doInBackground");
             String temperature = "";
             HttpURLConnection conn = null;
             BufferedReader reader = null;
@@ -271,7 +281,7 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
                     return "Server Returned: " +Integer.toString(response);
                 }
 
-                // Read data from teh response.
+                // Read data from the response.
                 reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                 StringBuffer json = new StringBuffer(1024);
                 String tmp = "";
@@ -320,5 +330,132 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
             return temperature;
         } // doInBackground()
     } // TemperatureTask
+
+    /**
+     *  An AsyncTask that creates an Asynchronous thread to communicate with openweathermap.org
+     *  in order to get a 5-day forecast of the inputted city by the user.
+     *
+     *  @author Philippe Langlois-Pedroso, 1542705
+     */
+    private class ForecastTask extends AsyncTask<String, Void, String> {
+
+        private String FORECAST = "http://api.openweathermap.org/data/2.5/forecast?q=";
+        private static final String API_KEY = "&appid=1845a7224a9c4164a4007cae1129a582";
+
+        /**
+         * Constructor that is passed a latitude and longitude String.
+         *
+         * @param city
+         * @param country
+         */
+        public ForecastTask(String city, String country){
+            Log.d(TAG, "ForecastTask: Constructor");
+            FORECAST = FORECAST +city +"," +country;
+            Log.d(TAG, "FORECSAT_API: " +FORECAST);
+        } // ForecastTask()
+
+        /**
+         * Overridden AsyncTask method that deals with any setup to be made before the Task starts.
+         */
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Log.d(TAG, "ForecastTask: onPreExecute");
+        } // onPreExecute()
+
+        /**
+         * Upon the conclusion of the Task, method will set the appropriate data to the TextViews
+         * for the forecast.
+         *
+         * @param result
+         */
+        @Override
+        protected void onPostExecute(String result){
+            Log.d(TAG, "ForecastTask: onPostExecute");
+            forecastDay1.setText(result);
+        } // onPostExecute()
+
+        /**
+         *  Perform the request and parsing of data in teh background of the fragment.
+         *
+         * @param params
+         * @return
+         */
+        @Override
+        protected String doInBackground(String... params) {
+            String forecastDay = "";
+            HttpURLConnection conn = null;
+            BufferedReader reader = null;
+            try {
+                // Setup the URL.
+                URL url = new URL(FORECAST +API_KEY);
+                Log.d(TAG, url.toString());
+                // Setup HttpURLConnection using the URL object.
+                conn = (HttpURLConnection) url.openConnection();
+                // Setup connection options
+                conn.setReadTimeout(15000);
+                conn.setConnectTimeout(15000);
+                conn.setRequestMethod("GET");
+                conn.setDoInput(true);
+                Log.d(TAG, "connection setup complete, starting query");
+
+                // Test connection
+                conn.connect();
+                int response = conn.getResponseCode();
+                Log.d(TAG, "Response Code: " +Integer.toString(response));
+                if(response != HttpURLConnection.HTTP_OK){
+                    Log.d(TAG, "Aborting read. Response was not 200");
+                    return "Server Returned: " +Integer.toString(response);
+                }
+
+                // Read data from the response.
+                reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                StringBuffer json = new StringBuffer();
+                String tmp = "";
+
+                // Parse through the response.
+                while((tmp = reader.readLine()) != null)
+                    json.append(tmp).append("\n");
+                reader.close();
+
+                // Obtain needed data from response.
+                JSONObject jObj = new JSONObject(json.toString());
+                //JSONObject bulkForecast = jObj.getJSONObject("list");
+                JSONArray jArr = jObj.getJSONArray("list");
+                Log.d(TAG, jArr.get(0).toString());
+                Log.d(TAG, jArr.get(1).toString());
+                Log.d(TAG, jArr.get(39).toString());
+                Log.d(TAG, Integer.toString(jArr.length()));
+                JSONObject day1part1 = jArr.getJSONObject(0);
+                Log.d(TAG, Double.toString(day1part1.getJSONObject("main").getDouble("temp")));
+
+
+
+                Log.d(TAG, "HEWWWOOOOOOOOOOOOO");
+
+            }catch(Exception e){
+                Log.d(TAG, e.getMessage());
+            }finally{
+                // Clean-up any Objects that need to be closed.
+                if (reader != null) {
+                    try {
+                        Log.d(TAG, "Closing reader");
+                        reader.close();
+                    } catch (IOException ioe) {
+                        Log.d(TAG, ioe.getMessage());
+                    }
+                }
+                if(conn != null){
+                    try{
+                        Log.d(TAG, "Disconnecting connection");
+                        conn.disconnect();
+                    } catch(IllegalStateException ise) {
+                        Log.d(TAG, ise.getMessage());
+                    }
+                }
+            }
+            return forecastDay;
+        } // doInBackground()
+    }
 } // WeatherActivity
 

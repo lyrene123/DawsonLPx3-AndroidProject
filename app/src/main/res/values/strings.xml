@@ -58,4 +58,10 @@
     <string name="submit">Submit</string>
 
     <string name="invalidTeacherSearch">Please enter at least a first name or a last name</string>
+    <string name="dawsonPhoneNum">5149318731</string>
+    <string name="callRequest">You request to call a teacher</string>
+    <string name="phone_access_required">Phone access is required to call a teacher.</string>
+    <string name="permission_unavailable">"Permission is not available. Requesting call permission."</string>
+    <string name="permission_granted">"Phone permission was granted. Starting phone call."</string>
+    <string name="permission_denied">Phone call permission request was denied.</string>
 </resources>

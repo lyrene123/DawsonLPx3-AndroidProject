@@ -80,6 +80,8 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
 
     public void searchTeacher(View view) {
         if(isValidInput()){
+            isSearched = true;
+            errorMsgTV.setText("");
             boolean isExact = exactRB.isChecked();
             String fullname = null, fname = null, lname = null;
             if(!fnameET.getText().toString().isEmpty() && !lnameET.getText().toString().isEmpty()){
@@ -143,7 +145,6 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
                 if(!isSearched) {
                     searchTeacher(v);
                 }
-                isSearched = true;
                 break;
         }
     }
@@ -152,6 +153,7 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
         if((fnameET.getText() == null || fnameET.getText().toString().isEmpty())
                 && (lnameET.getText() == null || lnameET.getText().toString().isEmpty())){
             errorMsgTV.setText(R.string.invalidTeacherSearch);
+            this.isSearched = false;
             return false;
         }
         return true;

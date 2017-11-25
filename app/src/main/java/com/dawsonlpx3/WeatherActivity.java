@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import org.json.JSONObject;
@@ -36,6 +37,7 @@ public class WeatherActivity extends Fragment {
     private Context context; // Current Activity Context
     private GPSTracker gps; // Custom class for GPS functionality
     private TextView temperatureView;
+    private EditText cityView;
     private final String TAG = "WeatherActivity";
     private final int MY_PERMISSIONS_ACCESS_FINE_LOCATION = 1;
     private final int MY_PERMISSIONS_INTERNET = 2;
@@ -58,6 +60,7 @@ public class WeatherActivity extends Fragment {
         // Get handles to required classes and information.
         context = this.getActivity();
         gps = new GPSTracker(context);
+        cityView = (EditText) view.findViewById(R.id.weather_city);
         temperatureView = (TextView) view.findViewById(R.id.temperature_view);
 
         // Check is the application has the required permissions.
@@ -74,6 +77,7 @@ public class WeatherActivity extends Fragment {
             temperatureView.setText(R.string.tempDisabled);
         }
 
+        cityView = (EditText) view.findViewById(R.id.weather_city);
         setupWeather(); // Setup the views for the weather functionality
 
         return view;

@@ -16,10 +16,11 @@
         android:layout_weight="1">
 
         <EditText
+            android:id="@+id/weather_city"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:hint="@string/city"
+            android:text="@string/montreal"
             android:textAlignment="textEnd" />
         <Spinner
             android:id="@+id/countries_spinner"

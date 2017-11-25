@@ -54,4 +54,5 @@
     <string name="endTime">End Time</string>
     <string name="submit">Submit</string>
     <string name="tempDisabled">The temperature cannot be shown at this time.</string>
+    <string name="montreal">Montreal</string>
 </resources>

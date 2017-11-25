@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -31,13 +32,15 @@ import java.util.Locale;
  *
  * @author Philippe Langlois-Pedroso, 1542705
  */
-public class WeatherActivity extends Fragment {
+public class WeatherActivity extends Fragment implements View.OnClickListener {
 
     View view;
     private Context context; // Current Activity Context
     private GPSTracker gps; // Custom class for GPS functionality
     private TextView temperatureView;
     private EditText cityView;
+    private Spinner countriesSpinner;
+    private Button forecastButton;
     private final String TAG = "WeatherActivity";
     private final int MY_PERMISSIONS_ACCESS_FINE_LOCATION = 1;
     private final int MY_PERMISSIONS_INTERNET = 2;
@@ -84,12 +87,27 @@ public class WeatherActivity extends Fragment {
     } // onCreateView()
 
     /**
+     * OnClick handler for the forecast button. Will call an AsyncTask in order to find the 5-day
+     * forecast from the city and country inputted by the user.
+     *
+     * @param v
+     */
+    @Override
+    public void onClick(View v){
+        Log.d(TAG, "getForecast");
+        String city = cityView.getText().toString();
+        String countryCode = countriesSpinner.getSelectedItem().toString();
+        Log.d(TAG, city);
+        Log.d(TAG, countryCode);
+    }
+
+    /**
      *  Setup the EditText and Spinner for use in displaying the 5-day weather forecast.
      */
     private void setupWeather(){
         Log.d(TAG, "setupWeather");
         // Handle to the spinner
-        Spinner countriesSpinner = (Spinner) view.findViewById(R.id.countries_spinner);
+        countriesSpinner = (Spinner) view.findViewById(R.id.countries_spinner);
         // Get a String array of all countries with an ISO 3166-1 alpha-2 codes
         String[] isoCountryCodes = Locale.getISOCountries();
         // ArrayAdapter to add items to the spinner
@@ -98,6 +116,9 @@ public class WeatherActivity extends Fragment {
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         countriesSpinner.setAdapter(spinnerArrayAdapter);
         countriesSpinner.setSelection(37); // set default value to CA
+
+        forecastButton = (Button) view.findViewById(R.id.calculate_forecast_button);
+        forecastButton.setOnClickListener(this);
     } // setupWeather()
 
     /**
@@ -272,7 +293,8 @@ public class WeatherActivity extends Fragment {
                 // Round the temperature to a single decimal place
                 tempCelsius = (double)Math.round(tempCelsius * 10) / 10;
                 Log.d(TAG, "temperature in C: " +Double.toString(tempCelsius));
-                temperature = Double.toString(tempCelsius) +"\u00b0" +"C";
+                temperature = "Current temperature in your area: " +Double.toString(tempCelsius)
+                        +"\u00b0" +"C";
 
             }catch(Exception e){
                 Log.d(TAG, e.getMessage());

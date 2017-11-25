@@ -55,4 +55,5 @@
     <string name="submit">Submit</string>
     <string name="tempDisabled">The temperature cannot be shown at this time.</string>
     <string name="montreal">Montreal</string>
+    <string name="forecast_text">Get Forecast</string>
 </resources>

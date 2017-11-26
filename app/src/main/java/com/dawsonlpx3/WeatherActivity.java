@@ -369,14 +369,14 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
                 JSONObject day1part1 = jArr.getJSONObject(0);
                 Log.d(TAG, Double.toString(day1part1.getJSONObject("main").getDouble("temp")));
 
-                int arrayOffset = calculateOffset();
+               // int arrayOffset = calculateOffset();
 
                 Log.d(TAG, "THE DAY OBJECTS FOR FORECAST");
-                JSONObject day1 = jArr.getJSONObject(0 +arrayOffset);
-                JSONObject day2 = jArr.getJSONObject(8 +arrayOffset);
-                JSONObject day3 = jArr.getJSONObject(16 +arrayOffset);
-                JSONObject day4 = jArr.getJSONObject(24 +arrayOffset);
-                JSONObject day5 = jArr.getJSONObject(32 +arrayOffset);
+                JSONObject day1 = jArr.getJSONObject(0);
+                JSONObject day2 = jArr.getJSONObject(8);
+                JSONObject day3 = jArr.getJSONObject(16);
+                JSONObject day4 = jArr.getJSONObject(24);
+                JSONObject day5 = jArr.getJSONObject(32);
 
                 Log.d(TAG, Integer.toString(jArr.length()));
                 Log.d(TAG, day1.toString());
@@ -421,13 +421,12 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
             Calendar cal = Calendar.getInstance(); // today
             long currentEpochValue = cal.getTimeInMillis()/1000; // epoch value in seconds
             Log.d(TAG, "Current time in epoch seconds: " +Long.toString(currentEpochValue));
-            cal.set(Calendar.HOUR_OF_DAY, 0); //set hours to zero
+            cal.set(Calendar.HOUR_OF_DAY, 1); // API call starts at 1 AM not 12AM.
             cal.set(Calendar.MINUTE, 0); // set minutes to zero
             cal.set(Calendar.SECOND, 0); //set seconds to zero
             long startTodayEpochValue = cal.getTimeInMillis()/1000; // epoch value in seconds
             Log.d(TAG, "Start of day in epoch seconds: " +Long.toString(startTodayEpochValue));
             long threeHourEpochJump = 60*60*3;
-            int arrayOffset = 0;
 
             if(currentEpochValue < startTodayEpochValue+threeHourEpochJump){
                 // section1

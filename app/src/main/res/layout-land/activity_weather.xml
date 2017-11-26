@@ -80,7 +80,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:text="@string/temp_min"
+                    android:text="@string/temp_max"
                     android:textColor="@color/White"/>
                 <TextView
                     android:layout_width="match_parent"

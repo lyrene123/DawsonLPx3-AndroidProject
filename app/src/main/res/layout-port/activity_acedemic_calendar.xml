@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -25,45 +25,48 @@
         android:weightSum="7">
 
         <RadioGroup
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fall"/>
-        <RadioButton
-            android:id="@+id/fallRadioBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"/>
+            android:gravity="center"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fall"/>
+            <RadioButton
+                android:id="@+id/fallRadioBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/winter"/>
-        <RadioButton
-            android:id="@+id/winterRadioBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/winter"/>
+            <RadioButton
+                android:id="@+id/winterRadioBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"/>
         </RadioGroup>
 
         <EditText
+            android:id="@+id/yearET"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="4"
             android:hint="@string/year"/>
         <Button
-            android:layout_weight="2"
+            android:id="@+id/calendarSearch"
+            android:layout_weight="0.5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/search"/>
 
     </LinearLayout>
     <WebView
-        android:id="@+id/acedmicWebview"
+        android:id="@+id/academicWebview"
         android:layout_below="@id/searchLL"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

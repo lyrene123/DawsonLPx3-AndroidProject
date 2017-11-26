@@ -206,7 +206,7 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
         //inflate the fragment
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.content_frame, teacherContactFragment)
+                .replace(R.id.R.id.side_frame, teacherContactFragment)
                 .addToBackStack(null)
                 .commit();
     }
@@ -222,7 +222,7 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
         chooseTeacherFragment.setTeachersList(teachers); //pass the list to display
         FragmentManager fragmentManager = getFragmentManager(); //inflate fragment
         fragmentManager.beginTransaction()
-                .replace(R.id.content_frame, chooseTeacherFragment)
+                .replace(R.id.R.id.side_frame, chooseTeacherFragment)
                 .addToBackStack(null)
                 .commit();
     }

@@ -48,6 +48,8 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
     private EditText cityView;
     private Spinner countriesSpinner;
     private Button forecastButton;
+    private double lat;
+    private double lon;
     private final String TAG = "WeatherActivity";
     private final int MY_PERMISSIONS_ACCESS_FINE_LOCATION = 1;
     private final int MY_PERMISSIONS_INTERNET = 2;
@@ -78,10 +80,35 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
         col6 = (LinearLayout) view.findViewById(R.id.col_6);
 
         checkPermissions(); // Check is the application has the required permissions.
+        getUVIndex(); // Get the UV index
         setupWeather(); // Setup the views for the weather functionality
 
         return view;
     } // onCreateView()
+
+    /**
+     *
+     */
+    private void getUVIndex(){
+        Log.d(TAG, "getUVIndex");
+        String uv = "Cannot obtain UV index at this time";
+        // Create a GPSTracker class to get lat and lon for uv
+        gps = new GPSTracker(getActivity());
+        gps.getLocation(); // Get your current location into the Object
+        lat = gps.getLatitude(); //latitude
+        lon = gps.getLongitude(); // longitude
+        Log.d(TAG, "LATITUDE: " +Double.toString(lat));
+        Log.d(TAG, "LONGITUDE: " +Double.toString(lon));
+        try {
+            UVAsyncTask uvTask = new UVAsyncTask(lat, lon);
+            uvTask.execute();
+            uv = "The current UV index in your area: " +uvTask.get();
+        }catch(Exception e){
+            Log.d(TAG, e.getMessage());
+        }
+        TextView uvView = view.findViewById(R.id.uv_view);
+        uvView.setText(uv);
+    }
 
     /**
      * OnClick handler for the forecast button. Will call an AsyncTask in order to find the 5-day

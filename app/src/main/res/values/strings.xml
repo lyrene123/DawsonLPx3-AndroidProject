@@ -11,6 +11,7 @@
     <string name="menu_dawson">Dawson website</string>
     <string name="firstname">First Name</string>
     <string name="lastname">Last Name</string>
+    <string name="office">Office</string>
     <string name="email">Email</string>
     <string name="course">Course</string>
     <string name="password">Password</string>
@@ -22,6 +23,9 @@
     <string name="teacherInfo">Teacher Information</string>
     <string name="sampleName">Sample Name</string>
     <string name="local">Local</string>
+    <string name="website">Website</string>
+    <string name="bio">Bio</string>
+    <string name="image">Image</string>
     <string name="position">Position</string>
     <string name="department">Department</string>
     <string name="sector">Sector</string>
@@ -53,6 +57,18 @@
     <string name="startTime">Start Time</string>
     <string name="endTime">End Time</string>
     <string name="submit">Submit</string>
+
+    <string name="invalidTeacherSearch">Please enter at least a first name or a last name</string>
+    <string name="dawsonPhoneNum">5149318731</string>
+    <string name="callRequest">You request to call a teacher</string>
+    <string name="phone_access_required">Phone access is required to call a teacher.</string>
+    <string name="permission_unavailable">"Permission is not available. Requesting call permission."</string>
+    <string name="permission_granted">"Phone permission was granted. Starting phone call."</string>
+    <string name="permission_denied">Phone call permission request was denied.</string>
+    <string name="unavailable">Unavailable</string>
+    <string name="noresult">No teachers found</string>
+    <string name="from">From DawsonLPx3</string>
+    <string name="searchTeachers">Searching teachers...</string>
     <string name="noteDetail">Note Detail</string>
     <string name="fallurl">fall</string>
     <string name="winterurl">winter</string>

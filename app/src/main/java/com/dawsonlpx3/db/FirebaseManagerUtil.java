@@ -1,10 +1,12 @@
 package com.dawsonlpx3.db;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
+import com.dawsonlpx3.find_teacher_feature.FindTeacherFragment;
 import com.dawsonlpx3.R;
 import com.dawsonlpx3.data.TeacherDetails;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,6 +21,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Helper utility class that handles database access operations and authentication
@@ -45,6 +49,8 @@ public class FirebaseManagerUtil {
     private DatabaseReference mDatabase;
     private FirebaseAuth mFirebaseAuth;
 
+    private static FirebaseManagerUtil fbManager;
+
 
     private static String TAG = "DawsonLPx3-FireBaseManager";
 
@@ -52,9 +58,23 @@ public class FirebaseManagerUtil {
      * Initializes the DatabaseReference object for retrieval of data
      * and the FirebaseAuth for database authentication
      */
-    public FirebaseManagerUtil(){
+    private FirebaseManagerUtil(){
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mFirebaseAuth = FirebaseAuth.getInstance();
+    }
+
+    /**
+     * Factory method that will instantiate a FirebaseManagerUtil instance if does not exists yet
+     * and returns it. This method assures that only one instance of FirebaseManagerUtil exists
+     * for the duration of the activity lifetime.
+     *
+     * @return FirebaseManagerUtil instance
+     */
+    public static FirebaseManagerUtil getFirebaseManager(){
+        if(fbManager == null){
+            fbManager = new FirebaseManagerUtil();
+        }
+        return fbManager;
     }
 
     /**
@@ -67,8 +87,10 @@ public class FirebaseManagerUtil {
      * @param fullname Full name of the teacher we want to retrieve from firebase
      * @param isExactSearch True or false whether to search for exact full name or approximate
      */
-    public void retrieveRecordsFromDb(final Activity activity, final String fullname,
+    public void retrieveRecordsFromDb(final Activity activity, final Fragment fragment, final String fullname,
+                                      final String fname, final String lname,
                                       final boolean isExactSearch){
+
         //sign in into firebase to retrieve records from database
         mFirebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(activity, new OnCompleteListener<AuthResult>() {
@@ -77,7 +99,7 @@ public class FirebaseManagerUtil {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "Authentication successful, retrieving records...");
                             //only if authentication is successfull, retrieve teachers records
-                            retrieveTeachersList(activity, fullname, isExactSearch);
+                            retrieveTeachersList(fragment, fullname, fname, lname, isExactSearch);
                         } else {
                             Log.w(TAG, "Authentication problem!: " + task.getException().getMessage());
                             //display en error dialog box if authentication failed
@@ -112,12 +134,11 @@ public class FirebaseManagerUtil {
      * firebase was iterated through, return the list to the calling activity by calling a method
      * from the activity passing it the list.
      *
-     * @param activity
      * @param fullname
      * @param isExactSearch
      */
-    private void retrieveTeachersList(Activity activity, final String fullname, final boolean isExactSearch){
-        Log.w(TAG, "retrieveTeachersList started");
+    private void retrieveTeachersList(final Fragment fragment, final String fullname, final String fname,
+                                      final String lname, final boolean isExactSearch){
 
         //initialize the list of teacher fullnames
         teacherList = new ArrayList<>();
@@ -127,9 +148,8 @@ public class FirebaseManagerUtil {
             /**
              * Retrieves any changes made to the database. In our case
              * this method will be called once at the beginning when
-             * retrieving the initial data. Retrieves all the teacher fullnames
-             * and notifies the change to the adapter that matches the input fullname
-             * depending if the user wants an exact search or not.
+             * retrieving the initial data. Retrieves all the teacher fullnames,
+             * first and last names.
              *
              * @param dataSnapshot DataSnapshot object data from db
              */
@@ -137,30 +157,55 @@ public class FirebaseManagerUtil {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot item : dataSnapshot.getChildren()){
 
-                    String name = (String)item.child("full_name").getValue();
+                    String full = (String)item.child("full_name").getValue();
+                    String firstname = (String)item.child("first_name").getValue();
+                    String lastname = (String)item.child("last_name").getValue();
 
-                    //if user wants an exact search, then only add the fullnames that exactly match the input
+                    //if user wants an exact search, then only add the fullnames, first name or last name that exactly match the input
                     if(isExactSearch){
-                        if(name.equals(fullname)){
-                            Log.w(TAG, "Adding a teacher to the list");
-                            //add the retrieved teacher into the list
-                            addTeacherToList(item.getValue(TeacherDetails.class));
+                        //find matches depending if the user inputed a fullname, a first name only, or a last name only
+                        if(fullname != null){
+                            if(full.equals(fullname)){
+                                addTeacherToList(item.getValue(TeacherDetails.class));
+                            }
+                        } else if (fname != null && lname == null){
+                            if(firstname.equals(fname)){
+                                addTeacherToList(item.getValue(TeacherDetails.class));
+                            }
+                        } else {
+                            if(lastname.equals(lname)){
+                                addTeacherToList(item.getValue(TeacherDetails.class));
+                            }
                         }
                     } else {
-                        //if the user wants a approx. search, do the following
-                        if(name.equalsIgnoreCase(fullname) || name.toLowerCase().contains(fullname.toLowerCase())){
-                            Log.w(TAG, "Adding a teacher to the list");
-                            //add the retrieved teacher names into the list
+                        String pattern = "";
+                        Pattern r = null;
+                        Matcher m = null;
+
+                        //with the user of regex, find records beginning with the input fullname, firstname or lastname
+                        if(fullname != null){
+                            pattern = "^"+fullname.toLowerCase();
+                            r = Pattern.compile(pattern);
+                            m = r.matcher(full.toLowerCase());
+                        } else if (fname != null && lname == null){
+                            pattern = "^"+fname.toLowerCase();
+                            r = Pattern.compile(pattern);
+                            m = r.matcher(firstname.toLowerCase());
+                        } else {
+                            pattern = "^"+lname.toLowerCase();
+                            r = Pattern.compile(pattern);
+                            m = r.matcher(lastname.toLowerCase());
+                        }
+
+                        if(m.find()){
                             addTeacherToList(item.getValue(TeacherDetails.class));
                         }
                     }
                 }
-                //NOTE: AFTER THIS FOR LOOP IMPLEMENT THE LINE THAT WOULD SEND BACK THE LIST OF TEACHERS OBJECT BACK TO CALLING ACTIVITY
-                /* ex: if(teacherList != null){
-                        ((FindTeacherActivity) activity).displayTeacherSearchResult(teacherList);
-                        //where displayTeacherSearchResult is a method in FindTeacherActivity
-                       }
-                */
+                if(teacherList != null && teacherList.size() > 0){
+                    ((FindTeacherFragment) fragment).setTeachersList(teacherList);
+                }
+
             }
 
             /**
@@ -178,12 +223,14 @@ public class FirebaseManagerUtil {
         mDatabase.addValueEventListener(listener);
     }
 
+
     /**
      * Helper method to add a TeacherDetails object into the teachers list.
      *
      * @param teacher TeacherDetails object to add into the list
      */
     private void addTeacherToList(TeacherDetails teacher){
+        Log.d(TAG, "Added teacher: " + teacher.getFull_name());
         this.teacherList.add(teacher);
     }
 }

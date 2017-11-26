@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.dawsonlpx3.TeacherContactActivity">
+    android:id="@+id/teacherContactLayout"
+    tools:context="com.dawsonlpx3.find_teacher_feature.TeacherContactFragment">
 
     <TextView
         style="@style/AppTheme.Title"
@@ -13,11 +14,13 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="@string/teacherInfo"/>
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/teacherInfo">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:layout_weight="1"
@@ -45,7 +48,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="@string/sampleName"/>
+                    android:text="@string/unavailable"/>
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/lastnameLL"
@@ -68,7 +71,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="@string/sampleName"/>
+                    android:text="@string/unavailable"/>
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/emailLL"
@@ -91,7 +94,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="@string/sampleName"/>
+                    android:text="@string/unavailable"/>
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/localLL"
@@ -114,7 +117,56 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="@string/sampleName"/>
+                    android:text="@string/unavailable"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/websiteLL"
+                android:layout_below="@id/localLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/website"
+                    android:textAlignment="textEnd" />
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:id="@+id/websiteTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/unavailable"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/imageLL"
+                android:layout_below="@id/websiteLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/image"
+                    android:textAlignment="textEnd" />
+
+                <ImageView
+                    style="@style/AppTheme.Text_M"
+                    android:id="@+id/imageImageView"
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:scaleType="fitCenter"
+                    android:layout_gravity="center"
+                    android:layout_weight="2.5"/>
             </LinearLayout>
 
         </RelativeLayout>
@@ -122,8 +174,60 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1">
+
+            <LinearLayout
+                android:id="@+id/bioLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/bio"
+                    android:textAlignment="textEnd" />
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:id="@+id/bioView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/unavailable"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/officeLL"
+                android:layout_width="match_parent"
+                android:layout_below="@id/bioLL"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:layout_width="0dp"
+                    android:id="@+id/bioTextView"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/office"
+                    android:textAlignment="textEnd" />
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:id="@+id/officeTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/unavailable"/>
+            </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/positionLL"
+                android:layout_below="@+id/officeLL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -142,7 +246,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="@string/sampleName"/>
+                    android:text="@string/unavailable"/>
             </LinearLayout>
 
             <LinearLayout
@@ -166,7 +270,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="@string/sampleName"/>
+                    android:text="@string/unavailable"/>
             </LinearLayout>
 
             <LinearLayout
@@ -190,8 +294,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="@string/sampleName"/>
+                    android:text="@string/unavailable"/>
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

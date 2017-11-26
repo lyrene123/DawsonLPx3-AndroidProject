@@ -19,6 +19,12 @@ import android.support.design.widget.NavigationView;
 import android.widget.TextView;
 import android.view.View;
 import android.widget.FrameLayout;
+
+import com.dawsonlpx3.data.TeacherDetails;
+import com.dawsonlpx3.find_teacher_feature.ChooseTeacherFragment;
+import com.dawsonlpx3.find_teacher_feature.FindTeacherFragment;
+import com.dawsonlpx3.find_teacher_feature.TeacherContactFragment;
+
 import java.util.List;
 
 /**
@@ -30,10 +36,13 @@ import java.util.List;
  */
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
+        ChooseTeacherFragment.OnTeacherSelectedListener,
         NotesFragment.OnNoteSelectedListener {
 
     private final String TAG = "LPx3-Main";
     private String FNAME, LNAME, PASSWORD, EMAIL, TIMESTAMP;
+    private TeacherContactFragment teacherContactFragment;
+
     /**
      * Check the Shared Preferences and verify if the user's credential exist. If
      * yes, then store them as constants and if none existing, then launch the Register
@@ -170,7 +179,7 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.side_frame, frag)
                     .commit();
         } else if (id == R.id.nav_findTeacher) {
-            Fragment frag = new FindTeacherActivity();
+            Fragment frag = new FindTeacherFragment();
             fragmentManager.beginTransaction()
                     .replace(R.id.side_frame, frag)
                     .commit();
@@ -207,6 +216,28 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    /**
+     * Handles the click event on an item of the teachers list displayed in a ChooseTeacherFragment.
+     * When an teacher is selected from the list view, a TeacherContactFragment will be inflated
+     * to display the details of the selected teacher.
+     *
+     * @param teacher TeacherDetails objec
+     */
+    @Override
+    public void onTeacherSelected(TeacherDetails teacher) {
+        this.teacherContactFragment = new TeacherContactFragment();
+        Log.d(TAG, "onTeacherSelected started");
+        Bundle args = new Bundle();
+        args.putSerializable("teacher", teacher);
+        teacherContactFragment.setArguments(args);
+
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.side_frame, teacherContactFragment)
+                .addToBackStack(null)
+                .commit();
     }
 
 

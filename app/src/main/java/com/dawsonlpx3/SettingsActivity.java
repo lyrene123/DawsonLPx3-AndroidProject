@@ -10,10 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import java.sql.Timestamp;
 import java.util.Calendar;
-
 import static android.content.Context.MODE_PRIVATE;
 
 /**

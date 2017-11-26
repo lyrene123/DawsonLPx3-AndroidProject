@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -15,6 +16,10 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
+import android.widget.TextView;
+import android.view.View;
+import android.widget.FrameLayout;
+import java.util.List;
 
 /**
  * Launches the Main Activity that will display the the app's main interaction with
@@ -83,6 +88,7 @@ public class MainActivity extends AppCompatActivity
                     .commit();
         }
 
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -102,6 +108,32 @@ public class MainActivity extends AppCompatActivity
 //        checkForUserAuthentication(); //retrieve user credentials from SharedPref
 
     }
+
+    /**
+     * Change the color of the item in the drawer to blue
+     * @param navigationView
+     */
+    private void styleNavigationItem(NavigationView navigationView) {
+        int[][] state = new int[][] {
+                new int[] {-android.R.attr.state_enabled}, // disabled
+                new int[] {android.R.attr.state_enabled}, // enabled
+                new int[] {-android.R.attr.state_checked}, // unchecked
+                new int[] { android.R.attr.state_pressed}  // pressed
+
+        };
+
+        int[] color = new int[] {
+                Color.rgb(0,0,139),
+                Color.rgb(0,0,139),
+                Color.rgb(0,0,139),
+                Color.rgb(0,0,139)
+        };
+
+        ColorStateList csl = new ColorStateList(state, color);
+
+        navigationView.setItemTextColor(csl);
+    }
+
 
     /**
      * Change the color of the item in the drawer to blue
@@ -225,7 +257,6 @@ public class MainActivity extends AppCompatActivity
                 .addToBackStack(null)
                 .commit();
     }
-
     /**
      * Saves the currently displayed fragment into the bundle.
      *
@@ -249,6 +280,4 @@ public class MainActivity extends AppCompatActivity
         Fragment frag = getFragmentManager().findFragmentById(R.id.side_frame);
         return frag;
     }
-
-
 }

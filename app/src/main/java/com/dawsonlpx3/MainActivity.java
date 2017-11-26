@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.side_frame, frag)
                     .commit();
         } else if (id == R.id.nav_findTeacher) {
-            Fragment frag = new FindTeacherActivity();
+            Fragment frag = new FindTeacherFragment();
             fragmentManager.beginTransaction()
                     .replace(R.id.side_frame, frag)
                     .commit();

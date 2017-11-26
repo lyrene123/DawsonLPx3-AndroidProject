@@ -54,7 +54,7 @@
     <string name="endTime">End Time</string>
     <string name="submit">Submit</string>
     <string name="noteDetail">Note Detail</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tempDisabled">The temperature cannot be shown at this time.</string>
     <string name="montreal">Montreal</string>
     <string name="forecast_text">Get Forecast</string>

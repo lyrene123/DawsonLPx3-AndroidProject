@@ -37,7 +37,7 @@ import java.util.Locale;
  * day forecast for a selected city and country. Both are accessed through OpenWeatherMap
  * Source: https://openweathermap.org
  *
- * @author Philippe Langlois-Pedroso, 1542705
+ * @authors Philippe Langlois, Lyrene Labor, Peter Bellefleur, Pengkim Sy
  */
 public class WeatherActivity extends Fragment implements View.OnClickListener {
 
@@ -87,7 +87,8 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
     } // onCreateView()
 
     /**
-     *
+     * When Fragment is created, this method is called and will obtain the uv index
+     * for the user's current location.
      */
     private void getUVIndex(){
         Log.d(TAG, "getUVIndex");
@@ -247,11 +248,6 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
         @Override
         protected void onPostExecute(JSONObject[] result){
             Log.d(TAG, "ForecastTask: onPostExecute");
-            // forecastDay1.setText(result[0].toString());
-            //forecastDay2.setText(result[1].toString());
-            // forecastDay3.setText(result[2].toString());
-            // forecastDay4.setText(result[3].toString());
-            //forecastDay5.setText(result[4].toString());
             Log.d(TAG, result[0].toString());
             Log.d(TAG, result[1].toString());
             Log.d(TAG, result[2].toString());
@@ -260,6 +256,7 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
 
             LinearLayout[] columns = new LinearLayout[]{col2, col3, col4, col5, col6};
             double d = 0.0;
+            // Set all the values for the cells in teh weatherActivity forecast.
             try {
                 for(int i = 0; i < columns.length; i++){
                     TextView tv1 = (TextView) columns[i].getChildAt(1);
@@ -372,66 +369,7 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
                 JSONObject day1part1 = jArr.getJSONObject(0);
                 Log.d(TAG, Double.toString(day1part1.getJSONObject("main").getDouble("temp")));
 
-                // Start of day value
-                Calendar cal = Calendar.getInstance(); // today
-                long currentEpochValue = cal.getTimeInMillis()/1000; // epoch value in seconds
-                Log.d(TAG, "Current time in epoch seconds: " +Long.toString(currentEpochValue));
-                cal.set(Calendar.HOUR_OF_DAY, 0); //set hours to zero
-                cal.set(Calendar.MINUTE, 0); // set minutes to zero
-                cal.set(Calendar.SECOND, 0); //set seconds to zero
-                long startTodayEpochValue = cal.getTimeInMillis()/1000; // epoch value in seconds
-                Log.d(TAG, "Start of day in epoch seconds: " +Long.toString(startTodayEpochValue));
-                long threeHourEpochJump = 60*60*3;
-                int arrayOffset = 0;
-
-                if(currentEpochValue < startTodayEpochValue+threeHourEpochJump){
-                    // section1
-                    Log.d(TAG, "Time Section 1");
-                    Log.d(TAG, Long.toString(startTodayEpochValue+threeHourEpochJump));
-                    Log.d(TAG, jArr.get(0).toString());
-                }
-                else if(currentEpochValue < (startTodayEpochValue+(threeHourEpochJump*2))){
-                    // section2
-                    Log.d(TAG, "Time Section 2");
-                    Log.d(TAG, jArr.get(1).toString());
-                    arrayOffset = 1;
-                }
-                else if(currentEpochValue < (startTodayEpochValue+(threeHourEpochJump*3))){
-                    // section3
-                    Log.d(TAG, "Time Section 3");
-                    Log.d(TAG, jArr.get(2).toString());
-                    arrayOffset = 2;
-                }
-                else if(currentEpochValue < (startTodayEpochValue+(threeHourEpochJump*4))){
-                    // section4
-                    Log.d(TAG, "Time Section 4");
-                    Log.d(TAG, jArr.get(3).toString());
-                    arrayOffset = 3;
-                }
-                else if(currentEpochValue < (startTodayEpochValue+(threeHourEpochJump*5))){
-                    // section5
-                    Log.d(TAG, "Time Section 5");
-                    Log.d(TAG, jArr.get(4).toString());
-                    arrayOffset = 4;
-                }
-                else if(currentEpochValue < (startTodayEpochValue+(threeHourEpochJump*6))){
-                    // section6
-                    Log.d(TAG, "Time Section 6");
-                    Log.d(TAG, jArr.get(5).toString());
-                    arrayOffset = 5;
-                }
-                else if(currentEpochValue < (startTodayEpochValue+(threeHourEpochJump*7))){
-                    // section7
-                    Log.d(TAG, "Time Section 7");
-                    Log.d(TAG, jArr.get(6).toString());
-                    arrayOffset = 6;
-                }
-                else{
-                    // section8
-                    Log.d(TAG, "Time Section 8");
-                    Log.d(TAG, jArr.get(7).toString());
-                    arrayOffset = 7;
-                }
+                int arrayOffset = calculateOffset();
 
                 Log.d(TAG, "THE DAY OBJECTS FOR FORECAST");
                 JSONObject day1 = jArr.getJSONObject(0 +arrayOffset);
@@ -441,7 +379,6 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
                 JSONObject day5 = jArr.getJSONObject(32 +arrayOffset);
 
                 Log.d(TAG, Integer.toString(jArr.length()));
-
                 Log.d(TAG, day1.toString());
                 Log.d(TAG, day2.toString());
                 Log.d(TAG, day3.toString());
@@ -473,6 +410,67 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
             }
             return forecast;
         } // doInBackground()
+
+        /**
+         * Method to help calculate the offset for the parsing of the response.
+         *
+         * @return
+         */
+        private int calculateOffset(){
+            // Start of day value
+            Calendar cal = Calendar.getInstance(); // today
+            long currentEpochValue = cal.getTimeInMillis()/1000; // epoch value in seconds
+            Log.d(TAG, "Current time in epoch seconds: " +Long.toString(currentEpochValue));
+            cal.set(Calendar.HOUR_OF_DAY, 0); //set hours to zero
+            cal.set(Calendar.MINUTE, 0); // set minutes to zero
+            cal.set(Calendar.SECOND, 0); //set seconds to zero
+            long startTodayEpochValue = cal.getTimeInMillis()/1000; // epoch value in seconds
+            Log.d(TAG, "Start of day in epoch seconds: " +Long.toString(startTodayEpochValue));
+            long threeHourEpochJump = 60*60*3;
+            int arrayOffset = 0;
+
+            if(currentEpochValue < startTodayEpochValue+threeHourEpochJump){
+                // section1
+                Log.d(TAG, "Time Section 1");
+                Log.d(TAG, Long.toString(startTodayEpochValue+threeHourEpochJump));
+                return 0;
+            }
+            else if(currentEpochValue < (startTodayEpochValue+(threeHourEpochJump*2))){
+                // section2
+                Log.d(TAG, "Time Section 2");
+                return 1;
+            }
+            else if(currentEpochValue < (startTodayEpochValue+(threeHourEpochJump*3))){
+                // section3
+                Log.d(TAG, "Time Section 3");
+                return 2;
+            }
+            else if(currentEpochValue < (startTodayEpochValue+(threeHourEpochJump*4))){
+                // section4
+                Log.d(TAG, "Time Section 4");
+                return 3;
+            }
+            else if(currentEpochValue < (startTodayEpochValue+(threeHourEpochJump*5))){
+                // section5
+                Log.d(TAG, "Time Section 5");
+                return 4;
+            }
+            else if(currentEpochValue < (startTodayEpochValue+(threeHourEpochJump*6))){
+                // section6
+                Log.d(TAG, "Time Section 6");
+                return 5;
+            }
+            else if(currentEpochValue < (startTodayEpochValue+(threeHourEpochJump*7))){
+                // section7
+                Log.d(TAG, "Time Section 7");
+                return 6;
+            }
+            else{
+                // section8
+                Log.d(TAG, "Time Section 8");
+                return 7;
+            }
+        } // calculateOffset()
     } // ForecastTask
 } // WeatherActivity
 

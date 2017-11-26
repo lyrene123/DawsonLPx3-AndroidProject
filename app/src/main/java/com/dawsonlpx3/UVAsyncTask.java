@@ -13,7 +13,7 @@ import java.net.URL;
  * Asynchronous task to communicate with openweathermap.org in order to obtain the uv index for the
  * user's current location.
  *
- * @author Philippe Langlois-Pedroso, 1542705
+ * @authors Philippe Langlois, Lyrene Labor, Peter Bellefleur, Pengkim Sy
  */
 
 public class UVAsyncTask extends AsyncTask<String, Void, String> {

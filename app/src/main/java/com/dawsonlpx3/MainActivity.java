@@ -19,8 +19,8 @@ import android.support.design.widget.NavigationView;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-
 import java.util.List;
+
 
 /**
  * Launches the Main Activity that will display the the app's main interaction with

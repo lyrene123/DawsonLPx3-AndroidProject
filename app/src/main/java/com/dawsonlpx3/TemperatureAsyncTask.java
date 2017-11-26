@@ -14,7 +14,7 @@ import java.net.URL;
  *  in order to get the current temperature by using a latitude and longitude passed to the
  *  class.
  *
- *  @author Philippe Langlois-Pedroso, 1542705
+ *  @authors Philippe Langlois, Lyrene Labor, Peter Bellefleur, Pengkim Sy
  */
 public class TemperatureAsyncTask extends AsyncTask<String, Void, String> {
 

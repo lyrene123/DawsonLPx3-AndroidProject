@@ -3,6 +3,7 @@ package com.dawsonlpx3.teacher_activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.Image;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -11,11 +12,15 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.PhoneNumberUtils;
+import android.text.Html;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.text.util.Linkify;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,13 +28,19 @@ import com.dawsonlpx3.Manifest;
 import com.dawsonlpx3.R;
 import com.dawsonlpx3.data.TeacherDetails;
 
+import org.w3c.dom.Text;
+
+import java.net.URI;
+import java.net.URLDecoder;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TeacherContactFragment extends Fragment {
     private TeacherDetails teacher;
-    private TextView fnameTV, lnameTV, emailTV, localTV, positionTV, departmentTV, sectorTV, officeTV;
+    private TextView fnameTV, lnameTV, emailTV, localTV, positionTV, departmentTV, sectorTV, officeTV,
+            websiteTV, bioTV;
+    private ImageView imageView;
     private View mainView;
     private final String TAG = "Dawson-TeacherContact";
     private static final int PERMISSION_REQUEST_CALL = 0;
@@ -63,39 +74,120 @@ public class TeacherContactFragment extends Fragment {
         this.departmentTV = (TextView) view.findViewById(R.id.departmentTextView);
         this.sectorTV = (TextView) view.findViewById(R.id.sectorTextView);
         this.officeTV = (TextView) view.findViewById(R.id.officeTextView);
+        this.websiteTV = (TextView) view.findViewById(R.id.websiteTextView);
+        this.bioTV = (TextView) view.findViewById(R.id.bioTextView);
+        this.imageView = (ImageView) view.findViewById(R.id.imageImageView);
         this.mainView = view.findViewById(R.id.teacherContactLayout);
         displayTeacherDetails();
 
-        localTV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialPhoneNumber();
-            }
-        });
+
+    }
+
+    private void sendEmail(){
+        Log.d(TAG, "Sending email....");
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{Html.fromHtml(this.teacher.getEmail()).toString()});
+        Log.d(TAG, "Decoded email: " + Html.fromHtml(this.teacher.getEmail()).toString());
+        intent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.from));
+        startActivity(intent);
     }
 
     private void displayTeacherDetails(){
         Log.d(TAG, "displayTeacherDetails started");
-        this.fnameTV.setText(this.teacher.getFirst_name());
-        this.lnameTV.setText(this.teacher.getLast_name());
-        this.emailTV.setText(this.teacher.getEmail());
-        this.localTV.setText(this.teacher.getLocal());
-        this.officeTV.setText(this.teacher.getOffice());
+
+        if(this.teacher.getFirst_name() == null || this.teacher.getFirst_name().isEmpty()){
+            this.fnameTV.setText(getResources().getString(R.string.unavailable));
+        }else{
+            this.fnameTV.setText(this.teacher.getFirst_name());
+        }
+
+        if(this.teacher.getLast_name() == null || this.teacher.getLast_name().isEmpty()){
+            this.lnameTV.setText(getResources().getString(R.string.unavailable));
+        }else {
+            this.lnameTV.setText(this.teacher.getLast_name());
+        }
+
+        if(this.teacher.getEmail() == null || this.teacher.getEmail().isEmpty()){
+            this.emailTV.setText(getResources().getString(R.string.unavailable));
+        }else {
+            //the following is to underline the attributed name
+            SpannableString content = new SpannableString(Html.fromHtml(this.teacher.getEmail()).toString());
+            content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+            this.emailTV.setText(content);
+
+            emailTV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    sendEmail();
+                }
+            });
+        }
+
+        if(this.teacher.getOffice() == null || this.teacher.getOffice().isEmpty()){
+            this.officeTV.setText(getResources().getString(R.string.unavailable));
+        } else {
+            this.officeTV.setText(this.teacher.getOffice());
+        }
+
+        if(this.teacher.getWebsite() == null || this.teacher.getWebsite().isEmpty()){
+            this.websiteTV.setText(getResources().getString(R.string.unavailable));
+        } else {
+            this.websiteTV.setText(this.teacher.getWebsite());
+        }
+
+        if(this.teacher.getBio() == null || this.teacher.getBio().isEmpty()){
+            this.bioTV.setText(getResources().getString(R.string.unavailable));
+        } else {
+            this.bioTV.setText(this.teacher.getBio());
+        }
+
+        if(this.teacher.getLocal() == null || this.teacher.getLocal().isEmpty()){
+            this.localTV.setText(getResources().getString(R.string.unavailable));
+        }else {
+            //the following is to underline the attributed name
+            SpannableString content = new SpannableString(this.teacher.getLocal());
+            content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+            this.localTV.setText(content);
+
+            localTV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialPhoneNumber();
+                }
+            });
+        }
+
+        this.imageView.setImageResource(R.mipmap.ic_launcher);
 
         List<Object> positions = this.teacher.getPositions();
-        for(int i = 0; i < positions.size(); i++){
-            this.positionTV.setText(this.positionTV.getText() + "\n" + positions.get(i));
+        if(positions != null && positions.size() > 0) {
+            for (int i = 0; i < positions.size(); i++) {
+                this.positionTV.setText(this.positionTV.getText() + "\n" + positions.get(i));
+            }
+        } else {
+            this.positionTV.setText(getResources().getString(R.string.unavailable));
         }
 
         List<Object> departments = this.teacher.getDepartments();
-        for(int i = 0; i < departments.size(); i++){
-            this.departmentTV.setText(this.departmentTV.getText() + "\n" + departments.get(i));
+        if(departments != null && departments.size() > 0) {
+            for (int i = 0; i < departments.size(); i++) {
+                this.departmentTV.setText(this.departmentTV.getText() + "\n" + departments.get(i));
+            }
+        }else {
+            this.departmentTV.setText(getResources().getString(R.string.unavailable));
         }
 
         List<Object> sectors = this.teacher.getSectors();
-        for(int i = 0; i < sectors.size(); i++){
-            this.sectorTV.setText(this.sectorTV.getText() + "\n" + sectors.get(i));
+        if(sectors != null && sectors.size() > 0) {
+            for (int i = 0; i < sectors.size(); i++) {
+                this.sectorTV.setText(this.sectorTV.getText() + "\n" + sectors.get(i));
+            }
+        } else {
+            this.sectorTV.setText(getResources().getString(R.string.unavailable));
         }
+
+
     }
 
     @Override
@@ -104,7 +196,7 @@ public class TeacherContactFragment extends Fragment {
         outState.putSerializable("teacher", this.teacher);
     }
 
-    //https://github.com/googlesamples/android-RuntimePermissionsBasic/blob/master/Application/src/main/java/com/example/android/basicpermissions/MainActivity.java
+    //https://github.com/googlesamples/android-RuntimePermissionsBasic
     private void dialPhoneNumber() {
         Log.d(TAG, "Calling a teacher....");
 
@@ -163,12 +255,21 @@ public class TeacherContactFragment extends Fragment {
     private void startCall(){
         Log.d(TAG, "startCall");
         Intent intent = new Intent(Intent.ACTION_CALL);
-        String dawsonNumber = getResources().getString(R.string.dawsonPhoneNum);
-        String ext = PhoneNumberUtils.PAUSE+Uri.encode("#")+teacher.getLocal();
+        String dawsonNumber;
+        String ext = "";
+        if(teacher.getLocal().length() <= 4) {
+            dawsonNumber  = getResources().getString(R.string.dawsonPhoneNum);
+            ext = ","+teacher.getLocal();
+        } else {
+            dawsonNumber = teacher.getLocal();
+        }
+
         Uri uri = Uri.parse("tel:" + dawsonNumber + ext);
         Log.d(TAG, "phone num: " + uri.toString());
         intent.setData(uri);
         startActivity(intent);
     }
+
+
 
 }

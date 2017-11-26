@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dawsonlpx3.R;
 import com.dawsonlpx3.data.TeacherDetails;
@@ -95,6 +96,7 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
                 Log.d(TAG, "isExact: " + isExact + " lname: " + lname);
             }
             this.fbManager.retrieveRecordsFromDb(getActivity(), this, fullname, fname, lname, isExact);
+            Toast.makeText(getActivity(), getResources().getString(R.string.searchTeachers), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -106,8 +108,10 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
         //display ChooseTeacher fragment
         if(teachers.size() > 1){
             displayChooseTeacher();
-        } else {
+        } else if(teachers.size() == 1) {
             displayTeacherDetail();
+        } else {
+            errorMsgTV.setText(R.string.noresult);
         }
     }
 

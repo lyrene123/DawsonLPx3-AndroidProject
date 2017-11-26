@@ -26,6 +26,9 @@ public class TeacherDetails implements Serializable{
     private String last_name;
     private String local;
     private String office;
+    private String website;
+    private String bio;
+    private String image;
     private List<Object> departments;
     private List<Object> positions;
     private List<Object> sectors;
@@ -34,7 +37,7 @@ public class TeacherDetails implements Serializable{
      * Default constructor to initialize the properties
      */
     public TeacherDetails(){
-        this("","","","","","",
+        this("","","","","","","","","",
                 new ArrayList<>(), new ArrayList<>(),
                 new ArrayList<>());
     }
@@ -55,9 +58,11 @@ public class TeacherDetails implements Serializable{
      * @param sectors Teacher's sectors
      */
     public TeacherDetails(String email, String first_name, String full_name, String last_name,
-                          String local, String office, List<Object> departments,
+                          String local, String office, String website, String image, String bio,
+                          List<Object> departments,
                           List<Object> positions,
                           List<Object> sectors) {
+
         this.email = email;
         this.first_name = first_name;
         this.full_name = full_name;
@@ -67,6 +72,63 @@ public class TeacherDetails implements Serializable{
         this.departments = departments;
         this.positions = positions;
         this.sectors = sectors;
+        this.image = image;
+        this.bio = bio;
+        this.website = website;
+    }
+
+    /**
+     * Returns the website
+     *
+     * @return String
+     */
+    public String getWebsite() {
+        return website;
+    }
+
+    /**
+     * Sets the website string
+     *
+     * @param website
+     */
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    /**
+     * Returns the bio of the teacher
+     *
+     * @return String
+     */
+    public String getBio() {
+        return bio;
+    }
+
+    /**
+     * Sets the Bio of the teacher
+     *
+     * @param bio
+     */
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    /**
+     * Returns the image of the teacher
+     *
+     * @return String image url
+     */
+    public String getImage() {
+        return image;
+    }
+
+    /**
+     * Sets the image of the teacher
+     *
+     * @param image
+     */
+    public void setImage(String image) {
+        this.image = image;
     }
 
     /**

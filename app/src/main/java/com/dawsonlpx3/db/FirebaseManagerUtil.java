@@ -184,17 +184,17 @@ public class FirebaseManagerUtil {
 
                         //with the user of regex, find records beginning with the input fullname, firstname or lastname
                         if(fullname != null){
-                            pattern = "^"+fullname;
+                            pattern = "^"+fullname.toLowerCase();
                             r = Pattern.compile(pattern);
-                            m = r.matcher(full);
+                            m = r.matcher(full.toLowerCase());
                         } else if (fname != null && lname == null){
-                            pattern = "^"+fname;
+                            pattern = "^"+fname.toLowerCase();
                             r = Pattern.compile(pattern);
-                            m = r.matcher(firstname);
+                            m = r.matcher(firstname.toLowerCase());
                         } else {
-                            pattern = "^"+lname;
+                            pattern = "^"+lname.toLowerCase();
                             r = Pattern.compile(pattern);
-                            m = r.matcher(lastname);
+                            m = r.matcher(lastname.toLowerCase());
                         }
 
                         if(m.find()){

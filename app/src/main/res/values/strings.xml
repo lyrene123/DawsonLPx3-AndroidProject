@@ -23,6 +23,9 @@
     <string name="teacherInfo">Teacher Information</string>
     <string name="sampleName">Sample Name</string>
     <string name="local">Local</string>
+    <string name="website">Website</string>
+    <string name="bio">Bio</string>
+    <string name="image">Image</string>
     <string name="position">Position</string>
     <string name="department">Department</string>
     <string name="sector">Sector</string>
@@ -64,4 +67,8 @@
     <string name="permission_unavailable">"Permission is not available. Requesting call permission."</string>
     <string name="permission_granted">"Phone permission was granted. Starting phone call."</string>
     <string name="permission_denied">Phone call permission request was denied.</string>
+    <string name="unavailable">Unavailable</string>
+    <string name="noresult">No teachers found</string>
+    <string name="from">From DawsonLPx3</string>
+    <string name="searchTeachers">Searching teachers...</string>
 </resources>

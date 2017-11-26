@@ -157,7 +157,7 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
             //start seperate async task for querying the db
             this.teachersTask = new GetTeachersTask();
             this.teachersTask.execute();
-            Toast.makeText(getActivity(), getResources().getString(R.string.searchTeachers), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getResources().getString(R.string.searchTeachers), Toast.LENGTH_LONG).show();
         }
     }
 

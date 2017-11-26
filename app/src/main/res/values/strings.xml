@@ -44,7 +44,7 @@
     <string name="nav_classCancel">Class Cancellation</string>
     <string name="nav_findTeacher">Find Teacher</string>
     <string name="nav_addToCalendar">Add to Calendar</string>
-    <string name="nav_acedemicCalendar">Acedemic Calendar</string>
+    <string name="nav_acedemicCalendar">Academic Calendar</string>
     <string name="nav_note">Note</string>
     <string name="nav_weather">Weather</string>
     <string name="register">Register</string>
@@ -59,4 +59,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fallurl">fall</string>
+    <string name="winterurl">winter</string>
+    <string name="academicurl">https://www.dawsoncollege.qc.ca/registrar/</string>
+    <string name="bad_year">Please enter a valid year</string>
+    <string name="loading_calendar">Loading calendar...</string>
 </resources>

@@ -38,7 +38,8 @@
                 android:id="@+id/fallRadioBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"/>
+                android:gravity="center_vertical"
+                android:checked="true"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -64,6 +65,13 @@
             android:text="@string/search"/>
 
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/calendarErrorMsg"
+        android:layout_below="@id/searchLL"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent" />
     <WebView
         android:id="@+id/academicWebview"
         android:layout_below="@id/searchLL"

@@ -19,6 +19,18 @@
         <item name="android:textSize">16sp</item>
         <item name="android:padding">8dp</item>
     </style>
+    <style name="AppTheme.List_Item">
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">15dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="AppTheme.header">
+        <item name="android:paddingTop">75dp</item>
+        <item name="android:paddingBottom">30dp</item>
+        <item name="android:paddingLeft">30dp</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
     <style name="AppTheme.Settings">
         <item name="android:textSize">25sp</item>
     </style>

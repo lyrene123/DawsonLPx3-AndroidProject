@@ -6,9 +6,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/applogo_9"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/applogo_9"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
@@ -19,13 +19,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
-        <!-- <activity android:name=".CanceledActivity" /> -->
-        <activity android:name=".ShowCancelActivity" />
-        <!-- <activity android:namFindTeacherFragmentvity" /> -->
-        <!-- <activity android:name=".NotesActivity" /> -->
-        <activity android:name=".ItemNoteActivity" />
-        <!-- <activity android:name=".WeatherActivity" /> -->
-        <!-- <activity android:name=".AcedemicCalendarActivity"></activity> -->
+        <!--<activity android:name=".CanceledActivity" />-->
+        <!--<activity android:name=".ShowCancelActivity" />-->
+        <!--<activity android:name=".FindTeacherActivity" />-->
+        <!--<activity android:name=".ChooseTeacherActivity" />-->
+        <!--<activity android:name=".TeacherContactActivity" />-->
+        <!--<activity android:name=".NotesFragment" />-->
+        <!--<activity android:name=".ItemNoteFragment" />-->
+        <!--<activity android:name=".WeatherActivity" />-->
+        <!--<activity android:name=".AcedemicCalendarActivity"></activity>-->
     </application>
 
 </manifest>

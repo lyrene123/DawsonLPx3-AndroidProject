@@ -71,4 +71,8 @@
     <string name="noresult">No teachers found</string>
     <string name="from">From DawsonLPx3</string>
     <string name="searchTeachers">Searching teachers...</string>
+    <string name="noteDetail">Note Detail</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

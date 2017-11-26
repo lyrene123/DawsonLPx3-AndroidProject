@@ -88,7 +88,8 @@ public class ItemNoteFragment extends Fragment {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        outState.putString("noteDetail", noteTextView.getText().toString());
+        if(noteTextView != null)
+            outState.putString("noteDetail", noteTextView.getText().toString());
     }
 
     // Activity is calling this to update view on Fragment

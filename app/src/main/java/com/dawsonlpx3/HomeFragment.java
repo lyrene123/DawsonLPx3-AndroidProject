@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -54,7 +55,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ImageView dawsonImageView = (ImageView) view.findViewById(R.id.dawsonImageView);
+        ImageButton dawsonImageView = (ImageButton) view.findViewById(R.id.dawsonImageView);
         dawsonImageView.setOnClickListener(showDawsonWeb);
 
         // Example of how to set the weather with temperature

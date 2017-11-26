@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.dawsonlpx3.ChooseTeacherActivity">
+    android:id="@+id/mainView"
+    tools:context="com.dawsonlpx3.find_teacher_feature.ChooseTeacherFragment">
 
     <TextView
+        android:id="@+id/teacherTV"
         style="@style/AppTheme.Title"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
@@ -14,6 +16,8 @@
         android:text="@string/teachers"/>
 
     <ListView
+        android:id="@+id/teachersLV"
+        android:layout_below="@id/teacherTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true">

@@ -17,9 +17,15 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
+import android.widget.TextView;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+
+import com.dawsonlpx3.data.TeacherDetails;
+import com.dawsonlpx3.find_teacher_feature.ChooseTeacherFragment;
+import com.dawsonlpx3.find_teacher_feature.FindTeacherFragment;
+import com.dawsonlpx3.find_teacher_feature.TeacherContactFragment;
 
 import java.util.List;
 
@@ -32,10 +38,14 @@ import java.util.List;
  */
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
+        ChooseTeacherFragment.OnTeacherSelectedListener,
         NotesFragment.OnNoteSelectedListener {
 
     private final String TAG = "LPx3-Main";
+
     private String FNAME, LNAME, EMAIL;
+
+    private TeacherContactFragment teacherContactFragment;
 
     /**
      * Create a toolbar and make it toggle to show the drawer, and add click
@@ -49,10 +59,18 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
 
-        if(savedInstanceState == null) {
+        Log.d(TAG, "onCreate launched");
+        if(savedInstanceState != null){
+            Log.d(TAG, "restoring saved fragment...");
+            Fragment savedFragment = getFragmentManager().getFragment(savedInstanceState,"currentFragment");
             getFragmentManager().beginTransaction()
-                    .replace(R.id.side_frame, new HomeFragment())
-                    .addToBackStack(null)
+                    .replace(R.id.side_frame, savedFragment)
+                    .commit();
+        } else {
+            Log.d(TAG, "Displaying home fragment");
+            Fragment frag = new HomeFragment();
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.side_frame, frag)
                     .commit();
         }
 
@@ -172,47 +190,68 @@ public class MainActivity extends AppCompatActivity
                     .commit();
         } else if (id == R.id.nav_classCancel) {
             fragmentManager.beginTransaction()
-                    .replace(R.id.side_frame, new CanceledActivity())
-                    .addToBackStack(null)
+                    .replace(R.id.side_frame, frag)
                     .commit();
         } else if (id == R.id.nav_findTeacher) {
+            Fragment frag = new FindTeacherFragment();
             fragmentManager.beginTransaction()
-                    .replace(R.id.side_frame, new FindTeacherActivity())
-                    .addToBackStack(null)
+                    .replace(R.id.side_frame, frag)
                     .commit();
         } else if (id == R.id.nav_addToCalendar) {
+            Fragment frag = new CalendarActivity();
             fragmentManager.beginTransaction()
-                    .replace(R.id.side_frame, new CalendarActivity())
-                    .addToBackStack(null)
+                    .replace(R.id.side_frame, frag)
                     .commit();
         } else if (id == R.id.nav_note) {
+            Fragment frag = new NotesFragment();
             fragmentManager.beginTransaction()
-                    .replace(R.id.side_frame, new NotesFragment())
-                    .addToBackStack(null)
+                    .replace(R.id.side_frame, frag)
                     .commit();
         } else if (id == R.id.nav_acedemicCalendar) {
+            Fragment frag = new AcedemicCalendarFragment();
             fragmentManager.beginTransaction()
-                    .replace(R.id.side_frame, new AcedemicCalendarActivity())
-                    .addToBackStack(null)
+                    .replace(R.id.side_frame, frag)
                     .commit();
         } else if (id == R.id.nav_weather) {
+            Fragment frag = new WeatherActivity();
             fragmentManager.beginTransaction()
-                    .replace(R.id.side_frame, new WeatherActivity())
-                    .addToBackStack(null)
+                    .replace(R.id.side_frame, frag)
                     .commit();
         } else if (id == R.id.nav_about) {
 
         } else if (id == R.id.nav_setting) {
+            Fragment frag = new SettingsActivity();
             fragmentManager.beginTransaction()
-                    .replace(R.id.side_frame, new SettingsActivity())
+                    .replace(R.id.side_frame, frag)
                     .commit();
         } else if (id == R.id.nav_dawson) {
 
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    /**
+     * Handles the click event on an item of the teachers list displayed in a ChooseTeacherFragment.
+     * When an teacher is selected from the list view, a TeacherContactFragment will be inflated
+     * to display the details of the selected teacher.
+     *
+     * @param teacher TeacherDetails objec
+     */
+    @Override
+    public void onTeacherSelected(TeacherDetails teacher) {
+        this.teacherContactFragment = new TeacherContactFragment();
+        Log.d(TAG, "onTeacherSelected started");
+        Bundle args = new Bundle();
+        args.putSerializable("teacher", teacher);
+        teacherContactFragment.setArguments(args);
+
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.side_frame, teacherContactFragment)
+                .addToBackStack(null)
+                .commit();
     }
 
 
@@ -237,5 +276,27 @@ public class MainActivity extends AppCompatActivity
                 .addToBackStack(null)
                 .commit();
     }
+    /**
+     * Saves the currently displayed fragment into the bundle.
+     *
+     * @param outState Bundle object
+     */
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.d(TAG, "onSaveInstanceState started");
+        getFragmentManager().putFragment(outState, "currentFragment", getCurrentFragment());
 
+    }
+
+    /**
+     * Returns the currently displayed fragment which is the fragment inflated in the side_frame
+     * FrameLayout.
+     *
+     * @return Fragment object
+     */
+    private Fragment getCurrentFragment() {
+        Fragment frag = getFragmentManager().findFragmentById(R.id.side_frame);
+        return frag;
+    }
 }

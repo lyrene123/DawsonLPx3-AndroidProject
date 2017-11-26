@@ -1,7 +1,10 @@
 package com.dawsonlpx3.data;
 
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -15,7 +18,7 @@ import java.util.Map;
  * @author Phil Langlois
  * @author Pengkim Sy
  */
-public class TeacherDetails {
+public class TeacherDetails implements Serializable{
 
     private String email;
     private String first_name;
@@ -23,17 +26,20 @@ public class TeacherDetails {
     private String last_name;
     private String local;
     private String office;
-    private Map<String, Map<String, String>> departments;
-    private Map<String, Map<String, String>> positions;
-    private Map<String, Map<String, String>> sectors;
+    private String website;
+    private String bio;
+    private String image;
+    private List<Object> departments;
+    private List<Object> positions;
+    private List<Object> sectors;
 
     /**
      * Default constructor to initialize the properties
      */
     public TeacherDetails(){
-        this("","","","","","",
-                new HashMap<String, Map<String, String>>(), new HashMap<String, Map<String, String>>(),
-                new HashMap<String, Map<String, String>>());
+        this("","","","","","","","","",
+                new ArrayList<>(), new ArrayList<>(),
+                new ArrayList<>());
     }
 
     /**
@@ -52,9 +58,11 @@ public class TeacherDetails {
      * @param sectors Teacher's sectors
      */
     public TeacherDetails(String email, String first_name, String full_name, String last_name,
-                          String local, String office, Map<String, Map<String, String>> departments,
-                          Map<String, Map<String, String>> positions,
-                          Map<String, Map<String, String>> sectors) {
+                          String local, String office, String website, String image, String bio,
+                          List<Object> departments,
+                          List<Object> positions,
+                          List<Object> sectors) {
+
         this.email = email;
         this.first_name = first_name;
         this.full_name = full_name;
@@ -64,6 +72,63 @@ public class TeacherDetails {
         this.departments = departments;
         this.positions = positions;
         this.sectors = sectors;
+        this.image = image;
+        this.bio = bio;
+        this.website = website;
+    }
+
+    /**
+     * Returns the website
+     *
+     * @return String
+     */
+    public String getWebsite() {
+        return website;
+    }
+
+    /**
+     * Sets the website string
+     *
+     * @param website
+     */
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    /**
+     * Returns the bio of the teacher
+     *
+     * @return String
+     */
+    public String getBio() {
+        return bio;
+    }
+
+    /**
+     * Sets the Bio of the teacher
+     *
+     * @param bio
+     */
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    /**
+     * Returns the image of the teacher
+     *
+     * @return String image url
+     */
+    public String getImage() {
+        return image;
+    }
+
+    /**
+     * Sets the image of the teacher
+     *
+     * @param image
+     */
+    public void setImage(String image) {
+        this.image = image;
     }
 
     /**
@@ -125,7 +190,7 @@ public class TeacherDetails {
      *
      * @return Map object
      */
-    public Map<String, Map<String, String>> getDepartments() {
+    public List<Object> getDepartments() {
         return departments;
     }
 
@@ -134,7 +199,7 @@ public class TeacherDetails {
      *
      * @return Map object
      */
-    public Map<String, Map<String, String>> getPositions() {
+    public List<Object> getPositions() {
         return positions;
     }
 
@@ -143,7 +208,7 @@ public class TeacherDetails {
      *
      * @return Map object
      */
-    public Map<String, Map<String, String>> getSectors() {
+    public List<Object> getSectors() {
         return sectors;
     }
 }

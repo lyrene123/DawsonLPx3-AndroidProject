@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context="com.dawsonlpx3.AcedemicCalendarActivity">
+    tools:context="com.dawsonlpx3.AcedemicCalendarFragment">
 
 
     <TextView
@@ -21,58 +21,59 @@
         android:layout_below="@id/acedemicTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
         android:weightSum="7">
-        <RelativeLayout
-            android:layout_width="0dp"
+        <RadioGroup
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:layout_gravity="center_vertical">
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_weight="1">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@id/fallRadioBtn"
-                android:layout_centerVertical="true"
                 android:text="@string/fall"/>
             <RadioButton
                 android:id="@+id/fallRadioBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:gravity="center_vertical"/>
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:layout_gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:checked="true"/>
+
             <TextView
-                android:id="@+id/winterTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true"
                 android:text="@string/winter"/>
             <RadioButton
                 android:id="@+id/winterRadioBtn"
-                android:layout_toRightOf="@id/winterTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"/>
-        </RelativeLayout>
+        </RadioGroup>
         <EditText
+            android:id="@+id/yearET"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:hint="@string/year"/>
         <Button
+            android:id="@+id/calendarSearch"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/search"/>
 
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/calendarErrorMsg"
+        android:layout_below="@id/searchLL"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent" />
     <WebView
-        android:id="@+id/acedmicWebview"
+        android:id="@+id/academicWebview"
         android:layout_below="@id/searchLL"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

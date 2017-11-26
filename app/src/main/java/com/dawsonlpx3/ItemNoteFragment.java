@@ -38,6 +38,8 @@ public class ItemNoteFragment extends Fragment {
             if (getArguments() != null) {
                 id = getArguments().getInt("id", 0);
             }
+        } else {
+            id = savedInstanceState.getInt("id");
         }
     }
 
@@ -71,6 +73,7 @@ public class ItemNoteFragment extends Fragment {
         noteTextView = (TextView) view.findViewById(R.id.noteDetailTextView);
 
         if(savedInstanceState != null) {
+            Log.d(TAG, "restoring note");
             noteDetail = savedInstanceState.getString("noteDetail");
         }
 
@@ -87,8 +90,9 @@ public class ItemNoteFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-
+        Log.d(TAG, "onSaveInstanceState started");
         outState.putString("noteDetail", noteTextView.getText().toString());
+        outState.putInt("id", this.id);
     }
 
     // Activity is calling this to update view on Fragment

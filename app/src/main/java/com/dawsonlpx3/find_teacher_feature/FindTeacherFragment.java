@@ -72,6 +72,7 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
             this.restoredFname = savedInstanceState.getString("fname");
             this.restoredLname = savedInstanceState.getString("lname");
             this.restoredErrorMsg = savedInstanceState.getString("error");
+            this.isExact = savedInstanceState.getBoolean("isExact");
         } else {
             this.restoredFname = "";
             this.restoredLname = "";
@@ -127,6 +128,7 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
         fnameET.setText(this.restoredFname);
         lnameET.setText(this.restoredLname);
         errorMsgTV.setText(this.restoredErrorMsg);
+        exactRB.setChecked(isExact);
     }
 
     /**
@@ -263,7 +265,7 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
     }
 
     /**
-     * Saves the user input to the Bundle state if there are any input.
+     * Saves the user input to the Bundle state if there are any input and the radio button state.
      *
      * @param outState Bundle object
      */
@@ -281,6 +283,8 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
         if(errorMsgTV != null && !this.errorMsgTV.getText().toString().isEmpty()){
             outState.putString("error", this.errorMsgTV.getText().toString());
         }
+
+        outState.putBoolean("isExact", this.isExact);
     }
 
     /**

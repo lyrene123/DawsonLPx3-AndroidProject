@@ -16,9 +16,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Launches the Main Activity that will display the the app's main interaction with
  * the user.
@@ -229,6 +226,11 @@ public class MainActivity extends AppCompatActivity
                 .commit();
     }
 
+    /**
+     * Saves the currently displayed fragment into the bundle.
+     *
+     * @param outState Bundle object
+     */
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -237,6 +239,12 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    /**
+     * Returns the currently displayed fragment which is the fragment inflated in the side_frame
+     * FrameLayout.
+     *
+     * @return Fragment object
+     */
     private Fragment getCurrentFragment() {
         Fragment frag = getFragmentManager().findFragmentById(R.id.side_frame);
         return frag;

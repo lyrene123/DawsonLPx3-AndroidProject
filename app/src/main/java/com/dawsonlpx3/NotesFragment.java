@@ -133,6 +133,7 @@ public class NotesFragment extends Fragment {
                 Log.i(TAG, "Add Note Button Clicked");
                 String note = noteEditText.getText().toString();
                 if(!note.isEmpty()) {
+                    noteEditText.setText("");
                     InsertNoteTask insertNote = new InsertNoteTask();
                     insertNote.execute(note);
                     refreshView();

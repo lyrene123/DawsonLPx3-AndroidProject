@@ -11,7 +11,7 @@
         android:layout_height="@dimen/nav_header_height"
         android:gravity="bottom"
         android:orientation="vertical"
-        android:background="@drawable/paint">
+        android:background="@color/colorPrimaryDark">
 
         <ImageButton
             android:id="@+id/dawsonImageView"

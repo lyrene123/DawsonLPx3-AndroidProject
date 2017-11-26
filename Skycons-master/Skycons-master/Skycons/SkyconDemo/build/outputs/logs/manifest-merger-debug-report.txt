@@ -1,0 +1,140 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:2:1-83:12
+INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:2:1-83:12
+INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:2:1-83:12
+INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:2:1-83:12
+MERGED from [:SkyconsLibrary] /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-17:12
+INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:2:1-83:12
+INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:2:1-83:12
+INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:2:1-83:12
+	package
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:3:5-31
+		INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml
+		INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:2:1-83:12
+		INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:2:1-83:12
+		INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:2:11-69
+application
+ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:5:5-81:19
+MERGED from [:SkyconsLibrary] /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-15:19
+MERGED from [:SkyconsLibrary] /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-15:19
+	android:label
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:8:9-41
+	android:icon
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:7:9-45
+	android:allowBackup
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:6:9-35
+	android:theme
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:9:9-40
+activity#com.thbs.skycons.MainActivity
+ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:11:9-19:20
+	android:label
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:13:13-45
+	android:name
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:12:13-41
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:14:13-18:29
+action#android.intent.action.MAIN
+ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:15:17-69
+	android:name
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:15:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:17:17-77
+	android:name
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:17:27-74
+activity#com.thbs.skycons.ViewAllActivity
+ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:21:9-24:20
+	android:label
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:23:13-38
+	android:name
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:22:13-44
+activity#com.thbs.skycons.SunActivity
+ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:26:9-29:20
+	android:label
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:28:13-32
+	android:name
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:27:13-40
+activity#com.thbs.skycons.CloudSunActivity
+ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:31:9-34:20
+	android:label
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:33:13-38
+	android:name
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:32:13-45
+activity#com.thbs.skycons.CloudActivity
+ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:36:9-39:20
+	android:label
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:38:13-34
+	android:name
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:37:13-42
+activity#com.thbs.skycons.CloudRainActivity
+ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:41:9-45:20
+	android:label
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:43:13-39
+	android:name
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:42:13-46
+activity#com.thbs.skycons.CloudHvRainActivity
+ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:47:9-50:20
+	android:label
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:49:13-39
+	android:name
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:48:13-48
+activity#com.thbs.skycons.CloudSnowActivity
+ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:52:9-55:20
+	android:label
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:54:13-39
+	android:name
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:53:13-46
+activity#com.thbs.skycons.CloudFogActivity
+ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:57:9-60:20
+	android:label
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:59:13-38
+	android:name
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:58:13-45
+activity#com.thbs.skycons.MoonActivity
+ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:62:9-65:20
+	android:label
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:64:13-33
+	android:name
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:63:13-41
+activity#com.thbs.skycons.CloudMoonActivity
+ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:67:9-70:20
+	android:label
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:69:13-39
+	android:name
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:68:13-46
+activity#com.thbs.skycons.WindActivity
+ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:72:9-75:20
+	android:label
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:74:13-33
+	android:name
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:73:13-41
+activity#com.thbs.skycons.ThunderActivity
+ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:77:9-80:20
+	android:label
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:79:13-36
+	android:name
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml:78:13-44
+uses-sdk
+INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml
+INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml
+MERGED from [:SkyconsLibrary] /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:SkyconsLibrary] /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml
+INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml
+		INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml
+		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml
+		INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/AndroidManifest.xml

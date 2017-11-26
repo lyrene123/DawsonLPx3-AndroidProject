@@ -21,7 +21,6 @@ import android.view.View;
 import android.widget.FrameLayout;
 import java.util.List;
 
-
 /**
  * Launches the Main Activity that will display the the app's main interaction with
  * the user.
@@ -35,7 +34,6 @@ public class MainActivity extends AppCompatActivity
 
     private final String TAG = "LPx3-Main";
     private String FNAME, LNAME, PASSWORD, EMAIL, TIMESTAMP;
-
     /**
      * Check the Shared Preferences and verify if the user's credential exist. If
      * yes, then store them as constants and if none existing, then launch the Register
@@ -75,10 +73,21 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
 
-        getFragmentManager().beginTransaction()
-                .replace(R.id.side_frame, new HomeFragment())
-                .addToBackStack(null)
-                .commit();
+        Log.d(TAG, "onCreate launched");
+        if(savedInstanceState != null){
+            Log.d(TAG, "restoring saved fragment...");
+            Fragment savedFragment = getFragmentManager().getFragment(savedInstanceState,"currentFragment");
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.side_frame, savedFragment)
+                    .commit();
+        } else {
+            Log.d(TAG, "Displaying home fragment");
+            Fragment frag = new HomeFragment();
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.side_frame, frag)
+                    .commit();
+        }
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -95,7 +104,7 @@ public class MainActivity extends AppCompatActivity
         styleNavigationItem(navigationView);
         navigationView.setNavigationItemSelectedListener(this);
 
-        Log.d(TAG, "onCreate launched");
+
 //        checkForUserAuthentication(); //retrieve user credentials from SharedPref
 
     }
@@ -156,43 +165,45 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fragmentManager = getFragmentManager();
 
         if (id == R.id.nav_classCancel) {
+            Fragment frag = new CanceledActivity();
             fragmentManager.beginTransaction()
-                    .replace(R.id.side_frame, new CanceledActivity())
-                    .addToBackStack(null)
+                    .replace(R.id.side_frame, frag)
                     .commit();
         } else if (id == R.id.nav_findTeacher) {
+            Fragment frag = new FindTeacherActivity();
             fragmentManager.beginTransaction()
-                    .replace(R.id.side_frame, new FindTeacherActivity())
-                    .addToBackStack(null)
+                    .replace(R.id.side_frame, frag)
                     .commit();
         } else if (id == R.id.nav_addToCalendar) {
+            Fragment frag = new CalendarActivity();
             fragmentManager.beginTransaction()
-                    .replace(R.id.side_frame, new CalendarActivity())
-                    .addToBackStack(null)
+                    .replace(R.id.side_frame, frag)
                     .commit();
         } else if (id == R.id.nav_note) {
+            Fragment frag = new NotesFragment();
             fragmentManager.beginTransaction()
-                    .replace(R.id.side_frame, new NotesFragment())
-                    .addToBackStack(null)
+                    .replace(R.id.side_frame, frag)
                     .commit();
         } else if (id == R.id.nav_acedemicCalendar) {
+            Fragment frag = new AcedemicCalendarFragment();
             fragmentManager.beginTransaction()
-                    .replace(R.id.side_frame, new AcedemicCalendarActivity())
-                    .addToBackStack(null)
+                    .replace(R.id.side_frame, frag)
                     .commit();
         } else if (id == R.id.nav_weather) {
+            Fragment frag = new WeatherActivity();
             fragmentManager.beginTransaction()
-                    .replace(R.id.side_frame, new WeatherActivity())
-                    .addToBackStack(null)
+                    .replace(R.id.side_frame, frag)
                     .commit();
         } else if (id == R.id.nav_about) {
 
         } else if (id == R.id.nav_setting) {
-
+            Fragment frag = new SettingsActivity();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.side_frame, frag)
+                    .commit();
         } else if (id == R.id.nav_dawson) {
 
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -220,5 +231,27 @@ public class MainActivity extends AppCompatActivity
                 .addToBackStack(null)
                 .commit();
     }
+    /**
+     * Saves the currently displayed fragment into the bundle.
+     *
+     * @param outState Bundle object
+     */
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.d(TAG, "onSaveInstanceState started");
+        getFragmentManager().putFragment(outState, "currentFragment", getCurrentFragment());
 
+    }
+
+    /**
+     * Returns the currently displayed fragment which is the fragment inflated in the side_frame
+     * FrameLayout.
+     *
+     * @return Fragment object
+     */
+    private Fragment getCurrentFragment() {
+        Fragment frag = getFragmentManager().findFragmentById(R.id.side_frame);
+        return frag;
+    }
 }

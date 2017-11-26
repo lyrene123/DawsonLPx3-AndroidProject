@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dawsonlpx3">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/applogo_9"
@@ -25,7 +27,7 @@
         <!--<activity android:name=".NotesFragment" />-->
         <!--<activity android:name=".ItemNoteFragment" />-->
         <!--<activity android:name=".WeatherActivity" />-->
-        <!--<activity android:name=".AcedemicCalendarActivity"></activity>-->
+        <!--<activity android:namAcedemicCalendarFragmentvity"></activity>-->
     </application>
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />

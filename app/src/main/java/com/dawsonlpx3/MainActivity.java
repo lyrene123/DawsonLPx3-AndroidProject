@@ -3,6 +3,8 @@ package com.dawsonlpx3;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,11 +15,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
-
 /**
  * Launches the Main Activity that will display the the app's main interaction with
  * the user.
@@ -26,7 +23,8 @@ import java.util.TimeZone;
  *
  */
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        NotesFragment.OnNoteSelectedListener {
 
     private final String TAG = "LPx3-Main";
     private String FNAME, LNAME, PASSWORD, EMAIL, TIMESTAMP;
@@ -69,6 +67,12 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
+
+        getFragmentManager().beginTransaction()
+                .replace(R.id.side_frame, new HomeFragment())
+                .addToBackStack(null)
+                .commit();
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -81,11 +85,39 @@ public class MainActivity extends AppCompatActivity
 
         // Set the click listener to all the items in the drawer
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        styleNavigationItem(navigationView);
         navigationView.setNavigationItemSelectedListener(this);
 
         Log.d(TAG, "onCreate launched");
 //        checkForUserAuthentication(); //retrieve user credentials from SharedPref
+
     }
+
+    /**
+     * Change the color of the item in the drawer to blue
+     * @param navigationView
+     */
+    private void styleNavigationItem(NavigationView navigationView) {
+        int[][] state = new int[][] {
+                new int[] {-android.R.attr.state_enabled}, // disabled
+                new int[] {android.R.attr.state_enabled}, // enabled
+                new int[] {-android.R.attr.state_checked}, // unchecked
+                new int[] { android.R.attr.state_pressed}  // pressed
+
+        };
+
+        int[] color = new int[] {
+                Color.rgb(0,0,139),
+                Color.rgb(0,0,139),
+                Color.rgb(0,0,139),
+                Color.rgb(0,0,139)
+        };
+
+        ColorStateList csl = new ColorStateList(state, color);
+
+        navigationView.setItemTextColor(csl);
+    }
+
 
     /**
      * When the Back button is pressed, if the drawer still open, close it, else
@@ -118,33 +150,39 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_classCancel) {
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new CanceledActivity())
+                    .replace(R.id.side_frame, new CanceledActivity())
+                    .addToBackStack(null)
                     .commit();
         } else if (id == R.id.nav_findTeacher) {
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new FindTeacherActivity())
+                    .replace(R.id.side_frame, new FindTeacherActivity())
+                    .addToBackStack(null)
                     .commit();
         } else if (id == R.id.nav_addToCalendar) {
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new CalendarActivity())
+                    .replace(R.id.side_frame, new CalendarActivity())
+                    .addToBackStack(null)
                     .commit();
         } else if (id == R.id.nav_note) {
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new NotesActivity())
+                    .replace(R.id.side_frame, new NotesFragment())
+                    .addToBackStack(null)
                     .commit();
         } else if (id == R.id.nav_acedemicCalendar) {
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new AcedemicCalendarActivity())
+                    .replace(R.id.side_frame, new AcedemicCalendarFragment())
+                    .addToBackStack(null)
                     .commit();
         } else if (id == R.id.nav_weather) {
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new WeatherActivity())
+                    .replace(R.id.side_frame, new WeatherActivity())
+                    .addToBackStack(null)
                     .commit();
         } else if (id == R.id.nav_about) {
 
         } else if (id == R.id.nav_setting) {
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new SettingsActivity())
+                    .replace(R.id.side_frame, new SettingsActivity())
                     .commit();
         } else if (id == R.id.nav_dawson) {
 
@@ -154,4 +192,28 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+    /**
+     * When the item on the note list is selected, the item note fragment will
+     * replace the side_frame which is in the content_drawer layout.
+     *
+     * @param id - the id of the record in sqlite, so it can retrieved by the
+     *             ItemNoteFragment and displays its note detail.
+     */
+    @Override
+    public void onNoteSelected(int id) {
+        ItemNoteFragment item = new ItemNoteFragment();
+
+        Bundle args = new Bundle();
+        args.putInt("id", id);
+        item.setArguments(args);
+
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.side_frame, item)
+                .addToBackStack(null)
+                .commit();
+    }
+
 }

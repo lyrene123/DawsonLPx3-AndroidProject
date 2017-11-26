@@ -25,7 +25,7 @@ import java.util.List;
  * Displays the search form for the user to enter a first name and last name to search
  * teachers. Handles the validation of the user input. Handles the call to the
  * firebase manager util instance to query the database to retrieve the records of teachers
- * that matches the search criteria of the user. Manages the display of the display of the
+ * that matches the search criteria of the user. Manages the display of the
  * search result which can be a list of teachers or a teacher by inflating the appropriate
  * fragment (ChooseTeacherFragment or TeacherContactFragment).
  *
@@ -206,7 +206,7 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
         //inflate the fragment
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.R.id.side_frame, teacherContactFragment)
+                .replace(R.id.side_frame, teacherContactFragment)
                 .addToBackStack(null)
                 .commit();
     }
@@ -222,7 +222,7 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
         chooseTeacherFragment.setTeachersList(teachers); //pass the list to display
         FragmentManager fragmentManager = getFragmentManager(); //inflate fragment
         fragmentManager.beginTransaction()
-                .replace(R.id.R.id.side_frame, chooseTeacherFragment)
+                .replace(R.id.side_frame, chooseTeacherFragment)
                 .addToBackStack(null)
                 .commit();
     }

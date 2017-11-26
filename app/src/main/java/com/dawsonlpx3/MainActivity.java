@@ -206,15 +206,16 @@ public class MainActivity extends AppCompatActivity
     }
 
     /**
-     * Handles the selected of a teacher in the teachers list when ChooseTeacherFragment is
-     * displayed. Pass as argument the teacher that was selected and inflate the fragment
+     * Handles the click event on an item of the teachers list displayed in a ChooseTeacherFragment.
+     * When an teacher is selected from the list view, a TeacherContactFragment will be inflated
+     * to display the details of the selected teacher.
      *
-     * @param teacher TeacherDetails that was selected
+     * @param teacher TeacherDetails objec
      */
     @Override
     public void onTeacherSelected(TeacherDetails teacher) {
         this.teacherContactFragment = new TeacherContactFragment();
-
+        Log.d(TAG, "onTeacherSelected started");
         Bundle args = new Bundle();
         args.putSerializable("teacher", teacher);
         teacherContactFragment.setArguments(args);

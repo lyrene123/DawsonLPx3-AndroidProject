@@ -2,6 +2,7 @@ package com.dawsonlpx3.teacher_activity;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.os.AsyncTask;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,7 +33,10 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
     private  boolean isSearched;
     private  List<TeacherDetails> teachers;
 
-    private String restoredFname, restoredLname, restoredErrorMsg;
+    private String restoredFname, restoredLname, restoredErrorMsg, fullname, fname, lname;
+    private boolean isExact;
+
+    private GetTeachersTask teachersTask;
 
     private final String TAG = "DawsonLPx3-FindTeacher";
 
@@ -83,8 +87,7 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
         if(isValidInput()){
             isSearched = true;
             errorMsgTV.setText("");
-            boolean isExact = exactRB.isChecked();
-            String fullname = null, fname = null, lname = null;
+            isExact = exactRB.isChecked();
             if(!fnameET.getText().toString().isEmpty() && !lnameET.getText().toString().isEmpty()){
                 fullname = fnameET.getText().toString().trim() + " " + lnameET.getText().toString().trim();
                 Log.d(TAG, "isExact: " + isExact + "  fullname: " + fullname);
@@ -95,7 +98,9 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
                 lname = lnameET.getText().toString().trim();
                 Log.d(TAG, "isExact: " + isExact + " lname: " + lname);
             }
-            this.fbManager.retrieveRecordsFromDb(getActivity(), this, fullname, fname, lname, isExact);
+            //this.fbManager.retrieveRecordsFromDb(getActivity(), this, fullname, fname, lname, isExact);
+            this.teachersTask = new GetTeachersTask();
+            this.teachersTask.execute();
             Toast.makeText(getActivity(), getResources().getString(R.string.searchTeachers), Toast.LENGTH_SHORT).show();
         }
     }
@@ -174,6 +179,16 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
         }
         if(errorMsgTV != null && !this.errorMsgTV.getText().toString().isEmpty()){
             outState.putString("error", this.errorMsgTV.getText().toString());
+        }
+    }
+
+    private class GetTeachersTask extends AsyncTask<Void, Void, List<TeacherDetails>> {
+
+        @Override
+        protected List<TeacherDetails> doInBackground(Void... voids) {
+            Log.d(TAG, "Starting GetTeachersTask async task");
+            fbManager.retrieveRecordsFromDb(getActivity(), FindTeacherFragment.this, fullname, fname, lname, isExact);
+            return null;
         }
     }
 }

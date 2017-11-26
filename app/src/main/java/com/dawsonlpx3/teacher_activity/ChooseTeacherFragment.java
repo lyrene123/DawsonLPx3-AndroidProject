@@ -3,7 +3,6 @@ package com.dawsonlpx3.teacher_activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -59,13 +58,10 @@ public class ChooseTeacherFragment extends Fragment {
         Log.d(TAG, "buildTeacherNamesArr started");
         this.namesList = new ArrayList<>();
         for(int i = 0; i < this.teachers.size(); i++){
-            Log.d(TAG, "Name restored: " + this.teachers.get(i).getFull_name());
             namesList.add(this.teachers.get(i).getFull_name());
         }
 
         this.namesArr = namesList.toArray(new String[0]);
-        Log.d(TAG, "list count: " + namesList.size());
-        Log.d(TAG, "array count: " + namesArr.length);
     }
 
     @Override
@@ -109,8 +105,6 @@ public class ChooseTeacherFragment extends Fragment {
         for (int i = 0; i < this.teachers.size(); i++) {
             outState.putSerializable("teachers_" + i, this.teachers.get(i));
         }
-
         outState.putInt("size", teachers.size());
-
     }
 }

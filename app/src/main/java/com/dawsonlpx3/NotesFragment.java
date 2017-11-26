@@ -74,7 +74,7 @@ public class NotesFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dbh = SQLiteManagerUtil.getDbManager(this.getActivity());
-//        dbh.deleteAll(); // Must delete this line
+//        dbh.deleteAll(); // Must delete this line or use this line to delete all notes in your device
     }
 
     /**
@@ -133,6 +133,7 @@ public class NotesFragment extends Fragment {
                 Log.i(TAG, "Add Note Button Clicked");
                 String note = noteEditText.getText().toString();
                 if(!note.isEmpty()) {
+                    noteEditText.setText("");
                     InsertNoteTask insertNote = new InsertNoteTask();
                     insertNote.execute(note);
                     refreshView();

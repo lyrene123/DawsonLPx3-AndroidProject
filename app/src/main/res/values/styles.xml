@@ -19,8 +19,13 @@
         <item name="android:textSize">16sp</item>
         <item name="android:padding">8dp</item>
     </style>
-    <style name="AppTheme.List_Item">
+    <string name="AppTheme.Error">
         <item name="android:textSize">16sp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </string>
+    <style name="AppTheme.List_Item">
+        <item name="android:textSize">22sp</item>
         <item name="android:padding">15dp</item>
         <item name="android:textColor">@color/black</item>
     </style>

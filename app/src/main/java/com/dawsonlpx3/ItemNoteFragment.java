@@ -90,8 +90,8 @@ public class ItemNoteFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        Log.d(TAG, "onSaveInstanceState started");
-        outState.putString("noteDetail", noteTextView.getText().toString());
+        if(noteTextView != null)
+            outState.putString("noteDetail", noteTextView.getText().toString());
         outState.putInt("id", this.id);
     }
 

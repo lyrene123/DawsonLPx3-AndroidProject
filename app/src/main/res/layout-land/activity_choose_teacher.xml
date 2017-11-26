@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.dawsonlpx3.teacher_activity.ChooseTeacherFragment">
+    tools:context="com.dawsonlpx3.find_teacher_feature.ChooseTeacherFragment">
 
     <TextView
         style="@style/AppTheme.Title"

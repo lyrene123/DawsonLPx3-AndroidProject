@@ -3,7 +3,6 @@ package com.dawsonlpx3;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,9 +14,9 @@ import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
 
 import com.dawsonlpx3.data.TeacherDetails;
-import com.dawsonlpx3.teacher_activity.ChooseTeacherFragment;
-import com.dawsonlpx3.teacher_activity.FindTeacherFragment;
-import com.dawsonlpx3.teacher_activity.TeacherContactFragment;
+import com.dawsonlpx3.find_teacher_feature.ChooseTeacherFragment;
+import com.dawsonlpx3.find_teacher_feature.FindTeacherFragment;
+import com.dawsonlpx3.find_teacher_feature.TeacherContactFragment;
 
 
 /**

@@ -1,40 +1,27 @@
-package com.dawsonlpx3.teacher_activity;
+package com.dawsonlpx3.find_teacher_feature;
 
 import android.app.Fragment;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.media.Image;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.telephony.PhoneNumberUtils;
 import android.text.Html;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
-import android.text.util.Linkify;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.dawsonlpx3.Manifest;
 import com.dawsonlpx3.R;
 import com.dawsonlpx3.data.TeacherDetails;
 
-import org.w3c.dom.Text;
-
-import java.net.URI;
-import java.net.URLDecoder;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class TeacherContactFragment extends Fragment {
     private TeacherDetails teacher;

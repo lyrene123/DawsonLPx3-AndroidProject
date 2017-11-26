@@ -1,4 +1,4 @@
-package com.dawsonlpx3.teacher_activity;
+package com.dawsonlpx3.find_teacher_feature;
 
 import android.app.Fragment;
 import android.app.FragmentManager;

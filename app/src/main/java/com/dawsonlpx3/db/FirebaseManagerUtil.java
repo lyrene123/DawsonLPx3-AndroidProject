@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
-import com.dawsonlpx3.teacher_activity.FindTeacherFragment;
+import com.dawsonlpx3.find_teacher_feature.FindTeacherFragment;
 import com.dawsonlpx3.R;
 import com.dawsonlpx3.data.TeacherDetails;
 import com.google.android.gms.tasks.OnCompleteListener;

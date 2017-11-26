@@ -27,7 +27,7 @@ import java.util.List;
  * Fragment class which handles the display of all contact details of a Dawson college teacher.
  * Handles the click events of the local and the email address of the teacher which starts a phone call
  * to contact the teacher or creates an email to send to the teacher's email address. Handles as
- * well the saving and restoring of the teacher object when app is being stoped or paused. Requires
+ * well the saving and restoring of the teacher object when app is being stopped or paused. Requires
  * the necessary permissions to the user when trying to access the phone of their device.
  *
  * @author Lyrene Labor

@@ -34,7 +34,7 @@ import java.util.List;
  */
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-        ChooseTeacherFragment.OnTeacherSelectedListener 
+        ChooseTeacherFragment.OnTeacherSelectedListener,
         NotesFragment.OnNoteSelectedListener {
 
     private final String TAG = "LPx3-Main";
@@ -205,18 +205,26 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-
+    /**
+     * Handles the click event on an item of the teachers list displayed in a ChooseTeacherFragment.
+     * When an teacher is selected from the list view, a TeacherContactFragment will be inflated
+     * to display the details of the selected teacher.
+     *
+     * @param teacher TeacherDetails object
+     */
     @Override
     public void onTeacherSelected(TeacherDetails teacher) {
         this.teacherContactFragment = new TeacherContactFragment();
-
+        Log.d(TAG, "onTeacherSelected started");
         Bundle args = new Bundle();
         args.putSerializable("teacher", teacher);
         teacherContactFragment.setArguments(args);
 
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.content_frame, teacherContactFragment)
+                .replace(R.id.side_frame, teacherContactFragment)
+                .addToBackStack(null)
+                .commit();
     }
 
 

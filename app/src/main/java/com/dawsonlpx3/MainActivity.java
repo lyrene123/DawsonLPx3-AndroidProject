@@ -136,32 +136,6 @@ public class MainActivity extends AppCompatActivity
 
 
     /**
-     * Change the color of the item in the drawer to blue
-     * @param navigationView
-     */
-    private void styleNavigationItem(NavigationView navigationView) {
-        int[][] state = new int[][] {
-                new int[] {-android.R.attr.state_enabled}, // disabled
-                new int[] {android.R.attr.state_enabled}, // enabled
-                new int[] {-android.R.attr.state_checked}, // unchecked
-                new int[] { android.R.attr.state_pressed}  // pressed
-
-        };
-
-        int[] color = new int[] {
-                Color.rgb(0,0,139),
-                Color.rgb(0,0,139),
-                Color.rgb(0,0,139),
-                Color.rgb(0,0,139)
-        };
-
-        ColorStateList csl = new ColorStateList(state, color);
-
-        navigationView.setItemTextColor(csl);
-    }
-
-
-    /**
      * When the Back button is pressed, if the drawer still open, close it, else
      * let AppCompatActivity handle the it.
      */

@@ -44,7 +44,6 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
     View view;
     private Context context; // Current Activity Context
     private GPSTracker gps; // Custom class for GPS functionality
-    private TextView temperatureView, forecastDay1, forecastDay2, forecastDay3, forecastDay4, forecastDay5;
     private LinearLayout col1, col2, col3, col4, col5, col6;
     private EditText cityView;
     private Spinner countriesSpinner;
@@ -70,14 +69,7 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
 
         // Get handles to required classes and information.
         context = this.getActivity();
-        gps = new GPSTracker(context);
         cityView = (EditText) view.findViewById(R.id.weather_city);
-        temperatureView = (TextView) view.findViewById(R.id.temperature_view);
-        //forecastDay1 = (TextView) view.findViewById(R.id.forecast_day1);
-        //forecastDay2 = (TextView) view.findViewById(R.id.forecast_day2);
-        //forecastDay3 = (TextView) view.findViewById(R.id.forecast_day3);
-        //forecastDay4 = (TextView) view.findViewById(R.id.forecast_day4);
-        //forecastDay5 = (TextView) view.findViewById(R.id.forecast_day5);
         col1 = (LinearLayout) view.findViewById(R.id.col_1);
         col2 = (LinearLayout) view.findViewById(R.id.col_2);
         col3 = (LinearLayout) view.findViewById(R.id.col_3);
@@ -85,21 +77,7 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
         col5 = (LinearLayout) view.findViewById(R.id.col_5);
         col6 = (LinearLayout) view.findViewById(R.id.col_6);
 
-        // Check is the application has the required permissions.
-        checkPermissions();
-        if(userPermissions){
-            // Check if GPS is enabled
-            if(gps.canGetLocation()){
-                displayTemperature();
-            }else{
-                Log.d(TAG, "GPS NOT ENABLED");
-                gps.showSettingsAlert();
-            }
-        }else{
-            temperatureView.setText(R.string.tempDisabled);
-        }
-
-        cityView = (EditText) view.findViewById(R.id.weather_city);
+        checkPermissions(); // Check is the application has the required permissions.
         setupWeather(); // Setup the views for the weather functionality
 
         return view;
@@ -142,21 +120,8 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
     } // setupWeather()
 
     /**
-     *  Display the local temperature in degrees Celsius.
-     */
-    private void displayTemperature(){
-        Log.d(TAG, "displayTemperature");
-        // Get the Latitude and Longitude
-        String latitude = Double.toString(gps.getLatitude());
-        String longitude = Double.toString(gps.getLongitude());
-        // Obtain the values for the user's current latitude and longitude
-
-
-        //new TemperatureTask(latitude, longitude).execute();
-    } // displayTemperature()
-
-    /**
-     * Check the device's current permissions for the required permissions for the temperature.
+     * Check the device's current permissions for needed permissions. If they are not enabled, then
+     * ask the user to give permission.
      */
     private void checkPermissions(){
         Log.d(TAG, "checkPermissions");
@@ -213,137 +178,6 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
             }
         } // end of switch(requestCode)
     } // onRequestPermissionResult
-
-    /**
-     *  An AsyncTask that creates an Asynchronous thread to communicate with openweathermap.org
-     *  in order to get the current temperature by using a latitude and longitude passed to the
-     *  class.
-     *
-     *  @author Philippe Langlois-Pedroso, 1542705
-     */
-    private class TemperatureTask extends AsyncTask<String, Void, String>{
-
-        private String lat;
-        private String lon;
-        private static final String OPEN_WEATHER = "http://api.openweathermap.org/data/2.5/weather?";
-        private static final String API_KEY = "&appid=1845a7224a9c4164a4007cae1129a582";
-
-        /**
-         * Constructor that is passed a latitude and longitude String.
-         *
-         * @param lat
-         * @param lon
-         */
-        public TemperatureTask(String lat, String lon){
-            Log.d(TAG, "TemperatureTask: Constructor");
-            this.lat = lat;
-            this.lon = lon;
-        } // TemperatureTask()
-
-        /**
-         * Overridden AsyncTask method that deals with any setup to be made before the Task starts.
-         */
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            Log.d(TAG, "TemperatureTask: onPreExecute");
-        } // onPreExecute()
-
-        /**
-         * Upon the conclusion of the Task, method will set the text value for the temperature
-         * Upon the conclusion of the Task, method will set the text value for the temperature
-         * Text View.
-         *
-         * @param result
-         */
-        @Override
-        protected void onPostExecute(String result){
-            Log.d(TAG, "TemperatureTask: onPostExecute");
-            temperatureView.setText(result);
-        } // onPostExecute()
-
-        /**
-         *  Perform the request and parsing of data in teh background of the fragment.
-         *
-         * @param params
-         * @return
-         */
-        @Override
-        protected String doInBackground(String... params) {
-            Log.d(TAG, "TemperatureTask: doInBackground");
-            String temperature = "";
-            HttpURLConnection conn = null;
-            BufferedReader reader = null;
-            try {
-                // Setup the URL.
-                URL url = new URL(OPEN_WEATHER +"lat=" +lat +"&lon=" +lon +API_KEY);
-                // Setup HttpURLConnection using the URL object.
-                conn = (HttpURLConnection) url.openConnection();
-                // Setup connection options
-                conn.setReadTimeout(15000);
-                conn.setConnectTimeout(15000);
-                conn.setRequestMethod("GET");
-                conn.setDoInput(true);
-                Log.d(TAG, "connection setup complete, starting query");
-
-                // Test connection
-                conn.connect();
-                int response = conn.getResponseCode();
-                Log.d(TAG, "Response Code: " +Integer.toString(response));
-                if(response != HttpURLConnection.HTTP_OK){
-                    Log.d(TAG, "Aborting read. Response was not 200");
-                    return "Server Returned: " +Integer.toString(response);
-                }
-
-                // Read data from the response.
-                reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                StringBuffer json = new StringBuffer(1024);
-                String tmp = "";
-
-                // Parse through the response.
-                while((tmp = reader.readLine()) != null)
-                    json.append(tmp).append("\n");
-                reader.close();
-
-                // Obtain needed data from response.
-                JSONObject jObj = new JSONObject(json.toString());
-                JSONObject main = jObj.getJSONObject("main");
-                Log.d(TAG, main.toString());
-                // Temperature is given in Kelvin
-                double tempKelvin = main.getDouble("temp");
-                Log.d(TAG, "temperature in K: " +Double.toString(tempKelvin));
-                // Convert Kelvin to Celsius
-                double tempCelsius = tempKelvin -273.15;
-                // Round the temperature to a single decimal place
-                tempCelsius = (double)Math.round(tempCelsius * 10) / 10;
-                Log.d(TAG, "temperature in C: " +Double.toString(tempCelsius));
-//                temperature = "Current temperature in your area: " +Double.toString(tempCelsius)
-//                        +"\u00b0" +"C";
-                    temperature="";
-            }catch(Exception e){
-                Log.d(TAG, e.getMessage());
-            }finally{
-                // Clean-up any Objects that need to be closed.
-                if (reader != null) {
-                    try {
-                        Log.d(TAG, "Closing reader");
-                        reader.close();
-                    } catch (IOException ioe) {
-                        Log.d(TAG, ioe.getMessage());
-                    }
-                }
-                if(conn != null){
-                    try{
-                        Log.d(TAG, "Disconnecting connection");
-                        conn.disconnect();
-                    } catch(IllegalStateException ise) {
-                        Log.d(TAG, ise.getMessage());
-                    }
-                }
-            }
-            return temperature;
-        } // doInBackground()
-    } // TemperatureTask
 
     /**
      *  An AsyncTask that creates an Asynchronous thread to communicate with openweathermap.org

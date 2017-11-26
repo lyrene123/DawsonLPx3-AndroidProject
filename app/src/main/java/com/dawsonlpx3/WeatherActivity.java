@@ -229,8 +229,9 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
             Log.d(TAG, result[1].toString());
             Log.d(TAG, result[2].toString());
             Log.d(TAG, result[3].toString());
+            Log.d(TAG, result[4].toString());
 
-            LinearLayout[] columns = new LinearLayout[]{col2, col3, col4, col5};
+            LinearLayout[] columns = new LinearLayout[]{col2, col3, col4, col5, col6};
             double d = 0.0;
             try {
                 for(int i = 0; i < columns.length; i++){
@@ -410,17 +411,17 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
                 JSONObject day2 = jArr.getJSONObject(8 +arrayOffset);
                 JSONObject day3 = jArr.getJSONObject(16 +arrayOffset);
                 JSONObject day4 = jArr.getJSONObject(24 +arrayOffset);
-                //JSONObject day5 = jArr.getJSONObject(32 +arrayOffset);
-                //Log.d(TAG, "WTF " +jArr.getJSONObject(38).toString());
+                JSONObject day5 = jArr.getJSONObject(32 +arrayOffset);
+
                 Log.d(TAG, Integer.toString(jArr.length()));
 
                 Log.d(TAG, day1.toString());
                 Log.d(TAG, day2.toString());
                 Log.d(TAG, day3.toString());
                 Log.d(TAG, day4.toString());
-                //Log.d(TAG, day5.toString());
+                Log.d(TAG, day5.toString());
 
-                forecast = new JSONObject[]{day1, day2, day3, day4};
+                forecast = new JSONObject[]{day1, day2, day3, day4, day5};
 
             }catch(Exception e){
                 Log.d(TAG, "ERROR WITH REQUEST: " +e.getMessage());

@@ -16,10 +16,11 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
+import android.widget.TextView;
 import android.view.View;
 import android.widget.FrameLayout;
-
 import java.util.List;
+
 
 /**
  * Launches the Main Activity that will display the the app's main interaction with
@@ -187,9 +188,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_about) {
 
         } else if (id == R.id.nav_setting) {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new SettingsActivity())
-                    .commit();
+
         } else if (id == R.id.nav_dawson) {
 
         }

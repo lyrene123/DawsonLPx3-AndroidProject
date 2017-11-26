@@ -30,11 +30,10 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
     private Button searchButton;
 
     private FirebaseManagerUtil fbManager;
-    private  boolean isSearched;
     private  List<TeacherDetails> teachers;
 
     private String restoredFname, restoredLname, restoredErrorMsg, fullname, fname, lname;
-    private boolean isExact;
+    private boolean isSearched, isExact, isOnSavedInstanceState;
 
     private GetTeachersTask teachersTask;
 
@@ -46,7 +45,6 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate started");
         fbManager = FirebaseManagerUtil.getFirebaseManager();
-        isSearched = false;
         if(savedInstanceState != null){
             Log.d(TAG, "restoring state from bundle");
             this.restoredFname = savedInstanceState.getString("fname");
@@ -65,6 +63,13 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
         Log.d(TAG, "onCreateView started");
         view = inflater.inflate(R.layout.activity_find_teacher, container, false);
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume started");
+        this.isOnSavedInstanceState = false;
     }
 
     @Override
@@ -109,14 +114,16 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
         teachers = teachersList;
         isSearched = false;
         Log.d(TAG, "num of teacher records: " + teachers.size());
-
-        //display ChooseTeacher fragment
-        if(teachers.size() > 1){
-            displayChooseTeacher();
-        } else if(teachers.size() == 1) {
-            displayTeacherDetail();
-        } else {
-            errorMsgTV.setText(R.string.noresult);
+        Log.d(TAG, "task: " + teachersTask + " isSaved...: " + isOnSavedInstanceState);
+        if(teachersTask != null && !this.isOnSavedInstanceState) {
+            //display ChooseTeacher fragment
+            if (teachers.size() > 1) {
+                displayChooseTeacher();
+            } else if (teachers.size() == 1) {
+                displayTeacherDetail();
+            } else {
+                errorMsgTV.setText(R.string.noresult);
+            }
         }
     }
 
@@ -171,6 +178,8 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+        Log.d(TAG, "onSaveInstanceState started");
+        this.isOnSavedInstanceState = true;
         if (this.fnameET != null && !this.fnameET.getText().toString().isEmpty()){
             outState.putString("fname", this.fnameET.getText().toString());
         }
@@ -179,6 +188,16 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
         }
         if(errorMsgTV != null && !this.errorMsgTV.getText().toString().isEmpty()){
             outState.putString("error", this.errorMsgTV.getText().toString());
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if(teachersTask != null) {
+            Log.d(TAG, "canceling teachers task");
+            this.teachersTask.cancel(true);
+            this.teachersTask = null;
         }
     }
 

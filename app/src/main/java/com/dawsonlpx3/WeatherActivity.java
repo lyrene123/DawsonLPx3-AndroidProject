@@ -12,13 +12,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsoluteLayout;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -42,6 +45,7 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
     private Context context; // Current Activity Context
     private GPSTracker gps; // Custom class for GPS functionality
     private TextView temperatureView, forecastDay1, forecastDay2, forecastDay3, forecastDay4, forecastDay5;
+    private LinearLayout col1, col2, col3, col4, col5, col6;
     private EditText cityView;
     private Spinner countriesSpinner;
     private Button forecastButton;
@@ -69,11 +73,17 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
         gps = new GPSTracker(context);
         cityView = (EditText) view.findViewById(R.id.weather_city);
         temperatureView = (TextView) view.findViewById(R.id.temperature_view);
-        forecastDay1 = (TextView) view.findViewById(R.id.forecast_day1);
-        forecastDay2 = (TextView) view.findViewById(R.id.forecast_day2);
-        forecastDay3 = (TextView) view.findViewById(R.id.forecast_day3);
-        forecastDay4 = (TextView) view.findViewById(R.id.forecast_day4);
-        forecastDay5 = (TextView) view.findViewById(R.id.forecast_day5);
+        //forecastDay1 = (TextView) view.findViewById(R.id.forecast_day1);
+        //forecastDay2 = (TextView) view.findViewById(R.id.forecast_day2);
+        //forecastDay3 = (TextView) view.findViewById(R.id.forecast_day3);
+        //forecastDay4 = (TextView) view.findViewById(R.id.forecast_day4);
+        //forecastDay5 = (TextView) view.findViewById(R.id.forecast_day5);
+        col1 = (LinearLayout) view.findViewById(R.id.col_1);
+        col2 = (LinearLayout) view.findViewById(R.id.col_2);
+        col3 = (LinearLayout) view.findViewById(R.id.col_3);
+        col4 = (LinearLayout) view.findViewById(R.id.col_4);
+        col5 = (LinearLayout) view.findViewById(R.id.col_5);
+        col6 = (LinearLayout) view.findViewById(R.id.col_6);
 
         // Check is the application has the required permissions.
         checkPermissions();
@@ -140,7 +150,9 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
         String latitude = Double.toString(gps.getLatitude());
         String longitude = Double.toString(gps.getLongitude());
         // Obtain the values for the user's current latitude and longitude
-        new TemperatureTask(latitude, longitude).execute();
+
+
+        //new TemperatureTask(latitude, longitude).execute();
     } // displayTemperature()
 
     /**
@@ -305,9 +317,9 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
                 // Round the temperature to a single decimal place
                 tempCelsius = (double)Math.round(tempCelsius * 10) / 10;
                 Log.d(TAG, "temperature in C: " +Double.toString(tempCelsius));
-                temperature = "Current temperature in your area: " +Double.toString(tempCelsius)
-                        +"\u00b0" +"C";
-
+//                temperature = "Current temperature in your area: " +Double.toString(tempCelsius)
+//                        +"\u00b0" +"C";
+                    temperature="";
             }catch(Exception e){
                 Log.d(TAG, e.getMessage());
             }finally{
@@ -374,15 +386,79 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
         @Override
         protected void onPostExecute(JSONObject[] result){
             Log.d(TAG, "ForecastTask: onPostExecute");
-            forecastDay1.setText(result[0].toString());
-            forecastDay2.setText(result[1].toString());
-            forecastDay3.setText(result[2].toString());
-            forecastDay4.setText(result[3].toString());
-            forecastDay5.setText(result[4].toString());
+            // forecastDay1.setText(result[0].toString());
+            //forecastDay2.setText(result[1].toString());
+            // forecastDay3.setText(result[2].toString());
+            // forecastDay4.setText(result[3].toString());
+            //forecastDay5.setText(result[4].toString());
+            Log.d(TAG, result[0].toString());
+            Log.d(TAG, result[1].toString());
+            Log.d(TAG, result[2].toString());
+            Log.d(TAG, result[3].toString());
+
+            LinearLayout[] columns = new LinearLayout[]{col2, col3, col4, col5};
+            double d = 0.0;
+            try {
+                for(int i = 0; i < columns.length; i++){
+                    TextView tv1 = (TextView) columns[i].getChildAt(1);
+                    d = result[i].getJSONObject("main").getDouble("temp")-273.15;
+                    d = (double)Math.round((d) * 10) / 10;
+                    tv1.setText(Double.toString(d));
+
+                    TextView tv2 = (TextView) columns[i].getChildAt(2);
+                    d = result[i].getJSONObject("main").getDouble("temp_min")-273.15;
+                    d = (double)Math.round((d) * 10) / 10;
+                    tv2.setText(Double.toString(d));
+
+                    TextView tv3 = (TextView) columns[i].getChildAt(3);
+                    d = result[i].getJSONObject("main").getDouble("temp_max")-273.15;
+                    d = (double)Math.round((d) * 10) / 10;
+                    tv3.setText(Double.toString(d));
+
+                    TextView tv4 = (TextView) columns[i].getChildAt(4);
+                    tv4.setText(Double.toString(result[i].getJSONObject("main").getDouble("pressure")));
+
+                    TextView tv5 = (TextView) columns[i].getChildAt(5);
+                    tv5.setText(Double.toString(result[i].getJSONObject("main").getDouble("sea_level")));
+
+                    TextView tv6 = (TextView) columns[i].getChildAt(6);
+                    tv6.setText(Double.toString(result[i].getJSONObject("main").getDouble("grnd_level")));
+
+                    TextView tv7 = (TextView) columns[i].getChildAt(7);
+                    tv7.setText(Integer.toString(result[i].getJSONObject("main").getInt("humidity")));
+
+                    TextView tv8 = (TextView) columns[i].getChildAt(8);
+                    d = result[i].getJSONObject("main").getDouble("temp_kf");
+                    d = (double)Math.round((d) * 100) / 100;
+                    tv8.setText(Double.toString(d));
+
+                    TextView tv9 = (TextView) columns[i].getChildAt(9);
+                    TextView tv10 = (TextView) columns[i].getChildAt(10);
+                    JSONArray weatherArray = result[i].getJSONArray("weather");
+                    tv9.setText(weatherArray.getJSONObject(0).getString("main"));
+                    tv10.setText(weatherArray.getJSONObject(0).getString("description"));
+
+                    TextView tv11 = (TextView) columns[i].getChildAt(11);
+                    JSONObject cloudObject = result[i].getJSONObject("clouds");
+                    tv11.setText(Integer.toString(cloudObject.getInt("all")));
+
+                    TextView tv12 = (TextView) columns[i].getChildAt(12);
+                    TextView tv13 = (TextView) columns[i].getChildAt(13);
+                    JSONObject windObject = result[i].getJSONObject("wind");
+                    d = windObject.getDouble("speed");
+                    d = (double)Math.round((d) * 100) / 100;
+                    tv12.setText(Double.toString(d));
+                    d = windObject.getDouble("deg");
+                    d = (double)Math.round((d) * 1000) / 1000;
+                    tv13.setText(Double.toString(d));
+                }
+            }catch(Exception e){
+                Log.d(TAG, e.getMessage());
+            }
         } // onPostExecute()
 
         /**
-         *  Perform the request and parsing of data in teh background of the fragment.
+         *  Perform the request and parsing of data in the background of the fragment.
          *
          * @param params
          * @return
@@ -430,7 +506,6 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
                 JSONArray jArr = jObj.getJSONArray("list");
                 Log.d(TAG, jArr.get(0).toString());
                 Log.d(TAG, jArr.get(1).toString());
-                Log.d(TAG, jArr.get(39).toString());
                 Log.d(TAG, Integer.toString(jArr.length()));
                 JSONObject day1part1 = jArr.getJSONObject(0);
                 Log.d(TAG, Double.toString(day1part1.getJSONObject("main").getDouble("temp")));
@@ -501,17 +576,20 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
                 JSONObject day2 = jArr.getJSONObject(8 +arrayOffset);
                 JSONObject day3 = jArr.getJSONObject(16 +arrayOffset);
                 JSONObject day4 = jArr.getJSONObject(24 +arrayOffset);
-                JSONObject day5 = jArr.getJSONObject(32 +arrayOffset);
+                //JSONObject day5 = jArr.getJSONObject(32 +arrayOffset);
+                //Log.d(TAG, "WTF " +jArr.getJSONObject(38).toString());
+                Log.d(TAG, Integer.toString(jArr.length()));
+
                 Log.d(TAG, day1.toString());
                 Log.d(TAG, day2.toString());
                 Log.d(TAG, day3.toString());
                 Log.d(TAG, day4.toString());
-                Log.d(TAG, day5.toString());
+                //Log.d(TAG, day5.toString());
 
-                forecast = new JSONObject[]{day1, day2, day3, day4, day5};
+                forecast = new JSONObject[]{day1, day2, day3, day4};
 
             }catch(Exception e){
-                Log.d(TAG, e.getMessage());
+                Log.d(TAG, "ERROR WITH REQUEST: " +e.getMessage());
             }finally{
                 // Clean-up any Objects that need to be closed.
                 if (reader != null) {

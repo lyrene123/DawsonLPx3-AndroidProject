@@ -140,7 +140,7 @@ public class HomeFragment extends Fragment {
         @Override
         public void onClick(View view) {
             getFragmentManager().beginTransaction()
-                    .replace(R.id.side_frame, new FindTeacherFragment())
+                    .replace(R.id.side_frame, new AcedemicCalendarFragment())
                     .addToBackStack(null)
                     .commit();
         }

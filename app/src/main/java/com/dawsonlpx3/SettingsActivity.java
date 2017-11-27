@@ -2,6 +2,7 @@ package com.dawsonlpx3;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -57,7 +58,7 @@ public class SettingsActivity extends Fragment {
         saveButton = view.findViewById(R.id.save_settings_button);
 
         // Set the text to the currently saved values in storage
-        SharedPreferences preferences = getActivity().getPreferences(MODE_PRIVATE);
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("userInfo", Context.MODE_PRIVATE);
         firstNameEdit.setText(preferences.getString("fname", ""));
         lastNameEdit.setText(preferences.getString("lname", ""));
         emailEdit.setText(preferences.getString("email", ""));
@@ -70,7 +71,7 @@ public class SettingsActivity extends Fragment {
             public void onClick(View v){
                 Log.d(TAG, "save button onClick");
                 // get a handle to this activity's shared preferences
-                SharedPreferences prefs = getActivity().getPreferences(MODE_PRIVATE);
+                SharedPreferences prefs = getActivity().getSharedPreferences("userInfo", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = prefs.edit();
                 // put all user input into SharedPreferences
                 editor.putString("fname", firstNameEdit.getText().toString());

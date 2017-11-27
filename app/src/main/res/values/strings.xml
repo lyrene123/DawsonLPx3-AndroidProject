@@ -98,4 +98,8 @@
     <string name="weather_clouds">Clouds(%):</string>
     <string name="wind_speed">Wind Speed(m/s):</string>
     <string name="wind_deg">Wind Deg:</string>
+    <string name="cancel_settings_title">Cancel Changes of Settings?</string>
+    <string name="cancel_settings_body">Are you sure you want to leave without saving?</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 </resources>

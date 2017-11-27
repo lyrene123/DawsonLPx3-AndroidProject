@@ -94,7 +94,6 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-
     /**
      * Check the Shared Preferences and verify if the user's credential exist. If
      * yes, then store them as constants and if none existing, then launch the Register
@@ -192,7 +191,7 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.side_frame, frag)
                     .commit();
         } else if (id == R.id.nav_addToCalendar) {
-            Fragment frag = new CalendarActivity();
+            Fragment frag = new AddToCalendarFragment();
             fragmentManager.beginTransaction()
                     .replace(R.id.side_frame, frag)
                     .commit();

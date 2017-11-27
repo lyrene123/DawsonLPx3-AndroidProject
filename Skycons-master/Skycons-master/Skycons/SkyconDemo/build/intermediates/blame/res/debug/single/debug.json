@@ -1,74 +1,146 @@
 [
     {
-        "merged": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/build/intermediates/res/merged/debug/layout_cloud_moon.xml.flat",
-        "source": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/res/layout/cloud_moon.xml"
+        "merged": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\layout_cloud_sun.xml.flat",
+        "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\layout\\cloud_sun.xml"
     },
     {
-        "merged": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/build/intermediates/res/merged/debug/menu_main.xml.flat",
-        "source": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/res/menu/main.xml"
+        "merged": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\layout_cloud_fog.xml.flat",
+        "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\layout\\cloud_fog.xml"
     },
     {
-        "merged": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher.png.flat",
-        "source": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/res/drawable-hdpi/ic_launcher.png"
+        "merged": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\layout_thunder.xml.flat",
+        "source": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\layout\\thunder.xml"
     },
     {
-        "merged": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/build/intermediates/res/merged/debug/layout_cloud_sun.xml.flat",
-        "source": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/res/layout/cloud_sun.xml"
+        "merged": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\layout_cloud_rain.xml.flat",
+        "source": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\layout\\cloud_rain.xml"
     },
     {
-        "merged": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/build/intermediates/res/merged/debug/layout_cloud_hvrain.xml.flat",
-        "source": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/res/layout/cloud_hvrain.xml"
+        "merged": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\drawable-xxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/build/intermediates/res/merged/debug/layout_all_views.xml.flat",
-        "source": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/res/layout/all_views.xml"
+        "merged": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
     },
     {
-        "merged": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_launcher.png.flat",
-        "source": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/res/drawable-xxhdpi/ic_launcher.png"
+        "merged": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\layout_cloud.xml.flat",
+        "source": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\layout\\cloud.xml"
     },
     {
-        "merged": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/build/intermediates/res/merged/debug/layout_sun.xml.flat",
-        "source": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/res/layout/sun.xml"
+        "merged": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\layout_thunder.xml.flat",
+        "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\layout\\thunder.xml"
     },
     {
-        "merged": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/build/intermediates/res/merged/debug/layout_activity_main.xml.flat",
-        "source": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/res/layout/activity_main.xml"
+        "merged": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\layout_cloud.xml.flat",
+        "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\layout\\cloud.xml"
     },
     {
-        "merged": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/build/intermediates/res/merged/debug/drawable-mdpi_ic_launcher.png.flat",
-        "source": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/res/drawable-mdpi/ic_launcher.png"
+        "merged": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\menu_main.xml.flat",
+        "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\menu\\main.xml"
     },
     {
-        "merged": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/build/intermediates/res/merged/debug/layout_cloud_fog.xml.flat",
-        "source": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/res/layout/cloud_fog.xml"
+        "merged": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\layout_cloud_fog.xml.flat",
+        "source": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\layout\\cloud_fog.xml"
     },
     {
-        "merged": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/build/intermediates/res/merged/debug/layout_cloud_rain.xml.flat",
-        "source": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/res/layout/cloud_rain.xml"
+        "merged": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\drawable-xxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/build/intermediates/res/merged/debug/drawable-xhdpi_ic_launcher.png.flat",
-        "source": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/res/drawable-xhdpi/ic_launcher.png"
+        "merged": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\layout_cloud_moon.xml.flat",
+        "source": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\layout\\cloud_moon.xml"
     },
     {
-        "merged": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/build/intermediates/res/merged/debug/layout_wind.xml.flat",
-        "source": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/res/layout/wind.xml"
+        "merged": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
     },
     {
-        "merged": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/build/intermediates/res/merged/debug/layout_moon.xml.flat",
-        "source": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/res/layout/moon.xml"
+        "merged": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\layout_sun.xml.flat",
+        "source": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\layout\\sun.xml"
     },
     {
-        "merged": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/build/intermediates/res/merged/debug/layout_cloud.xml.flat",
-        "source": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/res/layout/cloud.xml"
+        "merged": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\layout_cloud_hvrain.xml.flat",
+        "source": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\layout\\cloud_hvrain.xml"
     },
     {
-        "merged": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/build/intermediates/res/merged/debug/layout_cloud_snow.xml.flat",
-        "source": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/res/layout/cloud_snow.xml"
+        "merged": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-        "merged": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/build/intermediates/res/merged/debug/layout_thunder.xml.flat",
-        "source": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/res/layout/thunder.xml"
+        "merged": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\layout_wind.xml.flat",
+        "source": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\layout\\wind.xml"
+    },
+    {
+        "merged": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\layout_cloud_snow.xml.flat",
+        "source": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\layout\\cloud_snow.xml"
+    },
+    {
+        "merged": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\drawable-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\layout_all_views.xml.flat",
+        "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\layout\\all_views.xml"
+    },
+    {
+        "merged": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\drawable-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\layout_moon.xml.flat",
+        "source": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\layout\\moon.xml"
+    },
+    {
+        "merged": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\layout_wind.xml.flat",
+        "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\layout\\wind.xml"
+    },
+    {
+        "merged": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\layout_cloud_snow.xml.flat",
+        "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\layout\\cloud_snow.xml"
+    },
+    {
+        "merged": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\menu_main.xml.flat",
+        "source": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\menu\\main.xml"
+    },
+    {
+        "merged": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\layout_sun.xml.flat",
+        "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\layout\\sun.xml"
+    },
+    {
+        "merged": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\layout_moon.xml.flat",
+        "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\layout\\moon.xml"
+    },
+    {
+        "merged": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\layout_cloud_rain.xml.flat",
+        "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\layout\\cloud_rain.xml"
+    },
+    {
+        "merged": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\drawable-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\drawable-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\layout_cloud_hvrain.xml.flat",
+        "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\layout\\cloud_hvrain.xml"
+    },
+    {
+        "merged": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\layout_cloud_sun.xml.flat",
+        "source": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\layout\\cloud_sun.xml"
+    },
+    {
+        "merged": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\layout_cloud_moon.xml.flat",
+        "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\layout\\cloud_moon.xml"
+    },
+    {
+        "merged": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\res\\merged\\debug\\layout_all_views.xml.flat",
+        "source": "C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\layout\\all_views.xml"
     }
 ]

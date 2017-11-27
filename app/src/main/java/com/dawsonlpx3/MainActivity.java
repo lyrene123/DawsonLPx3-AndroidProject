@@ -94,13 +94,6 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt("fragment", R.id.side_frame);
-    }
-
-
     /**
      * Check the Shared Preferences and verify if the user's credential exist. If
      * yes, then store them as constants and if none existing, then launch the Register
@@ -190,7 +183,7 @@ public class MainActivity extends AppCompatActivity
                     .commit();
         } else if (id == R.id.nav_classCancel) {
             fragmentManager.beginTransaction()
-                    .replace(R.id.side_frame, frag)
+                    .replace(R.id.side_frame, new SettingsActivity())
                     .commit();
         } else if (id == R.id.nav_findTeacher) {
             Fragment frag = new FindTeacherFragment();
@@ -198,7 +191,7 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.side_frame, frag)
                     .commit();
         } else if (id == R.id.nav_addToCalendar) {
-            Fragment frag = new CalendarActivity();
+            Fragment frag = new AddToCalendarFragment();
             fragmentManager.beginTransaction()
                     .replace(R.id.side_frame, frag)
                     .commit();

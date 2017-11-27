@@ -74,6 +74,8 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textColor="@color/colorAccent" />
+
+
     <WebView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/academicWebview"
         android:layout_below="@id/calendarErrorMsg"

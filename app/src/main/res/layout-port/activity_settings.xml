@@ -50,7 +50,7 @@
         android:weightSum="2"
         android:orientation="horizontal">
         <TextView
-            style="@style/AppTheme.Text_M"
+            style="@style/AppTheme.Text_L"
             android:id="@+id/last_modified_label"
             android:text="@string/last_modified_label"
             android:layout_width="0dp"
@@ -58,6 +58,7 @@
             android:layout_weight="1"
             android:textAlignment="textEnd"/>
         <TextView
+            style="@style/AppTheme.Text_L"
             android:id="@+id/last_modified_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

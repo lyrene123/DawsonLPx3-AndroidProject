@@ -1,44 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
-                    "source": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\values\\dimens.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "90,149",
-                        "endColumns": "57,55",
-                        "endOffsets": "143,200"
-                    },
-                    "to": {
-                        "startLines": "3,4",
-                        "startColumns": "4,4",
-                        "startOffsets": "236,294",
-                        "endColumns": "57,55",
-                        "endOffsets": "289,345"
-                    }
-                },
-                {
-                    "source": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\values\\strings.xml",
-                    "from": {
-                        "startLines": "5,3,4",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "159,59,105",
-                        "endColumns": "52,44,52",
-                        "endOffsets": "207,99,153"
-                    },
-                    "to": {
-                        "startLines": "5,6,8",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "350,403,522",
-                        "endColumns": "52,44,52",
-                        "endOffsets": "398,443,570"
-                    }
-                },
-                {
-                    "source": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconsLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconsLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "from": {
                         "startLines": "7",
                         "startColumns": "4",
@@ -55,65 +21,7 @@
                     }
                 },
                 {
-                    "source": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\values\\styles.xml",
-                    "from": {
-                        "startLines": "3",
-                        "startColumns": "4",
-                        "startOffsets": "57",
-                        "endLines": "5",
-                        "endColumns": "12",
-                        "endOffsets": "187"
-                    },
-                    "to": {
-                        "startLines": "9",
-                        "startColumns": "4",
-                        "startOffsets": "575",
-                        "endLines": "11",
-                        "endColumns": "12",
-                        "endOffsets": "703"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
-            "map": [
-                {
-                    "source": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/res/values/dimens.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "88,146",
-                        "endColumns": "57,55",
-                        "endOffsets": "141,197"
-                    },
-                    "to": {
-                        "startLines": "3,4",
-                        "startColumns": "4,4",
-                        "startOffsets": "236,294",
-                        "endColumns": "57,55",
-                        "endOffsets": "289,345"
-                    }
-                },
-                {
-                    "source": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/build/intermediates/bundles/debug/res/values/values.xml",
-                    "from": {
-                        "startLines": "7",
-                        "startColumns": "4",
-                        "startOffsets": "455",
-                        "endColumns": "73",
-                        "endOffsets": "524"
-                    },
-                    "to": {
-                        "startLines": "7",
-                        "startColumns": "4",
-                        "startOffsets": "448",
-                        "endColumns": "73",
-                        "endOffsets": "517"
-                    }
-                },
-                {
-                    "source": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/res/values/styles.xml",
+                    "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\values\\styles.xml",
                     "from": {
                         "startLines": "3",
                         "startColumns": "4",
@@ -132,7 +40,24 @@
                     }
                 },
                 {
-                    "source": "/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/src/main/res/values/strings.xml",
+                    "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\values\\dimens.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "88,146",
+                        "endColumns": "57,55",
+                        "endOffsets": "141,197"
+                    },
+                    "to": {
+                        "startLines": "3,4",
+                        "startColumns": "4,4",
+                        "startOffsets": "236,294",
+                        "endColumns": "57,55",
+                        "endOffsets": "289,345"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\values\\strings.xml",
                     "from": {
                         "startLines": "5,3,4",
                         "startColumns": "4,4,4",
@@ -146,6 +71,156 @@
                         "startOffsets": "350,403,522",
                         "endColumns": "52,44,52",
                         "endOffsets": "398,443,570"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "187"
+                    },
+                    "to": {
+                        "startLines": "9",
+                        "startColumns": "4",
+                        "startOffsets": "575",
+                        "endLines": "11",
+                        "endColumns": "12",
+                        "endOffsets": "703"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\values\\dimens.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "90,149",
+                        "endColumns": "57,55",
+                        "endOffsets": "143,200"
+                    },
+                    "to": {
+                        "startLines": "3,4",
+                        "startColumns": "4,4",
+                        "startOffsets": "236,294",
+                        "endColumns": "57,55",
+                        "endOffsets": "289,345"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconsLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "7",
+                        "startColumns": "4",
+                        "startOffsets": "455",
+                        "endColumns": "73",
+                        "endOffsets": "524"
+                    },
+                    "to": {
+                        "startLines": "7",
+                        "startColumns": "4",
+                        "startOffsets": "448",
+                        "endColumns": "73",
+                        "endOffsets": "517"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "5,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "159,59,105",
+                        "endColumns": "52,44,52",
+                        "endOffsets": "207,99,153"
+                    },
+                    "to": {
+                        "startLines": "5,6,8",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "350,403,522",
+                        "endColumns": "52,44,52",
+                        "endOffsets": "398,443,570"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\Philippe\\Desktop\\lr\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Philippe\\Desktop\\lr\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconsLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "7",
+                        "startColumns": "4",
+                        "startOffsets": "455",
+                        "endColumns": "73",
+                        "endOffsets": "524"
+                    },
+                    "to": {
+                        "startLines": "7",
+                        "startColumns": "4",
+                        "startOffsets": "448",
+                        "endColumns": "73",
+                        "endOffsets": "517"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Philippe\\Desktop\\lr\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\values\\dimens.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "90,149",
+                        "endColumns": "57,55",
+                        "endOffsets": "143,200"
+                    },
+                    "to": {
+                        "startLines": "3,4",
+                        "startColumns": "4,4",
+                        "startOffsets": "236,294",
+                        "endColumns": "57,55",
+                        "endOffsets": "289,345"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Philippe\\Desktop\\lr\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "5,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "159,59,105",
+                        "endColumns": "52,44,52",
+                        "endOffsets": "207,99,153"
+                    },
+                    "to": {
+                        "startLines": "5,6,8",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "350,403,522",
+                        "endColumns": "52,44,52",
+                        "endOffsets": "398,443,570"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Philippe\\Desktop\\lr\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "187"
+                    },
+                    "to": {
+                        "startLines": "9",
+                        "startColumns": "4",
+                        "startOffsets": "575",
+                        "endLines": "11",
+                        "endColumns": "12",
+                        "endOffsets": "703"
                     }
                 }
             ]

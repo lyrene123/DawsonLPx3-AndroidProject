@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.side_frame, new HomeFragment())
                     .commit();
         } else if (id == R.id.nav_classCancel) {
-            Fragment frag = new CalendarActivity();
+            Fragment frag = new AddToCalendarFragment();
             fragmentManager.beginTransaction()
                     .replace(R.id.side_frame, new SettingsActivity())
                     .commit();

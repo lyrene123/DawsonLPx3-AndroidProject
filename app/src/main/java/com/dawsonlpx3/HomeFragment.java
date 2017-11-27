@@ -76,6 +76,10 @@ public class HomeFragment extends Fragment {
 
         ImageButton noteImageBtn = (ImageButton) view.findViewById(R.id.noteImageButton);
         noteImageBtn.setOnClickListener(showNote);
+
+        ImageButton teamLogo = (ImageButton) view.findViewById(R.id.teamLogo);
+        teamLogo.setOnClickListener(showAboutPage);
+
         // Example of how to set the weather with temperature
         setWeatherLayout(view, "NIGHT", "30");
     }
@@ -95,6 +99,7 @@ public class HomeFragment extends Fragment {
     };
 
     /**
+     *
      * Show Weather fragment
      */
     private View.OnClickListener showWeather = new View.OnClickListener() {
@@ -167,6 +172,21 @@ public class HomeFragment extends Fragment {
         public void onClick(View view) {
             getFragmentManager().beginTransaction()
                     .replace(R.id.side_frame, new NotesFragment())
+                    .addToBackStack(null)
+                    .commit();
+        }
+    };
+
+    /**
+     * Show About Page
+     *
+     * @param view
+     */
+    private View.OnClickListener showAboutPage = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.side_frame, new AboutFragment())
                     .addToBackStack(null)
                     .commit();
         }

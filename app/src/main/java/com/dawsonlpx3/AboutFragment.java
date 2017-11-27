@@ -16,8 +16,8 @@ import android.widget.TextView;
 
 /**
  * Fragment activity that handles the display of the about activity for the user and the interaction
- * with the user. Handles the onclick events of the iamges of the team members and the click event
- * of the course if. When a team member is clicked on, then their respective blurb will be displayed
+ * with the user. Handles the onclick events of the images of the team members and the click event
+ * of the course id. When a team member is clicked on, then their respective blurb will be displayed
  * in a dialog. If the course if is clicked, then the CompSci dawson web page will display.
  *
  * @author Lyrene Labor

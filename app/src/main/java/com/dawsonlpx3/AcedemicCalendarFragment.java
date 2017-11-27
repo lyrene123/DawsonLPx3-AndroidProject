@@ -9,10 +9,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -69,7 +71,7 @@ public class AcedemicCalendarFragment extends Fragment implements View.OnClickLi
     /**
      * Inflates the layout of the fragment into the view.
      *
-     * @param inflater LayoutInflater onject
+     * @param inflater LayoutInflater onjectg
      * @param container ViewGroup object
      * @param savedInstanceState Bundle object
      * @return The view containing the fragment
@@ -158,6 +160,7 @@ public class AcedemicCalendarFragment extends Fragment implements View.OnClickLi
                 }
                 //retrieve the input year
                 String chosenYear = yearET.getText().toString();
+
                 //build url and then load url
                 String url = getResources().getString(R.string.academicurl) + "/" + chosenSem + "-" + chosenYear + "-day-division/";
                 webview.setWebViewClient(new WebViewClient());

@@ -62,6 +62,7 @@
                         android:background="@xml/border">
 
                         <ImageButton
+                            android:id="@+id/weatherImageButton"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="fitXY"
@@ -94,6 +95,7 @@
                         android:background="@xml/border">
 
                         <ImageButton
+                            android:id="@+id/findTeacherImageButton"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="fitXY"
@@ -126,6 +128,7 @@
                         android:background="@xml/border">
 
                         <ImageButton
+                            android:id="@+id/calendarImageButton"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="fitXY"

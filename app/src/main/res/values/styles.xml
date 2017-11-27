@@ -25,6 +25,10 @@
         <item name="android:textSize">16sp</item>
         <item name="android:padding">8dp</item>
     </style>
+    <style name="AppTheme.Text_L">
+        <item name="android:textSize">20sp</item>
+        <item name="android:padding">13dp</item>
+    </style>
     <string name="AppTheme.Error">
         <item name="android:textSize">16sp</item>
         <item name="android:padding">8dp</item>
@@ -53,4 +57,7 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+    </style>
 </resources>

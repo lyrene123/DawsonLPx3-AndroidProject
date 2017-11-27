@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_classCancel) {
             Fragment frag = new CalendarActivity();
             fragmentManager.beginTransaction()
-                    .replace(R.id.side_frame, frag)
+                    .replace(R.id.side_frame, new SettingsActivity())
                     .commit();
         } else if (id == R.id.nav_findTeacher) {
             Fragment frag = new FindTeacherFragment();
@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.side_frame, frag)
                     .commit();
         } else if (id == R.id.nav_addToCalendar) {
-            Fragment frag = new CalendarActivity();
+            Fragment frag = new AddToCalendarFragment();
             fragmentManager.beginTransaction()
                     .replace(R.id.side_frame, frag)
                     .commit();

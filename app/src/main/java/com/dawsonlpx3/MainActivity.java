@@ -293,4 +293,5 @@ public class MainActivity extends AppCompatActivity
         Fragment frag = getFragmentManager().findFragmentById(R.id.side_frame);
         return frag;
     }
+
 }

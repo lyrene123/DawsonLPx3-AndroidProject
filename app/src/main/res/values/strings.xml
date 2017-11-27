@@ -102,4 +102,5 @@
     <string name="cancel_settings_body">Are you sure you want to leave without saving?</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="invalid_weather">That city/country combination is invalid.</string>
 </resources>

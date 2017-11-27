@@ -28,6 +28,7 @@
 
         <TextView
             style="@style/AppTheme.Text_M"
+            android:textSize="@dimen/note_font"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/noteDetailTextView"/>

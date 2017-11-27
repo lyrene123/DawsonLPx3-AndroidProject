@@ -1,7 +1,0 @@
-#Internal package file, do not edit.
-#Mon Nov 27 00:43:25 EST 2017
-0.baseType=DIRECTORY
-0.base=C\:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\transforms\\dexMerger\\debug\\0
-0.path=classes.dex
-0.set=DEX
-count=1

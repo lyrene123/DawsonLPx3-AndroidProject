@@ -2,6 +2,8 @@ package com.dawsonlpx3;
 
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
+
 import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,7 +18,7 @@ import java.net.URL;
  *
  *  @authors Philippe Langlois, Lyrene Labor, Peter Bellefleur, Pengkim Sy
  */
-public class TemperatureAsyncTask extends AsyncTask<String, Void, String> {
+public class TemperatureAsyncTask extends AsyncTask<String, Void, String[]> {
 
     private String lat;
     private String lon;
@@ -51,7 +53,7 @@ public class TemperatureAsyncTask extends AsyncTask<String, Void, String> {
      * @param result
      */
     @Override
-    protected void onPostExecute(String result){
+    protected void onPostExecute(String[] result){
         Log.d(TAG, "TemperatureTask: onPostExecute");
     } // onPostExecute()
 
@@ -62,9 +64,9 @@ public class TemperatureAsyncTask extends AsyncTask<String, Void, String> {
      * @return
      */
     @Override
-    protected String doInBackground(String... params) {
+    protected String[] doInBackground(String... params) {
         Log.d(TAG, "TemperatureTask: doInBackground");
-        String temperature = "";
+        String[] tempArray = null;
         HttpURLConnection conn = null;
         BufferedReader reader = null;
         try {
@@ -85,7 +87,7 @@ public class TemperatureAsyncTask extends AsyncTask<String, Void, String> {
             Log.d(TAG, "Response Code: " +Integer.toString(response));
             if(response != HttpURLConnection.HTTP_OK){
                 Log.d(TAG, "Aborting read. Response was not 200");
-                return "Server Returned: " +Integer.toString(response);
+                return null;
             }
 
             // Read data from the response.
@@ -112,8 +114,10 @@ public class TemperatureAsyncTask extends AsyncTask<String, Void, String> {
             Log.d(TAG, "temperature in C: " +Double.toString(tempCelsius));
 
             // Final value as a string with symbol for Celsius
-            temperature = "Current temperature in your area: " +Double.toString(tempCelsius)
-                        +"\u00b0" +"C";
+            String temperature = Double.toString(tempCelsius);
+
+            String weather = Integer.toString(jObj.getJSONArray("weather").getJSONObject(0).getInt("id"));
+            tempArray = new String[]{temperature, weather};
 
         }catch(Exception e){
             Log.d(TAG, e.getMessage());
@@ -137,6 +141,6 @@ public class TemperatureAsyncTask extends AsyncTask<String, Void, String> {
                 }
             }
         }
-        return temperature;
+        return tempArray;
     } // doInBackground()
 } // TemperatureTask

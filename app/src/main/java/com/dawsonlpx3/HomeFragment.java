@@ -8,6 +8,7 @@ import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dawsonlpx3.find_teacher_feature.FindTeacherFragment;
 import com.thbs.skycons.library.CloudFogView;
@@ -30,8 +32,11 @@ import com.thbs.skycons.library.MoonView;
 import com.thbs.skycons.library.SunView;
 import com.thbs.skycons.library.WindView;
 
+import static android.content.ContentValues.TAG;
+
 public class HomeFragment extends Fragment {
 
+    private final String TAG = "HomeFragment";
     /**
      * Inflate the fragment_home layout. This fragment will replace the
      * side_frame in the MainActivity
@@ -45,6 +50,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_home, container, false);
+
     }
 
     /**
@@ -80,10 +86,44 @@ public class HomeFragment extends Fragment {
         ImageButton teamLogo = (ImageButton) view.findViewById(R.id.teamLogo);
         teamLogo.setOnClickListener(showAboutPage);
 
-        // Example of how to set the weather with temperature
-        setWeatherLayout(view, "NIGHT", "30");
+
+
+        GPSTracker gps = new GPSTracker(this.getActivity());
+        gps.getLocation();
+        String lat = Double.toString(gps.getLatitude());
+        String lon = Double.toString(gps.getLongitude());
+
+        try {
+            TemperatureAsyncTask tempTask = new TemperatureAsyncTask(lat, lon);
+            tempTask.execute();
+            String[] temperature = tempTask.get();
+            String weather = determineWeatherById(temperature[1]);
+            setWeatherLayout(view, weather, temperature[0]);
+        }catch(Exception e){
+            Log.e(TAG, "error: " + e.getMessage());
+        }
     }
 
+    private String determineWeatherById(String id) {
+        int firstNumber = Integer.parseInt(id.substring(0, 1));
+        switch (firstNumber) {
+            case 2:
+                return "THUNDER";
+            case 3:
+            case 5:
+                return "HEAVY_RAIN";
+            case 6:
+                return "SNOW";
+            case 7:
+                return "FOG";
+            case 8:
+                return "CLOUDY";
+            case 9:
+                return "WINDY";
+        }
+
+        return "SUNNY";
+    }
 
     /**
      * Show Dawson Computer Science web page on a browser
@@ -235,18 +275,6 @@ public class HomeFragment extends Fragment {
                 break;
             case "SUNNY":
                 view = new SunView(this.getActivity(),false,false
-                        , Color.rgb(0,0,139), Color.WHITE);
-                break;
-            case "NIGHT":
-                view = new MoonView(this.getActivity(),false,false
-                        , Color.rgb(0,0,139), Color.WHITE);
-                break;
-            case "PARTLY_CLOUDY_DAY":
-                view = new CloudSunView(this.getActivity(),false,false
-                        , Color.rgb(0,0,139), Color.WHITE);
-                break;
-            case "PARTY_CLOUDY_NIGHT":
-                view = new CloudMoonView(this.getActivity(),false,false
                         , Color.rgb(0,0,139), Color.WHITE);
                 break;
             case "HEAVY_RAIN":

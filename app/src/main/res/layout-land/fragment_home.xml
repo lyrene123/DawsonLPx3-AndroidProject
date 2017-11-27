@@ -62,9 +62,11 @@
                         android:background="@xml/border">
 
                         <ImageButton
+                            android:id="@+id/weatherImageButton"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="fitXY"
+                            android:onClick="showWeather"
                             android:src="@drawable/weather" />
 
                         <LinearLayout
@@ -94,6 +96,7 @@
                         android:background="@xml/border">
 
                         <ImageButton
+                            android:id="@+id/findTeacherImageButton"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="fitXY"
@@ -126,6 +129,7 @@
                         android:background="@xml/border">
 
                         <ImageButton
+                            android:id="@+id/calendarImageButton"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="fitXY"
@@ -158,6 +162,7 @@
                         android:background="@xml/border">
 
                         <ImageButton
+                            android:id="@+id/acedemicCalendarImageButton"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:scaleType="fitXY"
@@ -190,6 +195,7 @@
                         android:background="@xml/border">
 
                         <ImageButton
+                            android:id="@+id/classCancelImageButton"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="fitXY"
@@ -222,6 +228,7 @@
                         android:background="@xml/border">
 
                         <ImageButton
+                            android:id="@+id/noteImageButton"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="fitXY"

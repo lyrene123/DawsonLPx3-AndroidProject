@@ -113,10 +113,12 @@
     I love the most in this world is coding and food!</string>
     <string name="peng">Pengkim Sy</string>
     <string name="peng_des">I\'m an aspiring coder who travelled all the way from Cambodia to Canada to study
-        to become a programmer. I can't wait to graduate and start building innovations!</string>
+        to become a programmer. I can\'t wait to graduate and start creating innovations!</string>
     <string name="phil">Phil Langlois</string>
     <string name="phil_des">Got bored studying Physics at Concordia, so I decided to spent my time  on the computer more wisely.</string>
     <string name="peter">Peter Bellefleur</string>
     <string name="peter_des">Hello there! I\'m Peter and I have a passion for coding and creating new things. I am in my last
-    year of my studies in Computer Science at Dawson College and I'm happy to be learning so much things... specially in my Android class!</string>
+    year of my studies in Computer Science at Dawson College and I\'m happy to be learning so much things, specially in my Android class!</string>
+    <string name="blurb_title">About</string>
+    <string name="dismiss">OK</string>
 </resources>

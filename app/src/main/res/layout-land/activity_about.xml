@@ -72,25 +72,25 @@
                 android:scrollbars="none" >
                 <LinearLayout
                     android:id="@+id/innerLay"
+                    android:layout_marginLeft="10dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:weightSum="4">
+                    android:orientation="horizontal">
                     <LinearLayout
                         android:id="@+id/lyreneLL"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
+                        android:orientation="vertical">
                         <FrameLayout
                             android:layout_width="200dp"
                             android:layout_height="200dp"
                             android:orientation="vertical"
                             android:background="@xml/border">
 
-                            <ImageButton
+                            <ImageView
+                                android:id="@+id/lyreneIV"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:scaleType="fitCenter"
@@ -117,15 +117,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
+                        android:orientation="vertical">
                         <FrameLayout
                             android:layout_width="200dp"
                             android:layout_height="200dp"
                             android:orientation="vertical"
                             android:background="@xml/border">
 
-                            <ImageButton
+                            <ImageView
+                                android:id="@+id/pengIV"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:scaleType="fitCenter"
@@ -152,15 +152,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
+                        android:orientation="vertical">
                         <FrameLayout
                             android:layout_width="200dp"
                             android:layout_height="200dp"
                             android:orientation="vertical"
                             android:background="@xml/border">
 
-                            <ImageButton
+                            <ImageView
+                                android:id="@+id/philIV"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:scaleType="fitCenter"
@@ -187,15 +187,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
+                        android:orientation="vertical">
                         <FrameLayout
                             android:layout_width="200dp"
                             android:layout_height="200dp"
                             android:orientation="vertical"
                             android:background="@xml/border">
 
-                            <ImageButton
+                            <ImageView
+                                android:id="@+id/peterIV"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:scaleType="fitCenter"

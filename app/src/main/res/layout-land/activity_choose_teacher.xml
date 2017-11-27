@@ -15,6 +15,7 @@
         android:text="@string/teachers"/>
 
     <ListView
+        style="@style/AppTheme.List_Item"
         android:id="@+id/teachersLV"
         android:layout_below="@id/teacherTV"
         android:layout_width="wrap_content"

@@ -9,7 +9,7 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_centerHorizontal="true">
         <TextView
             style="@style/AppTheme.Title"
@@ -19,52 +19,23 @@
             android:layout_centerHorizontal="true"
             android:text="@string/findTeacher"/>
 
-        <LinearLayout
-            android:id="@+id/firstnameLL"
-            android:layout_below="@+id/radioLL"
+        <EditText
+            style="@style/AppTheme.Text_L"
+            android:id="@+id/firstnameEditText"
+            android:hint="@string/firstname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="5">
+            android:layout_below="@id/radioLL" />
 
-            <TextView
-                style="@style/AppTheme.Text_M"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/firstname"
-                android:textAlignment="textEnd" />
-
-            <EditText
-                style="@style/AppTheme.Text_M"
-                android:id="@+id/firstnameEditText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2" />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/lastnameLL"
-            android:layout_below="@id/firstnameLL"
+        <EditText
+            android:id="@+id/lastnameEditText"
+            style="@style/AppTheme.Text_L"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="5">
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/firstnameEditText"
+            android:hint="@string/lastname" />
 
-            <TextView
-                style="@style/AppTheme.Text_M"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/lastname"
-                android:textAlignment="textEnd" />
-
-            <EditText
-                style="@style/AppTheme.Text_M"
-                android:id="@+id/lastnameEditText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2" />
-        </LinearLayout>
         <LinearLayout
             android:id="@+id/radioLL"
             android:layout_below="@id/findTeacher"
@@ -107,13 +78,15 @@
 
             </RadioGroup>
         </LinearLayout>
+
         <Button
             android:id="@+id/search_button"
-            android:layout_below="@id/lastnameLL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="@string/search"/>
+            android:layout_below="@+id/lastnameEditText"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="@string/search" />
         <TextView
             android:id="@+id/errorMsgTV"
             android:layout_below="@id/search_button"

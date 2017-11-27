@@ -17,6 +17,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.dawsonlpx3.find_teacher_feature.FindTeacherFragment;
 import com.thbs.skycons.library.CloudFogView;
 import com.thbs.skycons.library.CloudHvRainView;
 import com.thbs.skycons.library.CloudMoonView;
@@ -55,12 +56,30 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ImageButton dawsonImageView = (ImageButton) view.findViewById(R.id.dawsonImageView);
-        dawsonImageView.setOnClickListener(showDawsonWeb);
+        ImageButton dawsonImageBtn = (ImageButton) view.findViewById(R.id.dawsonImageView);
+        dawsonImageBtn.setOnClickListener(showDawsonWeb);
 
+        ImageButton weatherImageBtn = (ImageButton) view.findViewById(R.id.weatherImageButton);
+        weatherImageBtn.setOnClickListener(showWeather);
+
+        ImageButton findTeacherImageBtn = (ImageButton) view.findViewById(R.id.findTeacherImageButton);
+        findTeacherImageBtn.setOnClickListener(showFindTeacher);
+
+        ImageButton calendarImageBtn = (ImageButton) view.findViewById(R.id.calendarImageButton);
+        calendarImageBtn.setOnClickListener(showAddToCalendar);
+
+        ImageButton acedemicCalendarImageBtn = (ImageButton) view.findViewById(R.id.acedemicCalendarImageButton);
+        acedemicCalendarImageBtn.setOnClickListener(showAcedemicCalendar);
+
+        ImageButton classCancelledImageBtn = (ImageButton) view.findViewById(R.id.classCancelImageButton);
+        classCancelledImageBtn.setOnClickListener(showClassCancelled);
+
+        ImageButton noteImageBtn = (ImageButton) view.findViewById(R.id.noteImageButton);
+        noteImageBtn.setOnClickListener(showNote);
         // Example of how to set the weather with temperature
         setWeatherLayout(view, "NIGHT", "30");
     }
+
 
     /**
      * Show Dawson Computer Science web page on a browser
@@ -72,6 +91,84 @@ public class HomeFragment extends Fragment {
             Intent intent = new Intent(Intent.ACTION_VIEW,
                     Uri.parse("https://www.dawsoncollege.qc.ca/computer-science-technology/"));
             startActivity(intent);
+        }
+    };
+
+    /**
+     * Show Weather fragment
+     */
+    private View.OnClickListener showWeather = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.side_frame, new WeatherActivity())
+                    .addToBackStack(null)
+                    .commit();
+        }
+    };
+
+    /**
+     * Show Find Teacher fragment
+     */
+    private View.OnClickListener showFindTeacher = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.side_frame, new FindTeacherFragment())
+                    .addToBackStack(null)
+                    .commit();
+        }
+    };
+
+    /**
+     * Show Add To Calendar fragment
+     */
+    private View.OnClickListener showAddToCalendar = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.side_frame, new AddToCalendarFragment())
+                    .addToBackStack(null)
+                    .commit();
+        }
+    };
+
+    /**
+     * Show Acedemic Calendar fragment
+     */
+    private View.OnClickListener showAcedemicCalendar = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.side_frame, new FindTeacherFragment())
+                    .addToBackStack(null)
+                    .commit();
+        }
+    };
+
+    /**
+     * Show class cancelled fragment
+     */
+    private View.OnClickListener showClassCancelled = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.side_frame, new CanceledActivity())
+                    .addToBackStack(null)
+                    .commit();
+        }
+    };
+
+    /**
+     * Show Note fragment
+     */
+    private View.OnClickListener showNote = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.side_frame, new NotesFragment())
+                    .addToBackStack(null)
+                    .commit();
         }
     };
 

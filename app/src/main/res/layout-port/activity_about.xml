@@ -73,6 +73,7 @@
 
                 <ImageView
                     android:layout_width="0dp"
+                    android:id="@+id/lyreneIV"
                     android:layout_height="wrap_content"
                     android:layout_margin="0dp"
                     android:layout_weight="1"

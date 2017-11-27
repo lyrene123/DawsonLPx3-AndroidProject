@@ -211,7 +211,10 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.side_frame, frag)
                     .commit();
         } else if (id == R.id.nav_about) {
-
+            Fragment frag = new AboutFragment();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.side_frame, frag)
+                    .commit();
         } else if (id == R.id.nav_setting) {
             Fragment frag = new SettingsActivity();
             fragmentManager.beginTransaction()

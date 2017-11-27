@@ -29,8 +29,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -262,6 +264,13 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
                 // Set all the values for the cells in teh weatherActivity forecast.
                 try {
                     for(int i = 0; i < columns.length; i++){
+
+                        TextView tv0 = (TextView) columns[i].getChildAt(0);
+                        Long dateEpoch = result[i].getLong("dt");
+                        Date date = new Date(dateEpoch*1000);
+                        SimpleDateFormat format = new SimpleDateFormat("MMM-dd h:mma");
+                        tv0.setText(format.format(date));
+
                         TextView tv1 = (TextView) columns[i].getChildAt(1);
                         d = result[i].getJSONObject("main").getDouble("temp")-273.15;
                         d = (double)Math.round((d) * 10) / 10;

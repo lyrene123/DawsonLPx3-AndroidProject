@@ -3,6 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.dawsonlpx3.AddToCalendarFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <RelativeLayout
         android:layout_below="@id/headerRL"
@@ -10,12 +13,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <TextView
+            style="@style/AppTheme.Title"
+            android:id="@+id/addCalendarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nav_addToCalendar"
+            android:layout_centerHorizontal="true"/>
+
         <EditText
             style="@style/AppTheme.Text_L"
             android:id="@+id/titleEditText"
-            android:layout_alignParentTop="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/addCalendarTitle"
             android:hint="@string/title"/>
 
         <EditText
@@ -67,5 +78,6 @@
             android:text="@string/addToCalendar"
             android:layout_alignParentRight="true"/>
     </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

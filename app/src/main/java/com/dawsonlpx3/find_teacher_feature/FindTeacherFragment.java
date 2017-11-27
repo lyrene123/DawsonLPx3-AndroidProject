@@ -2,6 +2,7 @@ package com.dawsonlpx3.find_teacher_feature;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,6 +53,7 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
     private boolean isSearched, isExact, isOnSavedInstanceState;
 
     private GetTeachersTask teachersTask;
+    private ProgressDialog dialog;
 
     private final String TAG = "DawsonLPx3-FindTeacher";
 
@@ -65,6 +68,7 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dialog = new ProgressDialog(getActivity());
         Log.d(TAG, "onCreate started");
         fbManager = FirebaseManagerUtil.getFirebaseManager();
         if(savedInstanceState != null){
@@ -159,7 +163,7 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
             //start seperate async task for querying the db
             this.teachersTask = new GetTeachersTask();
             this.teachersTask.execute();
-            Toast.makeText(getActivity(), getResources().getString(R.string.searchTeachers), Toast.LENGTH_LONG).show();
+            //Toast.makeText(getActivity(), getResources().getString(R.string.searchTeachers), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -178,6 +182,10 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
         isSearched = false;
         Log.d(TAG, "num of teacher records: " + teachers.size());
         Log.d(TAG, "task: " + teachersTask + " isSaved...: " + isOnSavedInstanceState);
+
+        if (dialog.isShowing()) {
+            dialog.dismiss();
+        }
 
         //inflate the fragments only if the async task is not cancelled and OnSavedInstanceState is not called
         if(teachersTask != null && !this.isOnSavedInstanceState) {
@@ -306,6 +314,14 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
      * matching the search criteria of the user.
      */
     private class GetTeachersTask extends AsyncTask<Void, Void, List<TeacherDetails>> {
+
+        /**
+         * Before the execution of the async task, show the progress bar.
+         */
+        protected void onPreExecute() {
+            dialog.setMessage("Searching teachers...");
+            dialog.show();
+        }
 
         /**
          * Retrieve records from the firebase database matching the search criteria of the user

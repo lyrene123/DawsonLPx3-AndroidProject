@@ -28,12 +28,6 @@ public final class R {
     public static final class menu {
         public static final int main = 0x7f060000;
     }
-    public static final class string {
-        public static final int action_settings = 0x7f070000;
-        public static final int app_name = 0x7f070001;
-        public static final int completeThisField = 0x7f070002;
-        public static final int hello_world = 0x7f070003;
-    }
     public static final class styleable {
         public static final int[] custom_view = { 0x7f010000, 0x7f010001, 0x7f010002 };
         public static final int custom_view_bgColor = 0;

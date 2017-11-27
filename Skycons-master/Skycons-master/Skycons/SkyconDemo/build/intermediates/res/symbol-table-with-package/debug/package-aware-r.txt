@@ -45,8 +45,7 @@ int layout wind 0x7f05000c
 int menu main 0x7f060000
 int string action_settings 0x7f070000
 int string app_name 0x7f070001
-int string completeThisField 0x7f070002
-int string hello_world 0x7f070003
+int string hello_world 0x7f070002
 int style AppTheme 0x7f080000
 int[] styleable custom_view { 0x7f010000, 0x7f010001, 0x7f010002 }
 int styleable custom_view_bgColor 0

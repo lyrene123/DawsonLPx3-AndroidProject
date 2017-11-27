@@ -58,6 +58,9 @@ public class HomeFragment extends Fragment {
         ImageButton dawsonImageView = (ImageButton) view.findViewById(R.id.dawsonImageView);
         dawsonImageView.setOnClickListener(showDawsonWeb);
 
+        ImageButton teamLogo = (ImageButton) view.findViewById(R.id.teamLogo);
+        teamLogo.setOnClickListener(showAboutPage);
+
         // Example of how to set the weather with temperature
         setWeatherLayout(view, "NIGHT", "30");
     }
@@ -72,6 +75,21 @@ public class HomeFragment extends Fragment {
             Intent intent = new Intent(Intent.ACTION_VIEW,
                     Uri.parse("https://www.dawsoncollege.qc.ca/computer-science-technology/"));
             startActivity(intent);
+        }
+    };
+
+    /**
+     * Show About Page
+     *
+     * @param view
+     */
+    private View.OnClickListener showAboutPage = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.side_frame, new AboutFragment())
+                    .addToBackStack(null)
+                    .commit();
         }
     };
 

@@ -103,7 +103,7 @@
                                 android:background="@color/black"
                                 android:alpha=".5">
                                 <TextView
-                                    style="@style/AppTheme.Text_M"
+                                    style="@style/AppTheme.Meet_Team_Style"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
@@ -138,7 +138,7 @@
                                 android:background="@color/black"
                                 android:alpha=".5">
                                 <TextView
-                                    style="@style/AppTheme.Text_M"
+                                    style="@style/AppTheme.Meet_Team_Style"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
@@ -173,7 +173,7 @@
                                 android:background="@color/black"
                                 android:alpha=".5">
                                 <TextView
-                                    style="@style/AppTheme.Text_M"
+                                    style="@style/AppTheme.Meet_Team_Style"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
@@ -208,7 +208,7 @@
                                 android:background="@color/black"
                                 android:alpha=".5">
                                 <TextView
-                                    style="@style/AppTheme.Text_M"
+                                    style="@style/AppTheme.Meet_Team_Style"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"

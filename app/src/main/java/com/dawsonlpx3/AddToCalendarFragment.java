@@ -24,6 +24,11 @@ import java.util.Calendar;
  * by completing the form which has Title, Location, Start Date,
  * End Date and Description. When user click addToCalendar button
  * the Google calendar app will show.
+ *
+ * @author Lyrene Labor
+ * @author Pengkim Sy
+ * @author Phil Langloid
+ * @author Peter Bellefleur
  */
 public class AddToCalendarFragment extends Fragment {
 

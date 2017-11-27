@@ -23,10 +23,10 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w820dp-v13\\values-w820dp-v13.xml",
+            "outputFile": "C:\\Users\\Philippe\\Desktop\\lr\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w820dp-v13\\values-w820dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\values-w820dp\\dimens.xml",
+                    "source": "C:\\Users\\Philippe\\Desktop\\lr\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\values-w820dp\\dimens.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "4",
@@ -45,10 +45,10 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\Philippe\\Desktop\\lr\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w820dp-v13\\values-w820dp-v13.xml",
+            "outputFile": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w820dp-v13\\values-w820dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Philippe\\Desktop\\lr\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\values-w820dp\\dimens.xml",
+                    "source": "C:\\Users\\laborlyrene\\AndroidDevLabs\\DawsonLPx3\\C:\\Users\\KimHyonh\\Documents\\Android\\DawsonLPx3\\Skycons-master\\Skycons-master\\Skycons\\SkyconDemo\\src\\main\\res\\values-w820dp\\dimens.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "4",

@@ -16,7 +16,7 @@ import java.util.Calendar;
 public class RegisterActivity extends AppCompatActivity {
 
     private final String TAG = "RegisterActivity";
-    private EditText firstnameET, lastnameET, emailET;
+    private EditText firstnameET, lastnameET, emailET, passwordET;
     private Button registerBtn;
 
     @Override
@@ -27,6 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
         firstnameET = (EditText) findViewById(R.id.firstnameEditText);
         lastnameET = (EditText) findViewById(R.id.lastnameEditText);
         emailET = (EditText) findViewById(R.id.emailEditText);
+        passwordET = (EditText) findViewById(R.id.passwordEditText);
         registerBtn = (Button) findViewById(R.id.registerBtn);
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
@@ -38,6 +39,8 @@ public class RegisterActivity extends AppCompatActivity {
                     editor.putString("fname", firstnameET.getText().toString());
                     editor.putString("lname", lastnameET.getText().toString());
                     editor.putString("email", emailET.getText().toString());
+                    editor.putString("password", passwordET.getText().toString());
+                    editor.putString("timestamp", getDateCurrentTimeZone());
                     editor.commit();
                     Log.i(TAG, "Launch MainActiviyt");
                     startActivity(new Intent(RegisterActivity.this, MainActivity.class));
@@ -67,6 +70,12 @@ public class RegisterActivity extends AppCompatActivity {
         if (emailET.getText().toString().isEmpty()) {
             emailET.setHint(getResources().getString(R.string.completeThisField));
             emailET.setHintTextColor(Color.RED);
+            return false;
+        }
+
+        if (passwordET.getText().toString().isEmpty()) {
+            passwordET.setHint(getResources().getString(R.string.completeThisField));
+            passwordET.setHintTextColor(Color.RED);
             return false;
         }
 

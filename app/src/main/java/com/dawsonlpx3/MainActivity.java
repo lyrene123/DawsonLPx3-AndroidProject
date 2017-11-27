@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity
 
     private final String TAG = "LPx3-Main";
 
-    private String FNAME, LNAME, EMAIL;
+    private String FNAME, LNAME, EMAIL, PASSWORD;
 
     private TeacherContactFragment teacherContactFragment;
 
@@ -94,7 +95,6 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-
     /**
      * Check the Shared Preferences and verify if the user's credential exist. If
      * yes, then store them as constants and if none existing, then launch the Register
@@ -109,13 +109,15 @@ public class MainActivity extends AppCompatActivity
         this.FNAME = prefs.getString("fname", null);
         this.LNAME = prefs.getString("lname", null);
         this.EMAIL = prefs.getString("email", null);
+        this.PASSWORD = prefs.getString("password", null);
 //        this.TIMESTAMP = prefs.getString("timestamp", null);
 
         Log.d(TAG, "firstname: " + prefs.getAll());
         Log.d(TAG, "lastname: " + this.LNAME);
         Log.d(TAG, "email: " + this.EMAIL);
+        Log.d(TAG, "password: " + this.PASSWORD);
         //if no or some credentials missing, then launch the register activity
-        if(this.FNAME == null || this.LNAME == null  || this.EMAIL == null){
+        if(this.FNAME == null || this.LNAME == null  || this.EMAIL == null || this.PASSWORD == null){
             Log.d(TAG,"Launching register activity");
             Intent intent = new Intent(this, RegisterActivity.class);
             startActivity(intent);
@@ -180,19 +182,18 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             getFragmentManager().beginTransaction()
                     .replace(R.id.side_frame, new HomeFragment())
-                    .addToBackStack(null)
                     .commit();
         } else if (id == R.id.nav_classCancel) {
-       //     fragmentManager.beginTransaction()
-        //            .replace(R.id.side_frame, frag)
-         //           .commit();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.side_frame, new CanceledActivity())
+                    .commit();
         } else if (id == R.id.nav_findTeacher) {
             Fragment frag = new FindTeacherFragment();
             fragmentManager.beginTransaction()
                     .replace(R.id.side_frame, frag)
                     .commit();
         } else if (id == R.id.nav_addToCalendar) {
-            Fragment frag = new CalendarActivity();
+            Fragment frag = new AddToCalendarFragment();
             fragmentManager.beginTransaction()
                     .replace(R.id.side_frame, frag)
                     .commit();
@@ -212,14 +213,19 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.side_frame, frag)
                     .commit();
         } else if (id == R.id.nav_about) {
-
+            Fragment frag = new AboutFragment();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.side_frame, frag)
+                    .commit();
         } else if (id == R.id.nav_setting) {
             Fragment frag = new SettingsActivity();
             fragmentManager.beginTransaction()
                     .replace(R.id.side_frame, frag)
                     .commit();
         } else if (id == R.id.nav_dawson) {
-
+            Intent intent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://www.dawsoncollege.qc.ca/computer-science-technology/"));
+            startActivity(intent);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

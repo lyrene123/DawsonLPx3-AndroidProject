@@ -1,0 +1,83 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dawsonlpx3.AddToCalendarFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_below="@id/headerRL"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/AppTheme.Title"
+            android:id="@+id/addCalendarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nav_addToCalendar"
+            android:layout_centerHorizontal="true"/>
+
+        <EditText
+            style="@style/AppTheme.Text_L"
+            android:id="@+id/titleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/addCalendarTitle"
+            android:hint="@string/title"/>
+
+        <EditText
+            style="@style/AppTheme.Text_L"
+            android:id="@+id/locationEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleEditText"
+            android:hint="@string/location"/>
+
+        <TextView
+            android:id="@+id/startsTextView"
+            android:layout_below="@id/locationEditText"
+            style="@android:style/Widget.DeviceDefault.Light.Spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:padding="13dp"
+            android:text="@string/startDate" />
+
+
+        <TextView
+            android:id="@+id/endsTextView"
+            style="@android:style/Widget.DeviceDefault.Light.Spinner"
+            android:layout_below="@id/startsTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:padding="13dp"
+            android:text="@string/endDate" />
+
+        <EditText
+            style="@style/AppTheme.Text_L"
+            android:id="@+id/descriptionEditText"
+            android:layout_below="@id/endsTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences|textMultiLine"
+            android:maxLines="4"
+            android:maxLength="2000"
+            android:hint="@string/description"/>
+
+        <Button
+            android:id="@+id/addToCalendarBtn"
+            style="@style/AppTheme.Text_L"
+            android:layout_below="@id/descriptionEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/addToCalendar"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

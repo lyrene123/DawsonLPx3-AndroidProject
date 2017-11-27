@@ -55,10 +55,13 @@
     <string name="add">Add</string>
     <string name="date">Date</string>
     <string name="event">Event</string>
-    <string name="startTime">Start Time</string>
-    <string name="endTime">End Time</string>
+    <string name="location">Location</string>
+    <string name="description">Description</string>
+    <string name="addToCalendar">Add To Calendar</string>
+    <string name="startDate">Start Date</string>
+    <string name="endDate">End Date</string>
     <string name="submit">Submit</string>
-
+    <string name="pickADate">Please pick a date!</string>
     <!--<string name="app_name">SkyconsLibrary</string>-->
     <string name="hello_world">Hello world!</string>
     <!--<string name="action_settings">Settings</string>-->
@@ -98,9 +101,36 @@
     <string name="weather_clouds">Clouds(%):</string>
     <string name="wind_speed">Wind Speed(m/s):</string>
     <string name="wind_deg">Wind Deg:</string>
+<<<<<<< HEAD
     <string name="cancel_settings_title">Cancel Changes of Settings?</string>
     <string name="cancel_settings_body">Are you sure you want to leave without saving?</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="invalid_weather">That city/country combination is invalid.</string>
 </resources>
+=======
+    <string name="About">About DawsonLPx3</string>
+    <string name="our_app">Our App</string>
+    <string name="app_description">Our application is intended for new and current Dawson college students.
+     Our application provides students various features that can be useful to them during
+     their stay at Dawson. Examples of functionality of our app includes the possibility of viewing your cancelled classes
+     for the day, find teachers by their first and/or last name. Our app lets students view the academic calendar of a
+        Winter or Fall semester of a year and the weather of the day and the next five days. Other useful features of our app is the ability to store notes and to save events into their calendar.
+    </string>
+    <string name="courseid">Dawson College 420.A0</string>
+    <string name="meet_team">Meet The Team</string>
+    <string name="lyrene">Lyrene Labor</string>
+    <string name="lyrene_des">Hi, my name is Lyrene. I am currently studying in Computer Science at Dawson College and two things
+    I love the most in this world is coding and food!</string>
+    <string name="peng">Pengkim Sy</string>
+    <string name="peng_des">I\'m an aspiring coder who travelled all the way from Cambodia to Canada to study
+        and become a programmer. I can\'t wait to graduate and start creating innovations!</string>
+    <string name="phil">Phil Langlois</string>
+    <string name="phil_des">Got bored studying Physics at Concordia, so I decided to spent my time  on the computer more wisely.</string>
+    <string name="peter">Peter Bellefleur</string>
+    <string name="peter_des">Hello there! I\'m Peter and I have a passion for coding and creating new things. I am in my last
+    year of my studies in Computer Science at Dawson College and I\'m happy to be learning so much things, specially in my Android class!</string>
+    <string name="blurb_title">About</string>
+    <string name="dismiss">OK</string>
+</resources>
+>>>>>>> testing

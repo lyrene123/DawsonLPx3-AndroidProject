@@ -1,7 +1,10 @@
 package com.dawsonlpx3;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Fragment;
+import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -15,6 +18,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.provider.CalendarContract.Events;
+import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -34,25 +39,27 @@ public class AddToCalendarFragment extends Fragment {
 
     private final String TAG = "AddToCalendar";
 
-    private Calendar startDate, endDate, currentDate;
-    private SimpleDateFormat formatter;
+    private Calendar startDateTime, endDateTime, currentDate;
+    private SimpleDateFormat dateFormatter;
+    private SimpleDateFormat timeFormatter;
 
-    private TextView startsTextView, endsTextView;
+    private TextView startsTextView, endsTextView, startTimeTextView, endTimeTextView;
     private EditText titleEditText, locationEditText, descriptionEditText;
     private Button addToCalendarBtn;
 
     /**
-     * Instantiate the startDate, endDate, currentDate and formatter when
+     * Instantiate the startDateTime, endDateTime, currentDate and dateFormatter when
      * this first call
      * @param savedInstanceState
      */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        startDate = Calendar.getInstance();
-        endDate = Calendar.getInstance();
+        startDateTime = Calendar.getInstance();
+        endDateTime = Calendar.getInstance();
         currentDate = Calendar.getInstance();
-        formatter = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+        timeFormatter = new SimpleDateFormat("hh:mm a");
     }
 
     /**
@@ -90,13 +97,19 @@ public class AddToCalendarFragment extends Fragment {
         endsTextView = (TextView) view.findViewById(R.id.endsTextView);
         endsTextView.setOnClickListener(showEndDatePicker);
 
+        startTimeTextView = (TextView) view.findViewById(R.id.startTimeTextView);
+        startTimeTextView.setOnClickListener(showStartTimePicker);
+
+        endTimeTextView = (TextView) view.findViewById(R.id.endTimeTextView);
+        endTimeTextView.setOnClickListener(showEndTimePicker);
+
         addToCalendarBtn = (Button) view.findViewById(R.id.addToCalendarBtn);
         addToCalendarBtn.setOnClickListener(addToCalendar);
     }
 
     /**
      * Save the state of Starts and Ends because they are TextView, so
-     * android framework doesn't save by default. The startDate and endDate
+     * android framework doesn't save by default. The startDateTime and endDateTime
      * of type Calendar needs to be saved also, so they can't be overriden
      * in onCreate.
      *
@@ -105,10 +118,10 @@ public class AddToCalendarFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString("startDate", startsTextView.getText().toString());
-        outState.putString("endDate", endsTextView.getText().toString());
-        outState.putLong("startDateCalendar", startDate.getTimeInMillis());
-        outState.putLong("endDateCalendar", endDate.getTimeInMillis());
+        outState.putString("startDateTime", startsTextView.getText().toString());
+        outState.putString("endDateTime", endsTextView.getText().toString());
+        outState.putLong("startDateCalendar", startDateTime.getTimeInMillis());
+        outState.putLong("endDateCalendar", endDateTime.getTimeInMillis());
     }
 
     /**
@@ -122,10 +135,10 @@ public class AddToCalendarFragment extends Fragment {
         super.onViewStateRestored(savedInstanceState);
 
         if (savedInstanceState != null) {
-            startsTextView.setText(savedInstanceState.getString("startDate"));
-            endsTextView.setText(savedInstanceState.getString("endDate"));
-            startDate.setTimeInMillis(savedInstanceState.getLong("startDateCalendar"));
-            endDate.setTimeInMillis(savedInstanceState.getLong("endDateCalendar"));
+            startsTextView.setText(savedInstanceState.getString("startDateTime"));
+            endsTextView.setText(savedInstanceState.getString("endDateTime"));
+            startDateTime.setTimeInMillis(savedInstanceState.getLong("startDateCalendar"));
+            endDateTime.setTimeInMillis(savedInstanceState.getLong("endDateCalendar"));
         }
     }
 
@@ -142,9 +155,9 @@ public class AddToCalendarFragment extends Fragment {
         @Override
         public void onClick(View view) {
             DatePickerDialog dialog = new DatePickerDialog(getActivity(), R.style.DialogTheme
-                    , startDatePickerListener, currentDate.get(Calendar.YEAR)
-                    , currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DAY_OF_MONTH));
-            dialog.getDatePicker().setMinDate(startDate.getTimeInMillis());
+                    , startDatePickerListener, startDateTime.get(Calendar.YEAR)
+                    , startDateTime.get(Calendar.MONTH), startDateTime.get(Calendar.DAY_OF_MONTH));
+            dialog.getDatePicker().setMinDate(currentDate.getTimeInMillis());
             dialog.show();
         }
 
@@ -155,7 +168,7 @@ public class AddToCalendarFragment extends Fragment {
                 = new DatePickerDialog.OnDateSetListener() {
 
             /**
-             * When the user pick a date, update the startDate and startsTextView.
+             * When the user pick a date, update the startDateTime and startsTextView.
              * This also ensure that start date is always before or the same as
              * end date by updating end date.
              *
@@ -166,15 +179,16 @@ public class AddToCalendarFragment extends Fragment {
              */
             public void onDateSet(DatePicker view, int selectedYear,
                                   int selectedMonth, int selectedDay) {
-                startDate.set(selectedYear, selectedMonth, selectedDay);
-                startsTextView.setText(formatter.format(startDate.getTime()));
+                startDateTime.set(selectedYear, selectedMonth, selectedDay);
+                startsTextView.setText(dateFormatter.format(startDateTime.getTime()));
                 startsTextView.setTextColor(Color.BLACK);
 
                 // if start date is more than end date, set the end date to be
                 // the same start date
-                if (startDate.compareTo(endDate) > 0) {
-                    endDate.setTime(startDate.getTime());
-                    endsTextView.setText(formatter.format(endDate.getTime()));
+                if (startDateTime.compareTo(endDateTime) > 0) {
+                    endDateTime.setTime(startDateTime.getTime());
+                    endsTextView.setText(dateFormatter.format(endDateTime.getTime()));
+                    endTimeTextView.setText(timeFormatter.format(endDateTime.getTime()));
                 }
             }
         };
@@ -193,9 +207,9 @@ public class AddToCalendarFragment extends Fragment {
         @Override
         public void onClick(View view) {
             DatePickerDialog dialog = new DatePickerDialog(getActivity(), R.style.DialogTheme
-                    , endDatePickerListener, currentDate.get(Calendar.YEAR)
-                    , currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DAY_OF_MONTH));
-            dialog.getDatePicker().setMinDate(startDate.getTimeInMillis());
+                    , endDatePickerListener, endDateTime.get(Calendar.YEAR)
+                    , endDateTime.get(Calendar.MONTH), endDateTime.get(Calendar.DAY_OF_MONTH));
+            dialog.getDatePicker().setMinDate(startDateTime.getTimeInMillis());
             dialog.show();
         }
 
@@ -205,7 +219,7 @@ public class AddToCalendarFragment extends Fragment {
         DatePickerDialog.OnDateSetListener endDatePickerListener
                 = new DatePickerDialog.OnDateSetListener() {
             /**
-             * When user pick a date, this will update the endDate and
+             * When user pick a date, this will update the endDateTime and
              * endsTextView
              *
              * @param view
@@ -215,9 +229,88 @@ public class AddToCalendarFragment extends Fragment {
              */
             public void onDateSet(DatePicker view, int selectedYear,
                                   int selectedMonth, int selectedDay) {
-                endDate.set(selectedYear, selectedMonth, selectedDay);
-                endsTextView.setText(formatter.format(endDate.getTime()));
+                endDateTime.set(selectedYear, selectedMonth, selectedDay);
+                endsTextView.setText(dateFormatter.format(endDateTime.getTime()));
                 endsTextView.setTextColor(Color.BLACK);
+            }
+        };
+    };
+
+    /**
+     * Show the TimePicker for start
+     */
+    private View.OnClickListener showStartTimePicker = new View.OnClickListener() {
+
+        /**
+         * When user click on the startTimeTextView, a TimePickerDialog will pop up
+         * to let the user pick the time.
+         * @param view
+         */
+        @Override
+        public void onClick(View view) {
+            TimePickerDialog dialog = new TimePickerDialog(getActivity(), R.style.DialogTheme
+                    , startTimePickerListner, startDateTime.get(Calendar.HOUR_OF_DAY)
+                    , startDateTime.get(Calendar.MINUTE), false);
+            dialog.show();
+        }
+
+        /**
+         * Listener of the Stat Time picker dialog. If the start time is after the end time
+         * update the end time to be the same as end time, and toast to notify the user.
+         */
+        TimePickerDialog.OnTimeSetListener startTimePickerListner
+                = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+                startDateTime.set(Calendar.HOUR_OF_DAY, hour);
+                startDateTime.set(Calendar.MINUTE, minute);
+                startTimeTextView.setText(timeFormatter.format(startDateTime.getTime()));
+                if (startDateTime.compareTo(endDateTime) > 0){
+                    Toast.makeText(getActivity(), getString(R.string.startBeforeEnd)
+                            , Toast.LENGTH_LONG).show();
+                    endDateTime.setTimeInMillis(startDateTime.getTimeInMillis());
+                    endTimeTextView.setText(timeFormatter.format(startDateTime.getTime()));
+                }
+            }
+        };
+    };
+
+    /**
+     * Listener for the end time picker
+     */
+    private View.OnClickListener showEndTimePicker = new View.OnClickListener() {
+
+        /**
+         * When user click on the endsTextView, a TimePickerDialog will pop up and
+         * let the user choose a time in 12h format
+         * @param view
+         */
+        @Override
+        public void onClick(View view) {
+            TimePickerDialog dialog = new TimePickerDialog(getActivity(), R.style.DialogTheme
+                    , startTimePickerListner, endDateTime.get(Calendar.HOUR_OF_DAY)
+                    , endDateTime.get(Calendar.MINUTE), false);
+
+            dialog.show();
+        }
+
+        /**
+         * Listener of the EndTimePickerDialog. If the end time is before the start time
+         * set the end time to be the same as end time and toast to notify the user.
+         */
+        TimePickerDialog.OnTimeSetListener startTimePickerListner
+                = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+                endDateTime.set(Calendar.HOUR_OF_DAY, hour);
+                endDateTime.set(Calendar.MINUTE, minute);
+                if (startDateTime.compareTo(endDateTime) > 0){
+                    Toast.makeText(getActivity(), getString(R.string.startBeforeEnd)
+                            , Toast.LENGTH_LONG).show();
+                    endDateTime.setTimeInMillis(startDateTime.getTimeInMillis());
+                    endTimeTextView.setText(timeFormatter.format(endDateTime.getTime()));
+                }
+
             }
         };
     };
@@ -240,8 +333,8 @@ public class AddToCalendarFragment extends Fragment {
             if (isValidated()) {
                 Intent intent = new Intent(Intent.ACTION_INSERT)
                         .setData(Events.CONTENT_URI)
-                        .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startDate.getTimeInMillis())
-                        .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endDate.getTimeInMillis())
+                        .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startDateTime.getTimeInMillis())
+                        .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endDateTime.getTimeInMillis())
                         .putExtra(Events.TITLE, title)
                         .putExtra(Events.DESCRIPTION, description)
                         .putExtra(Events.EVENT_LOCATION, location);

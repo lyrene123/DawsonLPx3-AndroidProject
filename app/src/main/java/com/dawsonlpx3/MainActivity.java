@@ -2,6 +2,7 @@ package com.dawsonlpx3;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;

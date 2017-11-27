@@ -7,46 +7,50 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:background="@color/weatherColor">
 
         <TextView
             android:id="@+id/uv_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
             android:textColor="@color/White"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_height="0dp"
+        android:layout_weight="3">
 
         <EditText
             android:id="@+id/weather_city"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_gravity="center_vertical"
             android:text="@string/montreal" />
         <Spinner
             android:id="@+id/countries_spinner"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.7"
-            android:layout_gravity="center_vertical" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:layout_gravity="center_vertical"/>
         <Button
             android:id="@+id/calculate_forecast_button"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:text="@string/forecast_text" />
     </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10"
+        android:layout_weight="20"
         android:background="@color/colorPrimary">
 
         <LinearLayout
@@ -58,7 +62,8 @@
                 android:id="@+id/col_1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="2"
+                android:paddingRight="5dp"
                 android:background="@color/weatherColor"
                 android:orientation="vertical">
 
@@ -70,67 +75,80 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="textEnd"
                     android:text="@string/temp"
                     android:textColor="@color/White"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="textEnd"
                     android:text="@string/temp_min"
                     android:textColor="@color/White"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:text="@string/temp_max"
+                    android:textAlignment="textEnd"
                     android:textColor="@color/White"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="textEnd"
                     android:text="@string/pressure"
                     android:textColor="@color/White"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:text="@string/sea_level"
+                    android:textAlignment="textEnd"
                     android:textColor="@color/White"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:text="@string/grnd_level"
+                    android:textAlignment="textEnd"
                     android:textColor="@color/White"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:text="@string/humidity"
+                    android:textAlignment="textEnd"
                     android:textColor="@color/White"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:text="@string/kf_temp"
+                    android:textAlignment="textEnd"
                     android:textColor="@color/White"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="textEnd"
                     android:text="@string/weather_main"
                     android:textColor="@color/White"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:text="@string/weather_description"
+                    android:textAlignment="textEnd"
                     android:textColor="@color/White"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:text="@string/weather_clouds"
+                    android:textAlignment="textEnd"
                     android:textColor="@color/White"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="textEnd"
                     android:text="@string/wind_speed"
                     android:textColor="@color/White"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:text="@string/wind_deg"
+                    android:textAlignment="textEnd"
                     android:textColor="@color/White"/>
             </LinearLayout>
 
@@ -145,72 +163,86 @@
                     android:id="@+id/col2_cell1"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:text="today"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col2_cell2"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col2_cell3"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col2_cell4"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col2_cell5"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col2_cell6"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col2_cell7"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col2_cell8"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col2_cell9"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col2_cell10"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col2_cell11"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col2_cell12"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col2_cell13"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col2_cell14"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
 
             </LinearLayout>
@@ -220,6 +252,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textAlignment="center"
                 android:orientation="vertical">
 
                 <TextView
@@ -227,77 +260,92 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:text="+1 day"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col3_cell2"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col3_cell3"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col3_cell4"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col3_cell5"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col3_cell6"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col3_cell7"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col3_cell8"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col3_cell9"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col3_cell10"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col3_cell11"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col3_cell12"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col3_cell13"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col3_cell14"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/col_4"
                 android:layout_width="0dp"
+                android:textAlignment="center"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical">
@@ -306,15 +354,18 @@
                     android:id="@+id/col4_cell1"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:text="+2 day"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col4_cell2"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col4_cell3"
+                    android:textAlignment="center"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:textColor="@color/White"/>
@@ -322,29 +373,35 @@
                     android:id="@+id/col4_cell4"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col4_cell5"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col4_cell6"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col4_cell7"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col4_cell8"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col4_cell9"
+                    android:textAlignment="center"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:textColor="@color/White"/>
@@ -352,19 +409,23 @@
                     android:id="@+id/col4_cell10"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col4_cell11"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col4_cell12"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col4_cell13"
+                    android:textAlignment="center"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:textColor="@color/White"/>
@@ -372,6 +433,7 @@
                     android:id="@+id/col4_cell14"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
             </LinearLayout>
 
@@ -386,72 +448,86 @@
                     android:id="@+id/col5_cell1"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:text="+3 day"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col5_cell2"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col5_cell3"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col5_cell4"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col5_cell5"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col5_cell6"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col5_cell7"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col5_cell8"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col5_cell9"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col5_cell10"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col5_cell11"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col5_cell12"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col5_cell13"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col5_cell14"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
             </LinearLayout>
 
@@ -460,6 +536,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textAlignment="center"
                 android:orientation="vertical">
 
                 <TextView
@@ -467,71 +544,85 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:text="+4 day"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col6_cell2"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col6_cell3"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col6_cell4"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col6_cell5"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col6_cell6"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col6_cell7"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col6_cell8"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col6_cell9"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col6_cell10"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col6_cell11"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col6_cell12"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col6_cell13"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col6_cell14"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
             </LinearLayout>
 

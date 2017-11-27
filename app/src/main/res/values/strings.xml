@@ -60,8 +60,11 @@
     <string name="addToCalendar">Add To Calendar</string>
     <string name="startDate">Start Date</string>
     <string name="endDate">End Date</string>
+    <string name="startTime">Start Time</string>
+    <string name="endTime">End Time</string>
     <string name="submit">Submit</string>
     <string name="pickADate">Please pick a date!</string>
+    <string name="startBeforeEnd">Start time must be before end time!</string>
     <!--<string name="app_name">SkyconsLibrary</string>-->
     <string name="hello_world">Hello world!</string>
     <!--<string name="action_settings">Settings</string>-->

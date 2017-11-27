@@ -87,13 +87,14 @@ public class HomeFragment extends Fragment {
         teamLogo.setOnClickListener(showAboutPage);
 
 
-
+        //get longitude and latitude from GPS tracker oject
         GPSTracker gps = new GPSTracker(this.getActivity());
         gps.getLocation();
         String lat = Double.toString(gps.getLatitude());
         String lon = Double.toString(gps.getLongitude());
 
         try {
+            //open an async to get the api weather and get the relevant info
             TemperatureAsyncTask tempTask = new TemperatureAsyncTask(lat, lon);
             tempTask.execute();
             String[] temperature = tempTask.get();
@@ -104,6 +105,19 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    /**
+     * The id that got from the weather api, has a range of different weather.
+     * Id starts with 2: is similar to Thunder.
+     * Id starts with 3 and 5: is similar to heavy rain
+     * Id starts with 6: is snow
+     * Id starts with 7: is fog
+     * Id starts with 8: is cloudy
+     * Id starts with 9: is windy
+     * by default return sunny
+     *
+     * @param id
+     * @return
+     */
     private String determineWeatherById(String id) {
         int firstNumber = Integer.parseInt(id.substring(0, 1));
         switch (firstNumber) {

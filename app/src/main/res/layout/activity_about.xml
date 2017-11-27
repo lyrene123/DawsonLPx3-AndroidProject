@@ -8,21 +8,170 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark">
-        
+
         <TextView
             style="@style/AppTheme.header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/aboutHeader"
             android:text="@string/About"/>
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/teamRL"
-        android:layout_below="@id/teamRL"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appDescriptionRL">
+        <RelativeLayout
+            android:id="@+id/appRL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <TextView
+                style="@style/AppTheme.Title"
+                android:id="@+id/ourAppTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:text="@string/our_app"/>
+            <TextView
+                style="@style/AppTheme.Text_M"
+                android:id="@+id/appDescrip"
+                android:background="@drawable/shadow_background"
+                android:layout_margin="10dp"
+                android:padding="20dp"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ourAppTitle"
+                android:text="@string/app_description"/>
+            <TextView
+                style="@style/AppTheme.Title"
+                android:id="@+id/courseTitle"
+                android:layout_below="@id/appDescrip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:text="@string/courseid"/>
+            <TextView
+                style="@style/AppTheme.Meet_Team_Style"
+                android:id="@+id/meetTeamTitle"
+                android:layout_below="@id/courseTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:text="@string/meet_team"/>
 
-    </RelativeLayout>
+            <LinearLayout
+                android:id="@+id/group1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/meetTeamTitle"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:cropToPadding="true"
+                    android:padding="0dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/lyrene" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:cropToPadding="true"
+                    android:padding="0dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/kim" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/group1Names"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/group1"
+                android:layout_marginBottom="10dp"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="center"
+                    android:text="@string/lyrene"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="center"
+                    android:text="@string/peng"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/group2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/group1Names"
+                android:weightSum="2">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:cropToPadding="true"
+                    android:padding="0dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/phil" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:cropToPadding="true"
+                    android:padding="0dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/peter" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/group2Names"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/group2"
+                android:layout_marginBottom="10dp"
+                android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:text="@string/phil"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:text="@string/peter"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>

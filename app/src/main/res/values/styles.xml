@@ -15,6 +15,12 @@
         <item name="android:textStyle">bold</item>
         <item name="android:padding">10dp</item>
     </style>
+    <style name="AppTheme.Meet_Team_Style">
+        <item name="android:textSize">22sp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginLeft">10dp</item>
+    </style>
     <style name="AppTheme.Text_M">
         <item name="android:textSize">16sp</item>
         <item name="android:padding">8dp</item>

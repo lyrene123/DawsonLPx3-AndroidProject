@@ -8,7 +8,6 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/Skycons-master/Skycons-master/Skycons/SkyconDemo" />
             <option value="$PROJECT_DIR$/Skycons-master/Skycons-master/Skycons/SkyconsLibrary" />
             <option value="$PROJECT_DIR$/app" />
           </set>

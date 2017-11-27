@@ -625,9 +625,6 @@
                     android:textAlignment="center"
                     android:textColor="@color/White"/>
             </LinearLayout>
-
-
-
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

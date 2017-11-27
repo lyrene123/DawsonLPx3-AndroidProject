@@ -1,15 +1,21 @@
 package com.dawsonlpx3;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.Calendar;
 import static android.content.Context.MODE_PRIVATE;
 
@@ -27,56 +33,59 @@ public class SettingsActivity extends Fragment {
     private static final String TAG = "SettignsActivity";
     private EditText firstNameEdit, lastNameEdit, emailEdit, passwordEdit;
     private TextView lastUpdatedText;
+    private Button saveButton;
 
+    /**
+     * Construct the view and get handles to the views for manipulation.
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_settings, container, false);
 
-        // Get handle to the EditText views
+        // Get handle to the settings views
         firstNameEdit = view.findViewById(R.id.first_name_input);
         lastNameEdit = view.findViewById(R.id.last_name_input);
         emailEdit = view.findViewById(R.id.email_input);
         passwordEdit = view.findViewById(R.id.email_input);
         lastUpdatedText = view.findViewById(R.id.last_modified_input);
+        saveButton = view.findViewById(R.id.save_settings_button);
 
-        // Check to see if we need to restore state
-        if(savedInstanceState != null){
-            firstNameEdit.setText(savedInstanceState.getString("fname", ""));
-            lastNameEdit.setText(savedInstanceState.getString("lname", ""));
-            emailEdit.setText(savedInstanceState.getString("email", ""));
-            passwordEdit.setText(savedInstanceState.getString("password", ""));
-            lastUpdatedText.setText(savedInstanceState.getString("timestamp", ""));
-        }
+        // Set the text to the currently saved values in storage
+        SharedPreferences preferences = getActivity().getPreferences(MODE_PRIVATE);
+        firstNameEdit.setText(preferences.getString("fname", ""));
+        lastNameEdit.setText(preferences.getString("lname", ""));
+        emailEdit.setText(preferences.getString("email", ""));
+        passwordEdit.setText(preferences.getString("password", ""));
+        lastUpdatedText.setText(preferences.getString("timestamp", ""));
+
+        // Setup the onClick listener for the save button
+        saveButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Log.d(TAG, "save button onClick");
+                // get a handle to this activity's shared preferences
+                SharedPreferences prefs = getActivity().getPreferences(MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                // put all user input into SharedPreferences
+                editor.putString("fname", firstNameEdit.getText().toString());
+                editor.putString("lname", lastNameEdit.getText().toString());
+                editor.putString("email", emailEdit.getText().toString());
+                editor.putString("password", passwordEdit.getText().toString());
+                editor.putString("timestamp", Calendar.getInstance().getTime().toString());
+                editor.commit(); // Save changes
+                // Update last updated text
+                lastUpdatedText.setText(prefs.getString("timestamp", null));
+            }
+        });
 
         return view;
-    }
-
-    /**
-     * Event handler for the onClick event from the save button. Will update SharedPreferences
-     * with new values inputted from the user.
-     *
-     * @param view
-     */
-    public void saveSettings(View view){
-        Log.d(TAG, "saveSettings");
-        SharedPreferences prefs = getActivity().getPreferences(MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("fname", firstNameEdit.getText().toString());
-        editor.putString("lname", lastNameEdit.getText().toString());
-        editor.putString("email", emailEdit.getText().toString());
-        editor.putString("password", passwordEdit.getText().toString());
-        editor.putString("timestamp", Calendar.getInstance().getTime().toString());
-
-        Log.d("first name: ", firstNameEdit.getText().toString());
-        Log.d("last name: ", lastNameEdit.getText().toString());
-        Log.d("email: ", emailEdit.getText().toString());
-        Log.d("password: ", passwordEdit.getText().toString());
-        Log.d("last update: ", Calendar.getInstance().getTime().toString());
-        editor.commit(); // Save changes
-        // Update last updated text
-        lastUpdatedText.setText(prefs.getString("timestamp", null));
-    }
+    } // onCreateView()
 
     /**
      * Save user input in the fields to maintain app state.
@@ -90,5 +99,5 @@ public class SettingsActivity extends Fragment {
         savedInstanceState.putString("tempEmail", emailEdit.getText().toString());
         savedInstanceState.putString("tempPassword", passwordEdit.getText().toString());
         super.onSaveInstanceState(savedInstanceState);
-    }
-}
+    } // onSaveInstanceState
+} // SettingsActivity

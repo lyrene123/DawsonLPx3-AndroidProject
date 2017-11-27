@@ -29,7 +29,7 @@
     <string name="position">Position</string>
     <string name="department">Department</string>
     <string name="sector">Sector</string>
-    <string name="acedemicCalendar">Acedemic Calendar</string>
+    <string name="acedemicCalendar">Academic Calendar</string>
     <string name="year">year</string>
     <string name="fall">Fall</string>
     <string name="winter">Winter</string>
@@ -65,8 +65,6 @@
     <string name="submit">Submit</string>
     <string name="pickADate">Please pick a date!</string>
     <string name="startBeforeEnd">Start time must be before end time!</string>
-    <string name="ok">Ok</string>
-    <string name="cancel">Cancel</string>
     <!--<string name="app_name">SkyconsLibrary</string>-->
     <string name="hello_world">Hello world!</string>
     <!--<string name="action_settings">Settings</string>-->
@@ -106,6 +104,11 @@
     <string name="weather_clouds">Clouds(%):</string>
     <string name="wind_speed">Wind Speed(m/s):</string>
     <string name="wind_deg">Wind Deg:</string>
+    <string name="cancel_settings_title">Cancel Changes of Settings?</string>
+    <string name="cancel_settings_body">Are you sure you want to leave without saving?</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="invalid_weather">That city/country combination is invalid.</string>
     <string name="About">About DawsonLPx3</string>
     <string name="our_app">Our App</string>
     <string name="app_description">Our application is intended for new and current Dawson college students.
@@ -130,3 +133,4 @@
     <string name="blurb_title">About</string>
     <string name="dismiss">OK</string>
 </resources>
+

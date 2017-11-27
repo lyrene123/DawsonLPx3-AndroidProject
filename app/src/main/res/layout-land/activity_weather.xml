@@ -145,7 +145,6 @@
                     android:id="@+id/col2_cell1"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:text="today"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col2_cell2"
@@ -226,7 +225,6 @@
                     android:id="@+id/col3_cell1"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:text="+1 day"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col3_cell2"
@@ -306,7 +304,6 @@
                     android:id="@+id/col4_cell1"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:text="+2 day"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col4_cell2"
@@ -386,7 +383,6 @@
                     android:id="@+id/col5_cell1"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:text="+3 day"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col5_cell2"
@@ -466,7 +462,6 @@
                     android:id="@+id/col6_cell1"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:text="+4 day"
                     android:textColor="@color/White"/>
                 <TextView
                     android:id="@+id/col6_cell2"
@@ -534,9 +529,6 @@
                     android:layout_height="50dp"
                     android:textColor="@color/White"/>
             </LinearLayout>
-
-
-
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

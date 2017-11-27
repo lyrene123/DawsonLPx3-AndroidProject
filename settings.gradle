@@ -1,3 +1,2 @@
-include ':app', ':SkyconDemo', ':SkyconsLibrary'
-project(':SkyconDemo').projectDir = new File('Skycons-master/Skycons-master/Skycons/SkyconDemo')
+include ':app', ':SkyconsLibrary'
 project(':SkyconsLibrary').projectDir = new File('Skycons-master/Skycons-master/Skycons/SkyconsLibrary')

@@ -94,12 +94,6 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt("fragment", R.id.side_frame);
-    }
-
 
     /**
      * Check the Shared Preferences and verify if the user's credential exist. If
@@ -189,9 +183,9 @@ public class MainActivity extends AppCompatActivity
                     .addToBackStack(null)
                     .commit();
         } else if (id == R.id.nav_classCancel) {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.side_frame, frag)
-                    .commit();
+       //     fragmentManager.beginTransaction()
+        //            .replace(R.id.side_frame, frag)
+         //           .commit();
         } else if (id == R.id.nav_findTeacher) {
             Fragment frag = new FindTeacherFragment();
             fragmentManager.beginTransaction()

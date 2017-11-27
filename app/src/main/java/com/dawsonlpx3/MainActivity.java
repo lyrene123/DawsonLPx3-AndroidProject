@@ -65,12 +65,14 @@ public class MainActivity extends AppCompatActivity
             Fragment savedFragment = getFragmentManager().getFragment(savedInstanceState,"currentFragment");
             getFragmentManager().beginTransaction()
                     .replace(R.id.side_frame, savedFragment)
+                    .addToBackStack(null)
                     .commit();
         } else {
             Log.d(TAG, "Displaying home fragment");
             Fragment frag = new HomeFragment();
             getFragmentManager().beginTransaction()
                     .replace(R.id.side_frame, frag)
+                    .addToBackStack(null)
                     .commit();
         }
 
@@ -92,12 +94,6 @@ public class MainActivity extends AppCompatActivity
         Log.d(TAG, "onCreate launched");
         checkForUserAuthentication(); //retrieve user credentials from SharedPref
 
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt("fragment", R.id.side_frame);
     }
 
 
@@ -190,7 +186,7 @@ public class MainActivity extends AppCompatActivity
                     .commit();
         } else if (id == R.id.nav_classCancel) {
             fragmentManager.beginTransaction()
-                    .replace(R.id.side_frame, frag)
+                    .replace(R.id.side_frame, new SettingsActivity())
                     .commit();
         } else if (id == R.id.nav_findTeacher) {
             Fragment frag = new FindTeacherFragment();

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.dawsonlpx3.find_teacher_feature.FindTeacherFragment">
+    tools:context="com.dawsonlpx3.find_teacher_feature.FindTeacherFragment"
+    android:layout_margin="20dp">
 
 
     <RelativeLayout

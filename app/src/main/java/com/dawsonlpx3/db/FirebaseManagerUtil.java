@@ -202,10 +202,9 @@ public class FirebaseManagerUtil {
                         }
                     }
                 }
-                if(teacherList != null && teacherList.size() > 0){
+                if(teacherList != null && teacherList.size() >= 0){
                     ((FindTeacherFragment) fragment).setTeachersList(teacherList);
                 }
-
             }
 
             /**

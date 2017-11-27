@@ -36,10 +36,10 @@ public class MenuActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         //handle item selection
         switch (item.getItemId()) {
-            //about option: display AboutActivity
+            //about option: display AboutFragment
             case R.id.about:
                 //create intent, start activity
-                Intent aboutIntent = new Intent(this, AboutActivity.class);
+                Intent aboutIntent = new Intent(this, AboutFragment.class);
                 startActivity(aboutIntent);
                 return true;
             //dawson option: launch a web intent for the Dawson College home page

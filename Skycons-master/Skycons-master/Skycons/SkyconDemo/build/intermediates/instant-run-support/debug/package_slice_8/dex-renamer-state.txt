@@ -1,4 +1,0 @@
-#Sun Nov 26 01:24:07 EST 2017
-base.0=/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconDemo/build/intermediates/transforms/dexMerger/debug/8
-path.0=classes.dex
-renamed.0=classes.dex

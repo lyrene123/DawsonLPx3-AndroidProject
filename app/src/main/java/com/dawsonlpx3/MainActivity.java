@@ -94,13 +94,6 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt("fragment", R.id.side_frame);
-    }
-
-
     /**
      * Check the Shared Preferences and verify if the user's credential exist. If
      * yes, then store them as constants and if none existing, then launch the Register
@@ -186,9 +179,9 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             getFragmentManager().beginTransaction()
                     .replace(R.id.side_frame, new HomeFragment())
-                    .addToBackStack(null)
                     .commit();
         } else if (id == R.id.nav_classCancel) {
+            Fragment frag = new CalendarActivity();
             fragmentManager.beginTransaction()
                     .replace(R.id.side_frame, frag)
                     .commit();

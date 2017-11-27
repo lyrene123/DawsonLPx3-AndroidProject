@@ -101,14 +101,11 @@
     <string name="weather_clouds">Clouds(%):</string>
     <string name="wind_speed">Wind Speed(m/s):</string>
     <string name="wind_deg">Wind Deg:</string>
-<<<<<<< HEAD
     <string name="cancel_settings_title">Cancel Changes of Settings?</string>
     <string name="cancel_settings_body">Are you sure you want to leave without saving?</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="invalid_weather">That city/country combination is invalid.</string>
-</resources>
-=======
     <string name="About">About DawsonLPx3</string>
     <string name="our_app">Our App</string>
     <string name="app_description">Our application is intended for new and current Dawson college students.
@@ -133,4 +130,4 @@
     <string name="blurb_title">About</string>
     <string name="dismiss">OK</string>
 </resources>
->>>>>>> testing
+

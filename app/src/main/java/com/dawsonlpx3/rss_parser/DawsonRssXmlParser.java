@@ -87,7 +87,7 @@ public class DawsonRssXmlParser {
                 case "teacher":
                     teacher = readText(parser);
                     break;
-                case "datecancelled":
+                case "pubDate":
                     dateCancelled = readText(parser);
                     break;
                 case "notes":

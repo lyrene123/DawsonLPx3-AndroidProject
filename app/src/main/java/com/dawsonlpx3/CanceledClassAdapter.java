@@ -22,6 +22,7 @@ public class CanceledClassAdapter extends ArrayAdapter<CanceledClassDetails> {
 
     public CanceledClassAdapter(Context context, List<CanceledClassDetails> classes) {
         super(context, 0, classes);
+        this.inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -36,7 +37,7 @@ public class CanceledClassAdapter extends ArrayAdapter<CanceledClassDetails> {
         TextView tvCourse = (TextView) convertView.findViewById(R.id.cancelledCourseTV);
 
         tvDate.setText(c.getDateCancelled());
-        tvDate.setText(c.getCourse());
+        tvCourse.setText(c.getCourse());
 
         return convertView;
     }

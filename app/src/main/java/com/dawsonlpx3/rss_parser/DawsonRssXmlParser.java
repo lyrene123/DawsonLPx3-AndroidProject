@@ -50,7 +50,10 @@ public class DawsonRssXmlParser {
 
             if (name.equals("item")) {
                 Log.d(TAG, "Parsing tag " + name);
-                classes.add(readEntry(parser));
+                classes.add(readItem(parser));
+            } else if (name.equals("channel")) {
+                Log.d(TAG, "Entering tag " + name);
+                parser.next();
             } else {
                 Log.d(TAG, "Skipping tag " + name);
                 skip(parser);
@@ -59,9 +62,9 @@ public class DawsonRssXmlParser {
         return classes;
     }
 
-    private CanceledClassDetails readEntry(XmlPullParser parser)
+    private CanceledClassDetails readItem(XmlPullParser parser)
             throws XmlPullParserException, IOException {
-        parser.require(XmlPullParser.START_TAG, ns, "rss");
+        parser.require(XmlPullParser.START_TAG, ns, "item");
         String title = null;
         String course = null;
         String teacher = null;
@@ -73,6 +76,7 @@ public class DawsonRssXmlParser {
                 continue;
             }
             String name = parser.getName();
+            Log.d(TAG, "Found tag " + name);
             switch (name) {
                 case "title":
                     title = readText(parser);

@@ -52,8 +52,13 @@ public class CanceledActivity extends Fragment {
     }
 
     private void populateListView(List<CanceledClassDetails> canceled) {
-        CanceledClassAdapter adapter = new CanceledClassAdapter(context, canceled);
-        list.setAdapter(adapter);
+        if (canceled == null || canceled.isEmpty()) {
+            Toast.makeText(context, "No cancelled classes found!",
+                    Toast.LENGTH_LONG).show();
+        } else {
+            CanceledClassAdapter adapter = new CanceledClassAdapter(context, canceled);
+            list.setAdapter(adapter);
+        }
     }
 
     private class DawsonRssXmlDownloadTask extends AsyncTask<String, Void,
@@ -81,7 +86,6 @@ public class CanceledActivity extends Fragment {
         protected void onPostExecute(List<CanceledClassDetails> result) {
             Log.d(INNER_TAG, "onPostExecute");
             populateListView(result);
-
         }
 
         private List<CanceledClassDetails> loadXmlFromNetwork(String url)

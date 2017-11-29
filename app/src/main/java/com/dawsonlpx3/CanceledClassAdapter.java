@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.dawsonlpx3.data.CanceledClassDetails;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by 1132371 on 11/29/2017.
@@ -19,7 +20,7 @@ public class CanceledClassAdapter extends ArrayAdapter<CanceledClassDetails> {
 
     private LayoutInflater inflater;
 
-    public CanceledClassAdapter(Context context, ArrayList<CanceledClassDetails> classes) {
+    public CanceledClassAdapter(Context context, List<CanceledClassDetails> classes) {
         super(context, 0, classes);
     }
 

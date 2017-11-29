@@ -1,5 +1,6 @@
 package com.dawsonlpx3.rss_parser;
 
+import android.util.Log;
 import android.util.Xml;
 
 import com.dawsonlpx3.data.CanceledClassDetails;
@@ -18,14 +19,17 @@ import java.util.List;
 
 public class DawsonRssXmlParser {
     private static final String ns = null;
+    private final String TAG = "LPx3-XmlParser";
 
     public List<CanceledClassDetails> parse(InputStream in)
             throws XmlPullParserException, IOException {
+        Log.d(TAG, "parse");
         try {
             XmlPullParser parser = Xml.newPullParser();
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
             parser.setInput(in, null);
             parser.nextTag();
+            Log.d(TAG, "Attempting to read feed...");
             return readFeed(parser);
         } finally {
             in.close();
@@ -34,6 +38,7 @@ public class DawsonRssXmlParser {
 
     private List<CanceledClassDetails> readFeed(XmlPullParser parser)
             throws XmlPullParserException, IOException {
+        Log.d(TAG, "readFeed");
         List<CanceledClassDetails> classes = new ArrayList<CanceledClassDetails>();
 
         parser.require(XmlPullParser.START_TAG, ns, "rss");
@@ -44,8 +49,10 @@ public class DawsonRssXmlParser {
             String name = parser.getName();
 
             if (name.equals("item")) {
+                Log.d(TAG, "Parsing tag " + name);
                 classes.add(readEntry(parser));
             } else {
+                Log.d(TAG, "Skipping tag " + name);
                 skip(parser);
             }
         }
@@ -66,18 +73,25 @@ public class DawsonRssXmlParser {
                 continue;
             }
             String name = parser.getName();
-            if (name.equals("title")) {
-                title = readText(parser);
-            } else if (name.equals("course")) {
-                course = readText(parser);
-            } else if (name.equals("teacher")) {
-                teacher = readText(parser);
-            } else if (name.equals("datecancelled")) {
-                dateCancelled = readText(parser);
-            } else if (name.equals("notes")) {
-                notes = readText(parser);
-            } else {
-                skip(parser);
+            switch (name) {
+                case "title":
+                    title = readText(parser);
+                    break;
+                case "course":
+                    course = readText(parser);
+                    break;
+                case "teacher":
+                    teacher = readText(parser);
+                    break;
+                case "datecancelled":
+                    dateCancelled = readText(parser);
+                    break;
+                case "notes":
+                    notes = readText(parser);
+                    break;
+                default:
+                    skip(parser);
+                    break;
             }
         }
         return new CanceledClassDetails(title, course, teacher, dateCancelled, notes);
@@ -94,6 +108,7 @@ public class DawsonRssXmlParser {
             result = parser.getText();
             parser.nextTag();
         }
+        Log.d(TAG, "tag contained: " + result);
         return result;
     }
 

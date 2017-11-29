@@ -31,7 +31,7 @@ public class CanceledActivity extends Fragment {
     private final String RSS_URL =
             "https://www.dawsoncollege.qc.ca/wp-content/external-includes/cancellations/feed.xml";
     View view;
-    Context context = getActivity();
+    Context context;
     ListView list;
 
     @Nullable
@@ -47,6 +47,7 @@ public class CanceledActivity extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         list = (ListView) view.findViewById(R.id.classCancelListView);
+        context = view.getContext();
         new DawsonRssXmlDownloadTask().execute(RSS_URL);
     }
 

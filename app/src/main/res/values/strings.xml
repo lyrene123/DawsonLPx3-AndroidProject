@@ -132,5 +132,7 @@
     year of my studies in Computer Science at Dawson College and I\'m happy to be learning so much things, specially in my Android class!</string>
     <string name="blurb_title">About</string>
     <string name="dismiss">OK</string>
+    <string name="connection_error">There was a problem connecting to Dawson\'s RSS feed.</string>
+    <string name="xml_error">Could not parse RSS feed.</string>
 </resources>
 

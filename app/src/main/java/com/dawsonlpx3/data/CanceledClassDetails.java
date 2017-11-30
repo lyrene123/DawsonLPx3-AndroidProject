@@ -1,5 +1,7 @@
 package com.dawsonlpx3.data;
 
+import java.io.Serializable;
+
 /**
  * A CanceledClassDetails object encapsulates the properties of a canceled class, retrieved from
  * the Dawson College website's class cancellations RSS feed.
@@ -10,7 +12,7 @@ package com.dawsonlpx3.data;
  * @author Pengkim Sy
  */
 
-public class CanceledClassDetails {
+public class CanceledClassDetails implements Serializable {
     private final String title;
     private final String course;
     private final String teacher;

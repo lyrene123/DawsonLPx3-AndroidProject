@@ -51,8 +51,15 @@ public class CanceledActivity extends Fragment {
         new DawsonRssXmlDownloadTask().execute(RSS_URL);
     }
 
-    private void populateListView(List<CanceledClassDetails> canceled) {
-        if (canceled == null || canceled.isEmpty()) {
+    private void populateListView(List<CanceledClassDetails> canceled, boolean isIOError,
+                                  boolean isXMLError) {
+        if (isIOError){
+            Toast.makeText(context, getResources().getString(R.string.connection_error),
+                    Toast.LENGTH_LONG).show();
+        } else if (isXMLError) {
+            Toast.makeText(context, getResources().getString(R.string.xml_error),
+                    Toast.LENGTH_LONG).show();
+        } else if (canceled == null || canceled.isEmpty()) {
             Toast.makeText(context, "No cancelled classes found!",
                     Toast.LENGTH_LONG).show();
         } else {
@@ -65,6 +72,8 @@ public class CanceledActivity extends Fragment {
             List<CanceledClassDetails>> {
 
         private final String INNER_TAG = "LPx3-XmlDownloadTask";
+        private boolean isIOError = false;
+        private boolean isXMLError = false;
 
         @Override
         protected List<CanceledClassDetails> doInBackground(String... urls) {
@@ -72,12 +81,10 @@ public class CanceledActivity extends Fragment {
             try {
                 return loadXmlFromNetwork(urls[0]);
             } catch (IOException ioe) {
-                Toast.makeText(context, getResources().getString(R.string.connection_error),
-                        Toast.LENGTH_LONG).show();
+                this.isIOError = true;
                 return null;
             } catch (XmlPullParserException xppe) {
-                Toast.makeText(context, getResources().getString(R.string.xml_error),
-                        Toast.LENGTH_LONG).show();
+                this.isXMLError = true;
                 return null;
             }
         }
@@ -85,7 +92,7 @@ public class CanceledActivity extends Fragment {
         @Override
         protected void onPostExecute(List<CanceledClassDetails> result) {
             Log.d(INNER_TAG, "onPostExecute");
-            populateListView(result);
+            populateListView(result, isIOError, isXMLError);
         }
 
         private List<CanceledClassDetails> loadXmlFromNetwork(String url)

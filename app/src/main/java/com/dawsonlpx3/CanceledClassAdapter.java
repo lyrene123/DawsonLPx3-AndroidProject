@@ -6,6 +6,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,9 +27,11 @@ public class CanceledClassAdapter extends ArrayAdapter<CanceledClassDetails> {
     private LayoutInflater inflater;
     private Activity activity;
     private List<CanceledClassDetails> classList;
+    private final String TAG = "LPx3-CanceledAdapter";
 
     public CanceledClassAdapter(Context context, List<CanceledClassDetails> classes) {
         super(context, 0, classes);
+        Log.d(TAG, "constructor");
         this.activity = (Activity) context;
         this.classList = classes;
         this.inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -36,6 +39,7 @@ public class CanceledClassAdapter extends ArrayAdapter<CanceledClassDetails> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        Log.d(TAG, "getView");
         CanceledClassDetails c = getItem(position);
 
         if (convertView == null) {
@@ -54,15 +58,21 @@ public class CanceledClassAdapter extends ArrayAdapter<CanceledClassDetails> {
     }
 
     private void setRowClickListener(View row, final int position) {
+        Log.d(TAG, "setRowClickListener");
         row.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new ShowCancelActivity();
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("class", classList.get(position));
+                Log.d(TAG, "row clicked: " + position);
+                Log.d(TAG, "related bean: " + classList.get(position).getCourse());
+                ShowCancelActivity showCancelFragment = new ShowCancelActivity();
+
+                Bundle args = new Bundle();
+                args.putSerializable("class", classList.get(position));
+                showCancelFragment.setArguments(args);
+
                 FragmentManager fm = activity.getFragmentManager();
                 fm.beginTransaction()
-                        .replace(R.id.side_frame, fragment)
+                        .replace(R.id.side_frame, showCancelFragment)
                         .addToBackStack(null)
                         .commit();
             }

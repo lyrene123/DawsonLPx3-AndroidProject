@@ -219,6 +219,7 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
     private class ForecastTask extends AsyncTask<String, Void, JSONObject[]> {
 
         private String FORECAST = "http://api.openweathermap.org/data/2.5/forecast?q=";
+        private String METRIC = "&units=metric";
         private static final String API_KEY = "&appid=1845a7224a9c4164a4007cae1129a582";
 
         /**
@@ -272,17 +273,17 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
                         tv0.setText(format.format(date));
 
                         TextView tv1 = (TextView) columns[i].getChildAt(1);
-                        d = result[i].getJSONObject("main").getDouble("temp")-273.15;
+                        d = result[i].getJSONObject("main").getDouble("temp");
                         d = (double)Math.round((d) * 10) / 10;
                         tv1.setText(Double.toString(d));
 
                         TextView tv2 = (TextView) columns[i].getChildAt(2);
-                        d = result[i].getJSONObject("main").getDouble("temp_min")-273.15;
+                        d = result[i].getJSONObject("main").getDouble("temp_min");
                         d = (double)Math.round((d) * 10) / 10;
                         tv2.setText(Double.toString(d));
 
                         TextView tv3 = (TextView) columns[i].getChildAt(3);
-                        d = result[i].getJSONObject("main").getDouble("temp_max")-273.15;
+                        d = result[i].getJSONObject("main").getDouble("temp_max");
                         d = (double)Math.round((d) * 10) / 10;
                         tv3.setText(Double.toString(d));
 
@@ -345,7 +346,7 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
             BufferedReader reader = null;
             try {
                 // Setup the URL.
-                URL url = new URL(FORECAST +API_KEY);
+                URL url = new URL(FORECAST +METRIC +API_KEY);
                 Log.d(TAG, url.toString());
                 // Setup HttpURLConnection using the URL object.
                 conn = (HttpURLConnection) url.openConnection();

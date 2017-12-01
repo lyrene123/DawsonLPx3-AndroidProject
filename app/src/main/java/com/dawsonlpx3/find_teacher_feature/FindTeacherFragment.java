@@ -71,6 +71,7 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
         dialog = new ProgressDialog(getActivity());
         Log.d(TAG, "onCreate started");
         fbManager = FirebaseManagerUtil.getFirebaseManager();
+        this.teachersTask = new GetTeachersTask();
         if(savedInstanceState != null){
             Log.d(TAG, "restoring state from bundle");
             this.restoredFname = savedInstanceState.getString("fname");
@@ -78,8 +79,13 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
             this.restoredErrorMsg = savedInstanceState.getString("error");
             this.isExact = savedInstanceState.getBoolean("isExact");
         } else {
-            this.restoredFname = "";
-            this.restoredLname = "";
+            if (getArguments() != null) {
+                this.restoredFname = getArguments().getString("fname");
+                this.restoredLname = getArguments().getString("lname");
+            } else {
+                this.restoredFname = "";
+                this.restoredLname = "";
+            }
             this.restoredErrorMsg = "";
         }
     }
@@ -161,7 +167,7 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
             }
 
             //start seperate async task for querying the db
-            this.teachersTask = new GetTeachersTask();
+
             this.teachersTask.execute();
             //Toast.makeText(getActivity(), getResources().getString(R.string.searchTeachers), Toast.LENGTH_LONG).show();
         }
@@ -183,7 +189,7 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
         Log.d(TAG, "num of teacher records: " + teachers.size());
         Log.d(TAG, "task: " + teachersTask + " isSaved...: " + isOnSavedInstanceState);
 
-        if (dialog.isShowing()) {
+        if (dialog != null && dialog.isShowing()) {
             dialog.dismiss();
         }
 

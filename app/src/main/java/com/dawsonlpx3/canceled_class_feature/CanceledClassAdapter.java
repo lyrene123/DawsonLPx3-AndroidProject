@@ -1,9 +1,7 @@
-package com.dawsonlpx3;
+package com.dawsonlpx3.canceled_class_feature;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,9 +11,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.dawsonlpx3.R;
 import com.dawsonlpx3.data.CanceledClassDetails;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -64,7 +62,7 @@ public class CanceledClassAdapter extends ArrayAdapter<CanceledClassDetails> {
             public void onClick(View v) {
                 Log.d(TAG, "row clicked: " + position);
                 Log.d(TAG, "related bean: " + classList.get(position).getCourse());
-                ShowCancelActivity showCancelFragment = new ShowCancelActivity();
+                ShowCancelFragment showCancelFragment = new ShowCancelFragment();
 
                 Bundle args = new Bundle();
                 args.putSerializable("class", classList.get(position));

@@ -1,4 +1,4 @@
-package com.dawsonlpx3.rss_parser;
+package com.dawsonlpx3.canceled_class_feature;
 
 import android.util.Log;
 import android.util.Xml;

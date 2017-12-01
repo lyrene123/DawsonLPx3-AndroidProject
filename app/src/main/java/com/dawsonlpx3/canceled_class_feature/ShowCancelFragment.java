@@ -1,4 +1,4 @@
-package com.dawsonlpx3;
+package com.dawsonlpx3.canceled_class_feature;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -11,11 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.dawsonlpx3.R;
 import com.dawsonlpx3.data.CanceledClassDetails;
 import com.dawsonlpx3.db.FirebaseManagerUtil;
 import com.dawsonlpx3.find_teacher_feature.FindTeacherFragment;
 
-public class ShowCancelActivity extends Fragment {
+public class ShowCancelFragment extends Fragment {
 
     private View view;
     private CanceledClassDetails details;

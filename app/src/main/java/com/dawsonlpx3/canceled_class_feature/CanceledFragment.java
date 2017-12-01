@@ -1,10 +1,9 @@
-package com.dawsonlpx3;
+package com.dawsonlpx3.canceled_class_feature;
 
 import android.app.Fragment;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,8 +12,10 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.dawsonlpx3.R;
+import com.dawsonlpx3.canceled_class_feature.CanceledClassAdapter;
 import com.dawsonlpx3.data.CanceledClassDetails;
-import com.dawsonlpx3.rss_parser.DawsonRssXmlParser;
+import com.dawsonlpx3.canceled_class_feature.DawsonRssXmlParser;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -22,10 +23,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
-public class CanceledActivity extends Fragment {
+public class CanceledFragment extends Fragment {
 
     private final String TAG = "LPx3-Canceled";
     private final String RSS_URL =

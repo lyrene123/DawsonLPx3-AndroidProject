@@ -53,7 +53,7 @@ public class SettingsActivity extends Fragment {
         firstNameEdit = view.findViewById(R.id.first_name_input);
         lastNameEdit = view.findViewById(R.id.last_name_input);
         emailEdit = view.findViewById(R.id.email_input);
-        passwordEdit = view.findViewById(R.id.email_input);
+        passwordEdit = view.findViewById(R.id.password_input);
         lastUpdatedText = view.findViewById(R.id.last_modified_input);
         saveButton = view.findViewById(R.id.save_settings_button);
 

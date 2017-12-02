@@ -25,6 +25,8 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.dawsonlpx3.data.TeacherDetails;
+import com.dawsonlpx3.find_friends_feature.AllFriendsFragment;
+import com.dawsonlpx3.find_friends_feature.FindFriendFragment;
 import com.dawsonlpx3.find_teacher_feature.ChooseTeacherFragment;
 import com.dawsonlpx3.find_teacher_feature.FindTeacherFragment;
 import com.dawsonlpx3.find_teacher_feature.TeacherContactFragment;
@@ -205,6 +207,11 @@ public class MainActivity extends AppCompatActivity
                     .commit();
         } else if (id == R.id.nav_acedemicCalendar) {
             Fragment frag = new AcedemicCalendarFragment();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.side_frame, frag)
+                    .commit();
+        } else if (id == R.id.nav_find_friends) {
+            Fragment frag = new AllFriendsFragment();
             fragmentManager.beginTransaction()
                     .replace(R.id.side_frame, frag)
                     .commit();

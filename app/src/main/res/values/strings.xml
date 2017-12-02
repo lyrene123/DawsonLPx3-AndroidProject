@@ -50,6 +50,7 @@
     <string name="nav_acedemicCalendar">Academic Calendar</string>
     <string name="nav_note">Note</string>
     <string name="nav_weather">Weather</string>
+    <string name="nav_findfriends">Find Friends</string>
     <string name="register">Register</string>
     <string name="city">City</string>
     <string name="add">Add</string>
@@ -132,5 +133,6 @@
     year of my studies in Computer Science at Dawson College and I\'m happy to be learning so much things, specially in my Android class!</string>
     <string name="blurb_title">About</string>
     <string name="dismiss">OK</string>
+    <string name="your_friends">Your Friends</string>
 </resources>
 

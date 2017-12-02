@@ -3,6 +3,7 @@ package com.dawsonlpx3;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
@@ -24,6 +25,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import com.dawsonlpx3.async_utils.WhereIsFriendAsyncTask;
 import com.dawsonlpx3.data.TeacherDetails;
 import com.dawsonlpx3.find_friends_feature.AllFriendsFragment;
 import com.dawsonlpx3.find_friends_feature.FindFriendFragment;
@@ -31,7 +33,12 @@ import com.dawsonlpx3.find_teacher_feature.ChooseTeacherFragment;
 import com.dawsonlpx3.find_teacher_feature.FindTeacherFragment;
 import com.dawsonlpx3.find_teacher_feature.TeacherContactFragment;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Calendar;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Launches the Main Activity that will display the the app's main interaction with
@@ -311,6 +318,64 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onFriendSelected(String friendemail, String name) {
+        Log.d(TAG, "onFriendSelected");
+        Calendar calendar = Calendar.getInstance();
+
+        int day = calendar.get(Calendar.DAY_OF_WEEK);
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int min = calendar.get(Calendar.MINUTE);
+        String timeStr = hour+""+min;
+        int time = Integer.parseInt(timeStr);
+
+        SharedPreferences prefs = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        String email = prefs.getString("email", "");
+        String password = prefs.getString("password", "");
+
+        WhereIsFriendAsyncTask friendAsyncTask = new WhereIsFriendAsyncTask();
+        friendAsyncTask.execute(email, password, friendemail, day, time);
+        try {
+            JSONObject jsonResponse = friendAsyncTask.get();
+            if(!checkForErrorsOrNoLoc(jsonResponse)){
+
+            }
+        } catch (InterruptedException | ExecutionException e) {
+            //TODO display a popup dialog for problem retrieving friend location
+            Log.e(TAG, "Api Error getting friend location: " + Log.getStackTraceString(e));
+        }
+    }
+
+    private boolean checkForErrorsOrNoLoc(JSONObject jsonResponse) {
+        if(jsonResponse == null){
+            //TODO display a popup dialog for problem retrieving friend location
+            return true;
+        }
+
+        try {
+            String error = jsonResponse.getString("error");
+            //TODO display a popup dialog for error message
+            Log.d(TAG, "Found error message");
+            return true;
+        } catch (JSONException e) {
+            try {
+                String course = jsonResponse.getString("course");
+                String section = jsonResponse.getString("section");
+
+                if(course.isEmpty() || section.isEmpty()){
+                    //TODO display a popup dialog for unknown whereabouts, not in class
+                    Log.d(TAG, "unknown whereabouts, not in class");
+                    return true;
+                }
+                return false;
+
+            } catch (JSONException e1) {
+                //TODO display a popup dialog for unknown whereabouts, not in class
+                Log.e(TAG, "Api Error getting friend location: " + Log.getStackTraceString(e));
+                return false;
+            }
+        }
+
 
     }
+
+
 }

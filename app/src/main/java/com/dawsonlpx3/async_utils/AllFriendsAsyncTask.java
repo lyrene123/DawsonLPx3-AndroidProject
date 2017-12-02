@@ -3,14 +3,19 @@ package com.dawsonlpx3.async_utils;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.dawsonlpx3.R;
+
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Iterator;
 
 
 public class AllFriendsAsyncTask extends AsyncTask <String, Void, JSONArray> {
@@ -40,11 +45,6 @@ public class AllFriendsAsyncTask extends AsyncTask <String, Void, JSONArray> {
         }
     }
 
-  /*  @Override
-    protected void onPostExecute(JSONArray result){
-        Log.d(TAG, "onPostExecute: Result = " +result);
-    }*/
-
     private JSONArray retrieveAllFriends(URL url){
         HttpURLConnection conn = null;
         BufferedReader reader = null;
@@ -61,28 +61,37 @@ public class AllFriendsAsyncTask extends AsyncTask <String, Void, JSONArray> {
             int response = conn.getResponseCode();
             Log.d(TAG, "Server returned: " + response);
 
-            if (response != HttpURLConnection.HTTP_OK) {
-                Log.e(TAG, "Response not HTTP OK, aborting read");
+            if (response != HttpURLConnection.HTTP_OK && response != HttpURLConnection.HTTP_UNAUTHORIZED) {
+                Log.e(TAG, "Response not HTTP OK, UNAUTHORIZED NOR BAD REQUEST, aborting read");
                 return null;
             }
 
-            // get the data from the api call result
-            reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            if(response == HttpURLConnection.HTTP_UNAUTHORIZED) {
+                reader = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+            } else {
+                reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            }
+
             StringBuffer json = new StringBuffer();
             String tmp = "";
-            while((tmp = reader.readLine()) != null) {
+            while ((tmp = reader.readLine()) != null) {
                 json.append(tmp).append("\n");
             }
             reader.close();
 
             //return the response as a JSONObject array
             Log.d(TAG, "json result: " + json.toString());
+            if(response == HttpURLConnection.HTTP_UNAUTHORIZED || response == HttpURLConnection.HTTP_BAD_REQUEST) {
+                JSONObject errorObj = new JSONObject(json.toString());
+                JSONArray jsonErrorArray = new JSONArray();
+                jsonErrorArray.put(errorObj);
+                return jsonErrorArray;
+            }
             return new JSONArray(json.toString());
         }  catch(Exception e){
             Log.e(TAG, "Exception when retrieving all friends" + Log.getStackTraceString(e));
             return null;
         } finally {
-
             if (reader != null) {
                 try {
                     reader.close();

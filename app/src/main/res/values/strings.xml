@@ -134,5 +134,7 @@
     <string name="blurb_title">About</string>
     <string name="dismiss">OK</string>
     <string name="your_friends">Your Friends</string>
+    <string name="unautorized">Invalid credentials</string>
+    <string name="bad_request">bad or missing parameter or not a friend</string>
 </resources>
 

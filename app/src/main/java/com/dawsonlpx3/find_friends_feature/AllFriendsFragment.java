@@ -50,16 +50,18 @@ public class AllFriendsFragment extends Fragment {
         allFriendsAsyncTask.execute(email, password);
         try {
             jsonResponse = allFriendsAsyncTask.get();
-            if(!checkForErrors()) {
+            Log.d(TAG, "jsonResponse: " + jsonResponse.toString());
+            if(!checkForErrorsOrNoFriends()) {
                 buildFriendsNames();
                 this.itemsAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, friends_names.toArray(new String[0]));
             }
         } catch (InterruptedException | ExecutionException | JSONException e ) {
+            //TODO display a popup dialog for problem retrieving friends
             Log.e(TAG, "API Error getting friends: " + Log.getStackTraceString(e));
         }
     }
 
-    private boolean checkForErrors() {
+    private boolean checkForErrorsOrNoFriends() {
         if(jsonResponse == null){
             //TODO display a popup dialog for problem retrieving friends
             Log.d(TAG, "Null jsonResponse");

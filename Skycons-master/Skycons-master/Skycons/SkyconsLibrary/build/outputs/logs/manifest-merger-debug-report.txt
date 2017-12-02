@@ -1,48 +1,5 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml:2:1-12:12
-INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml:2:1-12:12
-INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml:2:1-12:12
-INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml:2:1-12:12
-INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml:2:1-12:12
-INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml:2:1-12:12
-INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml:2:1-12:12
-	package
-		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml:3:5-39
-		INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml
-		INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml
-	android:versionName
-		INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml
-		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml:2:1-12:12
-		INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml
-	android:versionCode
-		INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml
-		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml:2:1-12:12
-		INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml
-	xmlns:android
-		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml:2:11-69
-application
-ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml:5:5-10:19
-	android:label
-		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml:8:9-41
-	android:icon
-		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml:7:9-45
-	android:allowBackup
-		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml:6:9-35
-uses-sdk
-INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml
-INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml
-INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml
-INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml
-	android:targetSdkVersion
-		INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml
-		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml
-		INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml
-	android:minSdkVersion
-		INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml
-		ADDED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml
-		INJECTED from /Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/AndroidManifest.xml
 ADDED from C:\Users\Philippe\Desktop\lr\DawsonLPx3\Skycons-master\Skycons-master\Skycons\SkyconsLibrary\src\main\AndroidManifest.xml:2:1-12:12
 INJECTED from C:\Users\Philippe\Desktop\lr\DawsonLPx3\Skycons-master\Skycons-master\Skycons\SkyconsLibrary\src\main\AndroidManifest.xml:2:1-12:12
 INJECTED from C:\Users\Philippe\Desktop\lr\DawsonLPx3\Skycons-master\Skycons-master\Skycons\SkyconsLibrary\src\main\AndroidManifest.xml:2:1-12:12

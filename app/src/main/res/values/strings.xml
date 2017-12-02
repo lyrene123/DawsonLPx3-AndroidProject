@@ -132,5 +132,32 @@
     year of my studies in Computer Science at Dawson College and I\'m happy to be learning so much things, specially in my Android class!</string>
     <string name="blurb_title">About</string>
     <string name="dismiss">OK</string>
+    <string name="friends_on_break_btn_text">Find Friends on Break</string>
+    <string-array name="days_of_the_week">
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+    </string-array>
+    <string-array name="search_times">
+        <item>10:00</item>
+        <item>10:30</item>
+        <item>11:00</item>
+        <item>11:30</item>
+        <item>12:00</item>
+        <item>12:30</item>
+        <item>13:00</item>
+        <item>13:30</item>
+        <item>14:00</item>
+        <item>14:30</item>
+        <item>15:00</item>
+        <item>15:30</item>
+        <item>16:00</item>
+        <item>16:30</item>
+        <item>17:00</item>
+    </string-array>
 </resources>
 

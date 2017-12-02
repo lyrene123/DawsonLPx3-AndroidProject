@@ -1,109 +1,96 @@
 package com.dawsonlpx3.friendBreak_feature;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.dawsonlpx3.R;
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link FriendBreakFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link FriendBreakFragment#newInstance} factory method to
- * create an instance of this fragment.
+ *
  */
 public class FriendBreakFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private static final String TAG = "FriendBreakFragment";
 
-    private OnFragmentInteractionListener mListener;
+    View view;
+    private Context context; // Current Activity Context
+    private Spinner weekSpinner, startSpinner, endSpinner;
+    //private EditText start_time, end_time;
+    private Button apiButton;
+    private TextView testText;
+    private String start_string;
+    private String end_string;
 
-    public FriendBreakFragment() {
-        // Required empty public constructor
-    }
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_friend_break, container, false);
+        Log.d(TAG, "onCreateView");
+
+        // Get handles to required classes and information.
+        context = this.getActivity();
+        weekSpinner = view.findViewById(R.id.free_friends_days);
+        startSpinner = view.findViewById(R.id.free_friends_start_time);
+        endSpinner = view.findViewById(R.id.free_friends_end_time);
+        apiButton = view.findViewById(R.id.free_friends_button);
+        testText = view.findViewById(R.id.free_friends_test);
+
+        // Setup the spinners
+        String[] daysOfTheWeek = view.getResources().getStringArray(R.array.days_of_the_week);
+        // ArrayAdapter to add items to the spinner
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
+                context, android.R.layout.simple_spinner_item, daysOfTheWeek);
+        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        weekSpinner.setAdapter(spinnerArrayAdapter);
+        weekSpinner.setSelection(0); // set default value to Sunday
+
+        String[] timesOfDay = view.getResources().getStringArray(R.array.search_times);
+        ArrayAdapter<String> timeArrayAdapter = new ArrayAdapter<String>(
+                context, android.R.layout.simple_spinner_item, timesOfDay);
+        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Start-time spinner
+        startSpinner.setAdapter(timeArrayAdapter);
+        startSpinner.setSelection(0); // set default value 10 AM
+        // End-time spinner
+        endSpinner.setAdapter(timeArrayAdapter);
+        endSpinner.setSelection(1); // set default value 10:30 AM
+
+        // Setup the button
+        apiButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(validateTimes()){
+                    testText.setText("That is valid");
+                }else{
+                    testText.setText("That is INVALID");
+                }
+            }
+        });
+
+        return view;
+    } // onCreateView
+
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FriendBreakFragment.
+     * @return
      */
-    // TODO: Rename and change types and number of parameters
-    public static FriendBreakFragment newInstance(String param1, String param2) {
-        FriendBreakFragment fragment = new FriendBreakFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    private boolean validateTimes(){
+        if(startSpinner.getSelectedItemPosition() < endSpinner.getSelectedItemPosition()){
+            return true;
         }
-    }
+        return false;
+    } // validateTimes()
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_friend_break, container, false);
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
-}
+} // FriendBreakFragment

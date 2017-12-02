@@ -28,6 +28,7 @@ import com.dawsonlpx3.data.TeacherDetails;
 import com.dawsonlpx3.find_teacher_feature.ChooseTeacherFragment;
 import com.dawsonlpx3.find_teacher_feature.FindTeacherFragment;
 import com.dawsonlpx3.find_teacher_feature.TeacherContactFragment;
+import com.dawsonlpx3.friendBreak_feature.FriendBreakFragment;
 
 import java.util.List;
 
@@ -227,6 +228,11 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(Intent.ACTION_VIEW,
                     Uri.parse("https://www.dawsoncollege.qc.ca/computer-science-technology/"));
             startActivity(intent);
+        } else if (id == R.id.nav_whoIsFree) {
+            Fragment frag = new FriendBreakFragment();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.side_frame, frag)
+                    .commit();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

@@ -43,7 +43,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         ChooseTeacherFragment.OnTeacherSelectedListener,
-        NotesFragment.OnNoteSelectedListener {
+        NotesFragment.OnNoteSelectedListener,
+        AllFriendsFragment.onFriendSelectedListener {
 
     private final String TAG = "LPx3-Main";
 
@@ -308,4 +309,8 @@ public class MainActivity extends AppCompatActivity
         return frag;
     }
 
+    @Override
+    public void onFriendSelected(String friendemail, String name) {
+
+    }
 }

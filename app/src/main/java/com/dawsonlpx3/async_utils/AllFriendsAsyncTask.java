@@ -40,10 +40,10 @@ public class AllFriendsAsyncTask extends AsyncTask <String, Void, JSONArray> {
         }
     }
 
-    @Override
+  /*  @Override
     protected void onPostExecute(JSONArray result){
         Log.d(TAG, "onPostExecute: Result = " +result);
-    }
+    }*/
 
     private JSONArray retrieveAllFriends(URL url){
         HttpURLConnection conn = null;

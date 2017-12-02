@@ -3,13 +3,15 @@ package com.dawsonlpx3.find_friends_feature;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.dawsonlpx3.R;
 import com.dawsonlpx3.async_utils.AllFriendsAsyncTask;
@@ -104,21 +106,38 @@ public class AllFriendsFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
+        if (context instanceof onFriendSelectedListener) {
             this.listener = (onFriendSelectedListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+                    + " must implement onFriendSelectedListener");
         }
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Log.i(TAG, "onViewCreated started");
+
+        ListView listView = (ListView) view.findViewById(R.id.allfriendsLV);
+        listView.setAdapter(itemsAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                try {
+                    listener.onFriendSelected(jsonResponse.getJSONObject(position).getString("email"),
+                            friends_names.get(position));
+                } catch (JSONException e) {
+                    Log.e(TAG, "Error getting email for onClick friend: " + Log.getStackTraceString(e));
+                    //TODO POP DIALOG
+                }
+            }
+        });
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
         this.listener = null;
-    }
-
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
     }
 }

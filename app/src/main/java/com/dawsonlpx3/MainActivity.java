@@ -331,7 +331,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onFriendSelected(String friendemail, String name) {
         Log.d(TAG, "onFriendSelected");
-        getApiInformation();
+        getApiInformation(); //retrieve all necessary info for the api call
 
         WhereIsFriendAsyncTask friendAsyncTask = new WhereIsFriendAsyncTask();
         friendAsyncTask.execute(email, password, friendemail, day, time);

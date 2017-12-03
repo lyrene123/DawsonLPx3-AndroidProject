@@ -133,6 +133,7 @@
     year of my studies in Computer Science at Dawson College and I\'m happy to be learning so much things, specially in my Android class!</string>
     <string name="blurb_title">About</string>
     <string name="dismiss">OK</string>
+    <string name="friends_on_break_btn_text">Find Friends on Break</string>
     <string name="your_friends">Your Friends</string>
     <string name="day">Day</string>
     <string name="locationOf">Location of</string>
@@ -144,6 +145,27 @@
         <item>Thursday</item>
         <item>Friday</item>
     </string-array>
+    <string-array name="search_times">
+        <item>1000</item>
+        <item>1030</item>
+        <item>1100</item>
+        <item>1130</item>
+        <item>1200</item>
+        <item>1230</item>
+        <item>1300</item>
+        <item>1330</item>
+        <item>1400</item>
+        <item>1430</item>
+        <item>1500</item>
+        <item>1530</item>
+        <item>1600</item>
+        <item>1630</item>
+        <item>1700</item>
+    </string-array>
+    <string name="invalid_time_interval">That time interval is Invalid</string>
+    <string name="break_null">Problem retrieving your friends</string>
+    <string name="break_no_friends">No friends on break. sorry there pal.</string>
+    <string name="break_invalid_creds">Invalid Credentials</string>
     <string name="warning">Warning</string>
     <string name="problem_retrieving_friends">Something went wrong! Problem retrieving friends</string>
     <string name="no_friends">You currently have no friends</string>

@@ -26,8 +26,12 @@
             android:id="@+id/nav_weather"
             android:title="@string/nav_weather" />
         <item
+            android:id="@+id/nav_whoIsFree"
+            android:title="Who is free" />
+        <item
             android:id="@+id/nav_find_friends"
             android:title="@string/nav_findfriends" />
+
     </group>
 
     <item android:title="Extra">

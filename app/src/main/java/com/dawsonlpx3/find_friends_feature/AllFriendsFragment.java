@@ -1,5 +1,6 @@
 package com.dawsonlpx3.find_friends_feature;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -56,21 +57,21 @@ public class AllFriendsFragment extends Fragment {
                 this.itemsAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, friends_names.toArray(new String[0]));
             }
         } catch (InterruptedException | ExecutionException | JSONException e ) {
-            //TODO display a popup dialog for problem retrieving friends
+            displayErrorAuthentication(getResources().getString(R.string.problem_retrieving_friends));
             Log.e(TAG, "API Error getting friends: " + Log.getStackTraceString(e));
         }
     }
 
     private boolean checkForErrorsOrNoFriends() {
         if(jsonResponse == null){
-            //TODO display a popup dialog for problem retrieving friends
-            Log.d(TAG, "Null jsonResponse");
+            Log.e(TAG, "Null jsonResponse!");
+            displayErrorAuthentication(getResources().getString(R.string.problem_retrieving_friends));
             return true;
         }
 
         if(jsonResponse.length() == 0){
-            //TODO display a popup dialog for problem retrieving friends
             Log.d(TAG, "no friends found");
+            displayErrorAuthentication(getResources().getString(R.string.no_friends));
             return true;
         }
 
@@ -78,8 +79,8 @@ public class AllFriendsFragment extends Fragment {
             String errorMsg = null;
             try {
                 errorMsg = jsonResponse.getJSONObject(0).getString("error");
-                //TODO display a popup dialog with error message
                 Log.d(TAG, "Error message found: " + errorMsg);
+                displayErrorAuthentication(getResources().getString(R.string.invalid_creds));
                 return true;
             } catch (JSONException e) {
                 Log.d(TAG, "No error message found");
@@ -131,7 +132,7 @@ public class AllFriendsFragment extends Fragment {
                             friends_names.get(position));
                 } catch (JSONException e) {
                     Log.e(TAG, "Error getting email for onClick friend: " + Log.getStackTraceString(e));
-                    //TODO POP DIALOG
+                    displayErrorAuthentication(getResources().getString(R.string.problem_retrieving_location));
                 }
             }
         });
@@ -141,5 +142,14 @@ public class AllFriendsFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         this.listener = null;
+    }
+
+    private void displayErrorAuthentication(String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setMessage(message)
+                .setTitle(R.string.warning)
+                .setPositiveButton(android.R.string.ok, null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

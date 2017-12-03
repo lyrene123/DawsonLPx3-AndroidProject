@@ -1,5 +1,6 @@
 package com.dawsonlpx3;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -358,23 +359,31 @@ public class MainActivity extends AppCompatActivity
                         .commit();
             }
         } catch (InterruptedException | ExecutionException e) {
-            //TODO display a popup dialog for problem retrieving friend location
             Log.e(TAG, "Api Error getting friend location: " + Log.getStackTraceString(e));
+            displayErrorAuthentication(getResources().getString(R.string.problem_retrieving_location));
         } catch (JSONException e) {
             Log.e(TAG, "Error retrieving json items: " + Log.getStackTraceString(e));
+            displayErrorAuthentication(getResources().getString(R.string.problem_retrieving_location));
         }
     }
 
     private boolean checkForErrorsOrNoLoc(JSONObject jsonResponse) {
         if(jsonResponse == null){
-            //TODO display a popup dialog for problem retrieving friend location
+            Log.e(TAG, "Api Error getting friend location");
+            displayErrorAuthentication(getResources().getString(R.string.problem_retrieving_location));
             return true;
         }
 
         try {
             String error = jsonResponse.getString("error");
-            //TODO display a popup dialog for error message
             Log.d(TAG, "Found error message");
+            if(error.equalsIgnoreCase("invalid_credentials") || error.equalsIgnoreCase("invalid credentials")){
+                displayErrorAuthentication(getResources().getString(R.string.invalid_creds));
+            } else if(error.equalsIgnoreCase("bad or missing parameter")){
+                displayErrorAuthentication(getResources().getString(R.string.missing_params));
+            } else {
+                displayErrorAuthentication(getResources().getString(R.string.not_friends));
+            }
             return true;
         } catch (JSONException e) {
             try {
@@ -382,17 +391,26 @@ public class MainActivity extends AppCompatActivity
                 String section = jsonResponse.getString("section");
 
                 if(course.isEmpty() || section.isEmpty()){
-                    //TODO display a popup dialog for unknown whereabouts, not in class
                     Log.d(TAG, "unknown whereabouts, not in class");
+                    displayErrorAuthentication(getResources().getString(R.string.not_in_class));
                     return true;
                 }
                 return false;
 
             } catch (JSONException e1) {
-                //TODO display a popup dialog for unknown whereabouts, not in class
-                Log.e(TAG, "Api Error getting friend location: " + Log.getStackTraceString(e));
+                Log.e(TAG, "Api Error getting friend location: " + Log.getStackTraceString(e1));
+                displayErrorAuthentication(getResources().getString(R.string.problem_retrieving_location));
                 return false;
             }
         }
+    }
+
+    private void displayErrorAuthentication(String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(message)
+                .setTitle(R.string.warning)
+                .setPositiveButton(android.R.string.ok, null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

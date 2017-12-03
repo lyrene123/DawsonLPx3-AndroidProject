@@ -144,5 +144,13 @@
         <item>Thursday</item>
         <item>Friday</item>
     </string-array>
+    <string name="warning">Warning</string>
+    <string name="problem_retrieving_friends">Something went wrong! Problem retrieving friends</string>
+    <string name="no_friends">You currently have no friends</string>
+    <string name="problem_retrieving_location">Something went wrong! Problem retrieving friend location</string>
+    <string name="invalid_creds">Invalid Credentials! Cannot retrieve your friends</string>
+    <string name="not_in_class">Unknown Whereabouts, your friend may not be in class at the moment</string>
+    <string name="missing_params">Bad or missing parameters. Cannot retrieve friends.</string>
+    <string name="not_friends">That person is no longer your friend...</string>
 </resources>
 

@@ -25,7 +25,15 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 /**
+ * Fragment activity which handles the display of the list of friends of the logged in user.
+ * Handles making the async call to the backend in order to retrieve the list of friends in a
+ * separate thread and displays the result into the list view. Handles as well the display of
+ * any error messages retrieved from the api call in an alert dialog.
  *
+ * @author Lyrene Labor
+ * @author Pengkim Sy
+ * @author Phil Langlois
+ * @author Peter Bellefleur
  */
 public class AllFriendsFragment extends Fragment {
 
@@ -35,10 +43,30 @@ public class AllFriendsFragment extends Fragment {
     private List<String> friends_names;
     private ArrayAdapter<String> itemsAdapter;
 
+    /**
+     * Interface for handling the selection of a friend in the list of friends from the list view
+     */
     public interface onFriendSelectedListener {
+        /**
+         * Method handler necessary to be implemented by any activity that will inflate this
+         * fragment. Receives a friend email and the name.
+         *
+         * @param friendemail Email of a friend
+         * @param name Name of a friend
+         */
         void onFriendSelected(String friendemail, String name);
     }
 
+    /**
+     * Retrieves the credentials of the logged in user from the Shared Preferences and uses that
+     * information to perform an API call to the backend in order to retrieve the list of friends
+     * of the logged in user to display in the view. Once response is received, process the json
+     * result for any error messages, null response, or empty response which in those cases, an Alert
+     * dialog will display with an appropriate message. If all data is in the response, add the list
+     * into the list view adapter.
+     *
+     * @param savedInstanceState Bundle object
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,19 +90,29 @@ public class AllFriendsFragment extends Fragment {
         }
     }
 
+    /**
+     * Processes the json response object and verifies for any null response, empty reponse,
+     * or error messages. In those cases, an alert dialog will display with the appropriate
+     * message and will return true. If none of those cases match, returns false.
+     *
+     * @return boolean
+     */
     private boolean checkForErrorsOrNoFriends() {
+        //check for null reponse
         if(jsonResponse == null){
             Log.e(TAG, "Null jsonResponse!");
             displayErrorReponse(getResources().getString(R.string.problem_retrieving_friends));
             return true;
         }
 
+        //check for empty result which means no friends found
         if(jsonResponse.length() == 0){
             Log.d(TAG, "no friends found");
             displayErrorReponse(getResources().getString(R.string.no_friends));
             return true;
         }
 
+        //check if any error messages returned
         if(jsonResponse.length() == 1) {
             String errorMsg = null;
             try {
@@ -90,6 +128,12 @@ public class AllFriendsFragment extends Fragment {
         return false;
     }
 
+    /**
+     * Retrieve all friends items from the Json array response and add the names of each friend into
+     * an array of strings.
+     *
+     * @throws JSONException when error reading the json object
+     */
     private void buildFriendsNames() throws JSONException {
         friends_names = new ArrayList<>();
         for(int i = 0; i < jsonResponse.length(); i++){
@@ -99,13 +143,27 @@ public class AllFriendsFragment extends Fragment {
         }
     }
 
+    /**
+     * Inflates the fragment into the view
+     *
+     * @param inflater LayoutInflater
+     * @param container ViewGroup
+     * @param savedInstanceState Bundle
+     * @return View containing the fragment
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_all_friends, container, false);
     }
 
-
+    /**
+     * Retrieves the context in which the fragment is inflated into and verifies
+     * if the parent activity is implementing the onFriendSelectedListener listener.
+     * If not, then an exception is thrown.
+     *
+     * @param context Context of current fragment
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -117,6 +175,14 @@ public class AllFriendsFragment extends Fragment {
         }
     }
 
+    /**
+     * Retrieves the ListView widget from the view and sets an onclick listener for each
+     * item in the list. When an onclick occurs, each item will execute the onFriendSelected method
+     * from the onFriendSelectedListener interface
+     *
+     * @param view View containing fragment
+     * @param savedInstanceState Bundle object
+     */
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -138,12 +204,20 @@ public class AllFriendsFragment extends Fragment {
         });
     }
 
+    /**
+     * Sets the fragment's onFriendSelectedListener interface to null
+     */
     @Override
     public void onDetach() {
         super.onDetach();
         this.listener = null;
     }
 
+    /**
+     * Creates and displays an Alert Dialog with the input string message as the content.
+     *
+     * @param message Message to display in the dialog
+     */
     private void displayErrorReponse(String message){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage(message)

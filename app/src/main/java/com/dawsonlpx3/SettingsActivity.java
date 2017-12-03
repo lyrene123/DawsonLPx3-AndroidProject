@@ -82,6 +82,8 @@ public class SettingsActivity extends Fragment {
                 editor.commit(); // Save changes
                 // Update last updated text
                 lastUpdatedText.setText(prefs.getString("timestamp", null));
+                Toast.makeText(getActivity(), getResources().getString(R.string.settings_saved),
+                        Toast.LENGTH_SHORT).show();
             }
         });
 

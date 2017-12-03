@@ -42,6 +42,7 @@ public class AllFriendsFragment extends Fragment {
     private JSONArray jsonResponse = null;
     private List<String> friends_names;
     private ArrayAdapter<String> itemsAdapter;
+    private String email, password;
 
     /**
      * Interface for handling the selection of a friend in the list of friends from the list view
@@ -60,34 +61,20 @@ public class AllFriendsFragment extends Fragment {
     /**
      * Retrieves the credentials of the logged in user from the Shared Preferences and uses that
      * information to perform an API call to the backend in order to retrieve the list of friends
-     * of the logged in user to display in the view. Once response is received, process the json
-     * result for any error messages, null response, or empty response which in those cases, an Alert
-     * dialog will display with an appropriate message. If all data is in the response, add the list
-     * into the list view adapter.
+     * of the logged in user
      *
      * @param savedInstanceState Bundle object
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //retrieve credentials from Shared preference
         SharedPreferences prefs = getActivity().getSharedPreferences("userInfo", Context.MODE_PRIVATE);
-        String email = prefs.getString("email", "");
-        String password = prefs.getString("password", "");
+        email = prefs.getString("email", "");
+        password = prefs.getString("password", "");
         Log.d(TAG, "Retrieved email and passwd from SharedPref: " + email + " " + password);
 
-        AllFriendsAsyncTask allFriendsAsyncTask = new AllFriendsAsyncTask();
-        allFriendsAsyncTask.execute(email, password);
-        try {
-            jsonResponse = allFriendsAsyncTask.get();
-            Log.d(TAG, "jsonResponse: " + jsonResponse.toString());
-            if(!checkForErrorsOrNoFriends()) {
-                buildFriendsNames();
-                this.itemsAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, friends_names.toArray(new String[0]));
-            }
-        } catch (InterruptedException | ExecutionException | JSONException e ) {
-            displayErrorReponse(getResources().getString(R.string.problem_retrieving_friends));
-            Log.e(TAG, "API Error getting friends: " + Log.getStackTraceString(e));
-        }
     }
 
     /**
@@ -176,6 +163,7 @@ public class AllFriendsFragment extends Fragment {
     }
 
     /**
+     * Starts the api call to the backend to retrieve list of friends of the logged in user.
      * Retrieves the ListView widget from the view and sets an onclick listener for each
      * item in the list. When an onclick occurs, each item will execute the onFriendSelected method
      * from the onFriendSelectedListener interface
@@ -187,6 +175,7 @@ public class AllFriendsFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Log.i(TAG, "onViewCreated started");
+        startFindFriendsTask();
 
         ListView listView = (ListView) view.findViewById(R.id.allfriendsLV);
         listView.setAdapter(itemsAdapter);
@@ -202,6 +191,33 @@ public class AllFriendsFragment extends Fragment {
                 }
             }
         });
+    }
+
+    /**
+     * Sends the api request to the backend to retrieve the list of friends of the logged in user.
+     * Once response is received, process the json result for any error messages, null response, or
+     * empty response which in those cases, an Alert dialog will display with an appropriate message.
+     * If all data is in the response, add the list into the list view adapter.
+     */
+    private void startFindFriendsTask(){
+
+        //start the async task to retrieve all friends and display progress
+        AllFriendsAsyncTask allFriendsAsyncTask = new AllFriendsAsyncTask();
+        allFriendsAsyncTask.execute(email, password);
+        try {
+            //retrieve response and remove progress
+            jsonResponse = allFriendsAsyncTask.get();
+            Log.d(TAG, "jsonResponse: " + jsonResponse.toString());
+            //process json result
+            if(!checkForErrorsOrNoFriends()) {
+                buildFriendsNames();
+                this.itemsAdapter = new ArrayAdapter<String>(getActivity(),
+                        android.R.layout.simple_list_item_1, friends_names.toArray(new String[0]));
+            }
+        } catch (InterruptedException | ExecutionException | JSONException e ) {
+            displayErrorReponse(getResources().getString(R.string.problem_retrieving_friends));
+            Log.e(TAG, "API Error getting friends: " + Log.getStackTraceString(e));
+        }
     }
 
     /**

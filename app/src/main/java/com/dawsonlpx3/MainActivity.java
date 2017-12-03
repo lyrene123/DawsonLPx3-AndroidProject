@@ -420,7 +420,9 @@ public class MainActivity extends AppCompatActivity
     private void getApiInformation(){
         //get current day and time
         Calendar calendar = Calendar.getInstance();
-        day = calendar.get(Calendar.DAY_OF_WEEK);
+        Log.d(TAG, "DAY OF WEEK: " + calendar.get(Calendar.DAY_OF_WEEK));
+        day = convertDayNumber(calendar.get(Calendar.DAY_OF_WEEK));
+        Log.d(TAG, "DAY OF WEEK converted: " + day);
         hour = calendar.get(Calendar.HOUR_OF_DAY);
         int min = calendar.get(Calendar.MINUTE);
 
@@ -440,6 +442,34 @@ public class MainActivity extends AppCompatActivity
         SharedPreferences prefs = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
         email = prefs.getString("email", "");
         password = prefs.getString("password", "");
+    }
+
+    /**
+     * Helper method that retrieves an integer representing the current day of the week
+     * from the java Calendar class and converts it to the appropriate value that matches the
+     * criteria of the whereisfriend api call
+     *
+     * @param dayOfWeek an integer representing a day of the week
+     * @return converted integer
+     */
+    private int convertDayNumber(int dayOfWeek){
+        switch (dayOfWeek){
+            case 1 :
+                return 7; //sunday
+            case 2 :
+                return  1; //monday
+            case 3 :
+                return 2; //tuesday
+            case 4 :
+                return 3; //wednesday
+            case 5 :
+                return 4; //thursday
+            case 6 :
+                return 5; //friday
+            case 7 :
+                return 6; //saturday
+        }
+        return 0;
     }
 
     /**

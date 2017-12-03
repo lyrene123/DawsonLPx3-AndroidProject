@@ -152,5 +152,8 @@
     <string name="not_in_class">Unknown Whereabouts, your friend may not be in class at the moment</string>
     <string name="missing_params">Bad or missing parameters. Cannot retrieve friends.</string>
     <string name="not_friends">That person is no longer your friend...</string>
+    <string name="searching_teachers">Searching for teachers...</string>
+    <string name="searching_friends">Searching for friends...</string>
+    <string name="settings_saved">Settings saved!</string>
 </resources>
 

@@ -45,6 +45,7 @@ public class FindFriendFragment extends Fragment {
                 course = getArguments().getString("course");
                 section = getArguments().getString("section");
                 day = getArguments().getInt("day");
+                Log.d(TAG, "Day from arguments: " + day);
             }
         } else {
             Log.d(TAG, "onCreate: retrieving from savedInstance");

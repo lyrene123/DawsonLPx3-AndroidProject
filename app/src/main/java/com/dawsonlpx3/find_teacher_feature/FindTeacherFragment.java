@@ -12,10 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dawsonlpx3.R;
 import com.dawsonlpx3.data.TeacherDetails;
@@ -319,7 +317,7 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
          * Before the execution of the async task, show the progress bar.
          */
         protected void onPreExecute() {
-            dialog.setMessage("Searching teachers...");
+            dialog.setMessage(getResources().getString(R.string.searching_teachers));
             dialog.show();
         }
 

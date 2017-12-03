@@ -8,10 +8,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
-import android.content.res.Configuration;
 import android.graphics.Color;
 import android.net.Uri;
-import android.preference.PreferenceManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -21,11 +19,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
-import android.widget.TextView;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-
+import com.dawsonlpx3.canceled_class_feature.CanceledFragment;
 import com.dawsonlpx3.async_utils.WhereIsFriendAsyncTask;
 import com.dawsonlpx3.data.TeacherDetails;
 import com.dawsonlpx3.find_friends_feature.AllFriendsFragment;
@@ -34,14 +28,12 @@ import com.dawsonlpx3.find_teacher_feature.ChooseTeacherFragment;
 import com.dawsonlpx3.find_teacher_feature.FindTeacherFragment;
 import com.dawsonlpx3.find_teacher_feature.TeacherContactFragment;
 import com.dawsonlpx3.friendBreak_feature.FriendBreakFragment;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-
 /**
  * Launches the Main Activity that will display the the app's main interaction with
  * the user.
@@ -199,7 +191,7 @@ public class MainActivity extends AppCompatActivity
                     .commit();
         } else if (id == R.id.nav_classCancel) {
             fragmentManager.beginTransaction()
-                    .replace(R.id.side_frame, new CanceledActivity())
+                    .replace(R.id.side_frame, new CanceledFragment())
                     .commit();
         } else if (id == R.id.nav_findTeacher) {
             Fragment frag = new FindTeacherFragment();

@@ -1,11 +1,9 @@
 package com.dawsonlpx3;
 
 import android.app.Fragment;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,24 +16,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.dawsonlpx3.canceled_class_feature.CanceledFragment;
 import com.dawsonlpx3.find_teacher_feature.FindTeacherFragment;
 import com.thbs.skycons.library.CloudFogView;
 import com.thbs.skycons.library.CloudHvRainView;
-import com.thbs.skycons.library.CloudMoonView;
 import com.thbs.skycons.library.CloudRainView;
 import com.thbs.skycons.library.CloudSnowView;
-import com.thbs.skycons.library.CloudSunView;
 import com.thbs.skycons.library.CloudThunderView;
 import com.thbs.skycons.library.CloudView;
-import com.thbs.skycons.library.MoonView;
 import com.thbs.skycons.library.SunView;
 import com.thbs.skycons.library.WindView;
-
-import static android.content.ContentValues.TAG;
 
 public class HomeFragment extends Fragment {
 
@@ -224,7 +216,7 @@ public class HomeFragment extends Fragment {
         @Override
         public void onClick(View view) {
             getFragmentManager().beginTransaction()
-                    .replace(R.id.side_frame, new CanceledActivity())
+                    .replace(R.id.side_frame, new CanceledFragment())
                     .addToBackStack(null)
                     .commit();
         }

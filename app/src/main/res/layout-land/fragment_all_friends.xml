@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/allFriendsTV"
+        style="@style/AppTheme.Title"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/your_friends"/>
+
+    <ListView
+        style="@style/AppTheme.List_Item"
+        android:id="@+id/allfriendsLV"
+        android:layout_below="@id/allFriendsTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+    </ListView>
+
+
+</RelativeLayout>

@@ -3,11 +3,14 @@ package com.dawsonlpx3;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -37,6 +40,10 @@ import static android.content.ContentValues.TAG;
 public class HomeFragment extends Fragment {
 
     private final String TAG = "HomeFragment";
+    private final int MY_PERMISSIONS_ACCESS_FINE_LOCATION = 1;
+    private final int MY_PERMISSIONS_INTERNET = 2;
+    private Boolean userPermissions = true; // Flag for user permissions
+
     /**
      * Inflate the fragment_home layout. This fragment will replace the
      * side_frame in the MainActivity
@@ -54,9 +61,13 @@ public class HomeFragment extends Fragment {
     }
 
     /**
+     * Retrieves all widgets from the view that need an onclick listener such as the menu widgets.
+     * Verifies the permissions to access user's location and wifi connection in order to determine
+     * the current weather. Uses a GPS Tracker in order to display to determine the weather at the
+     * user's current location.
      *
-     * @param view
-     * @param savedInstanceState
+     * @param view View
+     * @param savedInstanceState Bundle
      */
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -86,6 +97,7 @@ public class HomeFragment extends Fragment {
         ImageButton teamLogo = (ImageButton) view.findViewById(R.id.teamLogo);
         teamLogo.setOnClickListener(showAboutPage);
 
+        checkPermissions(); //checks for persmission to access location and internet connection for the weather
 
         //get longitude and latitude from GPS tracker oject
         GPSTracker gps = new GPSTracker(this.getActivity());
@@ -116,7 +128,7 @@ public class HomeFragment extends Fragment {
      * by default return sunny
      *
      * @param id
-     * @return
+     * @return String containing the status of the current weather
      */
     private String determineWeatherById(String id) {
         int firstNumber = Integer.parseInt(id.substring(0, 1));
@@ -320,4 +332,64 @@ public class HomeFragment extends Fragment {
 
         return view;
     }
+
+    /**
+     * Check the device's current permissions for needed permissions. If they are not enabled, then
+     * ask the user to give permission.
+     */
+    private void checkPermissions(){
+        Log.d(TAG, "checkPermissions");
+        // Check the permissions for ACCESS_FINE_LOCATION
+        if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Ask user for permission to use Access_FINE_LOCATION
+            ActivityCompat.requestPermissions(this.getActivity(),
+                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    MY_PERMISSIONS_ACCESS_FINE_LOCATION);
+        }
+
+        // Check the permissions for INTERNET permission
+        if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.INTERNET)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Ask user for permission to use Access_FINE_LOCATION
+            ActivityCompat.requestPermissions(this.getActivity(),
+                    new String[]{android.Manifest.permission.INTERNET},
+                    MY_PERMISSIONS_INTERNET);
+        }
+    } // checkPermissions()
+
+    /**
+     *  Checks the user's response to the request for permissions pop-ups.
+     *
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_ACCESS_FINE_LOCATION: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.d(TAG, "ACCESS_FINE_LOCATION permissions have been granted by user");
+                } else {
+                    Log.d(TAG, "ACCESS_FINE_LOCATION permissions have been denied by user");
+                    userPermissions = false;
+                }
+                return;
+            }
+            case MY_PERMISSIONS_INTERNET: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.d(TAG, "INTERNET permissions have been granted by user");
+                } else {
+                    Log.d(TAG, "INTERNET permissions have been denied by user");
+                    userPermissions = false;
+                }
+                return;
+            }
+        } // end of switch(requestCode)
+    } // onRequestPermissionResult
 }

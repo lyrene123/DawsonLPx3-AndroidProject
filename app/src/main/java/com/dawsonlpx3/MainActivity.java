@@ -324,7 +324,12 @@ public class MainActivity extends AppCompatActivity
         int day = calendar.get(Calendar.DAY_OF_WEEK);
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         int min = calendar.get(Calendar.MINUTE);
-        String timeStr = hour+""+min;
+        String timeStr = "";
+        if((min+"").length() > 2) {
+            timeStr = hour + "" + min;
+        } else {
+            timeStr = hour + "0" + min;
+        }
         int time = Integer.parseInt(timeStr);
 
         SharedPreferences prefs = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
@@ -335,12 +340,28 @@ public class MainActivity extends AppCompatActivity
         friendAsyncTask.execute(email, password, friendemail, day, time);
         try {
             JSONObject jsonResponse = friendAsyncTask.get();
-            if(!checkForErrorsOrNoLoc(jsonResponse)){
 
+            if(!checkForErrorsOrNoLoc(jsonResponse)){
+                FindFriendFragment friendFragment = new FindFriendFragment();
+                Bundle args = new Bundle();
+                args.putString("name", name);
+                args.putString("time", hour+":"+min);
+                args.putInt("day", day);
+                args.putString("course", jsonResponse.getString("course"));
+                args.putString("section", jsonResponse.getString("section"));
+                friendFragment.setArguments(args);
+
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.side_frame, friendFragment)
+                        .addToBackStack(null)
+                        .commit();
             }
         } catch (InterruptedException | ExecutionException e) {
             //TODO display a popup dialog for problem retrieving friend location
             Log.e(TAG, "Api Error getting friend location: " + Log.getStackTraceString(e));
+        } catch (JSONException e) {
+            Log.e(TAG, "Error retrieving json items: " + Log.getStackTraceString(e));
         }
     }
 
@@ -373,9 +394,5 @@ public class MainActivity extends AppCompatActivity
                 return false;
             }
         }
-
-
     }
-
-
 }

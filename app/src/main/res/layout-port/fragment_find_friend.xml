@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        style="@style/AppTheme.Text_L"
+        style="@style/AppTheme.Title"
         android:id="@+id/locationTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,11 +15,12 @@
         android:layout_centerHorizontal="true"/>
 
     <LinearLayout
-        android:layout_margin="20dp"
-        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/locationTitle"
+        android:layout_centerInParent="true"
         android:weightSum="3">
 
         <ImageView
@@ -28,6 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:adjustViewBounds="true"
+            android:cropToPadding="true"
             android:scaleType="fitCenter"
             android:src="@drawable/pointer" />
         <LinearLayout
@@ -44,14 +46,15 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/AppTheme.Text_M"
+                    style="@style/AppTheme.Text_L"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/day"
-                    android:textAlignment="textEnd" />
+                    android:textAlignment="textEnd"
+                    android:textAllCaps="true" />
 
                 <TextView
-                    style="@style/AppTheme.Text_M"
+                    style="@style/AppTheme.Text_L"
                     android:id="@+id/dayTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -65,14 +68,15 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/AppTheme.Text_M"
+                    style="@style/AppTheme.Text_L"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/time"
-                    android:textAlignment="textEnd" />
+                    android:textAlignment="textEnd"
+                    android:textAllCaps="true"/>
 
                 <TextView
-                    style="@style/AppTheme.Text_M"
+                    style="@style/AppTheme.Text_L"
                     android:id="@+id/timeTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -86,14 +90,15 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/AppTheme.Text_M"
+                    style="@style/AppTheme.Text_L"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/course"
-                    android:textAlignment="textEnd" />
+                    android:textAlignment="textEnd"
+                    android:textAllCaps="true"/>
 
                 <TextView
-                    style="@style/AppTheme.Text_M"
+                    style="@style/AppTheme.Text_L"
                     android:id="@+id/courseTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -107,14 +112,15 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/AppTheme.Text_M"
+                    style="@style/AppTheme.Text_L"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/section"
-                    android:textAlignment="textEnd" />
+                    android:textAlignment="textEnd"
+                    android:textAllCaps="true"/>
 
                 <TextView
-                    style="@style/AppTheme.Text_M"
+                    style="@style/AppTheme.Text_L"
                     android:id="@+id/sectionTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -137,5 +137,12 @@
     <string name="day">Day</string>
     <string name="locationOf">Location of</string>
     <string name="section">Section</string>
+    <string-array name="day_array">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+    </string-array>
 </resources>
 

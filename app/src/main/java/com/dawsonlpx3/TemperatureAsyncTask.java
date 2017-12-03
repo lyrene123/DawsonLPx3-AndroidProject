@@ -24,6 +24,7 @@ public class TemperatureAsyncTask extends AsyncTask<String, Void, String[]> {
     private String lon;
     private static final String TAG = "TemperatureAsyncTask";
     private static final String OPEN_WEATHER = "http://api.openweathermap.org/data/2.5/weather?";
+    private static final String METRIC = "&units=metric";
     private static final String API_KEY = "&appid=1845a7224a9c4164a4007cae1129a582";
 
     /**
@@ -71,7 +72,7 @@ public class TemperatureAsyncTask extends AsyncTask<String, Void, String[]> {
         BufferedReader reader = null;
         try {
             // Setup the URL.
-            URL url = new URL(OPEN_WEATHER +"lat=" +lat +"&lon=" +lon +API_KEY);
+            URL url = new URL(OPEN_WEATHER +"lat=" +lat +"&lon=" +lon +METRIC +API_KEY);
             // Setup HttpURLConnection using the URL object.
             conn = (HttpURLConnection) url.openConnection();
             // Setup connection options
@@ -105,10 +106,8 @@ public class TemperatureAsyncTask extends AsyncTask<String, Void, String[]> {
             JSONObject main = jObj.getJSONObject("main");
             Log.d(TAG, main.toString());
             // Temperature is given in Kelvin
-            double tempKelvin = main.getDouble("temp");
-            Log.d(TAG, "temperature in K: " +Double.toString(tempKelvin));
-            // Convert Kelvin to Celsius
-            double tempCelsius = tempKelvin -273.15;
+            double tempCelsius = main.getDouble("temp");
+            Log.d(TAG, "temperature in K: " +Double.toString(tempCelsius));
             // Round the temperature to a single decimal place
             tempCelsius = (double)Math.round(tempCelsius * 10) / 10;
             Log.d(TAG, "temperature in C: " +Double.toString(tempCelsius));

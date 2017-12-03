@@ -42,6 +42,7 @@ public class CanceledFragment extends Fragment {
     View view;
     Context context;
     ListView list;
+    List<CanceledClassDetails> canceled;
 
     /**
      * Creates and returns the View hierarchy associated with this fragment. Inflates the layout
@@ -88,6 +89,7 @@ public class CanceledFragment extends Fragment {
      */
     private void populateListView(List<CanceledClassDetails> canceled, boolean isIOError,
                                   boolean isXMLError) {
+        this.canceled = canceled;
         //display relevant errors to user in Toast as needed
         if (isIOError){
             Toast.makeText(context, getResources().getString(R.string.connection_error),
@@ -95,7 +97,7 @@ public class CanceledFragment extends Fragment {
         } else if (isXMLError) {
             Toast.makeText(context, getResources().getString(R.string.xml_error),
                     Toast.LENGTH_LONG).show();
-        } else if (canceled == null || canceled.isEmpty()) {
+        } else if (checkIfNoCancelled()) {
             Toast.makeText(context, getResources().getString(R.string.empty_list_error),
                     Toast.LENGTH_LONG).show();
         } else {
@@ -103,6 +105,25 @@ public class CanceledFragment extends Fragment {
             CanceledClassAdapter adapter = new CanceledClassAdapter(context, canceled);
             list.setAdapter(adapter);
         }
+    }
+
+    /**
+     * Checks the data retrieved from the RSS feed to see if it represents cancelled classes, or
+     * contains a message stating no classes are cancelled. If no classes are cancelled, the first
+     * item in the list of CanceledClassDetails will have its title contain the string "No classes
+     * cancelled." If this string is found, then no classes are found to be cancelled.
+     * Additionally, no classes are found cancelled if the list is empty or null.
+     *
+     * @return true if no class is cancelled, false otherwise.
+     */
+    private boolean checkIfNoCancelled() {
+        boolean isNoClassCancelled = true;
+        if (canceled != null && ! canceled.isEmpty()) {
+            if (! canceled.get(0).getTitle().equals("No classes cancelled.")) {
+                isNoClassCancelled = false;
+            }
+        }
+        return isNoClassCancelled;
     }
 
     /**

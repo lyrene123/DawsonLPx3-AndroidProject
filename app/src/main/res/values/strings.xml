@@ -134,5 +134,6 @@
     <string name="dismiss">OK</string>
     <string name="connection_error">There was a problem connecting to Dawson\'s RSS feed.</string>
     <string name="xml_error">Could not parse RSS feed.</string>
+    <string name="empty_list_error">No cancelled classes found!</string>
 </resources>
 

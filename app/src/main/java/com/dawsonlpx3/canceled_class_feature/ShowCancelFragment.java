@@ -3,7 +3,6 @@ package com.dawsonlpx3.canceled_class_feature;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,9 +12,17 @@ import android.widget.TextView;
 
 import com.dawsonlpx3.R;
 import com.dawsonlpx3.data.CanceledClassDetails;
-import com.dawsonlpx3.db.FirebaseManagerUtil;
 import com.dawsonlpx3.find_teacher_feature.FindTeacherFragment;
 
+/**
+ * The ShowCancelFragment class represents a Fragment that displays details about a cancelled
+ * class at Dawson College.
+ *
+ * @author Peter Bellefleur
+ * @author Lyrene Labor
+ * @author Phil Langlois
+ * @author Pengkim Sy
+ */
 public class ShowCancelFragment extends Fragment {
 
     private View view;
@@ -26,10 +33,21 @@ public class ShowCancelFragment extends Fragment {
     private TextView teacherText;
     private final String TAG = "LPx3-ShowCancel";
 
+    /**
+     * Creates and returns the View hierarchy associated with this Fragment. Inflates the layout
+     * for this Fragment as defined in its layout resources, and retrieves data passed to it from
+     * the Bundle.
+     *
+     * @param inflater  A LayoutInflater.
+     * @param container The parent View containing the Fragment.
+     * @param savedInstanceState    The Bundle passed to the Fragment.
+     * @return  The inflated View.
+     */
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.i(TAG, "onCreateView");
         this.view = inflater.inflate(R.layout.activity_show_cancel, container, false);
         if (savedInstanceState == null) {
             if (getArguments() != null) {
@@ -41,8 +59,16 @@ public class ShowCancelFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Retrieves handles to View objects to be modified programmatically once the fragment's parent
+     * Activity is created. Additionally, sets a click listener on the View representing a
+     * teacher's name.
+     *
+     * @param savedInstanceState    The Bundle passed to the Fragment.
+     */
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
+        Log.i(TAG, "onActivityCreated");
         super.onActivityCreated(savedInstanceState);
         this.titleText = (TextView) view.findViewById(R.id.titleTextView);
         titleText.setText(details.getTitle());
@@ -52,34 +78,47 @@ public class ShowCancelFragment extends Fragment {
         timeText.setText(details.getDateCancelled());
         this.teacherText = (TextView) view.findViewById(R.id.teacherTextView);
         teacherText.setText(details.getTeacher());
+        Log.i(TAG, "setting click listener on teacher name");
         teacherText.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Loads informatiom about the teacher of a specific cancelled class.
+             *
+             * @param v The clicked View.
+             */
             @Override
             public void onClick(View v) {
+                Log.i(TAG, "teacher name clicked");
                 loadTeacherInfo(v);
             }
         });
     }
 
+    /**
+     * Launches a FindTeacherFragment, passing it the teacher's name from a specific cancelled
+     * class.
+     *
+     * @param view  The current View.
+     */
     public void loadTeacherInfo (View view) {
-        //FirebaseManagerUtil fb = FirebaseManagerUtil.getFirebaseManager();
-        //FindTeacherFragment teacherFragment = new FindTeacherFragment();
-        //fb.retrieveRecordsFromDb(this.getActivity(), teacherFragment, details.getTeacher(),
-         //       null, null, true);
         FindTeacherFragment teacherFragment = new FindTeacherFragment();
-
+        //name must be split between first and last name
         String[] names = details.getTeacher().split("\\s");
+        Log.d(TAG, "first name: " + names[0]);
         String lname = "";
+        //some teachers have multiple words for their last name
+        //retrieve all remaining names after first name, place them in one string
         for (int i = 1; i < names.length; i++) {
             lname = lname + names[i] + " ";
         }
+        //trim any whitespace at end as needed
         lname.trim();
         Log.d(TAG, "last name: " + lname);
-
+        //place names in Bundle
         Bundle args = new Bundle();
         args.putString("fname", names[0]);
         args.putString("lname", lname);
         teacherFragment.setArguments(args);
-
+        //launch new fragment via FragmentManager
         FragmentManager fm = getActivity().getFragmentManager();
         fm.beginTransaction()
                 .replace(R.id.side_frame, teacherFragment)

@@ -93,7 +93,7 @@ public class FriendBreakFragment extends Fragment {
      */
     private void setupSpinners(){
         // Access the string array that contains the strings for the days of the week.
-        String[] daysOfTheWeek = view.getResources().getStringArray(R.array.days_of_the_week);
+        String[] daysOfTheWeek = view.getResources().getStringArray(R.array.day_array);
 
         // ArrayAdapter to add relevant days of the week to the spinner
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(

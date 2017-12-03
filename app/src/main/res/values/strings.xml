@@ -50,6 +50,7 @@
     <string name="nav_acedemicCalendar">Academic Calendar</string>
     <string name="nav_note">Note</string>
     <string name="nav_weather">Weather</string>
+    <string name="nav_findfriends">Find Friends</string>
     <string name="register">Register</string>
     <string name="city">City</string>
     <string name="add">Add</string>
@@ -133,7 +134,11 @@
     <string name="blurb_title">About</string>
     <string name="dismiss">OK</string>
     <string name="friends_on_break_btn_text">Find Friends on Break</string>
-    <string-array name="days_of_the_week">
+    <string name="your_friends">Your Friends</string>
+    <string name="day">Day</string>
+    <string name="locationOf">Location of</string>
+    <string name="section">Section</string>
+    <string-array name="day_array">
         <item>Monday</item>
         <item>Tuesday</item>
         <item>Wednesday</item>
@@ -158,9 +163,19 @@
         <item>1700</item>
     </string-array>
     <string name="invalid_time_interval">That time interval is Invalid</string>
-    <string name="warning">Warning</string>
     <string name="break_null">Problem retrieving your friends</string>
     <string name="break_no_friends">No friends on break. sorry there pal.</string>
     <string name="break_invalid_creds">Invalid Credentials</string>
+    <string name="warning">Warning</string>
+    <string name="problem_retrieving_friends">Something went wrong! Problem retrieving friends</string>
+    <string name="no_friends">You currently have no friends</string>
+    <string name="problem_retrieving_location">Something went wrong! Problem retrieving friend location</string>
+    <string name="invalid_creds">Invalid Credentials! Cannot retrieve your friends</string>
+    <string name="not_in_class">Unknown Whereabouts, your friend may not be in class at the moment</string>
+    <string name="missing_params">Bad or missing parameters. Cannot retrieve friends.</string>
+    <string name="not_friends">That person is no longer your friend...</string>
+    <string name="searching_teachers">Searching for teachers...</string>
+    <string name="searching_friends">Searching for friends...</string>
+    <string name="settings_saved">Settings saved!</string>
 </resources>
 

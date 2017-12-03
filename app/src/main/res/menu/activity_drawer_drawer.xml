@@ -28,6 +28,10 @@
         <item
             android:id="@+id/nav_whoIsFree"
             android:title="Who is free" />
+        <item
+            android:id="@+id/nav_find_friends"
+            android:title="@string/nav_findfriends" />
+
     </group>
 
     <item android:title="Extra">

@@ -57,8 +57,9 @@ public class MainActivity extends AppCompatActivity
     private final String TAG = "LPx3-Main";
 
     private String FNAME, LNAME, EMAIL, PASSWORD;
+    private int day, time, hour;
+    private String email, password, minStr;
 
-    private TeacherContactFragment teacherContactFragment;
 
     /**
      * Create a toolbar and make it toggle to show the drawer, and add click
@@ -258,7 +259,7 @@ public class MainActivity extends AppCompatActivity
      */
     @Override
     public void onTeacherSelected(TeacherDetails teacher) {
-        this.teacherContactFragment = new TeacherContactFragment();
+        TeacherContactFragment teacherContactFragment = new TeacherContactFragment();
         Log.d(TAG, "onTeacherSelected started");
         Bundle args = new Bundle();
         args.putSerializable("teacher", teacher);
@@ -317,36 +318,30 @@ public class MainActivity extends AppCompatActivity
         return frag;
     }
 
+    /**
+     * Handles the selection of a friend in the list of friends retrieved from the allfriends
+     * api call. When a friend is selected, an async task is started in order to make another
+     * whereisfriend api call to the backend to retrieve the location of the selected friend.
+     * Once a response is received, process the json response for any errors or empty data.
+     * If all data is present, then inflate the FindFriendFragment to display the location
+     *
+     * @param friendemail email of the selected friend
+     * @param name name of the selected friend
+     */
     @Override
     public void onFriendSelected(String friendemail, String name) {
         Log.d(TAG, "onFriendSelected");
-        Calendar calendar = Calendar.getInstance();
-
-        int day = calendar.get(Calendar.DAY_OF_WEEK);
-        int hour = calendar.get(Calendar.HOUR_OF_DAY);
-        int min = calendar.get(Calendar.MINUTE);
-        String timeStr = "";
-        if((min+"").length() > 2) {
-            timeStr = hour + "" + min;
-        } else {
-            timeStr = hour + "0" + min;
-        }
-        int time = Integer.parseInt(timeStr);
-
-        SharedPreferences prefs = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
-        String email = prefs.getString("email", "");
-        String password = prefs.getString("password", "");
+        getApiInformation();
 
         WhereIsFriendAsyncTask friendAsyncTask = new WhereIsFriendAsyncTask();
         friendAsyncTask.execute(email, password, friendemail, day, time);
         try {
             JSONObject jsonResponse = friendAsyncTask.get();
-
             if(!checkForErrorsOrNoLoc(jsonResponse)){
                 FindFriendFragment friendFragment = new FindFriendFragment();
                 Bundle args = new Bundle();
                 args.putString("name", name);
-                args.putString("time", hour+":"+min);
+                args.putString("time", hour+":"+minStr);
                 args.putInt("day", day);
                 args.putString("course", jsonResponse.getString("course"));
                 args.putString("section", jsonResponse.getString("section"));
@@ -367,13 +362,25 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Process the Json object response returned from the whereisfriend api call to the backend.
+     * Checks if the json object response is null and if yes, an alert dialog will display with appropriate message.
+     * Checks if json object contains an error message, and if yes, an alert dialog will display with appropriate message.
+     * Checks if json object contains an empty course and section data and if yes,
+     * an alert dialog will display for the user to be notified that friend is not in class
+     *
+     * @param jsonResponse JSONObject returned from api call
+     * @return true if JSON response is null, contains error, or empty course/section data
+     *          false if course/section data exists
+     */
     private boolean checkForErrorsOrNoLoc(JSONObject jsonResponse) {
+        //check if response is null
         if(jsonResponse == null){
             Log.e(TAG, "Api Error getting friend location");
             displayErrorReponse(getResources().getString(R.string.problem_retrieving_location));
             return true;
         }
-
+        //check if any errors in the response
         try {
             String error = jsonResponse.getString("error");
             Log.d(TAG, "Found error message");
@@ -386,6 +393,7 @@ public class MainActivity extends AppCompatActivity
             }
             return true;
         } catch (JSONException e) {
+            //check if course/section data is empty or not
             try {
                 String course = jsonResponse.getString("course");
                 String section = jsonResponse.getString("section");
@@ -395,16 +403,50 @@ public class MainActivity extends AppCompatActivity
                     displayErrorReponse(getResources().getString(R.string.not_in_class));
                     return true;
                 }
-                return false;
-
+                return false; //return false if no error, no null json response, and no empty course/section
             } catch (JSONException e1) {
                 Log.e(TAG, "Api Error getting friend location: " + Log.getStackTraceString(e1));
                 displayErrorReponse(getResources().getString(R.string.problem_retrieving_location));
-                return false;
+                return true;
             }
         }
     }
 
+    /**
+     * Retrieves and stores into instance variables all data necessary to pass into the
+     * whereisfriend api call to the backend. These data are passed into the async task and
+     * passed into the url of the api call.
+     */
+    private void getApiInformation(){
+        //get current day and time
+        Calendar calendar = Calendar.getInstance();
+        day = calendar.get(Calendar.DAY_OF_WEEK);
+        hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int min = calendar.get(Calendar.MINUTE);
+
+        //format the time to combine both hour and min. Append an extra 0 in front of the minutes if only one digit
+        minStr = "";
+        String timeStr = "";
+        if((min+"").length() == 2) {
+            timeStr = hour + "" + min;
+            minStr = min+"";
+        } else {
+            timeStr = hour + "0" + min;
+            minStr = "0" + min;
+        }
+        time = Integer.parseInt(timeStr); //convert minutes into integer
+
+        //retrieve email and password credentials from SharedPref
+        SharedPreferences prefs = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        email = prefs.getString("email", "");
+        password = prefs.getString("password", "");
+    }
+
+    /**
+     * Creates and displays an Alert Dialog with the input string message as the content.
+     *
+     * @param message Message to display in the dialog
+     */
     private void displayErrorReponse(String message){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(message)

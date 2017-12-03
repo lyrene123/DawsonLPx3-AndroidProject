@@ -158,5 +158,9 @@
         <item>1700</item>
     </string-array>
     <string name="invalid_time_interval">That time interval is Invalid</string>
+    <string name="warning">Warning</string>
+    <string name="break_null">Problem retrieving your friends</string>
+    <string name="break_no_friends">No friends on break. sorry there pal.</string>
+    <string name="break_invalid_creds">Invalid Credentials</string>
 </resources>
 

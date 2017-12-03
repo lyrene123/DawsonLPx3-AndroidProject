@@ -1,5 +1,6 @@
 package com.dawsonlpx3.friendBreak_feature;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
@@ -16,7 +17,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.dawsonlpx3.R;
 import com.dawsonlpx3.async_utils.WhosFreeAsyncTask;
@@ -26,6 +26,11 @@ import org.json.JSONArray;
  * Fragment that is used to find the user's friends who are on a break in-between a specified time
  * interval on a given day. A list of the friends who are on break will then be visible
  * ans clicking on their name in the list will allow the user to send them an email.
+ *
+ * @author Lyrene Labor
+ + @author Pengkim Sy
+ + @author Phil Langlois
+ + @author Peter Bellefleur
  */
 public class FriendBreakFragment extends Fragment {
 
@@ -133,30 +138,33 @@ public class FriendBreakFragment extends Fragment {
                             endSpinner.getSelectedItem().toString());
                     try {
                         response = task.get(); // get response from AsyncTask
-                        String[] friendsOnBreak = new String[response.length()];
-                        friendEmails = new String[response.length()];
-                        // Parse through the array data
-                        for(int i = 0; i < response.length(); i++){
-                            friendsOnBreak[i] = response.getJSONObject(i).getString("firstname");
-                            friendEmails[i] = response.getJSONObject(i).getString("email");
-                        }
-                        // setup teh adapter for the friend's list
-                        ArrayAdapter<String> friendAdapter = new ArrayAdapter<String>(context,
-                                android.R.layout.simple_list_item_1, friendsOnBreak);
-
-                        // Associate the ListView with the adapter
-                        friendList.setAdapter(friendAdapter);
-                        friendList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-                            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-                                friendPosition = position; // get position in the list of the selected person
-                                // New intent to send an email to the selected person.
-                                Intent intent = new Intent(Intent.ACTION_SENDTO);
-                                intent.setData(Uri.parse("mailto:"));
-                                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{friendEmails[friendPosition]});
-                                intent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.from));
-                                startActivity(intent);
+                        Log.d(TAG, response.toString());
+                        if(!invalidOrErrorCheck(response)){
+                            String[] friendsOnBreak = new String[response.length()];
+                            friendEmails = new String[response.length()];
+                            // Parse through the array data
+                            for(int i = 0; i < response.length(); i++){
+                                friendsOnBreak[i] = response.getJSONObject(i).getString("firstname");
+                                friendEmails[i] = response.getJSONObject(i).getString("email");
                             }
-                        });
+                            // setup the adapter for the friend's list
+                            ArrayAdapter<String> friendAdapter = new ArrayAdapter<String>(context,
+                                    android.R.layout.simple_list_item_1, friendsOnBreak);
+
+                            // Associate the ListView with the adapter
+                            friendList.setAdapter(friendAdapter);
+                            friendList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+                                    friendPosition = position; // get position in the list of the selected person
+                                    // New intent to send an email to the selected person.
+                                    Intent intent = new Intent(Intent.ACTION_SENDTO);
+                                    intent.setData(Uri.parse("mailto:"));
+                                    intent.putExtra(Intent.EXTRA_EMAIL, new String[]{friendEmails[friendPosition]});
+                                    intent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.from));
+                                    startActivity(intent);
+                                }
+                            });
+                        }
                     } catch (Exception e) {
                         Log.d(TAG, e.getMessage());
                     }
@@ -166,5 +174,56 @@ public class FriendBreakFragment extends Fragment {
             }
         }); // end of setOnClickListener()
     } // setupApiButton()
+
+    /**
+     *  Process the rseponse from the api. If the response is null or produces an error
+     *  thenr eturn false. If the response is valid but empty or the response returned invalid
+     *  credentials or error message return true.
+     *
+     * @return
+     */
+    private Boolean invalidOrErrorCheck(JSONArray response){
+        // CHeck if request was null
+        if(response == null){
+            Log.d(TAG, "NULL JSON Response.");
+            displayAlert(getResources().getString(R.string.break_null));
+            return true;
+        }
+
+        // Check for empty response
+        if(response.length() == 0){
+            Log.d(TAG, "No friends on break, how very lonely.");
+            displayAlert(getResources().getString(R.string.break_no_friends));
+            return true;
+        }
+
+        // Check if response returned an error
+        if(response.length() == 1){
+            String errormsg = null;
+            try{
+                errormsg = response.getJSONObject(0).getString("error");
+                Log.d(TAG, "Response returned error message.");
+                displayAlert(getResources().getString(R.string.break_invalid_creds));
+                return true;
+            } catch(Exception e){
+                Log.d(TAG, "no message returned");
+                return false;
+            }
+        }
+        return false;
+    } // invalidOrErrorCheck()
+
+    /**
+     * Creates an alert dialog with the appropriate message passed as the parameter.
+     *
+     * @param message The message to be displayed.
+     */
+    private void displayAlert(String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setMessage(message).setTitle(R.string.warning)
+                .setPositiveButton(android.R.string.ok, null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    } // displayAlert()
 
 } // FriendBreakFragment

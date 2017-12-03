@@ -16,7 +16,8 @@ import java.net.URL;
  * application that will request and return the list of friends of the logged in user.
  * Receives the necessary information from the calling activity as parameters such as credentials
  * that will be used to perform the API call in the background.
- * Returns the list of friends as a JSONArray object.
+ * Returns the list of friends as a JSONArray object or null if an error occurred during the process
+ * of the api call.
  *
  * @author Lyrene Labor
  * @author Pengkim Sy
@@ -34,7 +35,7 @@ public class AllFriendsAsyncTask extends AsyncTask <String, Void, JSONArray> {
      * correct and that they are not empty.
      *
      * @param params Array of necessary info such as credentials in order to perform the api call
-     * @return The Json response object or null if an error has occurred
+     * @return The Json array response object or null if an error has occurred
      */
     @Override
     protected JSONArray doInBackground(String... params) {

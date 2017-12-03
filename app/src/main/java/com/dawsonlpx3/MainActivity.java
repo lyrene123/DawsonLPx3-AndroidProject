@@ -360,17 +360,17 @@ public class MainActivity extends AppCompatActivity
             }
         } catch (InterruptedException | ExecutionException e) {
             Log.e(TAG, "Api Error getting friend location: " + Log.getStackTraceString(e));
-            displayErrorAuthentication(getResources().getString(R.string.problem_retrieving_location));
+            displayErrorReponse(getResources().getString(R.string.problem_retrieving_location));
         } catch (JSONException e) {
             Log.e(TAG, "Error retrieving json items: " + Log.getStackTraceString(e));
-            displayErrorAuthentication(getResources().getString(R.string.problem_retrieving_location));
+            displayErrorReponse(getResources().getString(R.string.problem_retrieving_location));
         }
     }
 
     private boolean checkForErrorsOrNoLoc(JSONObject jsonResponse) {
         if(jsonResponse == null){
             Log.e(TAG, "Api Error getting friend location");
-            displayErrorAuthentication(getResources().getString(R.string.problem_retrieving_location));
+            displayErrorReponse(getResources().getString(R.string.problem_retrieving_location));
             return true;
         }
 
@@ -378,11 +378,11 @@ public class MainActivity extends AppCompatActivity
             String error = jsonResponse.getString("error");
             Log.d(TAG, "Found error message");
             if(error.equalsIgnoreCase("invalid_credentials") || error.equalsIgnoreCase("invalid credentials")){
-                displayErrorAuthentication(getResources().getString(R.string.invalid_creds));
+                displayErrorReponse(getResources().getString(R.string.invalid_creds));
             } else if(error.equalsIgnoreCase("bad or missing parameter")){
-                displayErrorAuthentication(getResources().getString(R.string.missing_params));
+                displayErrorReponse(getResources().getString(R.string.missing_params));
             } else {
-                displayErrorAuthentication(getResources().getString(R.string.not_friends));
+                displayErrorReponse(getResources().getString(R.string.not_friends));
             }
             return true;
         } catch (JSONException e) {
@@ -392,20 +392,20 @@ public class MainActivity extends AppCompatActivity
 
                 if(course.isEmpty() || section.isEmpty()){
                     Log.d(TAG, "unknown whereabouts, not in class");
-                    displayErrorAuthentication(getResources().getString(R.string.not_in_class));
+                    displayErrorReponse(getResources().getString(R.string.not_in_class));
                     return true;
                 }
                 return false;
 
             } catch (JSONException e1) {
                 Log.e(TAG, "Api Error getting friend location: " + Log.getStackTraceString(e1));
-                displayErrorAuthentication(getResources().getString(R.string.problem_retrieving_location));
+                displayErrorReponse(getResources().getString(R.string.problem_retrieving_location));
                 return false;
             }
         }
     }
 
-    private void displayErrorAuthentication(String message){
+    private void displayErrorReponse(String message){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(message)
                 .setTitle(R.string.warning)

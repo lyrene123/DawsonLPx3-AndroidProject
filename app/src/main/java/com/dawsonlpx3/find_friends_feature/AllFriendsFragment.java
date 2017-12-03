@@ -57,7 +57,7 @@ public class AllFriendsFragment extends Fragment {
                 this.itemsAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, friends_names.toArray(new String[0]));
             }
         } catch (InterruptedException | ExecutionException | JSONException e ) {
-            displayErrorAuthentication(getResources().getString(R.string.problem_retrieving_friends));
+            displayErrorReponse(getResources().getString(R.string.problem_retrieving_friends));
             Log.e(TAG, "API Error getting friends: " + Log.getStackTraceString(e));
         }
     }
@@ -65,13 +65,13 @@ public class AllFriendsFragment extends Fragment {
     private boolean checkForErrorsOrNoFriends() {
         if(jsonResponse == null){
             Log.e(TAG, "Null jsonResponse!");
-            displayErrorAuthentication(getResources().getString(R.string.problem_retrieving_friends));
+            displayErrorReponse(getResources().getString(R.string.problem_retrieving_friends));
             return true;
         }
 
         if(jsonResponse.length() == 0){
             Log.d(TAG, "no friends found");
-            displayErrorAuthentication(getResources().getString(R.string.no_friends));
+            displayErrorReponse(getResources().getString(R.string.no_friends));
             return true;
         }
 
@@ -80,7 +80,7 @@ public class AllFriendsFragment extends Fragment {
             try {
                 errorMsg = jsonResponse.getJSONObject(0).getString("error");
                 Log.d(TAG, "Error message found: " + errorMsg);
-                displayErrorAuthentication(getResources().getString(R.string.invalid_creds));
+                displayErrorReponse(getResources().getString(R.string.invalid_creds));
                 return true;
             } catch (JSONException e) {
                 Log.d(TAG, "No error message found");
@@ -132,7 +132,7 @@ public class AllFriendsFragment extends Fragment {
                             friends_names.get(position));
                 } catch (JSONException e) {
                     Log.e(TAG, "Error getting email for onClick friend: " + Log.getStackTraceString(e));
-                    displayErrorAuthentication(getResources().getString(R.string.problem_retrieving_location));
+                    displayErrorReponse(getResources().getString(R.string.problem_retrieving_location));
                 }
             }
         });
@@ -144,7 +144,7 @@ public class AllFriendsFragment extends Fragment {
         this.listener = null;
     }
 
-    private void displayErrorAuthentication(String message){
+    private void displayErrorReponse(String message){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage(message)
                 .setTitle(R.string.warning)

@@ -84,7 +84,7 @@ public class FriendBreakFragment extends Fragment {
             friendEmails = new String[size];
             for (int i = 0; i < size; i++) {
                 friendsOnBreak[i] = savedInstanceState.getSerializable("friends_" + i).toString();
-                friendEmails[i] = savedInstanceState.getSerializable("friend_emails" + i).toString();
+                friendEmails[i] = savedInstanceState.getSerializable("friend_emails_" + i).toString();
             }
             // setup the adapter for the friend's list
             ArrayAdapter<String> friendAdapter = new ArrayAdapter<String>(context,

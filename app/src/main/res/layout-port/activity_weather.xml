@@ -3,26 +3,11 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="15dp"
     android:background="@drawable/city">
 
     <LinearLayout
-        android:id="@+id/uvLL"
         android:layout_alignParentTop="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/weatherColor">
-
-        <TextView
-            android:id="@+id/uv_view"
-            style="@style/AppTheme.Text_L"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="@color/White"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_below="@id/uvLL"
         android:id="@+id/searchLL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -50,11 +35,27 @@
             android:text="@string/forecast_text" />
     </LinearLayout>
 
-    <HorizontalScrollView
+    <LinearLayout
+        android:id="@+id/uvLL"
         android:layout_below="@id/searchLL"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="15dp">
+        android:layout_height="wrap_content"
+        android:alpha=".8"
+        android:background="@color/azure">
+
+        <TextView
+            android:id="@+id/uv_view"
+            style="@style/AppTheme.Text_L"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/White"/>
+
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:layout_below="@id/uvLL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -113,7 +114,6 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/White"/>
                     </LinearLayout>
-
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -128,7 +128,7 @@
                         <TextView
                             android:id="@+id/col2_cell4"
                             style="@style/AppTheme.Text_M"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/White"/>
                     </LinearLayout>
@@ -349,7 +349,7 @@
                         <TextView
                             android:id="@+id/col3_cell4"
                             style="@style/AppTheme.Text_M"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/White"/>
                     </LinearLayout>
@@ -531,6 +531,7 @@
                     android:id="@+id/col4_cell1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textAlignment="center"
                     android:textColor="@color/White"/>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -569,7 +570,7 @@
                         <TextView
                             android:id="@+id/col4_cell4"
                             style="@style/AppTheme.Text_M"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/White"/>
                     </LinearLayout>
@@ -790,7 +791,7 @@
                         <TextView
                             android:id="@+id/col5_cell4"
                             style="@style/AppTheme.Text_M"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/White"/>
                     </LinearLayout>
@@ -1011,7 +1012,7 @@
                         <TextView
                             android:id="@+id/col6_cell4"
                             style="@style/AppTheme.Text_M"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/White"/>
                     </LinearLayout>

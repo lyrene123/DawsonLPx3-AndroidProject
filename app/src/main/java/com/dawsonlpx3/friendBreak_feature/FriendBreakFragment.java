@@ -20,7 +20,12 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import com.dawsonlpx3.R;
 import com.dawsonlpx3.async_utils.WhosFreeAsyncTask;
+import com.dawsonlpx3.data.TeacherDetails;
+
 import org.json.JSONArray;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Fragment that is used to find the user's friends who are on a break in-between a specified time
@@ -42,6 +47,7 @@ public class FriendBreakFragment extends Fragment {
     private Button apiButton;
     private ListView friendList;
     private int friendPosition = 0;
+    private String[] friendsOnBreak = null;
     private String[] friendEmails = null;
 
     /**
@@ -70,9 +76,37 @@ public class FriendBreakFragment extends Fragment {
         setupSpinners(); // Setup the spinners
         setupApiButton(); // Setup logic relevant to button
 
+        // Restore the state of the friend list
+        if (savedInstanceState != null) {
+            Log.d(TAG, "Restoring friend list from bundle");
+            int size = savedInstanceState.getInt("friend_break_list_size");
+            friendsOnBreak = new String[size];
+            friendEmails = new String[size];
+            for (int i = 0; i < size; i++) {
+                friendsOnBreak[i] = savedInstanceState.getSerializable("friends_" + i).toString();
+                friendEmails[i] = savedInstanceState.getSerializable("friend_emails_" + i).toString();
+            }
+            // setup the adapter for the friend's list
+            ArrayAdapter<String> friendAdapter = new ArrayAdapter<String>(context,
+                    R.layout.list_item, friendsOnBreak);
+
+            // Associate the ListView with the adapter
+            friendList.setAdapter(friendAdapter);
+            friendList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+                    friendPosition = position; // get position in the list of the selected person
+                    // New intent to send an email to the selected person.
+                    Intent intent = new Intent(Intent.ACTION_SENDTO);
+                    intent.setData(Uri.parse("mailto:"));
+                    intent.putExtra(Intent.EXTRA_EMAIL, new String[]{friendEmails[friendPosition]});
+                    intent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.from));
+                    startActivity(intent);
+                }
+            });
+        }
+
         return view;
     } // onCreateView
-
 
     /**
      *  Helper method that will return true if the start time specified in the start time spinner
@@ -140,7 +174,7 @@ public class FriendBreakFragment extends Fragment {
                         response = task.get(); // get response from AsyncTask
                         Log.d(TAG, response.toString());
                         if(!invalidOrErrorCheck(response)){
-                            String[] friendsOnBreak = new String[response.length()];
+                            friendsOnBreak = new String[response.length()];
                             friendEmails = new String[response.length()];
                             // Parse through the array data
                             for(int i = 0; i < response.length(); i++){
@@ -226,4 +260,22 @@ public class FriendBreakFragment extends Fragment {
         dialog.show();
     } // displayAlert()
 
+
+    /**
+     * Saves the current state of the fragment by saving each item of the list
+     * and the total count of items in the list.
+     *
+     * @param saveInstanceState Bundle object
+     */
+    @Override
+    public void onSaveInstanceState(Bundle saveInstanceState) {
+        super.onSaveInstanceState(saveInstanceState);
+        Log.d(TAG, "onSaveInstanceState started");
+        //loop through teachers list, save each teacher and their order
+        for (int i = 0; i < this.friendsOnBreak.length; i++) {
+            saveInstanceState.putSerializable("friends_" + i, this.friendsOnBreak[i]);
+            saveInstanceState.putSerializable("friend_emails_" + i, this.friendEmails[i]);
+        }
+        saveInstanceState.putInt("friend_break_list_size", friendsOnBreak.length);
+    }
 } // FriendBreakFragment

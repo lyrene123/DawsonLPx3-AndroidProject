@@ -6,6 +6,7 @@
     android:layout_height="fill_parent"
     android:fontFamily="@font/montserrat_alternates"
     android:gravity="center"
-    android:singleLine="true" />
+    android:singleLine="true"
+    android:background="@drawable/shadow_background"/>
 
     <!--android:background="@drawable/rectgrad"-->

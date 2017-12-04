@@ -6,17 +6,26 @@
     android:layout_height="match_parent"
     tools:context="com.dawsonlpx3.canceled_class_feature.CanceledFragment">
 
-    <TextView
-        style="@style/AppTheme.Title"
-        android:id="@+id/classCancelTitle"
-        android:layout_alignParentLeft="true"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/notesRL"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/classCancel"/>
+        android:background="@color/colorPrimaryDark">
+
+        <TextView
+            style="@style/AppTheme.header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cancelledHeader"
+            android:text="@string/classCancel"/>
+
+    </RelativeLayout>
+
 
     <ListView
+        style="@style/AppTheme.List_Item"
         android:id="@+id/classCancelListView"
-        android:layout_below="@id/classCancelTitle"
+        android:layout_below="@id/notesRL"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

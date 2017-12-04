@@ -1,5 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<merger version="3"><dataSet config="main"><source path="C:\Users\KimHyonh\Documents\Android\DawsonLPx3\Skycons-master\Skycons-master\Skycons\SkyconsLibrary\src\main\shaders"/></dataSet><dataSet config="debug"><source path="C:\Users\KimHyonh\Documents\Android\DawsonLPx3\Skycons-master\Skycons-master\Skycons\SkyconsLibrary\src\debug\shaders"/></dataSet></merger>
 <merger version="3"><dataSet config="main"><source path="/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/main/shaders"/></dataSet><dataSet config="debug"><source path="/Users/laborlyrene/AndroidDevLabs/DawsonLPx3/Skycons-master/Skycons-master/Skycons/SkyconsLibrary/src/debug/shaders"/></dataSet></merger>
-

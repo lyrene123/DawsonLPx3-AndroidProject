@@ -41,7 +41,6 @@
                 android:id="@+id/titleLL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/teacherInfo"
                 android:orientation="horizontal"
                 android:weightSum="5">
 

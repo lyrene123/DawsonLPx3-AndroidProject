@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.dawsonlpx3.RegisterActivity">
 
-
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,6 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="@string/app_name"/>
+
 
         <LinearLayout
             android:id="@+id/firstnameLL"
@@ -88,33 +88,36 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2" />
         </LinearLayout>
-        <!--<LinearLayout-->
-            <!--android:id="@+id/passwordLL"-->
-            <!--android:layout_below="@id/emailLL"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:weightSum="5">-->
+        <LinearLayout
+            android:id="@+id/passwordLL"
+            android:layout_below="@id/emailLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="5">
 
-            <!--<TextView-->
-                <!--style="@style/AppTheme.Text_M"-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="2"-->
-                <!--android:text="@string/password"-->
-                <!--android:textAlignment="textEnd" />-->
+            <TextView
+                style="@style/AppTheme.Text_M"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/password"
+                android:textAlignment="textEnd" />
 
-            <!--<EditText-->
-                <!--style="@style/AppTheme.Text_M"-->
-                <!--android:id="@+id/passwordEditText"-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="2" />-->
-        <!--</LinearLayout>-->
+            <EditText
+                style="@style/AppTheme.Text_M"
+                android:id="@+id/passwordEditText"
+                android:inputType="textPassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+
         <Button
             android:id="@+id/registerBtn"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/emailLL"
+            android:layout_below="@id/passwordLL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/register"/>

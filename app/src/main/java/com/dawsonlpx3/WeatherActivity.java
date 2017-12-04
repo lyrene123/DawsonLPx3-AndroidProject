@@ -45,9 +45,10 @@ import java.util.Locale;
 public class WeatherActivity extends Fragment implements View.OnClickListener {
 
     View view;
+    private final String CELCUS = (char) 0x00B0 + "C";
     private Context context; // Current Activity Context
     private GPSTracker gps; // Custom class for GPS functionality
-    private LinearLayout col1, col2, col3, col4, col5, col6;
+    private LinearLayout col2, col3, col4, col5, col6;
     private EditText cityView;
     private Spinner countriesSpinner;
     private Button forecastButton;
@@ -75,7 +76,7 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
         // Get handles to required classes and information.
         context = this.getActivity();
         cityView = (EditText) view.findViewById(R.id.weather_city);
-        col1 = (LinearLayout) view.findViewById(R.id.col_1);
+//        col1 = (LinearLayout) view.findViewById(R.id.col_1);
         col2 = (LinearLayout) view.findViewById(R.id.col_2);
         col3 = (LinearLayout) view.findViewById(R.id.col_3);
         col4 = (LinearLayout) view.findViewById(R.id.col_4);
@@ -265,64 +266,75 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
                 // Set all the values for the cells in teh weatherActivity forecast.
                 try {
                     for(int i = 0; i < columns.length; i++){
+                        TextView weatherTv = (TextView) columns[i].getChildAt(2);
+                        JSONArray weatherArray = result[i].getJSONArray("weather");
+                        weatherTv.setText(weatherArray.getJSONObject(0).getString("main"));
 
-                        TextView tv0 = (TextView) columns[i].getChildAt(0);
-                        Long dateEpoch = result[i].getLong("dt");
-                        Date date = new Date(dateEpoch*1000);
-                        SimpleDateFormat format = new SimpleDateFormat("MMM-dd h:mma");
-                        tv0.setText(format.format(date));
-
-                        TextView tv1 = (TextView) columns[i].getChildAt(1);
+                        TextView tempTv = (TextView) columns[i].getChildAt(1);
                         d = result[i].getJSONObject("main").getDouble("temp");
                         d = (double)Math.round((d) * 10) / 10;
-                        tv1.setText(Double.toString(d));
+                        tempTv.setText(Double.toString(d) + CELCUS);
 
-                        TextView tv2 = (TextView) columns[i].getChildAt(2);
+                        TextView dateTv = (TextView) columns[i].getChildAt(0);
+                        Long dateEpoch = result[i].getLong("dt");
+                        Date date = new Date(dateEpoch*1000);
+                        SimpleDateFormat format = new SimpleDateFormat("EEE, d MMM yyyy HH:mm a");
+                        dateTv.setText(format.format(date));
+
+                        LinearLayout outterLayout = (LinearLayout) columns[i].getChildAt(3);
+
+                        TextView minTempTv = (TextView) getTextViewFromNestedLayout(outterLayout, 0);
                         d = result[i].getJSONObject("main").getDouble("temp_min");
                         d = (double)Math.round((d) * 10) / 10;
-                        tv2.setText(Double.toString(d));
+                        minTempTv.setText(Double.toString(d) + CELCUS);
 
-                        TextView tv3 = (TextView) columns[i].getChildAt(3);
+                        TextView maxTempTv = (TextView) getTextViewFromNestedLayout(outterLayout, 1);
                         d = result[i].getJSONObject("main").getDouble("temp_max");
                         d = (double)Math.round((d) * 10) / 10;
-                        tv3.setText(Double.toString(d));
+                        maxTempTv.setText(Double.toString(d) + CELCUS);
 
-                        TextView tv4 = (TextView) columns[i].getChildAt(4);
-                        tv4.setText(Double.toString(result[i].getJSONObject("main").getDouble("pressure")));
+                        Log.d(TAG, "max: " + maxTempTv);
 
-                        TextView tv5 = (TextView) columns[i].getChildAt(5);
-                        tv5.setText(Double.toString(result[i].getJSONObject("main").getDouble("sea_level")));
+                        LinearLayout innerLayout = (LinearLayout) columns[i].getChildAt(4);
+                        Log.d(TAG, "innerLayout: " + innerLayout);
 
-                        TextView tv6 = (TextView) columns[i].getChildAt(6);
-                        tv6.setText(Double.toString(result[i].getJSONObject("main").getDouble("grnd_level")));
+                        LinearLayout leftLayout = (LinearLayout) innerLayout.getChildAt(0);
 
-                        TextView tv7 = (TextView) columns[i].getChildAt(7);
-                        tv7.setText(Integer.toString(result[i].getJSONObject("main").getInt("humidity")));
+                        TextView pressureTv = (TextView) getTextViewFromNestedLayout(leftLayout, 0);
+                        pressureTv.setText(Double.toString(result[i].getJSONObject("main").getDouble("pressure")));
 
-                        TextView tv8 = (TextView) columns[i].getChildAt(8);
+                        TextView seaLevelTv = (TextView) getTextViewFromNestedLayout(leftLayout, 1);
+                        seaLevelTv.setText(Double.toString(result[i].getJSONObject("main").getDouble("sea_level")));
+
+                        TextView groundLevelTv = (TextView) getTextViewFromNestedLayout(leftLayout, 2);
+                        groundLevelTv.setText(Double.toString(result[i].getJSONObject("main").getDouble("grnd_level")));
+
+                        TextView humidityTv = (TextView) getTextViewFromNestedLayout(leftLayout, 3);
+                        humidityTv.setText(Integer.toString(result[i].getJSONObject("main").getInt("humidity")));
+
+                        TextView kfTempTv = (TextView) getTextViewFromNestedLayout(leftLayout, 4);
                         d = result[i].getJSONObject("main").getDouble("temp_kf");
                         d = (double)Math.round((d) * 100) / 100;
-                        tv8.setText(Double.toString(d));
+                        kfTempTv.setText(Double.toString(d));
 
-                        TextView tv9 = (TextView) columns[i].getChildAt(9);
-                        TextView tv10 = (TextView) columns[i].getChildAt(10);
-                        JSONArray weatherArray = result[i].getJSONArray("weather");
-                        tv9.setText(weatherArray.getJSONObject(0).getString("main"));
-                        tv10.setText(weatherArray.getJSONObject(0).getString("description"));
+                        LinearLayout rightLayout = (LinearLayout) innerLayout.getChildAt(1);
 
-                        TextView tv11 = (TextView) columns[i].getChildAt(11);
+                        TextView descriptionTv = (TextView) getTextViewFromNestedLayout(rightLayout, 0);
+                        descriptionTv.setText(weatherArray.getJSONObject(0).getString("description"));
+
+                        TextView cloudTv = (TextView) getTextViewFromNestedLayout(rightLayout, 1);
                         JSONObject cloudObject = result[i].getJSONObject("clouds");
-                        tv11.setText(Integer.toString(cloudObject.getInt("all")));
+                        cloudTv.setText(Integer.toString(cloudObject.getInt("all")));
 
-                        TextView tv12 = (TextView) columns[i].getChildAt(12);
-                        TextView tv13 = (TextView) columns[i].getChildAt(13);
+                        TextView windSpeedTv = (TextView) getTextViewFromNestedLayout(rightLayout, 2);
+                        TextView windDegTv = (TextView) getTextViewFromNestedLayout(rightLayout, 3);
                         JSONObject windObject = result[i].getJSONObject("wind");
                         d = windObject.getDouble("speed");
                         d = (double)Math.round((d) * 100) / 100;
-                        tv12.setText(Double.toString(d));
+                        windSpeedTv.setText(Double.toString(d));
                         d = windObject.getDouble("deg");
                         d = (double)Math.round((d) * 1000) / 1000;
-                        tv13.setText(Double.toString(d));
+                        windDegTv.setText(Double.toString(d));
                     }
                 }catch(Exception e){
                     Log.d(TAG, e.getMessage());
@@ -488,6 +500,22 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
                 return 7;
             }
         } // calculateOffset()
+
+        /**
+         * Knowing the second child of the last layout is the TextView we want to set
+         * @param linearLayout
+         * @param index
+         * @return
+         */
+        private TextView getTextViewFromNestedLayout(LinearLayout linearLayout, int index) {
+            LinearLayout layout = (LinearLayout) linearLayout.getChildAt(index);
+            return getTextViewFromLayout(layout, 1);
+        }
+
+        private TextView getTextViewFromLayout(LinearLayout linearLayout, int index) {
+            TextView textView = (TextView) linearLayout.getChildAt(index);
+            return textView;
+        }
     } // ForecastTask
 } // WeatherActivity
 

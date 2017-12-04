@@ -147,7 +147,7 @@ public class TeacherContactFragment extends Fragment {
             this.bioTV.setText(this.teacher.getBio());
         }
 
-        this.imageView.setImageResource(R.mipmap.ic_launcher); //default image since teacher image not provided
+        this.imageView.setImageResource(R.drawable.unknows); //default image since teacher image not provided
 
         //the following is to underline the email and make it clickable only if email is not null nor empty
         if(this.teacher.getEmail() != null && !this.teacher.getEmail().isEmpty()){
@@ -183,7 +183,7 @@ public class TeacherContactFragment extends Fragment {
         if(positions != null && positions.size() > 0) {
             this.positionTV.setText("");
             for (int i = 0; i < positions.size(); i++) {
-                this.positionTV.setText(this.positionTV.getText() + "\n" + positions.get(i));
+                this.positionTV.setText(positions.get(i)+ " " + this.positionTV.getText());
             }
         }
         //display the departments
@@ -191,7 +191,7 @@ public class TeacherContactFragment extends Fragment {
         if(departments != null && departments.size() > 0) {
             this.departmentTV.setText("");
             for (int i = 0; i < departments.size(); i++) {
-                this.departmentTV.setText(this.departmentTV.getText() + "\n" + departments.get(i));
+                this.departmentTV.setText(departments.get(i) + " " + this.departmentTV.getText());
             }
         }
         //display the sectors
@@ -199,7 +199,7 @@ public class TeacherContactFragment extends Fragment {
         if(sectors != null && sectors.size() > 0) {
             this.sectorTV.setText("");
             for (int i = 0; i < sectors.size(); i++) {
-                this.sectorTV.setText(this.sectorTV.getText() + "\n" + sectors.get(i));
+                this.sectorTV.setText(sectors.get(i) + " " + this.sectorTV.getText());
             }
         }
     }

@@ -7,13 +7,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@drawable/shadow_background">
         <TextView
+            style="@style/AppTheme.List_Item"
+            android:fontFamily="@font/montserrat_alternates"
             android:id="@+id/cancelledDateTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
         <TextView
+            style="@style/AppTheme.List_Item"
+            android:fontFamily="@font/montserrat_alternates"
             android:id="@+id/cancelledCourseTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

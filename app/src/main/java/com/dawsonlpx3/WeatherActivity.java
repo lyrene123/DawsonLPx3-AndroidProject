@@ -47,7 +47,7 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
     View view;
     private Context context; // Current Activity Context
     private GPSTracker gps; // Custom class for GPS functionality
-    private LinearLayout col1, col2, col3, col4, col5, col6;
+    private LinearLayout col2, col3, col4, col5, col6;
     private EditText cityView;
     private Spinner countriesSpinner;
     private Button forecastButton;
@@ -75,7 +75,7 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
         // Get handles to required classes and information.
         context = this.getActivity();
         cityView = (EditText) view.findViewById(R.id.weather_city);
-        col1 = (LinearLayout) view.findViewById(R.id.col_1);
+//        col1 = (LinearLayout) view.findViewById(R.id.col_1);
         col2 = (LinearLayout) view.findViewById(R.id.col_2);
         col3 = (LinearLayout) view.findViewById(R.id.col_3);
         col4 = (LinearLayout) view.findViewById(R.id.col_4);

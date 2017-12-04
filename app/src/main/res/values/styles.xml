@@ -25,9 +25,29 @@
         <item name="android:textSize">16sp</item>
         <item name="android:padding">8dp</item>
     </style>
+
     <style name="AppTheme.Text_L">
         <item name="android:textSize">20sp</item>
         <item name="android:padding">13dp</item>
+    </style>
+    <style name="AppTheme.Text_XL">
+        <item name="android:textSize">90sp</item>
+        <item name="android:padding">0dp</item>
+    </style>
+    <style name="AppTheme.Bg_Transparent">
+        <item name="android:background">@color/maastrict_blue</item>
+        <item name="android:alpha">.8</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:paddingTop">25dp</item>
+        <item name="android:paddingBottom">25dp</item>
+    </style>
+    <style name="AppTheme.Text_title">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">0dp</item>
     </style>
     <string name="AppTheme.Error">
         <item name="android:textSize">16sp</item>

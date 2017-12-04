@@ -21,8 +21,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Helper utility class that handles database access operations and authentication
@@ -178,26 +176,24 @@ public class FirebaseManagerUtil {
                             }
                         }
                     } else {
-                        String pattern = "";
-                        Pattern r = null;
-                        Matcher m = null;
+                        boolean isFound = false;
 
-                        //with the user of regex, find records beginning with the input fullname, firstname or lastname
+                        //find records beginning with the input fullname, firstname or lastname
                         if(fullname != null){
-                            pattern = "^"+fullname.toLowerCase();
-                            r = Pattern.compile(pattern);
-                            m = r.matcher(full.toLowerCase());
+                            if((full.toLowerCase()).contains(fullname.toLowerCase())){
+                                isFound = true;
+                            }
                         } else if (fname != null && lname == null){
-                            pattern = "^"+fname.toLowerCase();
-                            r = Pattern.compile(pattern);
-                            m = r.matcher(firstname.toLowerCase());
+                            if((firstname.toLowerCase()).contains(fname.toLowerCase())){
+                                isFound = true;
+                            }
                         } else {
-                            pattern = "^"+lname.toLowerCase();
-                            r = Pattern.compile(pattern);
-                            m = r.matcher(lastname.toLowerCase());
+                            if((lastname.toLowerCase()).contains(lname.toLowerCase())){
+                                isFound = true;
+                            }
                         }
 
-                        if(m.find()){
+                        if(isFound){
                             addTeacherToList(item.getValue(TeacherDetails.class));
                         }
                     }

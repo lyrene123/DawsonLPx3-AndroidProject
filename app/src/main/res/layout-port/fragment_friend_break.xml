@@ -26,25 +26,59 @@
         android:layout_margin="15dp"
         android:padding="10dp">
 
-        <Spinner
-            android:id="@+id/free_friends_days"
+        <LinearLayout
+            android:id="@+id/dayLL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"/>
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_alternates"
+                android:text="@string/day"/>
+            <Spinner
+                android:id="@+id/free_friends_days"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
 
-        <Spinner
-            android:id="@+id/free_friends_start_time"
+        <LinearLayout
+            android:id="@+id/startLL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/free_friends_days"/>
+            android:orientation="horizontal"
+            android:layout_below="@+id/dayLL"
+            android:layout_centerHorizontal="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_alternates"
+                android:text="@string/startTime"/>
+            <Spinner
+                android:id="@+id/free_friends_start_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
 
-        <Spinner
-            android:id="@+id/free_friends_end_time"
+        <LinearLayout
+            android:id="@+id/endLL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/free_friends_start_time"/>
+            android:orientation="horizontal"
+            android:layout_below="@+id/startLL"
+            android:layout_centerHorizontal="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_alternates"
+                android:text="@string/endTime"/>
+            <Spinner
+                android:id="@+id/free_friends_end_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
 
         <Button
             android:id="@+id/free_friends_button"
@@ -53,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:padding="20dp"
-            android:layout_below="@id/free_friends_end_time"/>
+            android:layout_below="@id/endLL"/>
 
     </RelativeLayout>
 

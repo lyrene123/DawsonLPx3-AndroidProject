@@ -97,7 +97,7 @@ public class FriendBreakFragment extends Fragment {
 
         // ArrayAdapter to add relevant days of the week to the spinner
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
-                context, android.R.layout.simple_spinner_item, daysOfTheWeek);
+                context, R.layout.spinner_item, daysOfTheWeek);
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // Days of the week spinner
@@ -107,7 +107,7 @@ public class FriendBreakFragment extends Fragment {
         // ArrayAdapter to add relevant 30-minutes time intervals to the time spinners.
         String[] timesOfDay = view.getResources().getStringArray(R.array.search_times);
         ArrayAdapter<String> timeArrayAdapter = new ArrayAdapter<String>(
-                context, android.R.layout.simple_spinner_item, timesOfDay);
+                context, R.layout.spinner_item, timesOfDay);
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // Start-time spinner

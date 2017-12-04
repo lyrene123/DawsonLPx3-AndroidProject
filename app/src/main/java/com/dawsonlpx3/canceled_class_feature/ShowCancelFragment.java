@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dawsonlpx3.R;
 import com.dawsonlpx3.data.CanceledClassDetails;
@@ -94,36 +95,56 @@ public class ShowCancelFragment extends Fragment {
     }
 
     /**
+     * Saves data in a Bundle, to restore after the fragment has been temporarily destroyed.
+     *
+     * @param outState The Bundle, which will contain the data to save.
+     */
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        Log.i(TAG, "onSaveInstanceSTate");
+        outState.putSerializable("class", details);
+
+        super.onSaveInstanceState(outState);
+    }
+
+    /**
      * Launches a FindTeacherFragment, passing it the teacher's name from a specific cancelled
      * class.
      *
      * @param view  The current View.
      */
     public void loadTeacherInfo (View view) {
-        FindTeacherFragment teacherFragment = new FindTeacherFragment();
-        //name must be split between first and last name
-        String[] names = details.getTeacher().split("\\s");
-        Log.d(TAG, "first name: " + names[0]);
-        String lname = "";
-        //some teachers have multiple words for their last name
-        //retrieve all remaining names after first name, place them in one string
-        for (int i = 1; i < names.length; i++) {
-            lname = lname + names[i] + " ";
+        //if teacher is null or empty, display message to user
+        if (details.getTeacher() == null || details.getTeacher().equals("")) {
+            Toast.makeText(view.getContext(),
+                    getResources().getString(R.string.empty_teacher_error),
+                    Toast.LENGTH_LONG).show();
+        } else { //else, teacher presumably contains valid data for a search
+            FindTeacherFragment teacherFragment = new FindTeacherFragment();
+            //name must be split between first and last name
+            String[] names = details.getTeacher().split("\\s");
+            Log.d(TAG, "first name: " + names[0]);
+            String lname = "";
+            //some teachers have multiple words for their last name
+            //retrieve all remaining names after first name, place them in one string
+            for (int i = 1; i < names.length; i++) {
+                lname = lname + names[i] + " ";
+            }
+            //trim any whitespace at end as needed
+            lname = lname.trim();
+            Log.d(TAG, "last name: " + lname);
+            //place names in Bundle
+            Bundle args = new Bundle();
+            args.putString("fname", names[0]);
+            args.putString("lname", lname);
+            teacherFragment.setArguments(args);
+            //launch new fragment via FragmentManager
+            FragmentManager fm = getActivity().getFragmentManager();
+            fm.beginTransaction()
+                    .replace(R.id.side_frame, teacherFragment)
+                    .addToBackStack(null)
+                    .commit();
         }
-        //trim any whitespace at end as needed
-        lname.trim();
-        Log.d(TAG, "last name: " + lname);
-        //place names in Bundle
-        Bundle args = new Bundle();
-        args.putString("fname", names[0]);
-        args.putString("lname", lname);
-        teacherFragment.setArguments(args);
-        //launch new fragment via FragmentManager
-        FragmentManager fm = getActivity().getFragmentManager();
-        fm.beginTransaction()
-                .replace(R.id.side_frame, teacherFragment)
-                .addToBackStack(null)
-                .commit();
 
     }
 }

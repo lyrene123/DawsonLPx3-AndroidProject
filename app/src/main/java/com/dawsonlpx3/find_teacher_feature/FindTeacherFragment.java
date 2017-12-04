@@ -302,6 +302,7 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
     /**
      * If app is on DestroyView state, then stop the async task for searching Teacher and
      * set the task to null only if task is not null which means that there is an existing task.
+     * Dismiss the progress dialog if it's still showing and set it to null.
      */
     @Override
     public void onDestroyView() {
@@ -311,6 +312,12 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
             this.teachersTask.cancel(true);
             this.teachersTask = null;
         }
+
+        if (dialog != null && dialog.isShowing()) {
+            dialog.dismiss();
+        }
+
+        dialog = null;
     }
 
     /**

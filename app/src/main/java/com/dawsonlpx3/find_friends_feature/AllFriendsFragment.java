@@ -212,7 +212,7 @@ public class AllFriendsFragment extends Fragment {
             if(!checkForErrorsOrNoFriends()) {
                 buildFriendsNames();
                 this.itemsAdapter = new ArrayAdapter<String>(getActivity(),
-                        android.R.layout.simple_list_item_1, friends_names.toArray(new String[0]));
+                        R.layout.list_item, friends_names.toArray(new String[0]));
             }
         } catch (InterruptedException | ExecutionException | JSONException e ) {
             displayErrorReponse(getResources().getString(R.string.problem_retrieving_friends));

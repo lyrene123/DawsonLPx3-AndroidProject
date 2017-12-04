@@ -69,7 +69,6 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
         dialog = new ProgressDialog(getActivity());
         Log.d(TAG, "onCreate started");
         fbManager = FirebaseManagerUtil.getFirebaseManager();
-        this.teachersTask = new GetTeachersTask();
         if(savedInstanceState != null){
             Log.d(TAG, "restoring state from bundle");
             this.restoredFname = savedInstanceState.getString("fname");
@@ -165,7 +164,7 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
             }
 
             //start seperate async task for querying the db
-
+            this.teachersTask = new GetTeachersTask();
             this.teachersTask.execute();
             //Toast.makeText(getActivity(), getResources().getString(R.string.searchTeachers), Toast.LENGTH_LONG).show();
         }
@@ -302,6 +301,7 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
     /**
      * If app is on DestroyView state, then stop the async task for searching Teacher and
      * set the task to null only if task is not null which means that there is an existing task.
+     * Dismiss the progress dialog if it's still showing and set it to null.
      */
     @Override
     public void onDestroyView() {
@@ -311,6 +311,12 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
             this.teachersTask.cancel(true);
             this.teachersTask = null;
         }
+
+        if (dialog != null && dialog.isShowing()) {
+            dialog.dismiss();
+        }
+
+        dialog = null;
     }
 
     /**

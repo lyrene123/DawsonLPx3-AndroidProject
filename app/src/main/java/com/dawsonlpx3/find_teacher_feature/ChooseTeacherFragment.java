@@ -79,7 +79,7 @@ public class ChooseTeacherFragment extends Fragment {
             }
             setTeachersList(teachersCopy);
         }
-        this.itemsAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, namesArr);
+        this.itemsAdapter = new ArrayAdapter<String>(getActivity(), R.layout.list_item, namesArr);
     }
 
     /**

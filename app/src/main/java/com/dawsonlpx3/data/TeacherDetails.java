@@ -1,6 +1,8 @@
 package com.dawsonlpx3.data;
 
 
+import android.text.Html;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -64,9 +66,9 @@ public class TeacherDetails implements Serializable{
                           List<Object> sectors) {
 
         this.email = email;
-        this.first_name = first_name;
-        this.full_name = full_name;
-        this.last_name = last_name;
+        this.first_name = Html.fromHtml(first_name).toString();
+        this.full_name = Html.fromHtml(full_name).toString();
+        this.last_name = Html.fromHtml(last_name).toString();
         this.local = local;
         this.office = office;
         this.departments = departments;

@@ -42,7 +42,7 @@ import java.util.Locale;
  *
  * @authors Philippe Langlois, Lyrene Labor, Peter Bellefleur, Pengkim Sy
  */
-public class WeatherActivity extends Fragment implements View.OnClickListener {
+public class WeatherFragment extends Fragment implements View.OnClickListener {
 
     View view;
     private final String CELCUS = (char) 0x00B0 + "C";
@@ -54,7 +54,7 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
     private Button forecastButton;
     private double lat;
     private double lon;
-    private final String TAG = "WeatherActivity";
+    private final String TAG = "WeatherFragment";
     private final int MY_PERMISSIONS_ACCESS_FINE_LOCATION = 1;
     private final int MY_PERMISSIONS_INTERNET = 2;
     private Boolean userPermissions = true; // Flag for user permissions
@@ -517,5 +517,5 @@ public class WeatherActivity extends Fragment implements View.OnClickListener {
             return textView;
         }
     } // ForecastTask
-} // WeatherActivity
+} // WeatherFragment
 

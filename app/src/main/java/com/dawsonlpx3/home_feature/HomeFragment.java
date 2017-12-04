@@ -34,7 +34,7 @@ import com.dawsonlpx3.data.CanceledClassDetails;
 import com.dawsonlpx3.find_teacher_feature.FindTeacherFragment;
 import com.dawsonlpx3.notes_feature.NotesFragment;
 import com.dawsonlpx3.weather_feature.GPSTracker;
-import com.dawsonlpx3.weather_feature.WeatherActivity;
+import com.dawsonlpx3.weather_feature.WeatherFragment;
 import com.thbs.skycons.library.CloudFogView;
 import com.thbs.skycons.library.CloudHvRainView;
 import com.thbs.skycons.library.CloudRainView;
@@ -201,7 +201,7 @@ public class HomeFragment extends Fragment {
         @Override
         public void onClick(View view) {
             getFragmentManager().beginTransaction()
-                    .replace(R.id.side_frame, new WeatherActivity())
+                    .replace(R.id.side_frame, new WeatherFragment())
                     .addToBackStack(null)
                     .commit();
         }

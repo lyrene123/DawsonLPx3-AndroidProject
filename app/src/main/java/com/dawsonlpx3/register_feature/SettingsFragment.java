@@ -30,7 +30,7 @@ import static android.content.Context.MODE_PRIVATE;
  *
  * @author Philippe Langlois
  */
-public class SettingsActivity extends Fragment {
+public class SettingsFragment extends Fragment {
 
     private View view;
     private static final String TAG = "SettignsActivity";
@@ -105,4 +105,4 @@ public class SettingsActivity extends Fragment {
         savedInstanceState.putString("tempPassword", passwordEdit.getText().toString());
         super.onSaveInstanceState(savedInstanceState);
     } // onSaveInstanceState
-} // SettingsActivity
+} // SettingsFragment

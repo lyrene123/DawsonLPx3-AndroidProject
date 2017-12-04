@@ -35,8 +35,8 @@ import com.dawsonlpx3.home_feature.HomeFragment;
 import com.dawsonlpx3.notes_feature.ItemNoteFragment;
 import com.dawsonlpx3.notes_feature.NotesFragment;
 import com.dawsonlpx3.register_feature.RegisterActivity;
-import com.dawsonlpx3.register_feature.SettingsActivity;
-import com.dawsonlpx3.weather_feature.WeatherActivity;
+import com.dawsonlpx3.register_feature.SettingsFragment;
+import com.dawsonlpx3.weather_feature.WeatherFragment;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -228,7 +228,7 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.side_frame, frag)
                     .commit();
         } else if (id == R.id.nav_weather) {
-            Fragment frag = new WeatherActivity();
+            Fragment frag = new WeatherFragment();
             fragmentManager.beginTransaction()
                     .replace(R.id.side_frame, frag)
                     .commit();
@@ -238,7 +238,7 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.side_frame, frag)
                     .commit();
         } else if (id == R.id.nav_setting) {
-            Fragment frag = new SettingsActivity();
+            Fragment frag = new SettingsFragment();
             fragmentManager.beginTransaction()
                     .replace(R.id.side_frame, frag)
                     .commit();

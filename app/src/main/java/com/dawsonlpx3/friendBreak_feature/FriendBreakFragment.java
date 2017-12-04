@@ -149,7 +149,7 @@ public class FriendBreakFragment extends Fragment {
                             }
                             // setup the adapter for the friend's list
                             ArrayAdapter<String> friendAdapter = new ArrayAdapter<String>(context,
-                                    android.R.layout.simple_list_item_1, friendsOnBreak);
+                                    R.layout.list_item, friendsOnBreak);
 
                             // Associate the ListView with the adapter
                             friendList.setAdapter(friendAdapter);

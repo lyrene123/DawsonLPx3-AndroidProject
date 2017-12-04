@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context="com.dawsonlpx3.ShowCancelActivity">
+    tools:context="com.dawsonlpx3.canceled_class_feature.ShowCancelFragment">
 
     <TextView
         style="@style/AppTheme.Title"
@@ -112,7 +112,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:text="@string/sampleName"/>
+                android:text="@string/sampleName" />
         </LinearLayout>
 
     </RelativeLayout>

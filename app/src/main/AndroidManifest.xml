@@ -23,8 +23,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
-        <!--<activity android:name=".CanceledActivity" />-->
-        <!--<activity android:name=".ShowCancelActivity" />-->
+        <!--<activity android:namCanceledFragmentvity" />-->
+        <!--<activity android:namShowCancelFragmentvity" />-->
         <!--<activity android:name=".FindTeacherActivity" />-->
         <!--<activity android:name=".ChooseTeacherActivity" />-->
         <!--<activity android:name=".TeacherContactActivity" />-->

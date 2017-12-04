@@ -1,4 +1,4 @@
-package com.dawsonlpx3;
+package com.dawsonlpx3.register_feature;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.dawsonlpx3.R;
 
 import java.util.Calendar;
 import static android.content.Context.MODE_PRIVATE;

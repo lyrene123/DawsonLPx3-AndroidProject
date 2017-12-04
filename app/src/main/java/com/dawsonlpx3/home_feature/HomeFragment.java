@@ -1,4 +1,4 @@
-package com.dawsonlpx3;
+package com.dawsonlpx3.home_feature;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -22,11 +22,18 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dawsonlpx3.about_feature.AboutFragment;
+import com.dawsonlpx3.R;
+import com.dawsonlpx3.async_utils.TemperatureAsyncTask;
+import com.dawsonlpx3.calendar_feature.AcedemicCalendarFragment;
+import com.dawsonlpx3.calendar_feature.AddToCalendarFragment;
 import com.dawsonlpx3.canceled_class_feature.CanceledClassAdapter;
 import com.dawsonlpx3.canceled_class_feature.CanceledFragment;
 import com.dawsonlpx3.canceled_class_feature.DawsonRssXmlParser;
 import com.dawsonlpx3.data.CanceledClassDetails;
 import com.dawsonlpx3.find_teacher_feature.FindTeacherFragment;
+import com.dawsonlpx3.notes_feature.NotesFragment;
+import com.dawsonlpx3.weather_feature.GPSTracker;
 import com.dawsonlpx3.weather_feature.WeatherActivity;
 import com.thbs.skycons.library.CloudFogView;
 import com.thbs.skycons.library.CloudHvRainView;

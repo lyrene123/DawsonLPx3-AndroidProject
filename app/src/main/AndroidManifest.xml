@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
+        <activity android:name=".register_feature.RegisterActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

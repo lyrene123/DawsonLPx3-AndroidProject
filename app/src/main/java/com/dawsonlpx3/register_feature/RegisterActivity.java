@@ -1,15 +1,17 @@
-package com.dawsonlpx3;
+package com.dawsonlpx3.register_feature;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.dawsonlpx3.MainActivity;
+import com.dawsonlpx3.R;
 
 import java.util.Calendar;
 

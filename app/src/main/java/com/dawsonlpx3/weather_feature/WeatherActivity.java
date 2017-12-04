@@ -20,7 +20,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dawsonlpx3.GPSTracker;
 import com.dawsonlpx3.R;
 import com.dawsonlpx3.async_utils.UVAsyncTask;
 

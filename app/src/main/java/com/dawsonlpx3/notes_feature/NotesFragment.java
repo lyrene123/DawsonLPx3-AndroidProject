@@ -1,4 +1,4 @@
-package com.dawsonlpx3;
+package com.dawsonlpx3.notes_feature;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
+import com.dawsonlpx3.R;
 import com.dawsonlpx3.db.NotesContract;
 import com.dawsonlpx3.db.SQLiteManagerUtil;
 

@@ -1,19 +1,18 @@
-package com.dawsonlpx3;
+package com.dawsonlpx3.notes_feature;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.dawsonlpx3.R;
 import com.dawsonlpx3.db.NotesContract;
 import com.dawsonlpx3.db.SQLiteManagerUtil;
 

@@ -18,6 +18,10 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
+
+import com.dawsonlpx3.about_feature.AboutFragment;
+import com.dawsonlpx3.calendar_feature.AcedemicCalendarFragment;
+import com.dawsonlpx3.calendar_feature.AddToCalendarFragment;
 import com.dawsonlpx3.canceled_class_feature.CanceledFragment;
 import com.dawsonlpx3.async_utils.WhereIsFriendAsyncTask;
 import com.dawsonlpx3.data.TeacherDetails;
@@ -27,6 +31,11 @@ import com.dawsonlpx3.find_teacher_feature.ChooseTeacherFragment;
 import com.dawsonlpx3.find_teacher_feature.FindTeacherFragment;
 import com.dawsonlpx3.find_teacher_feature.TeacherContactFragment;
 import com.dawsonlpx3.friendBreak_feature.FriendBreakFragment;
+import com.dawsonlpx3.home_feature.HomeFragment;
+import com.dawsonlpx3.notes_feature.ItemNoteFragment;
+import com.dawsonlpx3.notes_feature.NotesFragment;
+import com.dawsonlpx3.register_feature.RegisterActivity;
+import com.dawsonlpx3.register_feature.SettingsActivity;
 import com.dawsonlpx3.weather_feature.WeatherActivity;
 
 import org.json.JSONException;

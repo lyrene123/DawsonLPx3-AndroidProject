@@ -54,12 +54,21 @@
         <item name="android:textColor">@color/colorAccent</item>
     </string>
     <style name="AppTheme.List_Item">
-        <item name="android:textSize">22sp</item>
-        <item name="android:padding">15dp</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:padding">20dp</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:divider">@android:color/transparent</item>
+        <item name="android:dividerHeight">10.0sp</item>
+    </style>
+    <style name="AppTheme.Spinner_Item">
+        <item name="android:textSize">25sp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:layout_margin">5dp</item>
         <item name="android:textColor">@color/black</item>
     </style>
     <style name="AppTheme.header">
-        <item name="android:paddingTop">75dp</item>
+        <item name="android:paddingTop">60dp</item>
         <item name="android:paddingBottom">30dp</item>
         <item name="android:paddingLeft">30dp</item>
         <item name="android:textSize">26sp</item>

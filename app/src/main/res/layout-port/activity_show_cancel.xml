@@ -15,15 +15,34 @@
         android:layout_height="wrap_content"
         android:text="@string/classCancel"/>
 
-    <RelativeLayout
-        android:layout_below="@id/classCancelTitle"
+    <LinearLayout
+        android:layout_margin="10dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/classCancelTitle"
+        android:layout_centerHorizontal="true"
+        android:weightSum="3">
+
+    <ImageView
+        android:id="@+id/noclassIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:layout_weight="1"
+        android:src="@drawable/noclass" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="2">
 
         <LinearLayout
             android:id="@+id/titleLL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/teacherInfo"
             android:orientation="horizontal"
             android:weightSum="5">
 
@@ -36,18 +55,19 @@
                 android:textAlignment="textEnd" />
 
             <TextView
-                style="@style/AppTheme.Text_M"
                 android:id="@+id/titleTextView"
+                style="@style/AppTheme.Text_M"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:text="@string/sampleName"/>
+                android:text="@string/sampleName" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/courseLL"
-            android:layout_below="@id/titleLL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/titleLL"
             android:orientation="horizontal"
             android:weightSum="5">
 
@@ -60,18 +80,19 @@
                 android:textAlignment="textEnd" />
 
             <TextView
-                style="@style/AppTheme.Text_M"
                 android:id="@+id/courseTextView"
+                style="@style/AppTheme.Text_M"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:text="@string/sampleName"/>
+                android:text="@string/sampleName" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/timeLL"
-            android:layout_below="@id/courseLL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/courseLL"
             android:orientation="horizontal"
             android:weightSum="5">
 
@@ -84,17 +105,18 @@
                 android:textAlignment="textEnd" />
 
             <TextView
-                style="@style/AppTheme.Text_M"
                 android:id="@+id/timeTextView"
+                style="@style/AppTheme.Text_M"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:text="@string/sampleName"/>
+                android:text="@string/sampleName" />
         </LinearLayout>
+
         <LinearLayout
-            android:layout_below="@id/timeLL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/timeLL"
             android:orientation="horizontal"
             android:weightSum="5">
 
@@ -107,8 +129,8 @@
                 android:textAlignment="textEnd" />
 
             <TextView
-                style="@style/AppTheme.Text_M"
                 android:id="@+id/teacherTextView"
+                style="@style/AppTheme.Text_M"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -116,5 +138,6 @@
         </LinearLayout>
 
     </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>

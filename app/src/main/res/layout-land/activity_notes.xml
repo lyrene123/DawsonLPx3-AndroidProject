@@ -8,12 +8,29 @@
     tools:context="com.dawsonlpx3.NotesFragment">
 
 
+    <RelativeLayout
+        android:id="@+id/notesRL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark">
+
+        <TextView
+            style="@style/AppTheme.header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/notesHeader"
+            android:text="@string/notes"/>
+
+    </RelativeLayout>
+
     <ListView
-        style="@style/TextAppearance.AppCompat.Headline"
+        style="@style/AppTheme.List_Item"
         android:id="@+id/noteListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/notesRL"
         android:layout_above="@+id/linearLayout"/>
+
 
     <LinearLayout
         android:id="@+id/linearLayout"

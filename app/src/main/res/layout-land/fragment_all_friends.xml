@@ -4,18 +4,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/allFriendsTV"
-        style="@style/AppTheme.Title"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/friendsRL"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/your_friends"/>
+        android:background="@color/colorPrimaryDark">
+
+        <TextView
+            style="@style/AppTheme.header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/friendsHeader"
+            android:text="@string/your_friends"/>
+
+    </RelativeLayout>
 
     <ListView
         style="@style/AppTheme.List_Item"
         android:id="@+id/allfriendsLV"
-        android:layout_below="@id/allFriendsTV"
+        android:layout_below="@id/friendsRL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true">

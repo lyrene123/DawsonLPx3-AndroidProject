@@ -1,10 +1,8 @@
 package com.dawsonlpx3;
 
-import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
@@ -20,19 +18,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dawsonlpx3.async_utils.AllFriendsAsyncTask;
-import com.dawsonlpx3.async_utils.WhereIsFriendAsyncTask;
 import com.dawsonlpx3.canceled_class_feature.CanceledClassAdapter;
 import com.dawsonlpx3.canceled_class_feature.CanceledFragment;
 import com.dawsonlpx3.canceled_class_feature.DawsonRssXmlParser;
 import com.dawsonlpx3.data.CanceledClassDetails;
-import com.dawsonlpx3.find_friends_feature.FindFriendFragment;
 import com.dawsonlpx3.find_teacher_feature.FindTeacherFragment;
+import com.dawsonlpx3.weather_feature.WeatherActivity;
 import com.thbs.skycons.library.CloudFogView;
 import com.thbs.skycons.library.CloudHvRainView;
 import com.thbs.skycons.library.CloudRainView;
@@ -42,18 +37,13 @@ import com.thbs.skycons.library.CloudView;
 import com.thbs.skycons.library.SunView;
 import com.thbs.skycons.library.WindView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Calendar;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 public class HomeFragment extends Fragment {
 

@@ -3,7 +3,6 @@ package com.dawsonlpx3;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -28,11 +27,12 @@ import com.dawsonlpx3.find_teacher_feature.ChooseTeacherFragment;
 import com.dawsonlpx3.find_teacher_feature.FindTeacherFragment;
 import com.dawsonlpx3.find_teacher_feature.TeacherContactFragment;
 import com.dawsonlpx3.friendBreak_feature.FriendBreakFragment;
+import com.dawsonlpx3.weather_feature.WeatherActivity;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Calendar;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 /**
  * Launches the Main Activity that will display the the app's main interaction with

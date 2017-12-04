@@ -9,7 +9,6 @@
         android:id="@+id/dawsonLL"
         android:layout_width="match_parent"
         android:layout_height="@dimen/nav_header_height"
-        android:gravity="bottom"
         android:orientation="vertical"
         android:background="@color/colorPrimaryDark">
 
@@ -25,6 +24,7 @@
 
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/logoLL"
         android:layout_below="@id/dawsonLL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -62,217 +62,226 @@
         </FrameLayout>
     </LinearLayout>
 
-    <HorizontalScrollView
-        android:layout_alignParentBottom="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:measureAllChildren="false"
-        android:scrollbars="none">
+    <ListView
+        style="@style/AppTheme.List_Item"
+        android:id="@+id/classCancelListView"
+        android:layout_below="@id/logoLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <FrameLayout
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:orientation="vertical"
-                    android:background="@xml/border">
+    </ListView>
 
-                    <ImageButton
-                        android:id="@+id/weatherImageButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/weather" />
+    <!--<HorizontalScrollView-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:measureAllChildren="false"-->
+        <!--android:scrollbars="none">-->
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom|center"
-                        android:background="@color/black"
-                        android:alpha=".5">
-                        <TextView
-                            style="@style/AppTheme.Text_M"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:textColor="@color/white"
-                            android:text="@string/nav_weather"/>
-                    </LinearLayout>
-                </FrameLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <FrameLayout
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:orientation="vertical"
-                    android:background="@xml/border">
+        <!--<LinearLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="center">-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical">-->
+                <!--<FrameLayout-->
+                    <!--android:layout_width="200dp"-->
+                    <!--android:layout_height="200dp"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:background="@xml/border">-->
 
-                    <ImageButton
-                        android:id="@+id/findTeacherImageButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/find_people" />
+                    <!--<ImageButton-->
+                        <!--android:id="@+id/weatherImageButton"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:scaleType="fitXY"-->
+                        <!--android:src="@drawable/weather" />-->
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom|center"
-                        android:background="@color/black"
-                        android:alpha=".5">
-                        <TextView
-                            style="@style/AppTheme.Text_M"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:textColor="@color/white"
-                            android:text="@string/nav_findTeacher"/>
-                    </LinearLayout>
-                </FrameLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <FrameLayout
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:orientation="vertical"
-                    android:background="@xml/border">
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="bottom|center"-->
+                        <!--android:background="@color/black"-->
+                        <!--android:alpha=".5">-->
+                        <!--<TextView-->
+                            <!--style="@style/AppTheme.Text_M"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:gravity="center"-->
+                            <!--android:textColor="@color/white"-->
+                            <!--android:text="@string/nav_weather"/>-->
+                    <!--</LinearLayout>-->
+                <!--</FrameLayout>-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical">-->
+                <!--<FrameLayout-->
+                    <!--android:layout_width="200dp"-->
+                    <!--android:layout_height="200dp"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:background="@xml/border">-->
 
-                    <ImageButton
-                        android:id="@+id/calendarImageButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/calendar" />
+                    <!--<ImageButton-->
+                        <!--android:id="@+id/findTeacherImageButton"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:scaleType="fitXY"-->
+                        <!--android:src="@drawable/find_people" />-->
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom|center"
-                        android:background="@color/black"
-                        android:alpha=".5">
-                        <TextView
-                            style="@style/AppTheme.Text_M"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:textColor="@color/white"
-                            android:text="@string/nav_addToCalendar"/>
-                    </LinearLayout>
-                </FrameLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <FrameLayout
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:orientation="vertical"
-                    android:background="@xml/border">
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="bottom|center"-->
+                        <!--android:background="@color/black"-->
+                        <!--android:alpha=".5">-->
+                        <!--<TextView-->
+                            <!--style="@style/AppTheme.Text_M"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:gravity="center"-->
+                            <!--android:textColor="@color/white"-->
+                            <!--android:text="@string/nav_findTeacher"/>-->
+                    <!--</LinearLayout>-->
+                <!--</FrameLayout>-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical">-->
+                <!--<FrameLayout-->
+                    <!--android:layout_width="200dp"-->
+                    <!--android:layout_height="200dp"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:background="@xml/border">-->
 
-                    <ImageButton
-                        android:id="@+id/acedemicCalendarImageButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/academic_calendar" />
+                    <!--<ImageButton-->
+                        <!--android:id="@+id/calendarImageButton"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:scaleType="fitXY"-->
+                        <!--android:src="@drawable/calendar" />-->
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom|center"
-                        android:background="@color/black"
-                        android:alpha=".5">
-                        <TextView
-                            style="@style/AppTheme.Text_M"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:textColor="@color/white"
-                            android:text="@string/nav_acedemicCalendar"/>
-                    </LinearLayout>
-                </FrameLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <FrameLayout
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:orientation="vertical"
-                    android:background="@xml/border">
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="bottom|center"-->
+                        <!--android:background="@color/black"-->
+                        <!--android:alpha=".5">-->
+                        <!--<TextView-->
+                            <!--style="@style/AppTheme.Text_M"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:gravity="center"-->
+                            <!--android:textColor="@color/white"-->
+                            <!--android:text="@string/nav_addToCalendar"/>-->
+                    <!--</LinearLayout>-->
+                <!--</FrameLayout>-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical">-->
+                <!--<FrameLayout-->
+                    <!--android:layout_width="200dp"-->
+                    <!--android:layout_height="200dp"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:background="@xml/border">-->
 
-                    <ImageButton
-                        android:id="@+id/classCancelImageButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/cancelled" />
+                    <!--<ImageButton-->
+                        <!--android:id="@+id/acedemicCalendarImageButton"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:scaleType="fitXY"-->
+                        <!--android:src="@drawable/academic_calendar" />-->
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom|center"
-                        android:background="@color/black"
-                        android:alpha=".5">
-                        <TextView
-                            style="@style/AppTheme.Text_M"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:textColor="@color/white"
-                            android:text="@string/nav_classCancel"/>
-                    </LinearLayout>
-                </FrameLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <FrameLayout
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:orientation="vertical"
-                    android:background="@xml/border">
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="bottom|center"-->
+                        <!--android:background="@color/black"-->
+                        <!--android:alpha=".5">-->
+                        <!--<TextView-->
+                            <!--style="@style/AppTheme.Text_M"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:gravity="center"-->
+                            <!--android:textColor="@color/white"-->
+                            <!--android:text="@string/nav_acedemicCalendar"/>-->
+                    <!--</LinearLayout>-->
+                <!--</FrameLayout>-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical">-->
+                <!--<FrameLayout-->
+                    <!--android:layout_width="200dp"-->
+                    <!--android:layout_height="200dp"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:background="@xml/border">-->
 
-                    <ImageButton
-                        android:id="@+id/noteImageButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/note" />
+                    <!--<ImageButton-->
+                        <!--android:id="@+id/classCancelImageButton"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:scaleType="fitXY"-->
+                        <!--android:src="@drawable/cancelled" />-->
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom|center"
-                        android:background="@color/black"
-                        android:alpha=".5">
-                        <TextView
-                            style="@style/AppTheme.Text_M"
-                            android:gravity="center"
-                            android:textColor="@color/white"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/nav_note"/>
-                    </LinearLayout>
-                </FrameLayout>
-            </LinearLayout>
-        </LinearLayout>
-    </HorizontalScrollView>
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="bottom|center"-->
+                        <!--android:background="@color/black"-->
+                        <!--android:alpha=".5">-->
+                        <!--<TextView-->
+                            <!--style="@style/AppTheme.Text_M"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:gravity="center"-->
+                            <!--android:textColor="@color/white"-->
+                            <!--android:text="@string/nav_classCancel"/>-->
+                    <!--</LinearLayout>-->
+                <!--</FrameLayout>-->
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical">-->
+                <!--<FrameLayout-->
+                    <!--android:layout_width="200dp"-->
+                    <!--android:layout_height="200dp"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:background="@xml/border">-->
+
+                    <!--<ImageButton-->
+                        <!--android:id="@+id/noteImageButton"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:scaleType="fitXY"-->
+                        <!--android:src="@drawable/note" />-->
+
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="bottom|center"-->
+                        <!--android:background="@color/black"-->
+                        <!--android:alpha=".5">-->
+                        <!--<TextView-->
+                            <!--style="@style/AppTheme.Text_M"-->
+                            <!--android:gravity="center"-->
+                            <!--android:textColor="@color/white"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="@string/nav_note"/>-->
+                    <!--</LinearLayout>-->
+                <!--</FrameLayout>-->
+            <!--</LinearLayout>-->
+        <!--</LinearLayout>-->
+    <!--</HorizontalScrollView>-->
 
 </RelativeLayout>
 

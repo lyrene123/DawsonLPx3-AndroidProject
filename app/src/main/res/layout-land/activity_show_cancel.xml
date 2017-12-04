@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     tools:context="com.dawsonlpx3.canceled_class_feature.ShowCancelFragment">
 
     <TextView
@@ -14,107 +15,128 @@
         android:layout_height="wrap_content"
         android:text="@string/classCancel"/>
 
-    <RelativeLayout
-        android:layout_below="@id/classCancelTitle"
+    <LinearLayout
+        android:layout_margin="10dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/classCancelTitle"
+        android:layout_centerInParent="true"
+        android:weightSum="3">
 
-        <LinearLayout
-            android:id="@+id/titleLL"
-            android:layout_below="@id/teacherInfo"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/noclassIV"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="5">
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            android:src="@drawable/noclass" />
 
-            <TextView
-                style="@style/AppTheme.Text_M"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/title"
-                android:textAlignment="textEnd" />
-
-            <TextView
-                style="@style/AppTheme.Text_M"
-                android:id="@+id/titleTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/sampleName"/>
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/courseLL"
-            android:layout_below="@id/titleLL"
-            android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="5">
+            android:layout_weight="2">
 
-            <TextView
-                style="@style/AppTheme.Text_M"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:id="@+id/titleLL"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/courseSection"
-                android:textAlignment="textEnd" />
+                android:layout_below="@id/teacherInfo"
+                android:orientation="horizontal"
+                android:weightSum="5">
 
-            <TextView
-                style="@style/AppTheme.Text_M"
-                android:id="@+id/courseTextView"
-                android:layout_width="0dp"
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/title"
+                    android:textAlignment="textEnd" />
+
+                <TextView
+                    android:id="@+id/titleTextView"
+                    style="@style/AppTheme.Text_M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/sampleName" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/courseLL"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/sampleName"/>
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/timeLL"
-            android:layout_below="@id/courseLL"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="5">
+                android:layout_below="@id/titleLL"
+                android:orientation="horizontal"
+                android:weightSum="5">
 
-            <TextView
-                style="@style/AppTheme.Text_M"
-                android:layout_width="0dp"
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/courseSection"
+                    android:textAlignment="textEnd" />
+
+                <TextView
+                    android:id="@+id/courseTextView"
+                    style="@style/AppTheme.Text_M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/sampleName" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/timeLL"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/time"
-                android:textAlignment="textEnd" />
+                android:layout_below="@id/courseLL"
+                android:orientation="horizontal"
+                android:weightSum="5">
 
-            <TextView
-                style="@style/AppTheme.Text_M"
-                android:id="@+id/timeTextView"
-                android:layout_width="0dp"
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/time"
+                    android:textAlignment="textEnd" />
+
+                <TextView
+                    android:id="@+id/timeTextView"
+                    style="@style/AppTheme.Text_M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/sampleName" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/sampleName"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_below="@id/timeLL"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="5">
+                android:layout_below="@id/timeLL"
+                android:orientation="horizontal"
+                android:weightSum="5">
 
-            <TextView
-                style="@style/AppTheme.Text_M"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/teacher"
-                android:textAlignment="textEnd" />
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/teacher"
+                    android:textAlignment="textEnd" />
 
-            <TextView
-                style="@style/AppTheme.Text_M"
-                android:id="@+id/teacherTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/sampleName"/>
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/teacherTextView"
+                    style="@style/AppTheme.Text_M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/sampleName" />
+            </LinearLayout>
 
-    </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>

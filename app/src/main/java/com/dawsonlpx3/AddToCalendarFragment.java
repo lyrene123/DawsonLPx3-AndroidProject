@@ -351,14 +351,6 @@ public class AddToCalendarFragment extends Fragment {
         @Override
         public void onClick(View view) {
             if (isValidated()) {
-//                Intent intent = new Intent(Intent.ACTION_INSERT)
-//                        .setData(Events.CONTENT_URI)
-//                        .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startDateTime.getTimeInMillis())
-//                        .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endDateTime.getTimeInMillis())
-//                        .putExtra(Events.TITLE, title)
-//                        .putExtra(Events.DESCRIPTION, description)
-//                        .putExtra(Events.EVENT_LOCATION, location);
-//                startActivity(intent);
                 cr = getActivity().getContentResolver();
                 values = new ContentValues();
                 values.put(Events.CALENDAR_ID, 1);

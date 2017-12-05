@@ -1,4 +1,4 @@
-package com.dawsonlpx3;
+package com.dawsonlpx3.weather_feature;
 
 import android.app.AlertDialog;
 import android.app.Service;

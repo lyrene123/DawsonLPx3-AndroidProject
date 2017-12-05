@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context="com.dawsonlpx3.AcedemicCalendarFragment">
+    tools:context="com.dawsonlpx3.calendar_feature.AcedemicCalendarFragment">
 
     <TextView
         style="@style/AppTheme.Title"

@@ -66,7 +66,6 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dialog = new ProgressDialog(getActivity());
         Log.d(TAG, "onCreate started");
         fbManager = FirebaseManagerUtil.getFirebaseManager();
         if(savedInstanceState != null){
@@ -329,6 +328,7 @@ public class FindTeacherFragment extends Fragment implements View.OnClickListene
          * Before the execution of the async task, show the progress bar.
          */
         protected void onPreExecute() {
+            dialog = new ProgressDialog(getActivity());
             dialog.setMessage(getResources().getString(R.string.searching_teachers));
             dialog.show();
         }

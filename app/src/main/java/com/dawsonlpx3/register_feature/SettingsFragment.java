@@ -1,4 +1,4 @@
-package com.dawsonlpx3;
+package com.dawsonlpx3.register_feature;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -17,6 +17,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dawsonlpx3.R;
+
 import java.util.Calendar;
 import static android.content.Context.MODE_PRIVATE;
 
@@ -26,9 +28,12 @@ import static android.content.Context.MODE_PRIVATE;
  * information for other parts of the project. The settings will only be saved when a user presses
  * the save button on the screen.
  *
- * @author Philippe Langlois
+ * @author Lyrene Labor
+ * @autor Pengkim Sy
+ * @author Phil Langlois
+ * @author Peter Bellefgleur
  */
-public class SettingsActivity extends Fragment {
+public class SettingsFragment extends Fragment {
 
     private View view;
     private static final String TAG = "SettignsActivity";
@@ -103,4 +108,4 @@ public class SettingsActivity extends Fragment {
         savedInstanceState.putString("tempPassword", passwordEdit.getText().toString());
         super.onSaveInstanceState(savedInstanceState);
     } // onSaveInstanceState
-} // SettingsActivity
+} // SettingsFragment

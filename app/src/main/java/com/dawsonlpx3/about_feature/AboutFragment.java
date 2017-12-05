@@ -1,4 +1,4 @@
-package com.dawsonlpx3;
+package com.dawsonlpx3.about_feature;
 
 import android.app.Fragment;
 import android.content.DialogInterface;
@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.dawsonlpx3.R;
 
 /**
  * Fragment activity that handles the display of the about activity for the user and the interaction

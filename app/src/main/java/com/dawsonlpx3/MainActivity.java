@@ -3,7 +3,6 @@ package com.dawsonlpx3;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,6 +18,10 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
+
+import com.dawsonlpx3.about_feature.AboutFragment;
+import com.dawsonlpx3.calendar_feature.AcedemicCalendarFragment;
+import com.dawsonlpx3.calendar_feature.AddToCalendarFragment;
 import com.dawsonlpx3.canceled_class_feature.CanceledFragment;
 import com.dawsonlpx3.async_utils.WhereIsFriendAsyncTask;
 import com.dawsonlpx3.data.TeacherDetails;
@@ -28,18 +31,34 @@ import com.dawsonlpx3.find_teacher_feature.ChooseTeacherFragment;
 import com.dawsonlpx3.find_teacher_feature.FindTeacherFragment;
 import com.dawsonlpx3.find_teacher_feature.TeacherContactFragment;
 import com.dawsonlpx3.friendBreak_feature.FriendBreakFragment;
+import com.dawsonlpx3.home_feature.HomeFragment;
+import com.dawsonlpx3.notes_feature.ItemNoteFragment;
+import com.dawsonlpx3.notes_feature.NotesFragment;
+import com.dawsonlpx3.register_feature.RegisterActivity;
+import com.dawsonlpx3.register_feature.SettingsFragment;
+import com.dawsonlpx3.weather_feature.WeatherFragment;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Calendar;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
+
 /**
- * Launches the Main Activity that will display the the app's main interaction with
- * the user.
+ * The MainActivity serves as a "container" for all the fragment that will displayed when
+ * selected different options from the Drawer menu. When app is launched, MainActivity will build the
+ * Drawer menu and its options as content. Checks as well if the user has existing credentials and if
+ * not, then the RegisterActivity will be launched in order to get those credentials from the user.
  *
- *  TODO : more detailed javadocs, better to implement this class level javadocs when class is more or less done
+ * Implements the OnTeacherSelectedListener, OnNoteSelectedListener, and onFriendSelectedListener
+ * which are interfaces required by the FindFriend, Notes, and FindTeacher fragment activities.
+ * Handles those interface implementation by providing the necessary method handler called when
+ * the fragments mentionned are inflated into the view.
  *
+ * @author Lyrene Labor
+ * @author Pengkim Sy
+ * @author Phil Langlois
+ * @author Peter Bellefleur
  */
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -219,7 +238,7 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.side_frame, frag)
                     .commit();
         } else if (id == R.id.nav_weather) {
-            Fragment frag = new WeatherActivity();
+            Fragment frag = new WeatherFragment();
             fragmentManager.beginTransaction()
                     .replace(R.id.side_frame, frag)
                     .commit();
@@ -229,7 +248,7 @@ public class MainActivity extends AppCompatActivity
                     .replace(R.id.side_frame, frag)
                     .commit();
         } else if (id == R.id.nav_setting) {
-            Fragment frag = new SettingsActivity();
+            Fragment frag = new SettingsFragment();
             fragmentManager.beginTransaction()
                     .replace(R.id.side_frame, frag)
                     .commit();

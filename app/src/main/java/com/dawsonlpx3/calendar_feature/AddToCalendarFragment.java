@@ -1,4 +1,4 @@
-package com.dawsonlpx3;
+package com.dawsonlpx3.calendar_feature;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -30,6 +30,8 @@ import android.widget.TextView;
 import android.provider.CalendarContract.Events;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.dawsonlpx3.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

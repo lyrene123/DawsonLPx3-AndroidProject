@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.dawsonlpx3.ItemNoteFragment">
+    tools:context="com.dawsonlpx3.notes_feature.ItemNoteFragment">
 
     <RelativeLayout
         android:id="@+id/headerRL"

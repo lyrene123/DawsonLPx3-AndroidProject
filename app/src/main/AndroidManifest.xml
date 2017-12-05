@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
+        <activity android:name=".register_feature.RegisterActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
@@ -34,7 +34,7 @@
         <!--<activity android:name=".TeacherContactActivity" />-->
         <!--<activity android:name=".NotesFragment" />-->
         <!--<activity android:name=".ItemNoteFragment" />-->
-        <!--<activity android:name=".WeatherActivity" />-->
+        <!--<activity android:namWeatherFragmentvity" />-->
         <!--<activity android:namAcedemicCalendarFragmentvity"></activity>-->
     </application>
 

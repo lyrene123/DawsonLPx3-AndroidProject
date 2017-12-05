@@ -1,4 +1,4 @@
-package com.dawsonlpx3;
+package com.dawsonlpx3.calendar_feature;
 
 import android.app.Fragment;
 import android.support.annotation.Nullable;
@@ -18,6 +18,8 @@ import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.dawsonlpx3.R;
 
 import java.util.Calendar;
 

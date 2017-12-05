@@ -1,4 +1,4 @@
-package com.dawsonlpx3;
+package com.dawsonlpx3.home_feature;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.dawsonlpx3.R;
 import com.dawsonlpx3.async_utils.WhereIsFriendAsyncTask;
 
 import org.json.JSONArray;

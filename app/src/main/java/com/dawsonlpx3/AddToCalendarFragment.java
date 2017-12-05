@@ -415,7 +415,7 @@ public class AddToCalendarFragment extends Fragment {
 
     /**
      * When user allow permission, add the event to calendar
-     * 
+     *
      * @param requestCode
      * @param permissions
      * @param grantResults

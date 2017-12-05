@@ -54,6 +54,19 @@ import java.net.URL;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * Fragment activity that handles the display of the content of the Home Page of the application
+ * and the interaction between the user and the Home Page. The Home Page will display the Dawson college
+ * logo, the app logo, the current weather, and the list of cancelled classes. Sets the click listeners
+ * on the Dawson college logo and the app logo. Starts an async task to retrieve all the cancelled classes
+ * from the Dawson Rss feed in order to display to the view. Handles as well the checking of permission
+ * to access the user's current location and internet connection in order to retrieve current temperature.
+ *
+ * @author Lyrene Labor
+ * @autor Pengkim Sy
+ * @author Phil Langlois
+ * @author Peter Bellefgleur
+ */
 public class HomeFragment extends Fragment {
 
     private final String TAG = "HomeFragment";
@@ -63,12 +76,9 @@ public class HomeFragment extends Fragment {
 
     private final String RSS_URL =
             "https://www.dawsoncollege.qc.ca/wp-content/external-includes/cancellations/feed.xml";
-    View view;
     Context context;
-    ListView list;
     List<CanceledClassDetails> canceled;
     private DawsonRssXmlDownloadTask task;
-
     private ListView classCancelListView;
     /**
      * Inflate the fragment_home layout. This fragment will replace the

@@ -16,6 +16,17 @@ import com.dawsonlpx3.R;
 import com.dawsonlpx3.db.NotesContract;
 import com.dawsonlpx3.db.SQLiteManagerUtil;
 
+/**
+ * Fragment activity which handles the display and the user interaction with a single note of the user
+ * retrieved from the list in the NotesFragment activity. Receives the id of the specific note from the
+ * arguments of the fragment and retrieves that specific note by id in the SQLite database in a separate thread.
+ * Once the whole note record is retrieved from the database, displays the string content into the view.
+ *
+ * @author Lyrene Labor
+ * @autor Pengkim Sy
+ * @author Phil Langlois
+ * @author Peter Bellefgleur
+ */
 public class ItemNoteFragment extends Fragment {
 
     private final String TAG = "ItemNoteFragment";
@@ -93,12 +104,6 @@ public class ItemNoteFragment extends Fragment {
             outState.putString("noteDetail", noteTextView.getText().toString());
         outState.putInt("id", this.id);
     }
-
-    // Activity is calling this to update view on Fragment
-//    public void updateView(int id){
-//        GetNoteDetailTask GetNoteDetailTask = new GetNoteDetailTask();
-//        GetNoteDetailTask.execute(id);
-//    }
 
     /**
      * Using the background thread to get the noteDetail by the id

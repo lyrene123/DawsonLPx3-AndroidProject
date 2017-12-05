@@ -15,12 +15,30 @@ import com.dawsonlpx3.R;
 
 import java.util.Calendar;
 
+/**
+ * Activity that handles the display of the register page that will appear when user installs
+ * the app for the first time. Retrieves all user input from the register form and then validates
+ * in order to save the user's credentials into Shared Preferences.
+ *
+ * @author Lyrene Labor
+ * @autor Pengkim Sy
+ * @author Phil Langlois
+ * @author Peter Bellefgleur
+ */
 public class RegisterActivity extends AppCompatActivity {
 
     private final String TAG = "RegisterActivity";
     private EditText firstnameET, lastnameET, emailET, passwordET;
     private Button registerBtn;
 
+    /**
+     * Retrieves all widgets from the view necessary in order to retrieve whatever input the user
+     * entered when registering for the first time. Sets an onclick listener on the register button
+     * which will validate the user input and then save into the SharedPreferences when valid input.
+     * Once input saved, the MainActivity is launched.
+     *
+     * @param savedInstanceState Bundle object
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

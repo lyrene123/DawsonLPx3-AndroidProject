@@ -28,7 +28,10 @@ import static android.content.Context.MODE_PRIVATE;
  * information for other parts of the project. The settings will only be saved when a user presses
  * the save button on the screen.
  *
- * @author Philippe Langlois
+ * @author Lyrene Labor
+ * @autor Pengkim Sy
+ * @author Phil Langlois
+ * @author Peter Bellefgleur
  */
 public class SettingsFragment extends Fragment {
 

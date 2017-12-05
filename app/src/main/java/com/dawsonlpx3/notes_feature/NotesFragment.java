@@ -22,7 +22,14 @@ import com.dawsonlpx3.db.NotesContract;
 import com.dawsonlpx3.db.SQLiteManagerUtil;
 
 /**
- * This NotesFragement will show a ListView of all the notes
+ * This NotesFragement will show a ListView of all the notes. Handles the retrieval of all notes of
+ * the user from the SQLite database in a separate thread. Attaches a click listeners on each item
+ * of the notes list in order to inflate the ItemNoteFragment with the selected note.
+ *
+ * @author Lyrene Labor
+ * @autor Pengkim Sy
+ * @author Phil Langlois
+ * @author Peter Bellefgleur
  */
 public class NotesFragment extends Fragment {
 

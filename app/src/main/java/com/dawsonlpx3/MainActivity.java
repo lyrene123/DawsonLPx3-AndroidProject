@@ -43,12 +43,22 @@ import org.json.JSONObject;
 
 import java.util.Calendar;
 import java.util.concurrent.ExecutionException;
+
 /**
- * Launches the Main Activity that will display the the app's main interaction with
- * the user.
+ * The MainActivity serves as a "container" for all the fragment that will displayed when
+ * selected different options from the Drawer menu. When app is launched, MainActivity will build the
+ * Drawer menu and its options as content. Checks as well if the user has existing credentials and if
+ * not, then the RegisterActivity will be launched in order to get those credentials from the user.
  *
- *  TODO : more detailed javadocs, better to implement this class level javadocs when class is more or less done
+ * Implements the OnTeacherSelectedListener, OnNoteSelectedListener, and onFriendSelectedListener
+ * which are interfaces required by the FindFriend, Notes, and FindTeacher fragment activities.
+ * Handles those interface implementation by providing the necessary method handler called when
+ * the fragments mentionned are inflated into the view.
  *
+ * @author Lyrene Labor
+ * @author Pengkim Sy
+ * @author Phil Langlois
+ * @author Peter Bellefleur
  */
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,

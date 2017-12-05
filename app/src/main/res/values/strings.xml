@@ -183,5 +183,6 @@
     <string name="settings_saved">Settings saved!</string>
     <string name="notes">Notes</string>
     <string name="cancel_problem">Problem loading cancelled classes</string>
+    <string name="friend_cancel">Your friends in this class</string>
 </resources>
 

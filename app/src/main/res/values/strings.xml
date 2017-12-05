@@ -70,6 +70,11 @@
     <string name="hello_world">Hello world!</string>
     <!--<string name="action_settings">Settings</string>-->
     <string name="completeThisField">Please complete this field!</string>
+    <string name="delete">Delete</string>
+    <string name="deleteQuestion">Are you sure you want to delete?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="insertToCalendar">Inserted to calender!</string>
 
     <string name="invalidTeacherSearch">Please enter at least a first name or a last name</string>
     <string name="dawsonPhoneNum">15149318731</string>

@@ -413,7 +413,13 @@ public class AddToCalendarFragment extends Fragment {
         }
     };
 
-
+    /**
+     * When user allow permission, add the event to calendar
+     * 
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);

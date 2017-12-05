@@ -421,7 +421,8 @@ public class AddToCalendarFragment extends Fragment {
      * @param grantResults
      */
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions
+            , @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if(requestCode == MY_PERMISSIONS_REQUEST_WRITE_CALENDAR) {

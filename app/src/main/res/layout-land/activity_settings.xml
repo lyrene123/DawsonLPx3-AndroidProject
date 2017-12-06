@@ -2,8 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="20dp">
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/headerRL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark">
+
+        <TextView
+            style="@style/AppTheme.header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/menu_settings"/>
+    </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -12,15 +23,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                style="@style/AppTheme.Title"
-                android:id="@+id/settingsTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/menu_settings"
-                android:layout_gravity="center"/>
+            android:orientation="vertical"
+            android:padding="15dp">
 
             <EditText
                 style="@style/AppTheme.Text_L"
@@ -56,10 +60,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:weightSum="2"
                 android:orientation="horizontal">
                 <TextView
-                    style="@style/AppTheme.Text_L"
+                    style="@style/AppTheme.Text_M"
                     android:id="@+id/last_modified_label"
                     android:text="@string/last_modified_label"
                     android:layout_width="0dp"
@@ -67,14 +70,15 @@
                     android:layout_weight="1"
                     android:textAlignment="textEnd"/>
                 <TextView
-                    style="@style/AppTheme.Text_L"
+                    style="@style/AppTheme.Text_M"
                     android:id="@+id/last_modified_input"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="2" />
             </LinearLayout>
 
             <Button
+                style="@style/AppTheme.Text_L"
                 android:id="@+id/save_settings_button"
                 android:text="@string/save_settings"
                 android:layout_width="wrap_content"

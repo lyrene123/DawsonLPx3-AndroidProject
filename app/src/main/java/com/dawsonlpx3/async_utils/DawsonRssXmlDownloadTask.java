@@ -15,19 +15,19 @@ import java.net.URL;
 import java.util.List;
 
 /**
- * The CanceledFragment class represents a Fragment that displays a list of class cancellations,
- * obtained from the Dawson College RSS feed of class cancellations.
+ * The DawsonRssXmlDownloadTask is an AsyncTask responsible for parsing XML, retrieved from
+ * Dawson College's RSS feed of cancelled classes, in a background thread.
  *
  * @author Peter Bellefleur
  * @author Lyrene Labor
- * @author Phil Langlois
+ * @author Philippe Langlois
  * @author Pengkim Sy
  */
 public class DawsonRssXmlDownloadTask extends AsyncTask<String, Void,
         List<CanceledClassDetails>> {
 
     //tag for logging
-    private final String INNER_TAG = "LPx3-XmlDownloadTask";
+    private final String TAG = "LPx3-XmlDownloadTask";
 
     /**
      * Retrieves a List of CanceledClassDetails objects from the Dawson College RSS feed. The
@@ -38,7 +38,7 @@ public class DawsonRssXmlDownloadTask extends AsyncTask<String, Void,
      */
     @Override
     protected List<CanceledClassDetails> doInBackground(String... urls) {
-        Log.d(INNER_TAG, "doInBackground");
+        Log.d(TAG, "doInBackground");
         try {
             return loadXmlFromNetwork(urls[0]);
         } catch (IOException ioe) {
@@ -59,7 +59,7 @@ public class DawsonRssXmlDownloadTask extends AsyncTask<String, Void,
      */
     private List<CanceledClassDetails> loadXmlFromNetwork(String url)
             throws XmlPullParserException, IOException{
-        Log.d(INNER_TAG, "loadXmlFromNetwork");
+        Log.d(TAG, "loadXmlFromNetwork");
         InputStream stream = null;
         DawsonRssXmlParser parser = new DawsonRssXmlParser();
         List<CanceledClassDetails> classes = null;
@@ -67,7 +67,7 @@ public class DawsonRssXmlDownloadTask extends AsyncTask<String, Void,
         try {
             stream = downloadUrl(url);
             classes = parser.parse(stream);
-            Log.d(INNER_TAG, "XML parsed.");
+            Log.d(TAG, "XML parsed.");
         } finally {
             //close stream if needed
             if (stream != null) {
@@ -85,7 +85,7 @@ public class DawsonRssXmlDownloadTask extends AsyncTask<String, Void,
      * @throws java.io.IOException  if a problem with the connection occurs.
      */
     private InputStream downloadUrl(String urlString) throws IOException {
-        Log.d(INNER_TAG, "Attempting to download XML from URL...");
+        Log.d(TAG, "Attempting to download XML from URL...");
         URL url = new URL(urlString);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setReadTimeout(10000);
@@ -93,7 +93,7 @@ public class DawsonRssXmlDownloadTask extends AsyncTask<String, Void,
         conn.setRequestMethod("GET");
         conn.setDoInput(true);
         conn.connect();
-        Log.d(INNER_TAG, "XML downloaded.");
+        Log.d(TAG, "XML downloaded.");
         return conn.getInputStream();
     }
 }

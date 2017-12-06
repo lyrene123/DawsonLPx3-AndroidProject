@@ -2,7 +2,6 @@ package com.dawsonlpx3.canceled_class_feature;
 
 import android.app.Fragment;
 import android.content.Context;
-import android.os.AsyncTask;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,12 +15,6 @@ import com.dawsonlpx3.R;
 import com.dawsonlpx3.async_utils.DawsonRssXmlDownloadTask;
 import com.dawsonlpx3.data.CanceledClassDetails;
 
-import org.xmlpull.v1.XmlPullParserException;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 

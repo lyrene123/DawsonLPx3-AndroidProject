@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.dawsonlpx3.R;
 import com.dawsonlpx3.data.CanceledClassDetails;
+import com.dawsonlpx3.friends_in_course_feature.FriendInCourseFragment;
 
 import java.util.List;
 
@@ -110,6 +111,25 @@ public class CanceledClassAdapter extends ArrayAdapter<CanceledClassDetails> {
                         .replace(R.id.side_frame, showCancelFragment)
                         .addToBackStack(null)
                         .commit();
+            }
+        });
+        row.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Log.d(TAG, "row long clicked: " + position);
+                Log.d(TAG, "related bean: " + classList.get(position).getCourse());
+                FriendInCourseFragment friendFragment = new FriendInCourseFragment();
+
+                Bundle args = new Bundle();
+                args.putSerializable("class", classList.get(position));
+                friendFragment.setArguments(args);
+
+                FragmentManager fm = activity.getFragmentManager();
+                fm.beginTransaction()
+                        .replace(R.id.side_frame, friendFragment)
+                        .addToBackStack(null)
+                        .commit();
+                return true;
             }
         });
     }

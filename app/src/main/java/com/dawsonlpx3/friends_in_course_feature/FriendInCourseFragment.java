@@ -18,6 +18,7 @@ import android.widget.ListView;
 
 import com.dawsonlpx3.R;
 import com.dawsonlpx3.async_utils.IsFriendInCourseAsyncTask;
+import com.dawsonlpx3.data.CanceledClassDetails;
 import com.dawsonlpx3.friendBreak_feature.FriendBreakFragment;
 
 import org.json.JSONArray;
@@ -38,6 +39,8 @@ import java.util.concurrent.ExecutionException;
 
 public class FriendInCourseFragment extends Fragment {
 
+    private View view;
+    private CanceledClassDetails details;
     private final String TAG = "LPx3-FriendInCourse";
     private JSONArray jsonResponse = null;
     private List<String> friendNames;
@@ -101,7 +104,15 @@ public class FriendInCourseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_friend_class, container, false);
+        this.view = inflater.inflate(R.layout.fragment_friend_class, container, false);
+        if (savedInstanceState == null) {
+            if (getArguments() != null) {
+                this.details = (CanceledClassDetails) getArguments().getSerializable("class");
+            }
+        } else {
+            this.details = (CanceledClassDetails) savedInstanceState.getSerializable("class");
+        }
+        return view;
     }
 
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -125,11 +136,15 @@ public class FriendInCourseFragment extends Fragment {
 
     private void startFindFriendsTask() {
         IsFriendInCourseAsyncTask task = new IsFriendInCourseAsyncTask();
-        task.execute(email, password); //need to have course info as well
+        String[] courseSplitter = details.getTitle().split("\\s");
+        courseSplitter[1] = courseSplitter[1].replaceFirst("^0+(?!$)", "");
+        Log.d(TAG, "course code: " + courseSplitter[0]);
+        Log.d(TAG, "section number: " + courseSplitter[1]);
+        task.execute(email, password, courseSplitter[0], courseSplitter[1]);
 
         try {
             jsonResponse = task.get();
-            Log.d(TAG, "jsonResponse: " + jsonResponse.toString());
+            Log.d(TAG, "jsonResponse retrieved");
 
             if (!validateJson()) {
                 buildFriendsNamesAndEmail();

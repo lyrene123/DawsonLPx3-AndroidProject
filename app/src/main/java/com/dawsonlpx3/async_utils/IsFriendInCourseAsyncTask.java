@@ -10,9 +10,11 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 
 /**
  * Created by laborlyrene on 2017-12-01.
@@ -20,25 +22,29 @@ import java.net.URL;
 
 public class IsFriendInCourseAsyncTask extends AsyncTask <String, Void, JSONArray>{
 
-    private final String TAG = "LPx3-IsFriendInCourse";
+    private final String TAG = "LPx3-FriendInCourseTask";
     private final String API_URL = "https://friendfinder05.herokuapp.com/api/api/coursefriends?";
 
     @Override
     protected JSONArray doInBackground(String... params) {
-        Log.d(TAG, "doInBackground started with params: " + params.toString());
+        Log.d(TAG, "doInBackground");
 
         if(params.length == 4 && !params[0].isEmpty() && !params[1].isEmpty()) {
-            String urlString = API_URL
-                    + "email=" + params[0]
-                    + "&password=" + params[1]
-                    + "&coursename=" + params[2]
-                    + "&section=" + params[3];
-            Log.d(TAG, "URL: " + urlString);
             try {
+                String urlString = API_URL
+                        + "email=" + params[0]
+                        + "&password=" + params[1]
+                        + "&coursename=" + URLEncoder.encode(params[2], "UTF-8")
+                        + "&section=" + URLEncoder.encode(params[3], "UTF-8");
+                //urlString = URLEncoder.encode(urlString, "UTF-8");
+                Log.d(TAG, "URL: " + urlString);
                 URL urlObject = new URL(urlString);
                 return retrieveFriendsInCourse(urlObject);
             } catch (MalformedURLException mue) {
                 Log.e(TAG, "URL Error: " + Log.getStackTraceString(mue));
+                return null;
+            } catch (UnsupportedEncodingException uee) {
+                Log.e(TAG, "Unsupported Encoding Exception: " + Log.getStackTraceString(uee));
                 return null;
             }
         } else {

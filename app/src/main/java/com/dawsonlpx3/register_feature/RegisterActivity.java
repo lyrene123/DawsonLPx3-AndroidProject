@@ -36,7 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
     private TextView errorTV;
 
     // Got this pattern from https://stackoverflow.com/questions/12947620/email-address-validation-in-android-on-edittext
-    private static final String EMAIL_PATTERN = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+//    private static final String EMAIL_PATTERN = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     /**
      * Retrieves all widgets from the view necessary in order to retrieve whatever input the user
@@ -101,7 +101,7 @@ public class RegisterActivity extends AppCompatActivity {
             return false;
         }
 
-        if (!emailET.getText().toString().matches(EMAIL_PATTERN)) {
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(emailET.getText()).matches()) {
             errorTV.setText(getResources().getString(R.string.invalidEmail));
             errorTV.setTextColor(Color.RED);
             errorTV.setVisibility(View.VISIBLE);

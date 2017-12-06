@@ -1,7 +1,9 @@
 package com.dawsonlpx3.friends_in_course_feature;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.dawsonlpx3.R;
+import com.dawsonlpx3.async_utils.IsFriendInCourseAsyncTask;
 import com.dawsonlpx3.friendBreak_feature.FriendBreakFragment;
 
 import org.json.JSONArray;
@@ -22,6 +25,7 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  *
@@ -35,16 +39,12 @@ import java.util.List;
 public class FriendInCourseFragment extends Fragment {
 
     private final String TAG = "LPx3-FriendInCourse";
-    private onFriendSelectListener listener;
     private JSONArray jsonResponse = null;
     private List<String> friendNames;
+    private List<String> friendEmails;
     private ArrayAdapter<String> itemsAdapter;
     private String email;
     private String password;
-
-    public interface onFriendSelectListener {
-        void onFriendSelected(String email, String name);
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -84,13 +84,16 @@ public class FriendInCourseFragment extends Fragment {
         return false;
     }
 
-    private void buildFriendsNames() throws JSONException {
+    private void buildFriendsNamesAndEmail() throws JSONException {
         friendNames = new ArrayList<>();
+        friendEmails = new ArrayList<>();
         for (int i = 0; i < jsonResponse.length(); i++) {
             friendNames.add(jsonResponse.getJSONObject(i).getString("firstname")
                     + " "
                     + jsonResponse.getJSONObject(i).getString("lastname"));
-            Log.d(TAG, "buildFriendsNames: " + friendNames.get(i));
+            friendEmails.add(jsonResponse.getJSONObject(i).getString("email"));
+            Log.d(TAG, "friend name: " + friendNames.get(i));
+            Log.d(TAG, "friend email: " + friendEmails.get(i));
         }
     }
 
@@ -99,17 +102,6 @@ public class FriendInCourseFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_friend_class, container, false);
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof onFriendSelectListener) {
-            this.listener = (onFriendSelectListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement onFriendSelectedListener");
-        }
     }
 
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -122,15 +114,46 @@ public class FriendInCourseFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                try {
-                    listener.onFriendSelected(jsonResponse.getJSONObject(position)
-                            .getString("email"), friendNames.get(position));
-                } catch (JSONException je) {
-                    Log.e(TAG, "error getting email for onClick friend: " + Log.getStackTraceString(je));
-                    displayMessage(getResources().getString(R.string.problem_retrieving_location));
-                }
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                intent.setData(Uri.parse("mailto:"));
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{friendEmails.get(position)});
+                intent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.from));
+                startActivity(intent);
             }
         });
+    }
+
+    private void startFindFriendsTask() {
+        IsFriendInCourseAsyncTask task = new IsFriendInCourseAsyncTask();
+        task.execute(email, password); //need to have course info as well
+
+        try {
+            jsonResponse = task.get();
+            Log.d(TAG, "jsonResponse: " + jsonResponse.toString());
+
+            if (!validateJson()) {
+                buildFriendsNamesAndEmail();
+                this.itemsAdapter = new ArrayAdapter<String>(getActivity(), R.layout.list_item,
+                        friendNames.toArray(new String[0]));
+            }
+        } catch (InterruptedException ie) {
+            Log.e(TAG, "startFindFriendsTask: InterruptedException "
+                    + Log.getStackTraceString(ie));
+        } catch (ExecutionException ee) {
+            Log.e(TAG, "startFindFriendTask: ExecutionException "
+                    + Log.getStackTraceString(ee));
+        } catch (JSONException je) {
+            Log.e(TAG, "startFindFriendTask: JSONException " + Log.getStackTraceString(je));
+        }
+    }
+
+    private void displayMessage(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setMessage(message)
+                .setTitle(R.string.warning)
+                .setPositiveButton(android.R.string.ok, null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
 }

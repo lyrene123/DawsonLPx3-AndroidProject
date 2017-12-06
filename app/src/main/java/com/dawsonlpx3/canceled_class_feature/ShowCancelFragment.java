@@ -49,12 +49,16 @@ public class ShowCancelFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              Bundle savedInstanceState) {
         Log.i(TAG, "onCreateView");
+        //inflate layout for this fragment
         this.view = inflater.inflate(R.layout.activity_show_cancel, container, false);
+        //check savedInstanceState for data
         if (savedInstanceState == null) {
+            //if null, get data from getArguments
             if (getArguments() != null) {
                 this.details = (CanceledClassDetails) getArguments().getSerializable("class");
             }
         } else {
+            //if not null, get data from savedInstanceState
             this.details = (CanceledClassDetails) savedInstanceState.getSerializable("class");
         }
         return view;

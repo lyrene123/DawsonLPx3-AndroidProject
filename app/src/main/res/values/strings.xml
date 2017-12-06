@@ -182,8 +182,8 @@
     <string name="searching_friends">Searching for friends...</string>
     <string name="settings_saved">Settings saved!</string>
     <string name="notes">Notes</string>
-    <string name="cancel_problem">Problem loading cancelled classes</string>
-    <string name="friend_cancel">Your friends in this class</string>
-    <string name="no_friends_cancelled">No friends have cancelled classes upcoming.</string>
+    <string name="cancel_problem">Problem loading cancelled classes.</string>
+    <string name="friend_cancel">Your friends in class: </string>
+    <string name="no_friends_cancelled">No friends are taking this class.</string>
 </resources>
 

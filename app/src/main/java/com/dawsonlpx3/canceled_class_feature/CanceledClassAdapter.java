@@ -113,17 +113,25 @@ public class CanceledClassAdapter extends ArrayAdapter<CanceledClassDetails> {
                         .commit();
             }
         });
+
         row.setOnLongClickListener(new View.OnLongClickListener() {
+            /***
+             * When long clicked, launches a FriendInCourseFagment, which searches for friends who
+             * are taking the cancelled class associated with this CanceledClassDetails object.
+             *
+             * @param v The View object that was clicked.
+             * @return  True if the onLongClick event was consumed.
+             */
             @Override
             public boolean onLongClick(View v) {
                 Log.d(TAG, "row long clicked: " + position);
                 Log.d(TAG, "related bean: " + classList.get(position).getCourse());
                 FriendInCourseFragment friendFragment = new FriendInCourseFragment();
-
+                //serialize the bean, add to the bundle
                 Bundle args = new Bundle();
                 args.putSerializable("class", classList.get(position));
                 friendFragment.setArguments(args);
-
+                //begin fragment transaction to launch new fragment
                 FragmentManager fm = activity.getFragmentManager();
                 fm.beginTransaction()
                         .replace(R.id.side_frame, friendFragment)

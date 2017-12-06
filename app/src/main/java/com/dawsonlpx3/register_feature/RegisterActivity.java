@@ -9,9 +9,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.dawsonlpx3.MainActivity;
 import com.dawsonlpx3.R;
+
+import org.w3c.dom.Text;
 
 import java.util.Calendar;
 
@@ -30,6 +33,10 @@ public class RegisterActivity extends AppCompatActivity {
     private final String TAG = "RegisterActivity";
     private EditText firstnameET, lastnameET, emailET, passwordET;
     private Button registerBtn;
+    private TextView errorTV;
+
+    // Got this pattern from https://stackoverflow.com/questions/12947620/email-address-validation-in-android-on-edittext
+    private static final String EMAIL_PATTERN = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     /**
      * Retrieves all widgets from the view necessary in order to retrieve whatever input the user
@@ -49,6 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
         emailET = (EditText) findViewById(R.id.emailEditText);
         passwordET = (EditText) findViewById(R.id.passwordEditText);
         registerBtn = (Button) findViewById(R.id.registerBtn);
+        errorTV = (TextView) findViewById(R.id.errorTV);
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +98,13 @@ public class RegisterActivity extends AppCompatActivity {
         if (emailET.getText().toString().isEmpty()) {
             emailET.setHint(getResources().getString(R.string.completeThisField));
             emailET.setHintTextColor(Color.RED);
+            return false;
+        }
+
+        if (!emailET.getText().toString().matches(EMAIL_PATTERN)) {
+            errorTV.setText(getResources().getString(R.string.invalidEmail));
+            errorTV.setTextColor(Color.RED);
+            errorTV.setVisibility(View.VISIBLE);
             return false;
         }
 

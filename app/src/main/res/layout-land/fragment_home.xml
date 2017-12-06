@@ -37,22 +37,12 @@
             android:src="@drawable/teamlogo"/>
     </LinearLayout>
 
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> testing
     <LinearLayout
         android:layout_below="@id/dawsonLogoLL"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-<<<<<<< HEAD
+
         <LinearLayout
-=======
-        <ListView
-            style="@style/AppTheme.List_Item"
-            android:id="@+id/classCancelListView"
->>>>>>> testing
             android:layout_width="0dp"
             android:layout_weight="2"
             android:layout_height="match_parent"

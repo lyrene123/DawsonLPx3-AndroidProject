@@ -191,6 +191,6 @@
     <string name="settings_saved">Settings saved!</string>
     <string name="notes">Notes</string>
     <string name="cancel_problem">Problem loading cancelled classes</string>
-    <string name="invalid_password">That is an invalid password pattern.</string>
+    <string name="invalid_email_pattern">That is an invalid email pattern.</string>
 </resources>
 

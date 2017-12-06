@@ -129,7 +129,7 @@ public class SettingsFragment extends Fragment {
         }
 
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(emailEdit.getText()).matches()) {
-            Toast.makeText(getActivity(), getResources().getString(R.string.invalid_password),
+            Toast.makeText(getActivity(), getResources().getString(R.string.invalid_email_pattern),
                     Toast.LENGTH_SHORT).show();
             validFlag = false;
         }

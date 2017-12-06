@@ -193,5 +193,6 @@
     <string name="friend_cancel">Your friends in class: </string>
     <string name="no_friends_cancelled">No friends are taking this class.</string>
     <string name="invalid_password">That is an invalid password pattern.</string>
+    <string name="invalid_email_pattern">That is an invalid email pattern.</string>
 </resources>
 

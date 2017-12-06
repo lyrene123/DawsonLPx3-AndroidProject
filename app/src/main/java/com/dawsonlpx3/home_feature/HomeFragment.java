@@ -197,88 +197,6 @@ public class HomeFragment extends Fragment {
     };
 
     /**
-<<<<<<< HEAD:app/src/main/java/com/dawsonlpx3/HomeFragment.java
-=======
-     *
-     * Show Weather fragment
-     */
-    private View.OnClickListener showWeather = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.side_frame, new WeatherFragment())
-                    .addToBackStack(null)
-                    .commit();
-        }
-    };
-
-    /**
-     * Show Find Teacher fragment
-     */
-    private View.OnClickListener showFindTeacher = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.side_frame, new FindTeacherFragment())
-                    .addToBackStack(null)
-                    .commit();
-        }
-    };
-
-    /**
-     * Show Add To Calendar fragment
-     */
-    private View.OnClickListener showAddToCalendar = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.side_frame, new AddToCalendarFragment())
-                    .addToBackStack(null)
-                    .commit();
-        }
-    };
-
-    /**
-     * Show Acedemic Calendar fragment
-     */
-    private View.OnClickListener showAcedemicCalendar = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.side_frame, new AcedemicCalendarFragment())
-                    .addToBackStack(null)
-                    .commit();
-        }
-    };
-
-    /**
-     * Show class cancelled fragment
-     */
-    private View.OnClickListener showClassCancelled = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.side_frame, new CanceledFragment())
-                    .addToBackStack(null)
-                    .commit();
-        }
-    };
-
-    /**
-     * Show Note fragment
-     */
-    private View.OnClickListener showNote = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.side_frame, new NotesFragment())
-                    .addToBackStack(null)
-                    .commit();
-        }
-    };
-
-    /**
->>>>>>> testing:app/src/main/java/com/dawsonlpx3/home_feature/HomeFragment.java
      * Show About Page
      *
      * @param view
@@ -360,8 +278,8 @@ public class HomeFragment extends Fragment {
                 break;
         }
 
-        params.width = 300;
-        params.height = 300;
+        params.width = 400;
+        params.height = 400;
         params.gravity = Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM;
         view.setLayoutParams(params);
 

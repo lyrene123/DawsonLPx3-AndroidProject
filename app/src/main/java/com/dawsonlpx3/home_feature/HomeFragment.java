@@ -70,6 +70,7 @@ import java.util.concurrent.ExecutionException;
 public class HomeFragment extends Fragment {
 
     private final String TAG = "HomeFragment";
+    private final String CELCUS = (char) 0x00B0 + "C";
     private final int MY_PERMISSIONS_ACCESS_FINE_LOCATION = 1;
     private final int MY_PERMISSIONS_INTERNET = 2;
     private Boolean userPermissions = true; // Flag for user permissions
@@ -123,24 +124,6 @@ public class HomeFragment extends Fragment {
         ImageButton dawsonImageBtn = (ImageButton) view.findViewById(R.id.dawsonImageView);
         dawsonImageBtn.setOnClickListener(showDawsonWeb);
 
-//        ImageButton weatherImageBtn = (ImageButton) view.findViewById(R.id.weatherImageButton);
-//        weatherImageBtn.setOnClickListener(showWeather);
-//
-//        ImageButton findTeacherImageBtn = (ImageButton) view.findViewById(R.id.findTeacherImageButton);
-//        findTeacherImageBtn.setOnClickListener(showFindTeacher);
-//
-//        ImageButton calendarImageBtn = (ImageButton) view.findViewById(R.id.calendarImageButton);
-//        calendarImageBtn.setOnClickListener(showAddToCalendar);
-//
-//        ImageButton acedemicCalendarImageBtn = (ImageButton) view.findViewById(R.id.acedemicCalendarImageButton);
-//        acedemicCalendarImageBtn.setOnClickListener(showAcedemicCalendar);
-//
-//        ImageButton classCancelledImageBtn = (ImageButton) view.findViewById(R.id.classCancelImageButton);
-//        classCancelledImageBtn.setOnClickListener(showClassCancelled);
-//
-//        ImageButton noteImageBtn = (ImageButton) view.findViewById(R.id.noteImageButton);
-//        noteImageBtn.setOnClickListener(showNote);
-
         ImageButton teamLogo = (ImageButton) view.findViewById(R.id.teamLogo);
         teamLogo.setOnClickListener(showAboutPage);
 
@@ -158,7 +141,7 @@ public class HomeFragment extends Fragment {
             tempTask.execute();
             String[] temperature = tempTask.get();
             String weather = determineWeatherById(temperature[1]);
-            setWeatherLayout(view, weather, temperature[0]);
+            setWeatherLayout(view, weather, temperature[0] + CELCUS);
         }catch(Exception e){
             Log.e(TAG, "error: " + e.getMessage());
         }
@@ -210,85 +193,6 @@ public class HomeFragment extends Fragment {
             Intent intent = new Intent(Intent.ACTION_VIEW,
                     Uri.parse("https://www.dawsoncollege.qc.ca/computer-science-technology/"));
             startActivity(intent);
-        }
-    };
-
-    /**
-     *
-     * Show Weather fragment
-     */
-    private View.OnClickListener showWeather = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.side_frame, new WeatherFragment())
-                    .addToBackStack(null)
-                    .commit();
-        }
-    };
-
-    /**
-     * Show Find Teacher fragment
-     */
-    private View.OnClickListener showFindTeacher = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.side_frame, new FindTeacherFragment())
-                    .addToBackStack(null)
-                    .commit();
-        }
-    };
-
-    /**
-     * Show Add To Calendar fragment
-     */
-    private View.OnClickListener showAddToCalendar = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.side_frame, new AddToCalendarFragment())
-                    .addToBackStack(null)
-                    .commit();
-        }
-    };
-
-    /**
-     * Show Acedemic Calendar fragment
-     */
-    private View.OnClickListener showAcedemicCalendar = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.side_frame, new AcedemicCalendarFragment())
-                    .addToBackStack(null)
-                    .commit();
-        }
-    };
-
-    /**
-     * Show class cancelled fragment
-     */
-    private View.OnClickListener showClassCancelled = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.side_frame, new CanceledFragment())
-                    .addToBackStack(null)
-                    .commit();
-        }
-    };
-
-    /**
-     * Show Note fragment
-     */
-    private View.OnClickListener showNote = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.side_frame, new NotesFragment())
-                    .addToBackStack(null)
-                    .commit();
         }
     };
 
@@ -374,8 +278,8 @@ public class HomeFragment extends Fragment {
                 break;
         }
 
-        params.width = 300;
-        params.height = 300;
+        params.width = 400;
+        params.height = 400;
         params.gravity = Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM;
         view.setLayoutParams(params);
 

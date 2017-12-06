@@ -272,10 +272,12 @@ public class FriendBreakFragment extends Fragment {
         super.onSaveInstanceState(saveInstanceState);
         Log.d(TAG, "onSaveInstanceState started");
         //loop through teachers list, save each teacher and their order
-        for (int i = 0; i < this.friendsOnBreak.length; i++) {
-            saveInstanceState.putSerializable("friends_" + i, this.friendsOnBreak[i]);
-            saveInstanceState.putSerializable("friend_emails_" + i, this.friendEmails[i]);
+        if (this.friendsOnBreak != null) {
+            for (int i = 0; i < this.friendsOnBreak.length; i++) {
+                saveInstanceState.putSerializable("friends_" + i, this.friendsOnBreak[i]);
+                saveInstanceState.putSerializable("friend_emails_" + i, this.friendEmails[i]);
+            }
+            saveInstanceState.putInt("friend_break_list_size", friendsOnBreak.length);
         }
-        saveInstanceState.putInt("friend_break_list_size", friendsOnBreak.length);
     }
 } // FriendBreakFragment

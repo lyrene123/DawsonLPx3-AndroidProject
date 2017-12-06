@@ -1,15 +1,25 @@
 package com.dawsonlpx3.calendar_feature;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Fragment;
 import android.app.TimePickerDialog;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.CalendarContract;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +36,8 @@ import com.dawsonlpx3.R;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import javax.xml.datatype.Duration;
+
 /**
  * This fragment will let user add an event to the Google Calendar
  * by completing the form which has Title, Location, Start Date,
@@ -40,6 +52,9 @@ import java.util.Calendar;
 public class AddToCalendarFragment extends Fragment {
 
     private final String TAG = "AddToCalendar";
+    private static final int MY_PERMISSIONS_REQUEST_WRITE_CALENDAR = 1;
+    private ContentResolver cr;
+    private ContentValues values;
 
     private Calendar startDateTime, endDateTime, currentDate;
     private SimpleDateFormat dateFormatter;
@@ -122,6 +137,8 @@ public class AddToCalendarFragment extends Fragment {
         super.onSaveInstanceState(outState);
         outState.putString("startDateTime", startsTextView.getText().toString());
         outState.putString("endDateTime", endsTextView.getText().toString());
+        outState.putString("startTime", startTimeTextView.getText().toString());
+        outState.putString("endTime", endTimeTextView.getText().toString());
         outState.putLong("startDateCalendar", startDateTime.getTimeInMillis());
         outState.putLong("endDateCalendar", endDateTime.getTimeInMillis());
     }
@@ -137,10 +154,12 @@ public class AddToCalendarFragment extends Fragment {
         super.onViewStateRestored(savedInstanceState);
 
         if (savedInstanceState != null) {
-            startsTextView.setText(savedInstanceState.getString("startDateTime"));
-            endsTextView.setText(savedInstanceState.getString("endDateTime"));
             startDateTime.setTimeInMillis(savedInstanceState.getLong("startDateCalendar"));
             endDateTime.setTimeInMillis(savedInstanceState.getLong("endDateCalendar"));
+            startsTextView.setText(savedInstanceState.getString("startDateTime"));
+            endsTextView.setText(savedInstanceState.getString("endDateTime"));
+            startTimeTextView.setText(savedInstanceState.getString("startTime"));
+            endTimeTextView.setText(savedInstanceState.getString("endTime"));
         }
     }
 
@@ -267,7 +286,7 @@ public class AddToCalendarFragment extends Fragment {
                 startDateTime.set(Calendar.HOUR_OF_DAY, hour);
                 startDateTime.set(Calendar.MINUTE, minute);
                 startTimeTextView.setText(timeFormatter.format(startDateTime.getTime()));
-                if (startDateTime.compareTo(endDateTime) > 0){
+                if (startDateTime.compareTo(endDateTime) > 0) {
                     Toast.makeText(getActivity(), getString(R.string.startBeforeEnd)
                             , Toast.LENGTH_LONG).show();
                     endDateTime.setTimeInMillis(startDateTime.getTimeInMillis());
@@ -290,7 +309,7 @@ public class AddToCalendarFragment extends Fragment {
         @Override
         public void onClick(View view) {
             TimePickerDialog dialog = new TimePickerDialog(getActivity(), R.style.DialogTheme
-                    , startTimePickerListner, endDateTime.get(Calendar.HOUR_OF_DAY)
+                    , endTimePickerListener, endDateTime.get(Calendar.HOUR_OF_DAY)
                     , endDateTime.get(Calendar.MINUTE), false);
 
             dialog.show();
@@ -300,19 +319,19 @@ public class AddToCalendarFragment extends Fragment {
          * Listener of the EndTimePickerDialog. If the end time is before the start time
          * set the end time to be the same as end time and toast to notify the user.
          */
-        TimePickerDialog.OnTimeSetListener startTimePickerListner
+        TimePickerDialog.OnTimeSetListener endTimePickerListener
                 = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int hour, int minute) {
                 endDateTime.set(Calendar.HOUR_OF_DAY, hour);
                 endDateTime.set(Calendar.MINUTE, minute);
-                if (startDateTime.compareTo(endDateTime) > 0){
+                if (startDateTime.compareTo(endDateTime) > 0) {
                     Toast.makeText(getActivity(), getString(R.string.startBeforeEnd)
                             , Toast.LENGTH_LONG).show();
+                } else {
                     endDateTime.setTimeInMillis(startDateTime.getTimeInMillis());
                     endTimeTextView.setText(timeFormatter.format(endDateTime.getTime()));
                 }
-
             }
         };
     };
@@ -330,19 +349,35 @@ public class AddToCalendarFragment extends Fragment {
          *
          * @param view
          */
+        @RequiresApi(api = Build.VERSION_CODES.M)
         @Override
         public void onClick(View view) {
             if (isValidated()) {
-                Intent intent = new Intent(Intent.ACTION_INSERT)
-                        .setData(Events.CONTENT_URI)
-                        .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startDateTime.getTimeInMillis())
-                        .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endDateTime.getTimeInMillis())
-                        .putExtra(Events.TITLE, title)
-                        .putExtra(Events.DESCRIPTION, description)
-                        .putExtra(Events.EVENT_LOCATION, location);
-                startActivity(intent);
+                cr = getActivity().getContentResolver();
+                values = new ContentValues();
+                values.put(Events.CALENDAR_ID, 1);
+                values.put(Events.DTSTART, startDateTime.getTimeInMillis());
+                values.put(Events.DTEND, endDateTime.getTimeInMillis());
+                values.put(Events.TITLE, title);
+                values.put(Events.DESCRIPTION, description);
+                values.put(Events.EVENT_LOCATION, location);
+                values.put(Events.EVENT_TIMEZONE, startDateTime.getTimeZone().getDisplayName());
+
+
+                if (ActivityCompat.checkSelfPermission(getActivity(), android.Manifest.permission.WRITE_CALENDAR)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(new String[]{android.Manifest.permission.WRITE_CALENDAR}
+                            , MY_PERMISSIONS_REQUEST_WRITE_CALENDAR);
+                    return;
+                }
+                Uri uri = cr.insert(Events.CONTENT_URI, values);
+                Toast.makeText(getActivity(), getResources().getString(R.string.insertToCalendar)
+                        , Toast.LENGTH_SHORT).show();
             }
         }
+
+
+
 
         /**
          * Validate the user input. Location and description can be empty, but others
@@ -380,4 +415,22 @@ public class AddToCalendarFragment extends Fragment {
         }
     };
 
+    /**
+     * When user allow permission, add the event to calendar
+     *
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions
+            , @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if(requestCode == MY_PERMISSIONS_REQUEST_WRITE_CALENDAR) {
+            @SuppressLint("MissingPermission") Uri uri = cr.insert(Events.CONTENT_URI, values);
+            Toast.makeText(getActivity(), getResources().getString(R.string.insertToCalendar)
+                    , Toast.LENGTH_SHORT).show();
+        }
+    }
 }

@@ -311,6 +311,7 @@ public class MainActivity extends AppCompatActivity
                 .addToBackStack(null)
                 .commit();
     }
+
     /**
      * Saves the currently displayed fragment into the bundle.
      *

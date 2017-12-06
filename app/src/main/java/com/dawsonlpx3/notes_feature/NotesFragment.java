@@ -1,8 +1,10 @@
 package com.dawsonlpx3.notes_feature;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.support.annotation.Nullable;
@@ -122,9 +124,43 @@ public class NotesFragment extends Fragment {
                 Log.i(TAG, "Note list item clicked");
 
                 Cursor temp = (Cursor) adapterView.getItemAtPosition(position);
-                listener.onNoteSelected(temp.getInt(temp.getColumnIndex(NotesContract.NotesEntry.COL_ID))); // first column is id
+                listener.onNoteSelected(temp.getInt(temp.getColumnIndex(NotesContract.NotesEntry.COL_ID)));
             }
         });
+
+        // When the list item is long pressed, pop up a dialog to ask if the user want to delete
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Log.i(TAG, "Note list item long pressed");
+                final Cursor temp = (Cursor) adapterView.getItemAtPosition(position);
+
+                AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+                alert.setTitle(getResources().getString(R.string.delete));
+                alert.setMessage(getResources().getString(R.string.deleteQuestion));
+                alert.setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dbh.deleteNote(temp.getInt(temp.getColumnIndex(NotesContract.NotesEntry.COL_ID)));
+                        refreshView();
+                        dialog.dismiss();
+
+                    }
+                });
+                alert.setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                alert.show();
+
+                return true;
+            }
+        });
+
         refreshView();
 
         final EditText noteEditText = (EditText) view.findViewById(R.id.noteEditText);

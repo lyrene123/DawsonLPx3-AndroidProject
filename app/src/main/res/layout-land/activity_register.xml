@@ -7,120 +7,80 @@
     tools:context="com.dawsonlpx3.register_feature.RegisterActivity">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/headerRL"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true">
+        android:background="@color/colorPrimaryDark">
+
         <TextView
-            style="@style/AppTheme.Title"
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="@string/app_name"/>
-
-
-        <LinearLayout
-            android:id="@+id/firstnameLL"
-            android:layout_below="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="5">
-
-            <TextView
-                style="@style/AppTheme.Text_M"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/firstname"
-                android:textAlignment="textEnd" />
-
-            <EditText
-                style="@style/AppTheme.Text_M"
-                android:id="@+id/firstnameEditText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2" />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/lastnameLL"
-            android:layout_below="@id/firstnameLL"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="5">
-
-            <TextView
-                style="@style/AppTheme.Text_M"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/lastname"
-                android:textAlignment="textEnd" />
-
-            <EditText
-                style="@style/AppTheme.Text_M"
-                android:id="@+id/lastnameEditText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2" />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/emailLL"
-            android:layout_below="@id/lastnameLL"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="5">
-
-            <TextView
-                style="@style/AppTheme.Text_M"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/email"
-                android:textAlignment="textEnd" />
-
-            <EditText
-                style="@style/AppTheme.Text_M"
-                android:id="@+id/emailEditText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2" />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/passwordLL"
-            android:layout_below="@id/emailLL"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="5">
-
-            <TextView
-                style="@style/AppTheme.Text_M"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/password"
-                android:textAlignment="textEnd" />
-
-            <EditText
-                style="@style/AppTheme.Text_M"
-                android:id="@+id/passwordEditText"
-                android:inputType="textPassword"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2" />
-        </LinearLayout>
-
-
-        <Button
-            android:id="@+id/registerBtn"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/passwordLL"
+            style="@style/AppTheme.header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/register"/>
     </RelativeLayout>
+
+    <ScrollView
+        android:layout_below="@id/headerRL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp">
+
+            <EditText
+                style="@style/AppTheme.Text_L"
+                android:layout_alignParentTop="true"
+                android:id="@+id/firstnameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/firstname" />
+
+            <EditText
+                style="@style/AppTheme.Text_L"
+                android:layout_below="@id/firstnameEditText"
+                android:id="@+id/lastnameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/lastname" />
+
+
+            <EditText
+                style="@style/AppTheme.Text_L"
+                android:id="@+id/emailEditText"
+                android:layout_below="@id/lastnameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint="@string/email" />
+
+            <EditText
+                style="@style/AppTheme.Text_L"
+                android:id="@+id/passwordEditText"
+                android:inputType="textPassword"
+                android:layout_below="@id/emailEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password" />
+
+            <TextView
+                style="@style/AppTheme.Text_L"
+                android:id="@+id/errorTV"
+                android:layout_below="@id/passwordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/registerBtn"
+                style="@style/AppTheme.Text_L"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/errorTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/register"/>
+        </RelativeLayout>
+    </ScrollView>
+
 
 </RelativeLayout>

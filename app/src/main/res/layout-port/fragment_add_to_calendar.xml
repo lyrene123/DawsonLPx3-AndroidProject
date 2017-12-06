@@ -1,29 +1,34 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.dawsonlpx3.calendar_feature.AddToCalendarFragment">
 
     <RelativeLayout
-        android:layout_below="@id/headerRL"
-        android:padding="10dp"
+        android:id="@+id/headerRL"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark">
 
         <TextView
-            style="@style/AppTheme.Title"
-            android:id="@+id/addCalendarTitle"
+            style="@style/AppTheme.header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/nav_addToCalendar"
-            android:layout_centerHorizontal="true"/>
+            android:text="@string/nav_addToCalendar"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <EditText
             style="@style/AppTheme.Text_L"
             android:id="@+id/titleEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/addCalendarTitle"
             android:hint="@string/title"/>
 
         <EditText
@@ -31,14 +36,12 @@
             android:id="@+id/locationEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/titleEditText"
             android:hint="@string/location"/>
 
         <LinearLayout
             android:id="@+id/startsLL"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/locationEditText">
+            android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/startsTextView"
                 style="@android:style/Widget.DeviceDefault.Light.Spinner"
@@ -61,7 +64,6 @@
         </LinearLayout>
         <LinearLayout
             android:id="@+id/endsLL"
-            android:layout_below="@+id/startsLL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
@@ -98,11 +100,10 @@
         <Button
             android:id="@+id/addToCalendarBtn"
             style="@style/AppTheme.Text_L"
-            android:layout_below="@id/descriptionEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/addToCalendar"
-            android:layout_alignParentRight="true"/>
-    </RelativeLayout>
+            android:layout_gravity="right"/>
+    </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

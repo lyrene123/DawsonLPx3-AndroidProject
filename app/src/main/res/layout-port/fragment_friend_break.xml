@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/friendbreakTitleRL"
@@ -18,20 +19,19 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/friendbreakTitleRL"
         android:id="@+id/friendbreakRL"
-        android:layout_margin="15dp"
-        android:padding="10dp">
+        android:orientation="horizontal"
+        android:padding="15dp">
 
         <LinearLayout
             android:id="@+id/dayLL"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_centerHorizontal="true">
+            android:layout_weight="1">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,11 +45,10 @@
 
         <LinearLayout
             android:id="@+id/startLL"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_below="@+id/dayLL"
-            android:layout_centerHorizontal="true">
+            android:layout_weight="1">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,11 +62,10 @@
 
         <LinearLayout
             android:id="@+id/endLL"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@+id/startLL"
-            android:layout_centerHorizontal="true">
+            android:layout_weight="1"
+            android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -79,23 +77,20 @@
                 android:layout_height="wrap_content"/>
         </LinearLayout>
 
-
-        <Button
-            android:id="@+id/free_friends_button"
-            android:text="@string/friends_on_break_btn_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:padding="20dp"
-            android:layout_below="@id/endLL"/>
-
-    </RelativeLayout>
+    </LinearLayout>
+    <Button
+        style="@style/AppTheme.Text_L"
+        android:id="@+id/free_friends_button"
+        android:text="@string/friends_on_break_btn_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="15dp"/>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/friendbreakRL">
+        android:layout_height="wrap_content">
 
         <ListView
             style="@style/AppTheme.List_Item"
@@ -105,4 +100,4 @@
 
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

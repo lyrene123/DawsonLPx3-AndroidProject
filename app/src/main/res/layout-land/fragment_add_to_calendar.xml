@@ -99,8 +99,8 @@
                 android:hint="@string/description"/>
 
             <Button
-                android:id="@+id/addToCalendarBtn"
                 style="@style/AppTheme.Text_L"
+                android:id="@+id/addToCalendarBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/addToCalendar"

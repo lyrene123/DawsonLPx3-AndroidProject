@@ -5,10 +5,12 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +42,7 @@ public class SettingsFragment extends Fragment {
     private EditText firstNameEdit, lastNameEdit, emailEdit, passwordEdit;
     private TextView lastUpdatedText;
     private Button saveButton;
+    private Boolean validFlag = true;
 
     /**
      * Construct the view and get handles to the views for manipulation.
@@ -78,22 +81,68 @@ public class SettingsFragment extends Fragment {
                 // get a handle to this activity's shared preferences
                 SharedPreferences prefs = getActivity().getSharedPreferences("userInfo", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = prefs.edit();
-                // put all user input into SharedPreferences
-                editor.putString("fname", firstNameEdit.getText().toString());
-                editor.putString("lname", lastNameEdit.getText().toString());
-                editor.putString("email", emailEdit.getText().toString());
-                editor.putString("password", passwordEdit.getText().toString());
-                editor.putString("timestamp", Calendar.getInstance().getTime().toString());
-                editor.commit(); // Save changes
-                // Update last updated text
-                lastUpdatedText.setText(prefs.getString("timestamp", null));
-                Toast.makeText(getActivity(), getResources().getString(R.string.settings_saved),
-                        Toast.LENGTH_SHORT).show();
+
+                // Check if user has valid inputs.
+                if(validateInputs()){
+                    editor.putString("fname", firstNameEdit.getText().toString());
+                    editor.putString("lname", lastNameEdit.getText().toString());
+                    editor.putString("email", emailEdit.getText().toString());
+                    editor.putString("password", passwordEdit.getText().toString());
+                    editor.putString("timestamp", Calendar.getInstance().getTime().toString());
+                    editor.commit(); // Save changes
+                    // Update last updated text
+                    lastUpdatedText.setText(prefs.getString("timestamp", null));
+                    Toast.makeText(getActivity(), getResources().getString(R.string.settings_saved),
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         return view;
     } // onCreateView()
+
+    /**
+     * Checks all input field for any errors or missing fields. Sets teh flag to true at start and
+     * if any inconsistencies arise, sets the flag to false;
+     *
+     * @return
+     */
+    private Boolean validateInputs(){
+        validFlag = true;
+
+        if (firstNameEdit.getText().toString().isEmpty()) {
+            firstNameEdit.setHint(getResources().getString(R.string.completeThisField));
+            firstNameEdit.setHintTextColor(Color.RED);
+            validFlag = false;
+        }
+
+        if (lastNameEdit.getText().toString().isEmpty()) {
+            lastNameEdit.setHint(getResources().getString(R.string.completeThisField));
+            lastNameEdit.setHintTextColor(Color.RED);
+            validFlag = false;
+        }
+
+        if (emailEdit.getText().toString().isEmpty()) {
+            emailEdit.setHint(getResources().getString(R.string.completeThisField));
+            emailEdit.setHintTextColor(Color.RED);
+            validFlag = false;
+        }
+
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(emailEdit.getText()).matches()) {
+            Toast.makeText(getActivity(), getResources().getString(R.string.invalid_password),
+                    Toast.LENGTH_SHORT).show();
+            validFlag = false;
+        }
+
+        if (passwordEdit.getText().toString().isEmpty()) {
+            passwordEdit.setHint(getResources().getString(R.string.completeThisField));
+            passwordEdit.setHintTextColor(Color.RED);
+            validFlag = false;
+        }
+
+        return validFlag;
+    } // validateInputs()
+
 
     /**
      * Save user input in the fields to maintain app state.

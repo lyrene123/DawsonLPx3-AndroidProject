@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET"/>
 
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/applogo_9"
@@ -27,17 +29,10 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-        <!--<activity android:namCanceledFragmentvity" />-->
-        <!--<activity android:namShowCancelFragmentvity" />-->
-        <!--<activity android:name=".FindTeacherActivity" />-->
-        <!--<activity android:name=".ChooseTeacherActivity" />-->
-        <!--<activity android:name=".TeacherContactActivity" />-->
-        <!--<activity android:name=".NotesFragment" />-->
-        <!--<activity android:name=".ItemNoteFragment" />-->
-        <!--<activity android:namWeatherFragmentvity" />-->
-        <!--<activity android:namAcedemicCalendarFragmentvity"></activity>-->
     </application>
 
+    <!--<uses-permission android:name="android.permission.READ_CALENDAR" />-->
+    <!--<uses-permission android:name="android.permission.WRITE_CALENDAR" />-->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-feature android:name="android.hardware.location.gps"/>

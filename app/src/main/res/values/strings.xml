@@ -70,6 +70,11 @@
     <string name="hello_world">Hello world!</string>
     <!--<string name="action_settings">Settings</string>-->
     <string name="completeThisField">Please complete this field!</string>
+    <string name="delete">Delete</string>
+    <string name="deleteQuestion">Are you sure you want to delete?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="insertToCalendar">Inserted to calender!</string>
 
     <string name="invalidTeacherSearch">Please enter at least a first name or a last name</string>
     <string name="dawsonPhoneNum">15149318731</string>
@@ -117,6 +122,8 @@
      their stay at Dawson. Examples of functionality of our app includes the possibility of viewing your cancelled classes
      for the day, find teachers by their first and/or last name. Our app lets students view the academic calendar of a
         Winter or Fall semester of a year and the weather of the day and the next five days. Other useful features of our app is the ability to store notes and to save events into their calendar.
+
+    \n\n - Credit to Andreea for the design of our team logo and app icon!
     </string>
     <string name="courseid">Dawson College 420.A0</string>
     <string name="meet_team">Meet The Team</string>

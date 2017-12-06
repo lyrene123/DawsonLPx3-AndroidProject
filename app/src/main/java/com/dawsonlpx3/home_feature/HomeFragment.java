@@ -70,6 +70,7 @@ import java.util.concurrent.ExecutionException;
 public class HomeFragment extends Fragment {
 
     private final String TAG = "HomeFragment";
+    private final String CELCUS = (char) 0x00B0 + "C";
     private final int MY_PERMISSIONS_ACCESS_FINE_LOCATION = 1;
     private final int MY_PERMISSIONS_INTERNET = 2;
     private Boolean userPermissions = true; // Flag for user permissions
@@ -123,24 +124,6 @@ public class HomeFragment extends Fragment {
         ImageButton dawsonImageBtn = (ImageButton) view.findViewById(R.id.dawsonImageView);
         dawsonImageBtn.setOnClickListener(showDawsonWeb);
 
-//        ImageButton weatherImageBtn = (ImageButton) view.findViewById(R.id.weatherImageButton);
-//        weatherImageBtn.setOnClickListener(showWeather);
-//
-//        ImageButton findTeacherImageBtn = (ImageButton) view.findViewById(R.id.findTeacherImageButton);
-//        findTeacherImageBtn.setOnClickListener(showFindTeacher);
-//
-//        ImageButton calendarImageBtn = (ImageButton) view.findViewById(R.id.calendarImageButton);
-//        calendarImageBtn.setOnClickListener(showAddToCalendar);
-//
-//        ImageButton acedemicCalendarImageBtn = (ImageButton) view.findViewById(R.id.acedemicCalendarImageButton);
-//        acedemicCalendarImageBtn.setOnClickListener(showAcedemicCalendar);
-//
-//        ImageButton classCancelledImageBtn = (ImageButton) view.findViewById(R.id.classCancelImageButton);
-//        classCancelledImageBtn.setOnClickListener(showClassCancelled);
-//
-//        ImageButton noteImageBtn = (ImageButton) view.findViewById(R.id.noteImageButton);
-//        noteImageBtn.setOnClickListener(showNote);
-
         ImageButton teamLogo = (ImageButton) view.findViewById(R.id.teamLogo);
         teamLogo.setOnClickListener(showAboutPage);
 
@@ -158,7 +141,7 @@ public class HomeFragment extends Fragment {
             tempTask.execute();
             String[] temperature = tempTask.get();
             String weather = determineWeatherById(temperature[1]);
-            setWeatherLayout(view, weather, temperature[0]);
+            setWeatherLayout(view, weather, temperature[0] + CELCUS);
         }catch(Exception e){
             Log.e(TAG, "error: " + e.getMessage());
         }
@@ -214,6 +197,8 @@ public class HomeFragment extends Fragment {
     };
 
     /**
+<<<<<<< HEAD:app/src/main/java/com/dawsonlpx3/HomeFragment.java
+=======
      *
      * Show Weather fragment
      */
@@ -293,6 +278,7 @@ public class HomeFragment extends Fragment {
     };
 
     /**
+>>>>>>> testing:app/src/main/java/com/dawsonlpx3/home_feature/HomeFragment.java
      * Show About Page
      *
      * @param view

@@ -428,9 +428,14 @@ public class AddToCalendarFragment extends Fragment {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if(requestCode == MY_PERMISSIONS_REQUEST_WRITE_CALENDAR) {
-            @SuppressLint("MissingPermission") Uri uri = cr.insert(Events.CONTENT_URI, values);
-            Toast.makeText(getActivity(), getResources().getString(R.string.insertToCalendar)
-                    , Toast.LENGTH_SHORT).show();
+            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                @SuppressLint("MissingPermission") Uri uri = cr.insert(Events.CONTENT_URI, values);
+                Toast.makeText(getActivity(), getResources().getString(R.string.insertToCalendar)
+                        , Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getActivity(), getResources().getString(R.string.cantAddToCalendar)
+                        , Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

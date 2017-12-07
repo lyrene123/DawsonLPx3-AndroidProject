@@ -1,0 +1,109 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.dawsonlpx3.calendar_feature.AddToCalendarFragment">
+
+    <RelativeLayout
+        android:id="@+id/headerRL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark">
+
+        <TextView
+            style="@style/AppTheme.header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nav_addToCalendar"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            style="@style/AppTheme.Text_L"
+            android:id="@+id/titleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/title"/>
+
+        <EditText
+            style="@style/AppTheme.Text_L"
+            android:id="@+id/locationEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/location"/>
+
+        <LinearLayout
+            android:id="@+id/startsLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/startsTextView"
+                style="@android:style/Widget.DeviceDefault.Light.Spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:padding="13dp"
+                android:text="@string/startDate" />
+            <TextView
+                android:id="@+id/startTimeTextView"
+                style="@android:style/Widget.DeviceDefault.Light.Spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:padding="13dp"
+                android:text="@string/startTime" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/endsLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/endsTextView"
+                style="@android:style/Widget.DeviceDefault.Light.Spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:padding="13dp"
+                android:text="@string/endDate" />
+            <TextView
+                android:id="@+id/endTimeTextView"
+                style="@android:style/Widget.DeviceDefault.Light.Spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:padding="13dp"
+                android:text="@string/endTime" />
+        </LinearLayout>
+
+        <EditText
+            style="@style/AppTheme.Text_L"
+            android:id="@+id/descriptionEditText"
+            android:layout_below="@id/endsLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences|textMultiLine"
+            android:maxLines="4"
+            android:maxLength="2000"
+            android:hint="@string/description"/>
+
+        <Button
+            android:id="@+id/addToCalendarBtn"
+            style="@style/AppTheme.Text_L"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/addToCalendar"
+            android:layout_gravity="right"/>
+    </LinearLayout>
+
+</LinearLayout>

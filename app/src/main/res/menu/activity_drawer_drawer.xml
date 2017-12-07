@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:title="@string/nav_home" />
+        <item
+            android:id="@+id/nav_classCancel"
+            android:title="@string/nav_classCancel" />
+        <item
+            android:id="@+id/nav_findTeacher"
+            android:title="@string/nav_findTeacher" />
+        <item
+            android:id="@+id/nav_note"
+            android:title="@string/nav_note" />
+        <item
+            android:id="@+id/nav_addToCalendar"
+            android:title="@string/nav_addToCalendar" />
+        <item
+            android:id="@+id/nav_acedemicCalendar"
+            android:title="@string/nav_acedemicCalendar" />
+        <item
+            android:id="@+id/nav_weather"
+            android:title="@string/nav_weather" />
+        <item
+            android:id="@+id/nav_whoIsFree"
+            android:title="Who is free" />
+        <item
+            android:id="@+id/nav_find_friends"
+            android:title="@string/nav_findfriends" />
+
+    </group>
+
+    <item android:title="Extra">
+        <menu>
+            <item
+                android:id="@+id/nav_about"
+                android:title="@string/menu_about" />
+            <item
+                android:id="@+id/nav_setting"
+                android:title="@string/menu_settings" />
+            <item
+                android:id="@+id/nav_dawson"
+                android:title="@string/menu_dawson" />
+        </menu>
+    </item>
+
+</menu>

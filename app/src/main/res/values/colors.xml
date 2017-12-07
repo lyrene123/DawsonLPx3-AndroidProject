@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDark">#293689</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="White">#ffffff</color>
+    <color name="weatherColor">#1d1670</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="han_purple">#6610F2</color>
+    <color name="azure">#008BFF</color>
+    <color name="maastrict_blue">#02182B</color>
 </resources>

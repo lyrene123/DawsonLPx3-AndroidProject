@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="@color/white">
+    <LinearLayout
+        android:id="@+id/dawsonLL"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nav_header_height"
+        android:orientation="vertical"
+        android:background="@color/colorPrimaryDark">
+
+        <ImageButton
+            android:id="@+id/dawsonImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:background="@null"
+            android:padding="15dp"
+            app:srcCompat="@drawable/dawson" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/logoLL"
+        android:layout_below="@id/dawsonLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:id="@+id/teamLogo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:src="@drawable/teamlogo"/>
+        <FrameLayout
+            android:id="@+id/weatherFrameLayout"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/AppTheme.Title"
+                android:id="@+id/tempTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|bottom"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/colorPrimary"/>
+        </FrameLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/classCancelTitle"
+        style="@style/AppTheme.Title"
+        android:layout_below="@id/logoLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/nav_classCancel"/>
+
+    <ListView
+        style="@style/AppTheme.List_Item"
+        android:id="@+id/classCancelListView"
+        android:layout_below="@id/classCancelTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ListView>
+
+</RelativeLayout>
+

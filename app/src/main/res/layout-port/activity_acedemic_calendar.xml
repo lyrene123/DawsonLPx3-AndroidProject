@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context="com.dawsonlpx3.calendar_feature.AcedemicCalendarFragment">
+
+    <TextView
+        style="@style/AppTheme.Title"
+        android:id="@+id/acedemicTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/acedemicCalendar"/>
+
+
+    <LinearLayout
+        android:id="@+id/searchLL"
+        android:layout_below="@id/acedemicTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:weightSum="7">
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fall"/>
+            <RadioButton
+                android:id="@+id/fallRadioBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:checked="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/winter"/>
+            <RadioButton
+                android:id="@+id/winterRadioBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"/>
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/yearET"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:hint="@string/year"/>
+        <Button
+            android:id="@+id/calendarSearch"
+            android:layout_weight="0.5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/search"/>
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/calendarErrorMsg"
+        android:layout_below="@id/searchLL"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent" />
+
+
+    <WebView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/academicWebview"
+        android:layout_below="@id/calendarErrorMsg"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+    </WebView>
+
+</RelativeLayout>

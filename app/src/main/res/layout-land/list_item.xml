@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/noteListItem"
+    style="@style/AppTheme.List_Item"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fontFamily="@font/montserrat_alternates"
+    android:gravity="center"
+    android:singleLine="true"
+    android:background="@drawable/shadow_background"/>
+
+    <!--android:background="@drawable/rectgrad"-->

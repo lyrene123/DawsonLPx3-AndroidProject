@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/noteFragment"
+    tools:context="com.dawsonlpx3.notes_feature.NotesFragment">
+
+    <RelativeLayout
+        android:id="@+id/notesRL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark">
+
+        <TextView
+            style="@style/AppTheme.header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/notesHeader"
+            android:text="@string/notes"/>
+
+    </RelativeLayout>
+
+    <ListView
+        style="@style/AppTheme.List_Item"
+        android:id="@+id/noteListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/notesRL"
+        android:layout_above="@+id/linearLayout"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:orientation="horizontal">
+
+
+        <EditText
+            android:id="@+id/noteEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/addNoteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="@string/add"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

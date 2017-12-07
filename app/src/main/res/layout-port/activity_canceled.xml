@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dawsonlpx3.canceled_class_feature.CanceledFragment">
+
+    <RelativeLayout
+        android:id="@+id/notesRL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark">
+
+        <TextView
+            style="@style/AppTheme.header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cancelledHeader"
+            android:text="@string/classCancel"/>
+
+    </RelativeLayout>
+
+
+    <ListView
+        style="@style/AppTheme.List_Item"
+        android:id="@+id/classCancelListView"
+        android:layout_below="@id/notesRL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
+
+</RelativeLayout>

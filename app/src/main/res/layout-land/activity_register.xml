@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dawsonlpx3.register_feature.RegisterActivity">
+
+    <RelativeLayout
+        android:id="@+id/headerRL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark">
+
+        <TextView
+            style="@style/AppTheme.header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register"/>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_below="@id/headerRL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp">
+
+            <EditText
+                style="@style/AppTheme.Text_L"
+                android:layout_alignParentTop="true"
+                android:id="@+id/firstnameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/firstname" />
+
+            <EditText
+                style="@style/AppTheme.Text_L"
+                android:layout_below="@id/firstnameEditText"
+                android:id="@+id/lastnameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/lastname" />
+
+
+            <EditText
+                style="@style/AppTheme.Text_L"
+                android:id="@+id/emailEditText"
+                android:layout_below="@id/lastnameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint="@string/email" />
+
+            <EditText
+                style="@style/AppTheme.Text_L"
+                android:id="@+id/passwordEditText"
+                android:inputType="textPassword"
+                android:layout_below="@id/emailEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password" />
+
+            <TextView
+                style="@style/AppTheme.Text_L"
+                android:id="@+id/errorTV"
+                android:layout_below="@id/passwordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/registerBtn"
+                style="@style/AppTheme.Text_L"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/errorTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/register"/>
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

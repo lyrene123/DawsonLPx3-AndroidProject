@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    android:id="@+id/teacherContactLayout"
+    tools:context="com.dawsonlpx3.find_teacher_feature.TeacherContactFragment">
+
+
+    <ImageView
+        style="@style/AppTheme.Text_M"
+        android:id="@+id/imageImageView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
+        android:layout_weight="2"
+        android:src="@drawable/unknows"/>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="4">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:id="@+id/firstnameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="28sp"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp"
+                    android:layout_margin="0dp"
+                    android:text="@string/unavailable"/>
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:id="@+id/lastnameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="28sp"
+                    android:layout_margin="0dp"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp"
+                    android:text="@string/unavailable"/>
+            </LinearLayout>
+
+            <TextView
+                style="@style/AppTheme.Text_M"
+                android:id="@+id/positionTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:paddingTop="0dp"
+                android:layout_margin="0dp"
+                android:paddingBottom="15dp"
+                android:text="@string/unavailable"/>
+            <LinearLayout
+                android:id="@+id/officeLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/office" />
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:id="@+id/officeTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:text="@string/unavailable"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/websiteLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/website" />
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:id="@+id/websiteTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:text="@string/unavailable"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/emailLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/email"/>
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:id="@+id/emailTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:text="@string/unavailable"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/localLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/local"/>
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:id="@+id/localTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:text="@string/unavailable"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/departmentLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/department"/>
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:id="@+id/departmentTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:gravity="top|left"
+                    android:text="@string/unavailable"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/sectorLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/sector" />
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:id="@+id/sectorTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:gravity="top|left"
+                    android:text="@string/unavailable"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/bioLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/bio" />
+
+                <TextView
+                    style="@style/AppTheme.Text_M"
+                    android:id="@+id/bioTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:text="@string/unavailable"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

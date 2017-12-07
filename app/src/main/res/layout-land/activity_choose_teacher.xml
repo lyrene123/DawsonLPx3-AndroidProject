@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/mainView"
+    tools:context="com.dawsonlpx3.find_teacher_feature.ChooseTeacherFragment">
+
+    <RelativeLayout
+        android:id="@+id/teachersRL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark">
+
+        <TextView
+            android:id="@+id/teacherTV"
+            style="@style/AppTheme.header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/teachers"/>
+
+    </RelativeLayout>
+
+    <ListView
+        style="@style/AppTheme.List_Item"
+        android:id="@+id/teachersLV"
+        android:layout_below="@id/teachersRL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+
+    </ListView>
+
+</RelativeLayout>

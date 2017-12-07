@@ -207,7 +207,6 @@ public class AllFriendsFragment extends Fragment {
         try {
             //retrieve response and remove progress
             jsonResponse = allFriendsAsyncTask.get();
-            Log.d(TAG, "jsonResponse: " + jsonResponse.toString());
             //process json result
             if(!checkForErrorsOrNoFriends()) {
                 buildFriendsNames();

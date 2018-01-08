@@ -20,5 +20,6 @@ LPx3 is an Android application designed for students at Dawson College. The appl
 * Pengkim Sy
 
 ## Note
-This repo is the duplicate version of the original private repo of the project.
-Pull requests, issues, and other branches not available here.
+This repo is the duplicate version of the original private repo of the project.<br>
+Pull requests, issues, and other branches not available here.<br>
+Adding personal changes directly into master
